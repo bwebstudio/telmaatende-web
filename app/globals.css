@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Offset anchor jumps for the sticky header. */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-color: theme('colors.paper');
+    color: theme('colors.ink');
+    font-family: theme('fontFamily.sans');
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Respect users who prefer reduced motion. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  /* Visible focus for keyboard users. */
+  :focus-visible {
+    outline: 2px solid theme('colors.accent');
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  /* Small caps section label with letter spacing, an editorial detail. */
+  .eyebrow {
+    @apply inline-block text-sm font-medium uppercase tracking-label text-accent;
+  }
+
+  .rule {
+    @apply h-px w-full bg-line;
+  }
+
+  .btn {
+    @apply inline-flex min-h-[3rem] items-center justify-center rounded-full px-6 text-base font-medium transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-paper hover:bg-accent-dark;
+  }
+
+  .btn-secondary {
+    @apply btn border border-ink/25 bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-paper;
+  }
+
+  .link-underline {
+    @apply underline decoration-line-strong decoration-1 underline-offset-4 transition-colors hover:decoration-accent hover:text-accent;
+  }
+}
