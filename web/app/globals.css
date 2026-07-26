@@ -68,4 +68,16 @@
   .link-underline {
     @apply underline decoration-line-strong decoration-1 underline-offset-4 transition-colors hover:decoration-accent hover:text-accent;
   }
+
+  /* Content card with a soft hover lift. Put this on an element *inside* a
+     FadeIn wrapper so the entrance animation and the hover transform never
+     fight over the same element. */
+  .card {
+    @apply rounded-2xl border border-line bg-paper p-6 transition duration-200 sm:p-7;
+  }
+
+  .card-lift:hover {
+    @apply -translate-y-1 border-line-strong shadow-[0_24px_50px_-30px_rgba(20,17,14,0.35)];
+  }
 }
+

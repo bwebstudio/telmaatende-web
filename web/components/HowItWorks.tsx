@@ -1,6 +1,17 @@
+import {
+  PhoneIncoming,
+  PhoneCall,
+  CalendarCheck,
+  FileText,
+  PhoneForwarded,
+  type LucideIcon,
+} from 'lucide-react'
 import type { Content } from '@/content'
 import { Container, Eyebrow } from './Container'
 import { FadeIn } from './FadeIn'
+import { FeatureIcon } from './FeatureIcon'
+
+const stepIcons: LucideIcon[] = [PhoneIncoming, PhoneCall, CalendarCheck, FileText]
 
 export function HowItWorks({ c }: { c: Content }) {
   return (
@@ -13,30 +24,34 @@ export function HowItWorks({ c }: { c: Content }) {
           </h2>
         </FadeIn>
 
-        <ol className="mt-12 grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2">
-          {c.how.steps.map((step, i) => (
-            <FadeIn as="li" key={step.n} delay={i * 70} className="flex gap-5">
-              <span
-                aria-hidden
-                className="font-serif text-4xl font-medium leading-none text-accent sm:text-5xl"
-              >
-                {step.n}
-              </span>
-              <div>
-                <h3 className="font-serif text-xl font-medium text-ink sm:text-2xl">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-lg leading-relaxed text-ink-soft">
-                  {step.text}
-                </p>
-              </div>
-            </FadeIn>
-          ))}
+        <ol className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2">
+          {c.how.steps.map((step, i) => {
+            const Icon = stepIcons[i % stepIcons.length]
+            return (
+              <FadeIn as="li" key={step.n} delay={i * 70} className="h-full">
+                <div className="card card-lift group h-full">
+                  <div className="flex items-center justify-between">
+                    <FeatureIcon icon={Icon} />
+                    <span
+                      aria-hidden
+                      className="font-serif text-4xl font-medium leading-none text-line-strong"
+                    >
+                      {step.n}
+                    </span>
+                  </div>
+                  <h3 className="mt-5 font-serif text-xl font-medium text-ink sm:text-2xl">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-lg leading-relaxed text-ink-soft">{step.text}</p>
+                </div>
+              </FadeIn>
+            )
+          })}
         </ol>
 
         <FadeIn className="mt-14 flex items-start gap-5 rounded-[1.75rem] bg-pine px-7 py-7 text-paper shadow-[0_28px_70px_-40px_rgba(27,58,46,0.9)] ring-1 ring-inset ring-paper/10 sm:items-center sm:gap-6 sm:px-10 sm:py-9">
-          <span aria-hidden className="mt-1 shrink-0 text-accent-light sm:mt-0">
-            <CallTransfer />
+          <span className="mt-1 shrink-0 text-accent-light sm:mt-0">
+            <PhoneForwarded size={30} strokeWidth={1.6} aria-hidden />
           </span>
           <p className="font-serif text-xl font-normal leading-snug sm:text-2xl">
             {c.how.note}
@@ -44,25 +59,5 @@ export function HowItWorks({ c }: { c: Content }) {
         </FadeIn>
       </Container>
     </section>
-  )
-}
-
-function CallTransfer() {
-  return (
-    <svg
-      width="30"
-      height="30"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <path d="M6.6 10.8a11 11 0 0 0 4.6 4.6l1.6-1.6a1 1 0 0 1 1-.25 8 8 0 0 0 2.5.4 1 1 0 0 1 1 1v2.55a1 1 0 0 1-1 1A14 14 0 0 1 4 5a1 1 0 0 1 1-1h2.55a1 1 0 0 1 1 1 8 8 0 0 0 .4 2.5 1 1 0 0 1-.25 1z" />
-      <path d="M15.5 3.5h5v5" />
-      <path d="M20.5 3.5l-5.5 5.5" />
-    </svg>
   )
 }

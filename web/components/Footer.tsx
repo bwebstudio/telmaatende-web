@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Mail, Phone } from 'lucide-react'
 import type { Content, Locale } from '@/content'
 import { Container } from './Container'
 
@@ -18,15 +19,20 @@ export function Footer({ c, lang }: { c: Content; lang: Locale }) {
             </h2>
             <ul className="mt-4 flex flex-col gap-2 text-base">
               <li>
-                <a href={`mailto:${c.footer.email}`} className="text-paper/80 hover:text-paper">
+                <a
+                  href={`mailto:${c.footer.email}`}
+                  className="inline-flex items-center gap-2.5 text-paper/80 hover:text-paper"
+                >
+                  <Mail size={16} strokeWidth={1.75} className="shrink-0 text-accent-light" aria-hidden />
                   {c.footer.email}
                 </a>
               </li>
               <li>
                 <a
                   href={`tel:${c.footer.phone.replace(/\s+/g, '')}`}
-                  className="text-paper/80 hover:text-paper"
+                  className="inline-flex items-center gap-2.5 text-paper/80 hover:text-paper"
                 >
+                  <Phone size={16} strokeWidth={1.75} className="shrink-0 text-accent-light" aria-hidden />
                   {c.footer.phone}
                 </a>
               </li>

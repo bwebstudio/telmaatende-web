@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Check, MessageCircle, CheckCheck, CalendarCheck } from 'lucide-react'
 import type { Content, Locale } from '@/content'
 import type { Plan } from '@/content/types'
 import { Container, Eyebrow } from './Container'
@@ -161,8 +162,8 @@ export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
                 <ul className="mt-6 flex flex-col gap-3 border-t border-line pt-6">
                   {plan.features.map((f, j) => (
                     <li key={j} className="flex gap-3 text-base text-ink-soft">
-                      <span aria-hidden className="mt-1 text-accent">
-                        <Check />
+                      <span aria-hidden className="mt-0.5 text-accent">
+                        <Check size={16} strokeWidth={2.25} />
                       </span>
                       <span>{f}</span>
                     </li>
@@ -174,7 +175,7 @@ export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
               <div className="mt-auto pt-6">
                 <p className="flex items-center gap-2 text-sm text-ink-mute">
                   <span aria-hidden className="text-accent">
-                    <WhatsAppMark />
+                    <MessageCircle size={16} strokeWidth={1.75} />
                   </span>
                   {c.pricing.whatsappCardNote}
                 </p>
@@ -191,39 +192,60 @@ export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
           ))}
         </div>
 
-        {/* WhatsApp add-on, premium dark treatment */}
-        <FadeIn className="mt-8 overflow-hidden rounded-[1.75rem] bg-pine text-paper shadow-[0_28px_70px_-40px_rgba(27,58,46,0.9)] ring-1 ring-inset ring-paper/10">
-          <div className="grid grid-cols-1 gap-8 p-8 sm:p-10 md:grid-cols-[1fr_1px_1.1fr] md:gap-12">
-            <div className="flex flex-col justify-center">
-              <span className="inline-flex items-baseline gap-2 text-sm font-medium uppercase tracking-label text-accent-light">
-                <span aria-hidden className="font-serif text-base font-semibold leading-none">
-                  /
-                </span>
+        {/* WhatsApp add-on — modern, colourful promo card */}
+        <FadeIn className="group relative mt-8 overflow-hidden rounded-[1.75rem] bg-gradient-to-br from-pine to-pine-soft text-paper shadow-[0_28px_70px_-40px_rgba(23,53,42,0.9)] ring-1 ring-inset ring-paper/10">
+          {/* Soft brand glow */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-accent/25 blur-3xl"
+          />
+
+          <div className="relative grid grid-cols-1 items-center gap-10 p-8 sm:p-10 lg:grid-cols-2 lg:gap-14">
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full bg-paper/10 px-3 py-1 text-xs font-semibold uppercase tracking-label text-accent-light ring-1 ring-inset ring-paper/15">
                 {c.pricing.whatsapp.label}
               </span>
-              <h3 className="mt-4 font-serif text-3xl font-semibold leading-tight sm:text-4xl">
-                {c.pricing.whatsapp.name}
-              </h3>
-              <p className="mt-5 text-lg">
-                <span className="font-serif text-3xl font-semibold text-accent-light">
+
+              <div className="mt-5 flex items-center gap-4">
+                <span
+                  aria-hidden
+                  className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-paper/10 text-paper ring-1 ring-inset ring-paper/15 transition-transform duration-200 group-hover:scale-105"
+                >
+                  <MessageCircle size={28} strokeWidth={1.75} />
+                </span>
+                <h3 className="font-serif text-3xl font-semibold leading-tight sm:text-4xl">
+                  {c.pricing.whatsapp.name}
+                </h3>
+              </div>
+
+              <p className="mt-5 flex items-baseline gap-2">
+                <span className="font-serif text-4xl font-semibold text-accent-light">
                   {c.pricing.whatsapp.price}
-                </span>{' '}
+                </span>
                 <span className="text-sage">{c.pricing.whatsapp.priceNote}</span>
               </p>
+
+              <ul className="mt-6 flex flex-col gap-3">
+                {c.pricing.whatsapp.features.map((f, j) => (
+                  <li key={j} className="flex gap-3 text-base leading-relaxed text-paper/85">
+                    <span aria-hidden className="mt-0.5 shrink-0 text-accent-light">
+                      <Check size={16} strokeWidth={2.25} />
+                    </span>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="#contacto"
+                className="mt-8 inline-flex min-h-[3rem] items-center justify-center rounded-full bg-paper px-6 text-base font-medium text-ink transition-colors duration-200 hover:bg-paper/90"
+              >
+                {c.pricing.planCta}
+              </a>
             </div>
 
-            <div aria-hidden className="hidden bg-paper/15 md:block" />
-
-            <ul className="flex flex-col justify-center gap-4">
-              {c.pricing.whatsapp.features.map((f, j) => (
-                <li key={j} className="flex gap-3.5 text-base leading-relaxed text-paper/85">
-                  <span aria-hidden className="mt-1 shrink-0 text-accent-light">
-                    <Check />
-                  </span>
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
+            {/* Chat mock — the playful product detail */}
+            <ChatMock />
           </div>
         </FadeIn>
 
@@ -240,38 +262,31 @@ export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
   )
 }
 
-function Check() {
+// A small, language-neutral WhatsApp conversation mock — placeholder message
+// bubbles ending in a booking confirmation. Purely decorative.
+function ChatMock() {
   return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <path d="M3 8.5l3.2 3.2L13 4.5" />
-    </svg>
-  )
-}
-
-function WhatsAppMark() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <path d="M2.5 13.5l1-3a5.5 5.5 0 1 1 2 2z" />
-    </svg>
+    <div aria-hidden className="relative mx-auto w-full max-w-sm animate-float [animation-delay:0.6s]">
+      <div className="rounded-[1.5rem] bg-paper/[0.07] p-5 ring-1 ring-inset ring-paper/10 backdrop-blur">
+        {/* Incoming */}
+        <div className="mb-3 max-w-[78%] rounded-2xl rounded-tl-md bg-paper/12 px-4 py-3">
+          <div className="h-2 w-32 rounded-full bg-paper/45" />
+          <div className="mt-2 h-2 w-20 rounded-full bg-paper/25" />
+        </div>
+        {/* Outgoing */}
+        <div className="mb-3 ml-auto max-w-[74%] rounded-2xl rounded-tr-md bg-accent px-4 py-3">
+          <div className="h-2 w-28 rounded-full bg-paper/80" />
+          <div className="mt-2 flex items-center gap-1.5">
+            <span className="h-2 w-16 rounded-full bg-paper/55" />
+            <CheckCheck size={13} className="ml-auto text-paper/80" />
+          </div>
+        </div>
+        {/* Confirmation */}
+        <div className="ml-auto inline-flex items-center gap-2 rounded-full bg-paper px-3 py-1.5 text-pine shadow-sm">
+          <CalendarCheck size={15} strokeWidth={2} className="text-accent" />
+          <span className="h-2 w-16 rounded-full bg-pine/30" />
+        </div>
+      </div>
+    </div>
   )
 }

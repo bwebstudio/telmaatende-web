@@ -27,6 +27,7 @@ export const pt: Content = {
     ctaPrimary: 'Ver preços',
     ctaSecondary: 'Falar connosco',
     backedBy: 'um produto Bweb Studio',
+    highlights: ['Atende 24 horas, todos os dias', 'Marca consultas automaticamente'],
   },
   problem: {
     label: 'O problema',

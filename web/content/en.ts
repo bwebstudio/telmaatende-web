@@ -27,6 +27,7 @@ export const en: Content = {
     ctaPrimary: 'See pricing',
     ctaSecondary: 'Talk to us',
     backedBy: 'a Bweb Studio product',
+    highlights: ['Answers 24/7, every day', 'Books appointments automatically'],
   },
   problem: {
     label: 'The problem',

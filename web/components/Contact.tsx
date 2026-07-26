@@ -1,7 +1,10 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
+import { Mail } from 'lucide-react'
 import type { Content } from '@/content'
+import { stock } from '@/lib/images'
 import { Container, Eyebrow } from './Container'
 import { FadeIn } from './FadeIn'
 
@@ -48,12 +51,29 @@ export function Contact({ c }: { c: Content }) {
               {c.contact.title}
             </h2>
             <p className="mt-4 max-w-md text-lg text-ink-soft">{c.contact.intro}</p>
-            <p className="mt-6 text-base text-ink-mute">
-              {c.contact.directEmail}{' '}
-              <a href={`mailto:${c.footer.email}`} className="link-underline">
-                {c.footer.email}
-              </a>
+            <p className="mt-6 flex items-center gap-2.5 text-base text-ink-mute">
+              <Mail size={17} strokeWidth={1.75} className="shrink-0 text-accent" aria-hidden />
+              <span>
+                {c.contact.directEmail}{' '}
+                <a href={`mailto:${c.footer.email}`} className="link-underline">
+                  {c.footer.email}
+                </a>
+              </span>
             </p>
+
+            <div className="group relative mt-8 hidden aspect-[4/3] w-full overflow-hidden rounded-[2rem] ring-1 ring-inset ring-line-strong shadow-[0_40px_80px_-45px_rgba(20,17,14,0.45)] lg:block">
+              <Image
+                src={stock.contact.src}
+                alt={stock.contact.alt}
+                fill
+                sizes="40vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-tr from-pine/25 via-transparent to-accent/5 mix-blend-multiply"
+              />
+            </div>
           </FadeIn>
 
           <FadeIn delay={80}>

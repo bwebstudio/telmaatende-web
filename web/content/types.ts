@@ -75,6 +75,7 @@ export interface Content {
     ctaPrimary: string
     ctaSecondary: string
     backedBy: string
+    highlights: string[]
   }
   problem: {
     label: string
