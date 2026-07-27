@@ -10,7 +10,10 @@ import { FadeIn } from './FadeIn'
 
 type Status = 'idle' | 'sending' | 'success' | 'error'
 
-const endpoint = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT
+// Formspree endpoint. Overridable via env var; the default keeps the form
+// working even without it (this ID is public — it travels in the browser).
+const endpoint =
+  process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ?? 'https://formspree.io/f/xnjewazz'
 
 export function Contact({ c }: { c: Content }) {
   const [status, setStatus] = useState<Status>('idle')
