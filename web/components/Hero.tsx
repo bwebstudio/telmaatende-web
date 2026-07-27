@@ -14,7 +14,7 @@ export function Hero({ c }: { c: Content }) {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
           <FadeIn>
             <p className="eyebrow mb-6">Telma</p>
-            <h1 className="font-serif text-[2.8rem] font-medium leading-[1.03] tracking-tight text-ink sm:text-6xl lg:text-[5.2rem]">
+            <h1 className="font-serif text-[2.05rem] font-medium leading-[1.08] tracking-tight text-ink min-[400px]:text-[2.5rem] sm:text-6xl sm:leading-[1.03] lg:text-[5.2rem]">
               {c.hero.headlineLines.map((line, i) => (
                 <span key={i} className="block">
                   {line}
