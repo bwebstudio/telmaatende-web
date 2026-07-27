@@ -43,9 +43,6 @@ export function Footer({ c, lang }: { c: Content; lang: Locale }) {
             >
               {c.footer.companyLinkLabel}
             </a>
-            <p className="mt-4 border-l-2 border-paper/25 pl-3 text-sm italic text-paper/45">
-              {c.footer.legalPlaceholder}
-            </p>
           </div>
         </div>
 
