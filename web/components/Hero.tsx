@@ -37,14 +37,14 @@ export function Hero({ c }: { c: Content }) {
 
           <FadeIn delay={120} className="relative mt-4 lg:mt-0">
             {/* Main image card */}
-            <div className="group relative aspect-[5/6] w-full overflow-hidden rounded-[2rem] ring-1 ring-inset ring-line-strong shadow-[0_40px_80px_-40px_rgba(20,17,14,0.45)]">
+            <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] ring-1 ring-inset ring-line-strong shadow-[0_40px_80px_-40px_rgba(20,17,14,0.45)]">
               <Image
                 src={stock.hero.src}
                 alt={stock.hero.alt}
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
               {/* Subtle brand tint to tie the photo into the palette */}
               <div

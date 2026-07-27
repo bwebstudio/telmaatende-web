@@ -61,12 +61,12 @@ export function Contact({ c }: { c: Content }) {
               </span>
             </p>
 
-            <div className="group relative mt-8 hidden aspect-[4/3] w-full overflow-hidden rounded-[2rem] ring-1 ring-inset ring-line-strong shadow-[0_40px_80px_-45px_rgba(20,17,14,0.45)] lg:block">
+            <div className="group relative mt-8 aspect-[4/3] w-full overflow-hidden rounded-[2rem] ring-1 ring-inset ring-line-strong shadow-[0_40px_80px_-45px_rgba(20,17,14,0.45)]">
               <Image
                 src={stock.contact.src}
                 alt={stock.contact.alt}
                 fill
-                sizes="40vw"
+                sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div
