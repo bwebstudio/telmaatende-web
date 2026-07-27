@@ -18,12 +18,34 @@ export function Contact({ c }: { c: Content }) {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    if (!configured || status === 'sending') return
+    if (status === 'sending') return
 
-    setStatus('sending')
     const form = e.currentTarget
     const data = new FormData(form)
 
+    // With no form backend configured, fall back to the visitor's email client,
+    // pre-filled and addressed to the clinic inbox (ola@telmaatende.com).
+    if (!configured) {
+      const get = (k: string) => (data.get(k) as string)?.trim() ?? ''
+      const f = c.contact.fields
+      const body = [
+        `${f.name}: ${get('name')}`,
+        `${f.clinic}: ${get('clinic')}`,
+        `${f.phone}: ${get('phone')}`,
+        `${f.email}: ${get('email')}`,
+        `${f.plan}: ${get('plan')}`,
+        '',
+        `${f.message}:`,
+        get('message'),
+      ].join('\n')
+      const subject = `${c.contact.label} — ${get('name') || 'Telma'}`
+      window.location.href = `mailto:${c.footer.email}?subject=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(body)}`
+      return
+    }
+
+    setStatus('sending')
     try {
       const res = await fetch(endpoint as string, {
         method: 'POST',
@@ -77,15 +99,6 @@ export function Contact({ c }: { c: Content }) {
           </FadeIn>
 
           <FadeIn delay={80}>
-            {!configured && (
-              <p
-                role="note"
-                className="mb-6 rounded-lg border border-line-strong bg-paper px-4 py-3 text-base text-ink-soft"
-              >
-                {c.contact.notConfigured}
-              </p>
-            )}
-
             {status === 'success' ? (
               <p
                 role="status"
@@ -169,7 +182,7 @@ export function Contact({ c }: { c: Content }) {
 
                 <button
                   type="submit"
-                  disabled={!configured || status === 'sending'}
+                  disabled={status === 'sending'}
                   className="btn-primary self-start disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {status === 'sending' ? c.contact.sending : c.contact.submit}
