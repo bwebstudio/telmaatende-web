@@ -239,7 +239,7 @@ export const es: Content = {
       },
       {
         q: '¿Telma habla inglés?',
-        a: 'Sí, atiende en portugués y en inglés.',
+        a: 'Sí, atiende en español y en inglés.',
       },
       {
         q: '¿Qué pasa si supero las llamadas de mi plan?',
