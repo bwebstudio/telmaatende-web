@@ -1,22 +1,23 @@
-# Telma Atende
+# Telma Atende · web
 
-Monorepo do produto Telma (Telma Atende), a rececionista virtual com voz para
-clínicas dentárias e de estética em Portugal.
+Landing page pública da Telma (Telma Atende), a rececionista virtual com voz
+para clínicas dentárias e de estética em Portugal e Espanha.
 
 ```
-telmaatende/
-  web/         Landing page pública (marketing). Next.js + Tailwind.
-  dashboard/   Painel de gestão (clínica + interno). Next.js + Supabase.
+telmaatende-web/
+  web/   Landing page pública (marketing). Next.js + Tailwind, sem backend.
 ```
 
-Cada pasta é uma aplicação Next.js independente, com o seu próprio `package.json`
-e o seu próprio deploy na Vercel (defina a Root Directory em cada projeto Vercel).
+Página única, em português e espanhol. Deploy na Vercel com a **Root Directory**
+definida como `web`.
 
-- **[web/](web/README.md)**: página única, PT e EN, sem backend.
-- **[dashboard/](dashboard/README.md)**: autenticação, base de dados e realtime
-  com Supabase, dois tipos de utilizador (clínica e interno) e webhooks para o
-  sistema de voz.
+## O painel de gestão vive noutro repositório
 
-Ambas as aplicações partilham a mesma identidade visual: paleta creme, tinta
+O painel (clínica, equipa interna e o CRM comercial) foi separado para
+**[bwebstudio/telma-dashboard](https://github.com/bwebstudio/telma-dashboard)**,
+com o seu próprio deploy na Vercel. É lá que estão a autenticação, a base de
+dados e as migrações do Supabase.
+
+As duas aplicações partilham a mesma identidade visual: paleta creme, tinta
 escura, acento terracota e verde pino, títulos em Clash Display e corpo em
 General Sans.
