@@ -9,8 +9,10 @@ export const en: Content = {
     ogDescription: 'No missed calls. No lost patients.',
   },
   langSwitchLabel: 'Language',
+  skipToContent: 'Skip to content',
   header: {
     productBy: 'a Bweb Studio product',
+    navLabel: 'Main',
     nav: [
       { label: 'How it works', href: '#como-funciona' },
       { label: 'Pricing', href: '#precos' },

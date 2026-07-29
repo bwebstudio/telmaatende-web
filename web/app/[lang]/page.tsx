@@ -29,7 +29,7 @@ export default async function Page({
         href="#conteudo"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-5 focus:py-3 focus:text-paper"
       >
-        {locale === 'pt' ? 'Saltar para o conteúdo' : 'Skip to content'}
+        {c.skipToContent}
       </a>
       <Header c={c} lang={locale} />
       <main id="conteudo">

@@ -3,13 +3,13 @@
 import { useState } from 'react'
 import { Check, MessageCircle, CheckCheck, CalendarCheck } from 'lucide-react'
 import type { Content, Locale } from '@/content'
+import { localeMeta } from '@/content'
 import type { Plan } from '@/content/types'
 import { Container, Eyebrow } from './Container'
 import { FadeIn } from './FadeIn'
 
 function formatEuro(value: number, lang: Locale): string {
-  const locale = lang === 'pt' ? 'pt-PT' : 'en-IE'
-  return new Intl.NumberFormat(locale, {
+  return new Intl.NumberFormat(localeMeta[lang].numberLocale, {
     style: 'currency',
     currency: 'EUR',
     minimumFractionDigits: Number.isInteger(value) ? 0 : 2,

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { display, grotesk } from '@/lib/fonts'
-import { getContent, isLocale, locales } from '@/content'
+import { getContent, isLocale, locales, localeMeta, defaultLocale } from '@/content'
 import '../globals.css'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://telmaatende.com'
@@ -25,10 +25,11 @@ export async function generateMetadata({
     description: c.meta.description,
     alternates: {
       canonical: `/${lang}`,
+      // Built from the locale list so a new language is announced to search
+      // engines automatically instead of being silently left out of hreflang.
       languages: {
-        pt: '/pt',
-        en: '/en',
-        'x-default': '/pt',
+        ...Object.fromEntries(locales.map((l) => [l, `/${l}`])),
+        'x-default': `/${defaultLocale}`,
       },
     },
     openGraph: {
@@ -37,7 +38,7 @@ export async function generateMetadata({
       description: c.meta.ogDescription,
       url: `/${lang}`,
       siteName: 'Telma Atende',
-      locale: lang === 'pt' ? 'pt_PT' : 'en_GB',
+      locale: localeMeta[lang].ogLocale,
     },
     twitter: {
       card: 'summary_large_image',

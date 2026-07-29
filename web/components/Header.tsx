@@ -3,19 +3,53 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import type { Content } from '@/content'
-import type { Locale } from '@/content'
+import { locales, localeMeta, type Locale } from '@/content'
 import { Container } from './Container'
 
 export function Header({ c, lang }: { c: Content; lang: Locale }) {
   const [open, setOpen] = useState(false)
-  const other: Locale = lang === 'pt' ? 'en' : 'pt'
 
   // Keep the reader on the same section when switching language: the anchor
   // ids are identical across languages, so we carry the current hash across.
-  function switchLang(e: React.MouseEvent) {
+  function switchLang(e: React.MouseEvent, target: Locale) {
     e.preventDefault()
     const hash = typeof window !== 'undefined' ? window.location.hash : ''
-    window.location.href = `/${other}${hash}`
+    window.location.href = `/${target}${hash}`
+  }
+
+  /**
+   * Renders every registered language, current one marked. This used to be a
+   * single "other" link computed as `lang === 'pt' ? 'en' : 'pt'`, which only
+   * ever worked while there were exactly two languages — with a third, readers
+   * of the third one could never reach the second.
+   */
+  function LangSwitch({ className = '' }: { className?: string }) {
+    return (
+      <div className={`flex items-center gap-1 ${className}`} aria-label={c.langSwitchLabel}>
+        {locales.map((code, i) => (
+          <span key={code} className="flex items-center gap-1">
+            {i > 0 && (
+              <span className="text-line-strong" aria-hidden>
+                |
+              </span>
+            )}
+            {code === lang ? (
+              <span aria-current="true" className="font-medium text-ink">
+                {localeMeta[code].label}
+              </span>
+            ) : (
+              <Link
+                href={`/${code}`}
+                onClick={(e) => switchLang(e, code)}
+                className="text-ink-mute transition-colors hover:text-accent"
+              >
+                {localeMeta[code].label}
+              </Link>
+            )}
+          </span>
+        ))}
+      </div>
+    )
   }
 
   return (
@@ -34,10 +68,7 @@ export function Header({ c, lang }: { c: Content; lang: Locale }) {
         </div>
 
         <div className="flex items-center gap-2">
-          <nav
-            className="hidden items-center gap-7 md:flex"
-            aria-label={lang === 'pt' ? 'Principal' : 'Main'}
-          >
+          <nav className="hidden items-center gap-7 md:flex" aria-label={c.header.navLabel}>
             {c.header.nav.map((item) => (
               <a
                 key={item.href}
@@ -49,24 +80,7 @@ export function Header({ c, lang }: { c: Content; lang: Locale }) {
             ))}
           </nav>
 
-          <div
-            className="ml-1 hidden items-center gap-1 border-l border-line pl-4 text-sm md:flex"
-            aria-label={c.langSwitchLabel}
-          >
-            <span aria-current="page" className="font-medium text-ink">
-              {lang.toUpperCase()}
-            </span>
-            <span className="text-line-strong" aria-hidden>
-              |
-            </span>
-            <Link
-              href={`/${other}`}
-              onClick={switchLang}
-              className="text-ink-mute transition-colors hover:text-accent"
-            >
-              {other.toUpperCase()}
-            </Link>
-          </div>
+          <LangSwitch className="ml-1 hidden border-l border-line pl-4 text-sm md:flex" />
 
           <a href="#contacto" className="btn-primary ml-2 hidden md:inline-flex">
             {c.header.cta}
@@ -110,15 +124,7 @@ export function Header({ c, lang }: { c: Content; lang: Locale }) {
               </a>
             ))}
             <div className="flex items-center justify-between py-4">
-              <div className="flex items-center gap-2 text-base">
-                <span className="font-medium text-ink">{lang.toUpperCase()}</span>
-                <span className="text-line-strong" aria-hidden>
-                  |
-                </span>
-                <Link href={`/${other}`} onClick={switchLang} className="text-ink-mute">
-                  {other.toUpperCase()}
-                </Link>
-              </div>
+              <LangSwitch className="gap-2 text-base" />
               <a
                 href="#contacto"
                 className="btn-primary"

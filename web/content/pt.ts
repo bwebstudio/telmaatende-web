@@ -9,8 +9,10 @@ export const pt: Content = {
     ogDescription: 'Nenhuma chamada perdida. Nenhum paciente perdido.',
   },
   langSwitchLabel: 'Idioma',
+  skipToContent: 'Saltar para o conteúdo',
   header: {
     productBy: 'um produto Bweb Studio',
+    navLabel: 'Principal',
     nav: [
       { label: 'Como funciona', href: '#como-funciona' },
       { label: 'Preços', href: '#precos' },

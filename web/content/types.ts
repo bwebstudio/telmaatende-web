@@ -63,9 +63,13 @@ export interface Content {
     ogDescription: string
   }
   langSwitchLabel: string
+  /** Label for the "skip to content" link that opens the page. */
+  skipToContent: string
   header: {
     productBy: string
     nav: NavItem[]
+    /** Accessible name for the main navigation landmark. */
+    navLabel: string
     cta: string
   }
   hero: {
