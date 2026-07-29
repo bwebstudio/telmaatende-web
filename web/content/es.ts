@@ -238,8 +238,8 @@ export const es: Content = {
         a: 'Normalmente entre 3 y 5 días laborables.',
       },
       {
-        q: '¿Telma habla inglés?',
-        a: 'Sí, atiende en español y en inglés.',
+        q: '¿En qué idiomas atiende Telma?',
+        a: 'Atiende en español y en inglés.',
       },
       {
         q: '¿Qué pasa si supero las llamadas de mi plan?',
