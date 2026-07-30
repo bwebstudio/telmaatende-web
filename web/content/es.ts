@@ -33,11 +33,25 @@ export const es: Content = {
     name: 'Telma',
     headlineLines: ['Ninguna llamada perdida.', 'Ningún paciente perdido.'],
     subtitle:
-      'Telma es la recepcionista virtual de su clínica. Atiende el teléfono, responde a las preguntas de los pacientes, concierta las citas y transfiere a recepción cuando hace falta.',
+      'Telma es la recepcionista virtual de su clínica.',
     ctaPrimary: 'Ver precios',
     ctaSecondary: 'Hablar con nosotros',
-    backedBy: 'un producto Bweb Studio',
-    highlights: ['Atiende 24 horas, todos los días', 'Concierta citas automáticamente'],
+    flow: {
+      steps: [
+        { label: 'Llamada entrante' },
+        { label: 'Telma responde' },
+        { label: 'Cita concertada' },
+        { label: 'Resumen enviado' },
+      ],
+    },
+  },
+  voice: {
+    label: 'Escúchela',
+    title: 'Así atiende Telma.',
+    lead: 'Una llamada real, sin editar. Es la forma más rápida de responder a la pregunta que todo el mundo hace primero.',
+    play: 'Escuchar la llamada',
+    pause: 'Pausar',
+    note: 'Si el paciente pregunta directamente, Telma responde con honestidad que es una asistente virtual.',
   },
   problem: {
     label: 'El problema',
@@ -275,10 +289,17 @@ export const es: Content = {
       },
     ],
   },
+  finalCta: {
+    title: 'Que su clínica siga funcionando, también cuando nadie puede atender.',
+    lead: 'Le enseñamos Telma con la agenda y los horarios de su clínica. Sin compromiso.',
+    cta: 'Hablar con nosotros',
+    secondary: 'Ver precios',
+  },
   contact: {
     label: 'Contacto',
     title: 'Hablemos de su clínica.',
     intro: 'Déjenos sus datos y nos ponemos en contacto para enseñarle Telma.',
+    requiredLabel: 'obligatorio',
     fields: {
       name: 'Nombre',
       clinic: 'Clínica',

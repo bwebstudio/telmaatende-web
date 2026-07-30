@@ -28,8 +28,22 @@ export const en: Content = {
       "Telma is your clinic's virtual receptionist. She answers the phone, replies to patient questions, books appointments and transfers to the front desk when needed.",
     ctaPrimary: 'See pricing',
     ctaSecondary: 'Talk to us',
-    backedBy: 'a Bweb Studio product',
-    highlights: ['Answers 24/7, every day', 'Books appointments automatically'],
+    flow: {
+      steps: [
+        { label: 'Incoming call' },
+        { label: 'Telma answers' },
+        { label: 'Appointment booked' },
+        { label: 'Summary sent' },
+      ],
+    },
+  },
+  voice: {
+    label: 'Hear her',
+    title: 'This is how Telma answers.',
+    lead: 'A real call, unedited. It is the fastest way to answer the question everybody asks first.',
+    play: 'Listen to the call',
+    pause: 'Pause',
+    note: 'If a patient asks directly, Telma answers honestly that she is a virtual assistant.',
   },
   problem: {
     label: 'The problem',
@@ -267,10 +281,17 @@ export const en: Content = {
       },
     ],
   },
+  finalCta: {
+    title: 'Keep your clinic running, even when nobody can pick up the phone.',
+    lead: 'We will show you Telma using your own schedule and opening hours. No commitment.',
+    cta: 'Talk to us',
+    secondary: 'See pricing',
+  },
   contact: {
     label: 'Contact',
     title: 'Let us talk about your clinic.',
     intro: 'Leave your details and we will get in touch to show you Telma.',
+    requiredLabel: 'required',
     fields: {
       name: 'Name',
       clinic: 'Clinic',

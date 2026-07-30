@@ -1,8 +1,17 @@
-Clash Display (headlines) and General Sans (body), obtained from Fontshare
-(fontshare.com) and licensed under the ITF Free Font License. Both are self
-hosted through next/font/local for performance and privacy.
+Telma — self hosted fonts
+=========================
 
-To replace the body font with another Fontshare family (Switzer, Satoshi, etc.):
-  1. Download the .woff2 weights from fontshare.com.
-  2. Drop them in this folder.
-  3. Update the src paths in lib/fonts.ts.
+Instrument Serif (Regular 400)  — display only, 28px and above.
+Geist (Variable 300-700)        — everything else.
+
+Both are Open Font Licence, downloaded from Google Fonts and served from this
+directory so the site makes no third party request and keeps working if
+fonts.googleapis.com is unreachable.
+
+Two subsets per family: "latin" covers Portuguese, Spanish and English;
+"latin-ext" carries the rest of the Latin range. next/font declares the
+unicode-range for each, so neither file is downloaded unless a character in its
+range is actually rendered.
+
+Wired up in lib/fonts.ts. To replace a family, drop the .woff2 files here and
+change the paths there; nothing else refers to them.

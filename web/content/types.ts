@@ -18,6 +18,15 @@ export interface Step {
   text: string
 }
 
+/**
+ * One moment of the hero scene. A label and nothing else: the detail lines that
+ * used to sit under each one turned the scene into an interface, which is the
+ * one thing it must not be. The specifics live further down the page.
+ */
+export interface FlowStep {
+  label: string
+}
+
 export interface Plan {
   id: string
   name: string
@@ -78,8 +87,27 @@ export interface Content {
     subtitle: string
     ctaPrimary: string
     ctaSecondary: string
-    backedBy: string
-    highlights: string[]
+    /**
+     * The four moments the hero scene draws, in order. Four words carry the
+     * whole product: a call arrives, it is answered, it becomes an appointment,
+     * reception is told. Nothing else belongs on the first screen.
+     */
+    flow: {
+      steps: FlowStep[]
+    }
+  }
+  /**
+   * The voice sample. Chapter 2 names "will it sound artificial?" as the first
+   * objection a buyer has, and the recording answers it faster than any
+   * paragraph can — so it sits second on the page, not buried in the FAQ.
+   */
+  voice: {
+    label: string
+    title: string
+    lead: string
+    play: string
+    pause: string
+    note: string
   }
   problem: {
     label: string
@@ -136,10 +164,19 @@ export interface Content {
     showLess: string
     items: FaqItem[]
   }
+  /** The closing invitation, on the dark surface, right before the footer. */
+  finalCta: {
+    title: string
+    lead: string
+    cta: string
+    secondary: string
+  }
   contact: {
     label: string
     title: string
     intro: string
+    /** Localised word for "required", announced to screen readers. */
+    requiredLabel: string
     fields: {
       name: string
       clinic: string

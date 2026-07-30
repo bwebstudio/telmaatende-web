@@ -29,3 +29,6 @@ next-env.d.ts
 
 # vercel
 .vercel
+
+# Verification builds, kept out of the dev server's .next
+.next-verify

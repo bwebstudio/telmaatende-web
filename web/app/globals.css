@@ -2,26 +2,169 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ==========================================================================
+   TELMA — DESIGN TOKENS
+   The single source of truth. Tailwind reads these through tailwind.config.ts,
+   so a colour, radius or duration is changed here and nowhere else.
+   ========================================================================== */
+
 @layer base {
   :root {
     color-scheme: light;
+
+    /* --- Brand ------------------------------------------------------------
+       Deep forest. Unlike the lavender it replaces, this green carries white
+       text at 12.07:1, so the primary button is simply green with a white
+       label — no contrast workaround, no compromise.
+
+       --brand-accent is the lighter green, and it is the one that may be read
+       as text: 4.90:1 on white, 4.77:1 on the page background. It is what
+       eyebrows, links and iconography use, because #183C37 at caption size is
+       so dark it reads as black rather than as green.
+
+       Note the accent only clears AA on light surfaces. On the dark blocks it
+       falls to 3.62:1, so there it is a fill, never a label.
+
+       ---------------------------------------------------------------------
+       WHY THESE ARE RGB CHANNELS AND NOT HEX
+       ---------------------------------------------------------------------
+       Tailwind can only apply an opacity modifier — bg-bg/85, border-ink/25 —
+       to a colour it can take apart. A token holding `#183c37` cannot be taken
+       apart, so Tailwind emits nothing at all: the utility silently vanishes
+       from the stylesheet and the element renders with no background, no
+       border, no colour.
+
+       That is not hypothetical. It is what made the sticky header transparent
+       over the dark blocks, where an ink logotype on a near-black field became
+       invisible, and it had quietly killed five other rules besides.
+
+       Stored as `24 60 55`, every token composes with `rgb(var(--x) / <alpha>)`
+       and every opacity modifier works. Read them with rgb(): `rgb(var(--ink))`.
+       ------------------------------------------------------------------- */
+    --brand: 24 60 55;
+    --brand-hover: 33 81 73;
+    --brand-accent: 62 123 115;
+    --brand-wash: 239 243 241;
+    --brand-wash-strong: 221 231 228;
+
+    /* --- Ink --------------------------------------------------------------
+       Every value below clears WCAG AA on both --bg and --surface. --ink-mute
+       is the one derived tone: captions and fine print need a third tier, and
+       it is pulled toward the green-grey of the borders rather than being a
+       neutral, so nothing on the page reads cold. */
+    --ink: 17 24 39;
+    --ink-soft: 75 85 99;
+    --ink-mute: 95 107 102;
+
+    /* --- Surfaces ---------------------------------------------------------
+       The page is warm off-white and the cards are pure white, which is the
+       right way round: an object lifts by being lighter than its ground. The
+       sunken tone is a barely-there warm step for the two or three sections
+       that need to recede — never a grey. */
+    --bg: 252 252 250;
+    --surface: 255 255 255;
+    --surface-sunken: 244 244 240;
+    --border: 231 234 232;
+    --border-strong: 212 217 214;
+
+    /* --- Dark surface (final CTA, footer, the handover note) ---------------
+       Ink, not the brand green. The green is reserved for marks, actions and
+       accents; letting it flood two full-bleed blocks would put it well past
+       the tenth of the page it is allowed to occupy. */
+    --dark: 17 24 39;
+    --dark-soft: 27 36 48;
+    --dark-line: 42 52 65;
+
+    /* --- Radius -----------------------------------------------------------
+       Tighter again. Large radii are the loudest tell of a template: they read
+       friendly, and friendly is not the same as expensive. At 8/12/16 the
+       corners stop being a feature and become a finish. */
+    --radius-input: 8px;
+    --radius-card: 12px;
+    --radius-hero: 16px;
+    --radius-pill: 999px;
+
+    /* --- Elevation --------------------------------------------------------
+       Tinted with the brand green rather than neutral grey — a detail nobody
+       names, and most of why the surfaces read warm instead of clinical.
+       Weaker again. Depth on this page comes from hairlines and from white
+       space; a shadow exists only to keep a white edge from cutting out
+       against a white ground, never to make an object look important. */
+    --shadow-1: 0 1px 1px rgba(17, 24, 39, 0.02),
+      0 2px 6px -3px rgba(24, 60, 55, 0.06);
+    --shadow-2: 0 1px 2px rgba(17, 24, 39, 0.02),
+      0 10px 24px -14px rgba(24, 60, 55, 0.1);
+    --shadow-3: 0 2px 4px rgba(17, 24, 39, 0.02),
+      0 24px 52px -30px rgba(24, 60, 55, 0.14);
+    --shadow-brand: 0 10px 28px -14px rgba(24, 60, 55, 0.28);
+
+    /* --- Motion -----------------------------------------------------------
+       250–600ms and a single ease-out curve with no overshoot. Continuity,
+       never spectacle. */
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --dur-fast: 250ms;
+    --dur: 400ms;
+    --dur-slow: 600ms;
   }
 
   html {
     scroll-behavior: smooth;
-    /* Offset anchor jumps for the sticky header. */
-    scroll-padding-top: 5rem;
+    /* Clears the 104px navbar plus a little air. */
+    scroll-padding-top: 9rem;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
-    background-color: theme('colors.paper');
-    color: theme('colors.ink');
-    font-family: theme('fontFamily.sans');
+    background-color: rgb(var(--bg));
+    color: rgb(var(--ink));
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-optical-sizing: auto;
+    /* DM Sans is drawn a touch looser than Inter, so reading text takes a
+       little more negative tracking than it did to hold together. */
+    letter-spacing: -0.008em;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
 
-  /* Respect users who prefer reduced motion. */
+  /* --- DISPLAY TYPE ------------------------------------------------------
+     Everything large. With no serif to carry the hierarchy, the weight and the
+     tracking have to do it instead.
+
+     550 is the whole trick, and it is only reachable because Inter is variable.
+     600 reads assertive, almost loud; 500 goes weak at 80px. 550 sits exactly
+     between confident and calm, which is where this brand lives.
+
+     Display type set at its natural spacing always looks loose, so it is pulled
+     in — but only to −0.02em. Inter's optical axis has already tightened the
+     spacing at these sizes, and stacking a large manual tracking on top of that
+     congests it. */
+  .display {
+    font-weight: 550;
+    font-optical-sizing: auto;
+    letter-spacing: -0.02em;
+  }
+
+  /* A hairline is the brand's structural element — it does the job shadows and
+     borders were doing before. */
+  .rule {
+    border-top: 1px solid rgb(var(--border));
+  }
+
+  ::selection {
+    background: rgb(var(--brand-wash-strong));
+    color: rgb(var(--ink));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--brand));
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Nothing moves for a reader who asked for stillness. */
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -34,50 +177,80 @@
       transition-duration: 0.001ms !important;
     }
   }
-
-  /* Visible focus for keyboard users. */
-  :focus-visible {
-    outline: 2px solid theme('colors.accent');
-    outline-offset: 3px;
-    border-radius: 2px;
-  }
 }
+
+/* ==========================================================================
+   REVEAL
+   Scroll entrances are an enhancement, never a precondition for reading. The
+   hidden state is scoped to `.js`, a class an inline script in <head> adds
+   before first paint. With JavaScript off — or broken, or still loading — the
+   page is simply visible. The previous build set opacity:0 in React state,
+   which meant no JS equalled no content at all.
+   ========================================================================== */
 
 @layer components {
-  /* Small caps section label with letter spacing, an editorial detail. */
-  .eyebrow {
-    @apply inline-block text-sm font-medium uppercase tracking-label text-accent;
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(14px);
   }
 
-  .rule {
-    @apply h-px w-full bg-line;
+  .js [data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+    transition: opacity var(--dur-slow) var(--ease),
+      transform var(--dur-slow) var(--ease);
+    transition-delay: var(--reveal-delay, 0ms);
   }
 
-  .btn {
-    @apply inline-flex min-h-[3rem] items-center justify-center rounded-full px-6 text-base font-medium transition-colors duration-200;
-  }
-
-  .btn-primary {
-    @apply btn bg-accent text-paper hover:bg-accent-dark;
-  }
-
-  .btn-secondary {
-    @apply btn border border-ink/25 bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-paper;
-  }
-
-  .link-underline {
-    @apply underline decoration-line-strong decoration-1 underline-offset-4 transition-colors hover:decoration-accent hover:text-accent;
-  }
-
-  /* Content card with a soft hover lift. Put this on an element *inside* a
-     FadeIn wrapper so the entrance animation and the hover transform never
-     fight over the same element. */
-  .card {
-    @apply rounded-2xl border border-line bg-paper p-6 transition duration-200 sm:p-7;
-  }
-
-  .card-lift:hover {
-    @apply -translate-y-1 border-line-strong shadow-[0_24px_50px_-30px_rgba(20,17,14,0.35)];
+  @media (prefers-reduced-motion: reduce) {
+    .js [data-reveal] {
+      opacity: 1;
+      transform: none;
+    }
   }
 }
 
+/* ==========================================================================
+   THE FLOW SCENE
+   The hero visual: one call, drawn in four moments inside six seconds and then
+   left finished. It assembles itself while you read the headline and is then
+   simply there. It does not loop — a loop asks to be watched — but it does
+   replay when it comes back into view, which the component handles.
+
+   With the old pulse and voice bars removed, there is now nothing on the entire
+   page that animates indefinitely. That is the intended state.
+   ========================================================================== */
+
+@layer components {
+  @keyframes flow-step {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes flow-line {
+    from {
+      transform: scaleY(0);
+    }
+    to {
+      transform: scaleY(1);
+    }
+  }
+
+  .flow-step {
+    animation: flow-step var(--dur-slow) var(--ease) both;
+    animation-delay: var(--step-delay, 0ms);
+  }
+
+  .flow-line {
+    transform-origin: top;
+    animation: flow-line 900ms var(--ease) both;
+    animation-delay: var(--step-delay, 0ms);
+  }
+
+}

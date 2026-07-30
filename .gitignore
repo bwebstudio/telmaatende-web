@@ -1,0 +1,16 @@
+
+# The panel is its own repository (bwebstudio/telma-dashboard), cloned here
+# for convenience. It must never be committed into this one.
+dashboard/
+
+# macOS
+.DS_Store
+
+# Brand strategy documents. This repository is public: positioning, customer
+# psychology, pricing rationale and roadmap do not belong in it. Kept locally.
+web/docs/
+
+# Photography masters. ~11MB of lossless PNG that the site never serves — what
+# ships is the WebP in web/public/images. Regenerate from the briefs in
+# web/lib/images.ts; see assets/photography/README.md.
+assets/photography/*.png

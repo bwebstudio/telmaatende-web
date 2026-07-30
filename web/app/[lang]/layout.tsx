@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { display, grotesk } from '@/lib/fonts'
+import { sans } from '@/lib/fonts'
 import { getContent, isLocale, locales, localeMeta, defaultLocale } from '@/content'
 import '../globals.css'
 
@@ -59,7 +59,29 @@ export default async function LangLayout({
   if (!isLocale(lang)) notFound()
 
   return (
-    <html lang={lang} className={`${display.variable} ${grotesk.variable}`}>
+    // suppressHydrationWarning is required, not decorative: the inline script
+    // below adds `js` to this element before React hydrates, so the server HTML
+    // and the live DOM legitimately differ on className. It suppresses the
+    // warning for this node's attributes only — children still hydrate normally.
+    <html
+      lang={lang}
+      className={sans.variable}
+      suppressHydrationWarning
+    >
+      <head>
+        {/*
+          Marks the document as scripted before first paint. Everything that
+          hides content until it animates is scoped to `.js` in globals.css, so
+          a reader without JavaScript — or with it still loading — gets the
+          finished page rather than a blank one. Inline and synchronous on
+          purpose: a deferred script would let the un-animated state flash.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.add('js')`,
+          }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   )

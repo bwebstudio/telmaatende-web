@@ -12,11 +12,12 @@ telmaatende/
 Cada pasta é uma aplicação Next.js independente, com o seu próprio `package.json`
 e o seu próprio deploy na Vercel (defina a Root Directory em cada projeto Vercel).
 
-- **[web/](web/README.md)**: página única, PT e EN, sem backend.
+- **[web/](web/README.md)**: página única, PT, EN e ES, sem backend.
 - **[dashboard/](dashboard/README.md)**: autenticação, base de dados e realtime
   com Supabase, dois tipos de utilizador (clínica e interno) e webhooks para o
   sistema de voz.
 
-Ambas as aplicações partilham a mesma identidade visual: paleta creme, tinta
-escura, acento terracota e verde pino, títulos em Clash Display e corpo em
-General Sans.
+A identidade visual do site foi refeita: fundo branco quente, tinta escura,
+verde-floresta como cor de marca reservada a marcas e ações, e uma única família
+tipográfica (DM Sans) em toda a interface. O painel ainda usa a paleta e as
+fontes anteriores — alinhá-lo é trabalho por fazer.
