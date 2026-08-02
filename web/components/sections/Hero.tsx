@@ -11,10 +11,19 @@ import { Cinemagraph } from '@/components/ui/Cinemagraph'
  *
  * The scene replaces the drawn flow that used to sit here. That was four words
  * on a hairline and it explained the product honestly, but it explained it the
- * way a diagram does. The footage does the same work without a diagram: a desk
- * phone, an open appointment book with a pen resting on it, and morning light
- * on a wall. Call, attention, appointment — present as objects rather than
- * narrated as steps, which is the difference between a brand and a product tour.
+ * way a diagram does.
+ *
+ * The footage carries the same three beats without a diagram, and it carries
+ * them as an event rather than a list: an open appointment book, and over the
+ * course of the loop a booking appears on the page — 11:00, Consulta, Dra.
+ * Martins. Blank, then written, then held long enough to read, then dissolved
+ * back to blank as the next call arrives.
+ *
+ * That sequence is the whole point, so it survives every editing decision. The
+ * first cut of this clip kept only its calmest two seconds and threw the
+ * writing away; what was left was a pretty room that explained nothing. And the
+ * palindrome that suits the reception footage is wrong here for the same
+ * reason — run backwards, the booking would erase itself.
  *
  * THE HEADLINE IS SMALLER THAN IT WAS, AND THAT IS THE TRADE.
  *
