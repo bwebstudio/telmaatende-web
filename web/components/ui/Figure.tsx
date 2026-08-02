@@ -17,29 +17,37 @@ const ratios = {
  * tonal panel at the right aspect ratio — not a broken image, not a grey box
  * with a mountain icon. The layout is final either way, so no section ever
  * waits on art. Drop a file into /public, add the `src` to the slot, done.
+ *
+ * SQUARE CORNERS, ALWAYS.
+ *
+ * Every photograph here runs at least half the measure, and a rounded corner on
+ * something that large reads as a widget. Rounding is now reserved for things
+ * you could imagine picking up — cards, buttons, inputs, the appointment slab in
+ * the hero. Media is a window, and a window is not rounded.
+ *
+ * This is what the radius scale is for: when everything shares one value it
+ * stops carrying information. The site now says card at 12px, input at 8px,
+ * surface at 16px and media at 0.
  */
 export function Figure({
   slot,
   className = '',
   priority = false,
   sizes = '(max-width: 1024px) 100vw, 50vw',
-  rounded = 'card',
 }: {
   slot: ImageSlotId
   className?: string
   priority?: boolean
   sizes?: string
-  rounded?: 'card' | 'hero'
 }) {
   // `satisfies` in lib/images.ts keeps the slot ids literal, which also means
   // each entry narrows to its own shape and loses the optional `src`. Widening
   // back to ImageSlot here is what lets a slot be filled in later.
   const meta: ImageSlot = imageSlots[slot]
-  const radius = rounded === 'hero' ? 'rounded-hero' : 'rounded-card'
 
   return (
     <figure
-      className={`relative w-full overflow-hidden ${radius} ${ratios[meta.ratio]} ${className}`}
+      className={`relative w-full overflow-hidden ${ratios[meta.ratio]} ${className}`}
     >
       {meta.src ? (
         <Image
@@ -59,7 +67,7 @@ export function Figure({
           hairline is visibly blue. */}
       <span
         aria-hidden
-        className={`pointer-events-none absolute inset-0 ${radius} ring-1 ring-inset ring-line-strong`}
+        className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-line-strong"
       />
     </figure>
   )

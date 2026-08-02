@@ -14,3 +14,7 @@ web/docs/
 # ships is the WebP in web/public/images. Regenerate from the briefs in
 # web/lib/images.ts; see assets/photography/README.md.
 assets/photography/*.png
+
+# Video master. 6.3MB, still carries the generator's watermark, and the site
+# only ever serves the processed files in web/public/video. Kept locally.
+assets/video/

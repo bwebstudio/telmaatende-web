@@ -47,6 +47,8 @@ export const en: Content = {
   },
   problem: {
     label: 'The problem',
+    sceneAlt:
+      'An empty clinic reception counter, the phone resting unanswered, morning light crossing the wall.',
     title: 'Every call that goes unanswered is a patient calling another clinic.',
     items: [
       {

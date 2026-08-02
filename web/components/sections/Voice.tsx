@@ -76,7 +76,7 @@ export function Voice({ c, src }: { c: Content; src: string }) {
         align="center"
       />
 
-      <Reveal delay={120} className="mx-auto mt-24 max-w-3xl">
+      <Reveal delay={120} className="mx-auto mt-24 max-w-3xl lg:mt-30">
         <div className="flex items-center gap-7 border-y border-line py-10">
           <button
             type="button"
@@ -102,21 +102,25 @@ export function Voice({ c, src }: { c: Content; src: string }) {
               {playing ? c.voice.pause : c.voice.play}
             </p>
             <div className="mt-4 flex items-center gap-4">
-              <span
-                className="h-px flex-1 bg-line-strong"
-                role="progressbar"
-                aria-valuemin={0}
-                aria-valuemax={100}
-                aria-valuenow={Math.round(progress)}
-                aria-label={c.voice.play}
-              >
+              {/* Decorative. The button already announces play and pause, and a
+                  progress bar that a screen reader cannot act on only adds
+                  noise to the one control this block has. */}
+              <span aria-hidden className="h-px flex-1 bg-line-strong">
                 <span
                   className="block h-px bg-brand-accent transition-[width] duration-fast ease-linear"
                   style={{ width: `${progress}%` }}
                 />
               </span>
-              <span className="shrink-0 text-sm tabular-nums text-ink-mute">
-                {formatTime(current)} / {formatTime(duration)}
+              {/* Blank until the duration is actually known. With preload="none"
+                  the browser has not read the header yet, so this used to sit
+                  at "0:00 / 0:00" — which reads as a broken player rather than
+                  as one that has not started. The width is reserved so nothing
+                  shifts when the real figures arrive. */}
+              <span
+                aria-hidden
+                className="w-[5.5rem] shrink-0 text-right text-sm tabular-nums text-ink-mute"
+              >
+                {duration > 0 ? `${formatTime(current)} / ${formatTime(duration)}` : ''}
               </span>
             </div>
           </div>

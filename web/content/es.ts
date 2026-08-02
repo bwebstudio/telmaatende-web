@@ -55,6 +55,8 @@ export const es: Content = {
   },
   problem: {
     label: 'El problema',
+    sceneAlt:
+      'Mostrador de recepción de una clínica, vacío, con el teléfono apoyado y la luz de la mañana cruzando la pared.',
     title: 'Cada llamada que queda sin respuesta es un paciente que llama a otra clínica.',
     items: [
       {

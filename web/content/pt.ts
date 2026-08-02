@@ -47,6 +47,8 @@ export const pt: Content = {
   },
   problem: {
     label: 'O problema',
+    sceneAlt:
+      'Balcão de receção de uma clínica, vazio, com o telefone pousado e a luz da manhã a atravessar a parede.',
     title: 'Cada chamada que fica sem resposta é um paciente que liga a outra clínica.',
     items: [
       {

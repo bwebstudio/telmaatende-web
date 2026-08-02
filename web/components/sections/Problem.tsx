@@ -1,37 +1,61 @@
 import type { Content } from '@/content'
 import { Section, SectionHeader } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
-import { Figure } from '@/components/ui/Figure'
+import { Cinemagraph } from '@/components/ui/Cinemagraph'
 
 /**
  * The enemy, stated once and calmly.
  *
- * Three movements stacked rather than the usual text-beside-component: a short
- * title held in the left third, then the photograph running the whole measure,
- * then the three symptoms as a row of hairline-topped columns.
+ * The scene and the three symptoms now sit side by side instead of stacked, and
+ * the scene is a cinemagraph rather than a still: an empty reception counter
+ * with a phone nobody is answering, light drifting across the wall. It is the
+ * argument the section makes, so it belongs beside the argument — not below it
+ * as a full-bleed slab, which is what it was and which read as decoration.
  *
- * No cards, no icons, no colour. This section is supposed to be the one place
- * on the page that feels slightly heavy, and weight comes from a wide quiet
- * image and plain type, not from decoration.
+ * Seven columns of twelve for the footage, four for the symptoms, one left
+ * empty between them. The gap under the title is a third of what it was: the
+ * distance was making the image feel like a separate exhibit.
+ *
+ * No cards, no icons, no colour, and no rounded corners on the media. Weight
+ * here comes from a quiet moving image and plain type.
  */
 export function Problem({ c }: { c: Content }) {
   return (
     <Section id="problema" tone="sunken">
       <SectionHeader eyebrow={c.problem.label} title={c.problem.title} />
 
-      <Reveal delay={80} className="mt-24 lg:mt-30">
-        <Figure slot="reception-quiet" sizes="(max-width: 1400px) 100vw, 1320px" />
-      </Reveal>
+      <div className="mt-16 grid gap-14 lg:mt-20 lg:grid-cols-12 lg:items-start lg:gap-x-10">
+        <Reveal className="lg:col-span-7">
+          <div className="relative">
+            <Cinemagraph
+              mp4="/video/reception.mp4"
+              webm="/video/reception.webm"
+              poster="/video/reception-poster.jpg"
+              label={c.problem.sceneAlt}
+            />
+            {/* The same hairline the photographs carry, so the footage sits on
+                the page rather than being pasted onto it. */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-line-strong"
+            />
+          </div>
+        </Reveal>
 
-      <div className="mt-20 grid gap-x-10 gap-y-14 lg:mt-24 lg:grid-cols-3">
-        {c.problem.items.map((item, i) => (
-          <Reveal key={i} delay={i * 90} className="border-t border-line pt-8">
-            <h3 className="text-[1.0625rem] font-mid leading-snug tracking-tight text-ink">
-              {item.title}
-            </h3>
-            <p className="mt-4 leading-relaxed text-ink-soft">{item.text}</p>
-          </Reveal>
-        ))}
+        <div className="flex flex-col lg:col-span-4 lg:col-start-9">
+          {c.problem.items.map((item, i) => (
+            <Reveal
+              key={i}
+              delay={i * 90}
+              className="border-t border-line pt-7 [&:not(:first-child)]:mt-10"
+            >
+              <h3 className="text-[1.0625rem] font-mid leading-snug tracking-tight text-ink">
+                {item.title}
+              </h3>
+              <p className="mt-3 leading-relaxed text-ink-soft">{item.text}</p>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </Section>
   )

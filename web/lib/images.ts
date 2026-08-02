@@ -47,26 +47,6 @@ export interface ImageSlot {
 }
 
 export const imageSlots = {
-  'reception-quiet': {
-    src: '/images/reception-quiet.webp',
-    alt: 'Mostrador de recepción de una clínica, en calma, con luz natural',
-    // Wide: this one runs the full width of the section, so the frame has to be
-    // cinematic rather than a picture in a column. The source is 3:2, so it is
-    // centre-cropped; the desk phone sits at 85% height and survives it.
-    ratio: '16/9',
-    usage: 'Sección 03 — el coste del silencio',
-    prompt:
-      'A clinic reception counter photographed from three-quarters behind, at ' +
-      'standing height. Pale oak counter, warm white plaster wall, a small ' +
-      'stack of matte cards and a low ceramic vase with a single eucalyptus ' +
-      'stem. A desk phone sits at the edge of the counter, unattended, slightly ' +
-      'out of focus in the foreground. No one is at the counter. Late morning ' +
-      'light rakes across the wood from a window on the left, long soft shadow. ' +
-      '50mm, f/2.8, focus on the phone, background falling gently soft. The ' +
-      'mood is a room that is momentarily empty, not abandoned — quiet, ' +
-      'expensive, orderly. Right two thirds of the frame nearly empty for text.',
-  },
-
   'hands-agenda': {
     src: '/images/hands-agenda.webp',
     alt: 'Manos consultando una agenda de citas junto a un ordenador',

@@ -112,6 +112,8 @@ export interface Content {
   problem: {
     label: string
     title: string
+    /** Describes the moving scene for anyone who cannot see it. */
+    sceneAlt: string
     items: ProblemItem[]
   }
   how: {

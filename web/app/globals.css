@@ -99,12 +99,14 @@
     --shadow-brand: 0 10px 28px -14px rgba(24, 60, 55, 0.28);
 
     /* --- Motion -----------------------------------------------------------
-       250–600ms and a single ease-out curve with no overshoot. Continuity,
-       never spectacle. */
+       A single ease-out curve with no overshoot, and every duration a third
+       longer than it was. Nothing on this page should be quick: a fast fade
+       announces itself, a slow one is simply how the page already was by the
+       time you looked. Continuity, never spectacle. */
     --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
-    --dur-fast: 250ms;
-    --dur: 400ms;
-    --dur-slow: 600ms;
+    --dur-fast: 320ms;
+    --dur: 520ms;
+    --dur-slow: 800ms;
   }
 
   html {
@@ -121,8 +123,8 @@
     font-size: 1rem;
     line-height: 1.6;
     font-optical-sizing: auto;
-    /* DM Sans is drawn a touch looser than Inter, so reading text takes a
-       little more negative tracking than it did to hold together. */
+    /* DM Sans is drawn a touch loose for reading sizes, so body copy takes a
+       little negative tracking to hold together. */
     letter-spacing: -0.008em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -133,12 +135,13 @@
      Everything large. With no serif to carry the hierarchy, the weight and the
      tracking have to do it instead.
 
-     550 is the whole trick, and it is only reachable because Inter is variable.
+     550 is the whole trick, and it is only reachable because DM Sans is
+     variable.
      600 reads assertive, almost loud; 500 goes weak at 80px. 550 sits exactly
      between confident and calm, which is where this brand lives.
 
      Display type set at its natural spacing always looks loose, so it is pulled
-     in — but only to −0.02em. Inter's optical axis has already tightened the
+     in — but only to −0.02em. The optical axis has already tightened the
      spacing at these sizes, and stacking a large manual tracking on top of that
      congests it. */
   .display {
@@ -191,7 +194,9 @@
 @layer components {
   .js [data-reveal] {
     opacity: 0;
-    transform: translateY(14px);
+    /* Shorter travel with a longer duration: the element should look like it
+       settled rather than like it arrived. */
+    transform: translateY(10px);
   }
 
   .js [data-reveal].is-revealed {

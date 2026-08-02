@@ -1,17 +1,26 @@
-Telma — self hosted fonts
-=========================
+Telma — self hosted font
+========================
 
-Instrument Serif (Regular 400)  — display only, 28px and above.
-Geist (Variable 300-700)        — everything else.
+DM Sans (Variable, latin subset)  —  the entire interface.
 
-Both are Open Font Licence, downloaded from Google Fonts and served from this
-directory so the site makes no third party request and keeps working if
-fonts.googleapis.com is unreachable.
+One file, one family. Headline, body, navigation, buttons, forms, labels and
+prices are all set in it; there is no second family and no serif. The logotype's
+letterforms live inside the artwork at web/public/images/logo.webp, so they cost
+nothing to load.
 
-Two subsets per family: "latin" covers Portuguese, Spanish and English;
-"latin-ext" carries the rest of the Latin range. next/font declares the
-unicode-range for each, so neither file is downloaded unless a character in its
-range is actually rendered.
+Two axes:
+  opsz  9–40      the same file redraws itself between a 16px paragraph and an
+                  80px headline. Driven by `font-optical-sizing: auto`, this is
+                  what carries the hierarchy now that there is no serif.
+  wght  100–1000  the design weight is 550, between medium and semibold.
 
-Wired up in lib/fonts.ts. To replace a family, drop the .woff2 files here and
-change the paths there; nothing else refers to them.
+Open Font Licence, drawn by Colophon, commissioned through Google Fonts, and
+served from this directory so the site makes no third party request and keeps
+working if fonts.googleapis.com is unreachable.
+
+Latin only: 222 glyphs, verified to cover every accent Portuguese, Spanish and
+English use. A latin-ext subset would be dead weight — next/font/local cannot
+attach a unicode-range to a second file, so it would never be selected.
+
+Wired up in lib/fonts.ts. To replace the family, drop the .woff2 here and change
+the path there; nothing else refers to it.

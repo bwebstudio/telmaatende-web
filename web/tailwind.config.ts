@@ -45,16 +45,15 @@ const config: Config = {
       },
       fontWeight: {
         // Between Tailwind's medium and semibold, and only reachable because
-        // Inter is a variable font. It is the weight the whole hierarchy turns
+        // DM Sans is a variable font. It is the weight the whole hierarchy turns
         // on: display type and every sub-heading use it, which is what keeps a
         // 17px title from reading at the same strength as the 16px paragraph
         // underneath it now that there is no serif to separate them.
         mid: '550',
       },
       fontFamily: {
-        // One family for the entire interface. The logotype's serif is applied
-        // through the .font-logo class in globals.css, not through a Tailwind
-        // utility, so it cannot be reached by accident.
+        // One family for the entire interface, and the only one loaded. The
+        // logotype's letterforms live inside its artwork, not in a webfont.
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
@@ -73,13 +72,13 @@ const config: Config = {
         calm: 'var(--ease)',
       },
       transitionDuration: {
-        fast: '250ms',
-        DEFAULT: '400ms',
-        slow: '600ms',
+        fast: '320ms',
+        DEFAULT: '520ms',
+        slow: '800ms',
       },
       maxWidth: {
         // 1320px. Wider than the Bible's 1280 — at display sizes the extra
-        // 40px is what lets the Spanish headline hold two lines at 96px.
+        // 40px is what lets the Spanish headline hold two lines at 80px.
         container: '82.5rem',
         // Measure caps, so a paragraph never runs past comfortable reading.
         prose: '36rem',
@@ -113,12 +112,12 @@ const config: Config = {
         'body-lg': ['1.125rem', { lineHeight: '1.65' }],
         label: ['0.75rem', { lineHeight: '1.4', letterSpacing: '0.14em' }],
         // A sans carries far more visual weight per point than the light serif
-        // it replaces, so every display size comes down: the old 96px headline
-        // in Fraunces 300 and a 80px headline in Inter 550 occupy roughly the
-        // same amount of page.
+        // the site used to run, so every display size came down: a 96px headline
+        // in a 300-weight serif and an 80px one in DM Sans 550 occupy roughly
+        // the same amount of page.
         //
-        // Leading goes the other way. The serif ran at 1.01–1.06; Inter's larger
-        // x-height needs a little more room or the lines lock together.
+        // Leading went the other way. The serif ran at 1.01–1.06; DM Sans's
+        // larger x-height needs more room or the lines lock together.
         //
         // The lower bounds are still set from a 320px screen, where the measure
         // is 272px and the Spanish headline is the longest of the three.

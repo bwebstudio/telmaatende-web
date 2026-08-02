@@ -40,7 +40,7 @@ export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
         align="center"
       />
 
-      <Reveal className="mt-20 flex flex-col items-center gap-5">
+      <Reveal className="mt-24 flex flex-col items-center gap-5 lg:mt-30">
         <div
           role="group"
           aria-label={`${c.pricing.monthly} / ${c.pricing.annual}`}
