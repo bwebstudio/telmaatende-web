@@ -76,12 +76,22 @@
     --dark-line: 42 52 65;
 
     /* --- Radius -----------------------------------------------------------
-       Tighter again. Large radii are the loudest tell of a template: they read
-       friendly, and friendly is not the same as expensive. At 8/12/16 the
-       corners stop being a feature and become a finish. */
-    --radius-input: 8px;
+       Three values, and only three.
+
+         0        photographs, video, sections — anything that is a window or a
+                  field rather than an object
+         12px     cards and inputs — things you could imagine picking up
+         pill     buttons
+
+       Input and card deliberately hold the same number. They are named apart
+       because they are different ideas, not because they are different sizes;
+       if one ever moves, it should be because someone decided it should.
+
+       The 16px step is gone. It existed for exactly one element, and a scale
+       with a value used once is not a scale — it is a leftover. Nothing here
+       goes near the 24px or 32px that make a page read as a template. */
+    --radius-input: 12px;
     --radius-card: 12px;
-    --radius-hero: 16px;
     --radius-pill: 999px;
 
     /* --- Elevation --------------------------------------------------------

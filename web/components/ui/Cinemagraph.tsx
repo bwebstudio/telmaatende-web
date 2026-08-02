@@ -5,10 +5,15 @@ import { useEffect, useRef, useState } from 'react'
 /**
  * A photograph that happens to move.
  *
- * Not a video player and not a banner: no controls, no overlay, no play button,
- * no progress, nothing to click. The only motion is the motion already in the
+ * Not a video player and not a banner: no controls, no play button, no
+ * progress, nothing to click. The only motion is the motion already in the
  * footage — no added zoom, no parallax, no camera drift. If a visitor notices
- * it is a video, it has failed.
+ * it is a video within the first few seconds, it has failed.
+ *
+ * The footage is cut to the calmest second of the take and played back at a
+ * quarter speed, then ping-ponged, so it never travels far from where it
+ * started. A veil of white sits over it at 4%, which is what lets it sit in the
+ * page as a texture rather than announce itself as media.
  *
  * Three things keep it honest:
  *
@@ -86,28 +91,39 @@ export function Cinemagraph({
   }, [load])
 
   return (
-    <video
-      ref={ref}
-      poster={poster}
-      // The element is standing in for a photograph, so it is announced as one.
-      role="img"
-      aria-label={label}
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      disablePictureInPicture
-      controls={false}
-      className={`block h-full w-full object-cover ${className}`}
-      style={{ aspectRatio: ratio }}
-    >
-      {load && (
-        <>
-          <source src={webm} type="video/webm" />
-          <source src={mp4} type="video/mp4" />
-        </>
-      )}
-    </video>
+    <div className={`relative ${className}`}>
+      <video
+        ref={ref}
+        poster={poster}
+        // The element is standing in for a photograph, so it is announced as one.
+        role="img"
+        aria-label={label}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        disablePictureInPicture
+        controls={false}
+        className="block h-full w-full object-cover"
+        style={{ aspectRatio: ratio }}
+      >
+        {load && (
+          <>
+            <source src={webm} type="video/webm" />
+            <source src={mp4} type="video/mp4" />
+          </>
+        )}
+      </video>
+
+      {/* Four percent of white. Enough to pull the footage a shade closer to the
+          warm page it sits on, not enough to read as a wash over it. It covers
+          the poster too, so the still and the moving state are the same colour
+          and the swap between them is invisible. */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-white/[0.04]"
+      />
+    </div>
   )
 }

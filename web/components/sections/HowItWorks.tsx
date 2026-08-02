@@ -36,7 +36,7 @@ export function HowItWorks({ c }: { c: Content }) {
           objection that stops a clinic buying — so it gets the page's only
           other dark surface, and it gets it alone, with nothing beside it. */}
       <Reveal delay={140} className="mt-24 lg:mt-30">
-        <div className="rounded-hero bg-dark px-10 py-16 text-center sm:px-16 sm:py-20">
+        <div className="rounded-card bg-dark px-10 py-16 text-center sm:px-16 sm:py-20">
           <p className="mx-auto max-w-3xl text-[1.5rem] font-normal leading-[1.35] tracking-tight text-white sm:text-[2rem]">
             {c.how.note}
           </p>

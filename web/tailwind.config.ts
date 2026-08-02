@@ -59,7 +59,6 @@ const config: Config = {
       borderRadius: {
         input: 'var(--radius-input)',
         card: 'var(--radius-card)',
-        hero: 'var(--radius-hero)',
         pill: 'var(--radius-pill)',
       },
       boxShadow: {
