@@ -4,41 +4,44 @@ import { Container } from '@/components/ui/Container'
 import { Reveal } from '@/components/ui/Reveal'
 import { ButtonLink } from '@/components/ui/Button'
 import { ICON_STROKE } from '@/components/ui/Card'
-import { CallFlow } from '@/components/hero/CallFlow'
+import { Cinemagraph } from '@/components/ui/Cinemagraph'
 
 /**
- * The first screen. A headline, one sentence, one action, one object.
+ * The first screen: the promise on the left, the room it happens in on the right.
  *
- * This is the third pass, and it is mostly deletion. The screen used to carry
- * a four-line paragraph, a two-item checklist, a credit line, four timestamps,
- * a quoted sentence, a booking chip and a caption — about eighty words of
- * explanation before the fold. All of that is now discovered on the scroll,
- * where a reader who wants it will go looking.
+ * The scene replaces the drawn flow that used to sit here. That was four words
+ * on a hairline and it explained the product honestly, but it explained it the
+ * way a diagram does. The footage does the same work without a diagram: a desk
+ * phone, an open appointment book with a pen resting on it, and morning light
+ * on a wall. Call, attention, appointment — present as objects rather than
+ * narrated as steps, which is the difference between a brand and a product tour.
  *
- * What is left is fifteen words. The eye is meant to land on the headline,
- * move once to the scene, and stop. Anything a first screen has to explain, it
- * has already failed to say.
+ * THE HEADLINE IS SMALLER THAN IT WAS, AND THAT IS THE TRADE.
  *
- * The scene is not wrapped in a Reveal: it has its own entrance, and stacking a
- * fade on top of a draw made the object arrive twice.
+ * At full measure it ran at 80px across two lines. In a 46% column the same
+ * sentence needs about 48px to still break in two, and at 80px it shattered
+ * into six lines. A two-column hero cannot have both the width and the size;
+ * this one gives the width to the scene, because the scene is now carrying the
+ * explanation the headline used to carry alone.
+ *
+ * The two halves are centred against each other. The text block is shorter than
+ * the footage, and aligning them at the top would leave the column hanging.
  */
 export function Hero({ c }: { c: Content }) {
   return (
-    <section className="relative overflow-hidden bg-bg pb-32 pt-14 sm:pt-20 lg:pb-42 lg:pt-24">
+    <section className="relative overflow-hidden bg-bg pb-30 pt-12 sm:pt-16 lg:pb-38 lg:pt-20">
       <Container>
-        <Reveal>
-          <h1 className="display text-hero text-balance text-ink">
-            {c.hero.headlineLines.map((line, i) => (
-              <span key={i} className="block">
-                {line}
-              </span>
-            ))}
-          </h1>
-        </Reveal>
+        <div className="grid grid-cols-1 gap-14 lg:grid-cols-[46fr_54fr] lg:items-center lg:gap-x-10">
+          <Reveal>
+            <h1 className="display text-hero text-balance text-ink lg:text-[3rem] xl:text-[3.25rem]">
+              {c.hero.headlineLines.map((line, i) => (
+                <span key={i} className="block">
+                  {line}
+                </span>
+              ))}
+            </h1>
 
-        <div className="mt-20 grid grid-cols-1 gap-16 sm:mt-24 lg:mt-30 lg:grid-cols-12 lg:gap-x-10">
-          <Reveal delay={120} className="lg:col-span-4">
-            <p className="max-w-prose text-xl leading-[1.55] text-ink-soft">
+            <p className="mt-9 max-w-prose text-xl leading-[1.55] text-ink-soft">
               {c.hero.subtitle}
             </p>
 
@@ -56,8 +59,22 @@ export function Hero({ c }: { c: Content }) {
             </div>
           </Reveal>
 
-          <div className="lg:col-span-6 lg:col-start-7">
-            <CallFlow steps={c.hero.flow.steps} />
+          {/*
+            16:9 on phones, where the full frame fits and nothing has to be
+            cropped. Wider than a phone the box gets taller, so the scene fills
+            a column beside the text instead of sitting in it as a letterbox —
+            and the frame is pulled left, because the phone lives on the left
+            edge and centring the crop would cut the handset off.
+          */}
+          <div>
+            <Cinemagraph
+              mp4="/video/telma-hero.mp4"
+              webm="/video/telma-hero.webm"
+              poster="/images/telma-hero-poster.webp"
+              label={c.hero.sceneAlt}
+              eager
+              frame="aspect-video [object-position:42%_center] lg:aspect-[5/4] lg:[object-position:34%_center]"
+            />
           </div>
         </div>
       </Container>

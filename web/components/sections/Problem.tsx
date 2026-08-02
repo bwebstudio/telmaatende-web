@@ -37,6 +37,7 @@ export function Problem({ c }: { c: Content }) {
               webm="/video/reception.webm"
               poster="/video/reception-poster.jpg"
               label={c.problem.sceneAlt}
+              frame="aspect-[2/1]"
             />
             {/* The same hairline the photographs carry, so the footage sits on
                 the page rather than being pasted onto it. */}

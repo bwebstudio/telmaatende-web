@@ -51,16 +51,16 @@ export function Header({ c, lang }: { c: Content; lang: Locale }) {
       <Container className="flex h-20 items-center justify-between gap-8 sm:h-24 lg:h-26">
         <LogoLink href={`/${lang}`} />
 
-        <div className="flex items-center gap-10">
+        <div className="flex items-center gap-6 xl:gap-10">
           <nav
-            className="hidden items-center gap-12 lg:flex"
+            className="hidden items-center gap-8 lg:flex xl:gap-12"
             aria-label={c.header.navLabel}
           >
             {c.header.nav.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="text-[0.9375rem] text-ink-soft transition-colors duration-fast ease-calm hover:text-ink"
+                className="whitespace-nowrap text-[0.9375rem] text-ink-soft transition-colors duration-fast ease-calm hover:text-ink"
               >
                 {item.label}
               </a>
@@ -70,10 +70,14 @@ export function Header({ c, lang }: { c: Content; lang: Locale }) {
           <LangSwitch
             c={c}
             lang={lang}
-            className="hidden sm:flex lg:border-l lg:border-line lg:pl-10"
+            className="hidden shrink-0 sm:flex lg:border-l lg:border-line lg:pl-6 xl:pl-10"
           />
 
-          <ButtonLink href="#contacto" variant="primary" className="hidden sm:inline-flex">
+          <ButtonLink
+            href="#contacto"
+            variant="primary"
+            className="hidden shrink-0 whitespace-nowrap sm:inline-flex"
+          >
             {c.header.cta}
           </ButtonLink>
 

@@ -36,6 +36,8 @@ export const es: Content = {
       'Telma es la recepcionista virtual de su clínica.',
     ctaPrimary: 'Ver precios',
     ctaSecondary: 'Hablar con nosotros',
+    sceneAlt:
+      'Mostrador de recepción de una clínica a primera hora: un teléfono fijo, una agenda abierta con una cita anotada y la luz entrando por la ventana.',
     flow: {
       steps: [
         { label: 'Llamada entrante' },

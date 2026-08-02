@@ -28,6 +28,8 @@ export const pt: Content = {
       'A Telma é a rececionista virtual da sua clínica.',
     ctaPrimary: 'Ver preços',
     ctaSecondary: 'Falar connosco',
+    sceneAlt:
+      'Balcão de receção de uma clínica ao início da manhã: um telefone fixo, uma agenda aberta com uma consulta marcada e a luz a entrar pela janela.',
     flow: {
       steps: [
         { label: 'Chamada a entrar' },

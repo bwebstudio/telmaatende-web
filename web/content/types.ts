@@ -87,6 +87,8 @@ export interface Content {
     subtitle: string
     ctaPrimary: string
     ctaSecondary: string
+    /** Describes the hero scene for anyone who cannot see it. */
+    sceneAlt: string
     /**
      * The four moments the hero scene draws, in order. Four words carry the
      * whole product: a call arrives, it is answered, it becomes an appointment,

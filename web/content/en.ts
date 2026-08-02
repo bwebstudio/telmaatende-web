@@ -28,6 +28,8 @@ export const en: Content = {
       "Telma is your clinic's virtual receptionist. She answers the phone, replies to patient questions, books appointments and transfers to the front desk when needed.",
     ctaPrimary: 'See pricing',
     ctaSecondary: 'Talk to us',
+    sceneAlt:
+      'A clinic reception counter early in the morning: a desk phone, an open appointment book with a booking written in, and light coming through the window.',
     flow: {
       steps: [
         { label: 'Incoming call' },

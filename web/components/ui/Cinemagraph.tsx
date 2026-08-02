@@ -39,15 +39,27 @@ export function Cinemagraph({
   poster,
   label,
   className = '',
-  /** Aspect ratio of the footage, so the box reserves its height before load. */
-  ratio = '2 / 1',
+  /**
+   * Aspect ratio and framing, as classes rather than inline style, so both can
+   * change at a breakpoint. A box that is a different shape from the footage
+   * crops it, and where that crop falls is a composition decision — on a phone
+   * the whole 16:9 frame fits, beside a column of text it has to get taller and
+   * give up its edges.
+   *
+   * The ratio has to be here from the first render: it is what reserves the
+   * height, and without it the page reflows the moment the poster decodes.
+   */
+  frame = 'aspect-video',
+  /** Load as soon as it mounts. For anything above the fold. */
+  eager = false,
 }: {
   mp4: string
   webm: string
   poster: string
   label: string
   className?: string
-  ratio?: string
+  frame?: string
+  eager?: boolean
 }) {
   const ref = useRef<HTMLVideoElement>(null)
   const [load, setLoad] = useState(false)
@@ -59,7 +71,9 @@ export function Cinemagraph({
     // Asked for stillness: never attach the observer, never fetch the file.
     if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return
 
-    if (typeof IntersectionObserver === 'undefined') {
+    // Above the fold there is nothing to wait for — waiting would only leave a
+    // still where the page has already promised movement.
+    if (eager || typeof IntersectionObserver === 'undefined') {
       setLoad(true)
       return
     }
@@ -77,7 +91,7 @@ export function Cinemagraph({
     )
     observer.observe(node)
     return () => observer.disconnect()
-  }, [])
+  }, [eager])
 
   // Sources are added to the DOM after mount, and a <video> does not notice new
   // <source> children on its own — it has to be told to look again.
@@ -105,8 +119,7 @@ export function Cinemagraph({
         preload="metadata"
         disablePictureInPicture
         controls={false}
-        className="block h-full w-full object-cover"
-        style={{ aspectRatio: ratio }}
+        className={`block h-full w-full object-cover ${frame}`}
       >
         {load && (
           <>
@@ -116,13 +129,14 @@ export function Cinemagraph({
         )}
       </video>
 
-      {/* Four percent of white. Enough to pull the footage a shade closer to the
-          warm page it sits on, not enough to read as a wash over it. It covers
-          the poster too, so the still and the moving state are the same colour
-          and the swap between them is invisible. */}
+      {/* Four percent of the page's own warm white, not pure white — the point
+          is to pull the footage a shade towards the ground it sits on, and pure
+          white pulls it towards blue instead. It covers the poster too, so the
+          still and the moving state are the same colour and the swap between
+          them is invisible. */}
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-white/[0.04]"
+        className="pointer-events-none absolute inset-0 bg-bg/[0.04]"
       />
     </div>
   )
