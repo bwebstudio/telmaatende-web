@@ -1,23 +1,29 @@
-# Telma Atende
+# Telma Atende · web
 
-Monorepo do produto Telma (Telma Atende), a rececionista virtual com voz para
-clínicas dentárias e de estética em Portugal.
+Landing page pública da Telma (Telma Atende), a rececionista virtual com voz
+para clínicas dentárias e de estética em Portugal e Espanha.
 
 ```
-telmaatende/
-  web/         Landing page pública (marketing). Next.js + Tailwind.
-  dashboard/   Painel de gestão (clínica + interno). Next.js + Supabase.
+telmaatende-web/
+  web/   Landing page pública (marketing). Next.js + Tailwind, sem backend.
 ```
 
-Cada pasta é uma aplicação Next.js independente, com o seu próprio `package.json`
-e o seu próprio deploy na Vercel (defina a Root Directory em cada projeto Vercel).
+Página única, em português, inglês e espanhol. Deploy na Vercel com a
+**Root Directory** definida como `web`.
 
-- **[web/](web/README.md)**: página única, PT, EN e ES, sem backend.
-- **[dashboard/](dashboard/README.md)**: autenticação, base de dados e realtime
-  com Supabase, dois tipos de utilizador (clínica e interno) e webhooks para o
-  sistema de voz.
+## O painel de gestão vive noutro repositório
 
-A identidade visual do site foi refeita: fundo branco quente, tinta escura,
-verde-floresta como cor de marca reservada a marcas e ações, e uma única família
-tipográfica (DM Sans) em toda a interface. O painel ainda usa a paleta e as
-fontes anteriores — alinhá-lo é trabalho por fazer.
+O painel (clínica, equipa interna e o CRM comercial) foi separado para
+**[bwebstudio/telma-dashboard](https://github.com/bwebstudio/telma-dashboard)**,
+com o seu próprio deploy na Vercel. É lá que estão a autenticação, a base de
+dados e as migrações do Supabase.
+
+## Identidade
+
+Fundo branco quente, tinta escura e verde-floresta como cor de marca, reservada
+à marca e às ações — nunca a superfícies inteiras. Uma única família tipográfica
+(DM Sans) em toda a interface; a serif existe apenas dentro do logótipo, que é
+um ficheiro de imagem.
+
+O painel ainda usa a paleta e as fontes anteriores. Alinhá-lo é trabalho por
+fazer, e agora faz-se no outro repositório.
