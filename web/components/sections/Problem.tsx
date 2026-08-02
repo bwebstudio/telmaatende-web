@@ -16,6 +16,11 @@ import { Cinemagraph } from '@/components/ui/Cinemagraph'
  * empty between them. The gap under the title is a third of what it was: the
  * distance was making the image feel like a separate exhibit.
  *
+ * The two halves are centred against each other rather than aligned at the top.
+ * The footage is a 2:1 crop and the symptoms run to three paragraphs, so
+ * top-aligning left two hundred pixels of void under the image and the pair
+ * read as though one of them had slipped.
+ *
  * No cards, no icons, no colour, and no rounded corners on the media. Weight
  * here comes from a quiet moving image and plain type.
  */
@@ -24,7 +29,7 @@ export function Problem({ c }: { c: Content }) {
     <Section id="problema" tone="sunken">
       <SectionHeader eyebrow={c.problem.label} title={c.problem.title} />
 
-      <div className="mt-16 grid gap-14 lg:mt-20 lg:grid-cols-12 lg:items-start lg:gap-x-10">
+      <div className="mt-16 grid gap-14 lg:mt-20 lg:grid-cols-12 lg:items-center lg:gap-x-10">
         <Reveal className="lg:col-span-7">
           <div className="relative">
             <Cinemagraph
