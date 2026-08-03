@@ -68,7 +68,7 @@ export function Voice({ c, src }: { c: Content; src: string }) {
   const progress = duration > 0 ? (current / duration) * 100 : 0
 
   return (
-    <Section id="voz" tone="bg" rule>
+    <Section id="voz" tone="bg">
       <SectionHeader
         eyebrow={c.voice.label}
         title={c.voice.title}

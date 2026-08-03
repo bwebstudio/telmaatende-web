@@ -159,6 +159,33 @@
     letter-spacing: -0.02em;
   }
 
+  /* --- THE HERO'S LEFT EDGE ----------------------------------------------
+     The hero breaks the grid: its footage runs off the right of the screen
+     rather than stopping at the container, because a rectangle that closes on
+     both sides is a card no matter how it is styled, and on a wide monitor a
+     contained image sits marooned in six hundred pixels of margin.
+
+     Breaking the grid on one side means the other side has to be exact. This
+     reproduces the container's left edge precisely — same max-width, same
+     padding, same breakpoints — so the headline still starts on the same
+     vertical as the logotype above it and every section below. Anything less
+     than exact would read as a mistake rather than as a decision. */
+  .hero-gutter {
+    padding-left: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .hero-gutter {
+      padding-left: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-gutter {
+      padding-left: max(4rem, calc((100vw - 82.5rem) / 2 + 4rem));
+    }
+  }
+
   /* A hairline is the brand's structural element — it does the job shadows and
      borders were doing before. */
   .rule {
