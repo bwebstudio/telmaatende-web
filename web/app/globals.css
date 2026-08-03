@@ -186,6 +186,40 @@
     }
   }
 
+  /* --- THE HERO'S VERTICAL SCALE ------------------------------------------
+     The hero takes its height from the text column and the footage stretches to
+     match, which is what puts both halves on the same two lines. The catch is
+     that a text block does not grow with the screen: measured on three
+     viewports, the hero ended at y=563 on all of them. On a 2560x1440 monitor
+     that left it occupying the top 39% and the next section already in view.
+
+     So the air inside the text grows instead. Widening the column cannot work —
+     it unwraps the headline and makes the block shorter — but spacing its parts
+     further apart lifts the whole composition: the button moves down, the
+     footage grows with it, and the two columns stay locked at top and bottom.
+
+     Fluid rather than stepped. The lower bound is the value every screen under
+     1536px already used, so nothing below that moves and there is no threshold
+     to see. Above it the growth is linear in viewport width and capped, so a
+     wider monitor gets a taller hero and never a runaway one. */
+  .hero-gap-lead {
+    margin-top: clamp(2.25rem, calc(2.25rem + (100vw - 96rem) * 0.051), 5.5rem);
+  }
+
+  .hero-gap-action {
+    margin-top: clamp(2.75rem, calc(2.75rem + (100vw - 96rem) * 0.059), 6.5rem);
+  }
+
+  .hero-tail {
+    padding-bottom: clamp(7.5rem, calc(7.5rem + (100vw - 96rem) * 0.088), 15rem);
+  }
+
+  @media (min-width: 1024px) {
+    .hero-tail {
+      padding-bottom: clamp(9.5rem, calc(9.5rem + (100vw - 96rem) * 0.088), 15rem);
+    }
+  }
+
   /* A hairline is the brand's structural element — it does the job shadows and
      borders were doing before. */
   .rule {

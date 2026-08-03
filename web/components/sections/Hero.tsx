@@ -48,11 +48,16 @@ import { Cinemagraph } from '@/components/ui/Cinemagraph'
  * It also means the ratio is not a number I chose. It falls out of how much the
  * headline has to say, which is why it lands near 2:1 in every language.
  *
- * A wider screen does make the frame more panoramic, and there is no clean way
- * out of that: widening the text column to compensate unwraps the headline from
- * four lines to two, which shortens the text block and makes the ratio worse
- * instead of better. Stepping the column at a breakpoint was worse still — it
- * made the footage jump 191px narrower crossing 1536px.
+ * A wider screen does make the frame more panoramic, and widening the text
+ * column cannot fix it: that unwraps the headline from four lines to two, which
+ * shortens the block and makes the ratio worse instead of better. Stepping the
+ * column at a breakpoint was worse still — it made the footage jump 191px
+ * narrower crossing 1536px.
+ *
+ * What does work is spacing the text apart rather than widening it. The gaps
+ * inside the column grow with the viewport, so the button moves down, the
+ * footage grows to match, and both halves stay locked top and bottom. See
+ * .hero-gap-lead and .hero-gap-action in globals.css.
  *
  * So the column stays flat and the crop is centred on the appointment rather
  * than on the middle of the frame. What a wide screen takes away is wall and
@@ -76,7 +81,7 @@ import { Cinemagraph } from '@/components/ui/Cinemagraph'
  */
 export function Hero({ c }: { c: Content }) {
   return (
-    <section className="relative overflow-hidden bg-bg pb-30 pt-12 sm:pt-16 lg:pb-38 lg:pt-20">
+    <section className="relative overflow-hidden hero-tail bg-bg pt-12 sm:pt-16 lg:pt-20">
       <div className="hero-gutter grid grid-cols-1 gap-10 pr-6 sm:pr-10 lg:grid-cols-[minmax(0,32rem)_1fr] lg:items-stretch lg:gap-x-10 lg:pr-0">
         <div>
           <Reveal>
@@ -90,14 +95,14 @@ export function Hero({ c }: { c: Content }) {
           </Reveal>
 
           <Reveal delay={320}>
-            <p className="mt-9 max-w-prose text-xl leading-[1.55] text-ink-soft">
+            <p className="hero-gap-lead max-w-prose text-xl leading-[1.55] text-ink-soft">
               {c.hero.subtitle}
             </p>
 
             {/* One button, not two. A pair of pills side by side is the most
                 generic thing a landing page owns; a single action with a quiet
                 link beside it reads as confidence rather than as a choice. */}
-            <div className="mt-11 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <div className="hero-gap-action flex flex-wrap items-center gap-x-8 gap-y-4">
               <ButtonLink href="#precos" variant="primary">
                 {c.hero.ctaPrimary}
               </ButtonLink>
