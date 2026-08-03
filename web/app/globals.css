@@ -76,22 +76,21 @@
     --dark-line: 42 52 65;
 
     /* --- Radius -----------------------------------------------------------
-       Three values, and only three.
+       One decision for the whole site, in three steps.
 
-         0        photographs, video, sections — anything that is a window or a
-                  field rather than an object
-         12px     cards and inputs — things you could imagine picking up
-         pill     buttons
+         12px   large media, and inputs. A photograph or a video is a window,
+                and a window gets the smallest softening that still reads as
+                deliberate rather than as an unfinished edge.
+         16px   cards. Objects you could pick up are allowed to be softer than
+                the windows they sit beside; that difference is the hierarchy.
+         pill   buttons.
 
-       Input and card deliberately hold the same number. They are named apart
-       because they are different ideas, not because they are different sizes;
-       if one ever moves, it should be because someone decided it should.
-
-       The 16px step is gone. It existed for exactly one element, and a scale
-       with a value used once is not a scale — it is a leftover. Nothing here
-       goes near the 24px or 32px that make a page read as a template. */
+       Media used to be square and cards 12px. Square edges read architectural
+       but they also read unfinished next to rounded controls, and the scale had
+       no room left to say which things were objects. */
+    --radius-media: 12px;
     --radius-input: 12px;
-    --radius-card: 12px;
+    --radius-card: 16px;
     --radius-pill: 999px;
 
     /* --- Elevation --------------------------------------------------------
@@ -204,9 +203,9 @@
 @layer components {
   .js [data-reveal] {
     opacity: 0;
-    /* Shorter travel with a longer duration: the element should look like it
+    /* Short travel over a long duration: the element should look like it
        settled rather than like it arrived. */
-    transform: translateY(10px);
+    transform: translateY(12px);
   }
 
   .js [data-reveal].is-revealed {

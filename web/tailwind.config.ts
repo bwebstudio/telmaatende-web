@@ -57,6 +57,7 @@ const config: Config = {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
+        media: 'var(--radius-media)',
         input: 'var(--radius-input)',
         card: 'var(--radius-card)',
         pill: 'var(--radius-pill)',

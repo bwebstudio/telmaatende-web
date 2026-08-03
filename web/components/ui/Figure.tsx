@@ -18,16 +18,9 @@ const ratios = {
  * with a mountain icon. The layout is final either way, so no section ever
  * waits on art. Drop a file into /public, add the `src` to the slot, done.
  *
- * SQUARE CORNERS, ALWAYS.
- *
- * Every photograph here runs at least half the measure, and a rounded corner on
- * something that large reads as a widget. Rounding is now reserved for things
- * you could imagine picking up — cards, buttons, inputs, the appointment slab in
- * the hero. Media is a window, and a window is not rounded.
- *
- * This is what the radius scale is for: when everything shares one value it
- * stops carrying information. The site now says card at 12px, input at 8px,
- * surface at 16px and media at 0.
+ * 12px corners — the media step of the scale, and the smallest softening that
+ * still reads as a decision. Cards sit at 16px: a window and an object should
+ * not be shaped the same, and that gap is where the hierarchy lives.
  */
 export function Figure({
   slot,
@@ -47,7 +40,7 @@ export function Figure({
 
   return (
     <figure
-      className={`relative w-full overflow-hidden ${ratios[meta.ratio]} ${className}`}
+      className={`relative w-full overflow-hidden rounded-media ${ratios[meta.ratio]} ${className}`}
     >
       {meta.src ? (
         <Image
@@ -67,7 +60,7 @@ export function Figure({
           hairline is visibly blue. */}
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-line-strong"
+        className="pointer-events-none absolute inset-0 rounded-media ring-1 ring-inset ring-line-strong"
       />
     </figure>
   )

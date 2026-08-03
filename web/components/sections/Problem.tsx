@@ -43,7 +43,7 @@ export function Problem({ c }: { c: Content }) {
                 the page rather than being pasted onto it. */}
             <span
               aria-hidden
-              className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-line-strong"
+              className="pointer-events-none absolute inset-0 rounded-media ring-1 ring-inset ring-line-strong"
             />
           </div>
         </Reveal>

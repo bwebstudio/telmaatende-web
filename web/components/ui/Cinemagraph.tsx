@@ -30,8 +30,9 @@ import { useEffect, useRef, useState } from 'react'
  *    network drops the request, the poster is what stays on screen. There is no
  *    error state to design because the resting state is already correct.
  *
- * Square corners, deliberately. Large media on this site is never rounded —
- * rounding is reserved for surfaces you could pick up, like cards and buttons.
+ * 12px corners, the media step of the scale — the smallest softening that still
+ * reads as a decision rather than an unfinished edge. Cards sit at 16px, which
+ * is what keeps a window and an object distinguishable.
  */
 export function Cinemagraph({
   mp4,
@@ -105,7 +106,7 @@ export function Cinemagraph({
   }, [load])
 
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative overflow-hidden rounded-media ${className}`}>
       <video
         ref={ref}
         poster={poster}
