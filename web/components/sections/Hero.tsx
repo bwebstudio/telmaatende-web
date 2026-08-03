@@ -48,11 +48,15 @@ import { Cinemagraph } from '@/components/ui/Cinemagraph'
  * It also means the ratio is not a number I chose. It falls out of how much the
  * headline has to say, which is why it lands near 2:1 in every language.
  *
- * The catch is that a fixed text column beside footage that grows with the
- * viewport eventually makes a letterbox strip — at 2560px it measured 4.9:1,
- * showing a third of the frame. So past 1536px the text grows too: a larger
- * headline, more air between its parts, a wider column. That is what a big
- * display should do anyway, and it keeps the ratio in the twos.
+ * A wider screen does make the frame more panoramic, and there is no clean way
+ * out of that: widening the text column to compensate unwraps the headline from
+ * four lines to two, which shortens the text block and makes the ratio worse
+ * instead of better. Stepping the column at a breakpoint was worse still — it
+ * made the footage jump 191px narrower crossing 1536px.
+ *
+ * So the column stays flat and the crop is centred on the appointment rather
+ * than on the middle of the frame. What a wide screen takes away is wall and
+ * ceiling; the phone, the book and the booking stay in shot at every width.
  *
  * No border, no shadow, no panel. The left corners carry the site's 12px; the
  * right ones do not exist.
@@ -73,10 +77,10 @@ import { Cinemagraph } from '@/components/ui/Cinemagraph'
 export function Hero({ c }: { c: Content }) {
   return (
     <section className="relative overflow-hidden bg-bg pb-30 pt-12 sm:pt-16 lg:pb-38 lg:pt-20">
-      <div className="hero-gutter grid grid-cols-1 gap-10 pr-6 sm:pr-10 lg:grid-cols-[minmax(0,32rem)_1fr] lg:items-stretch lg:gap-x-10 2xl:grid-cols-[minmax(0,44rem)_1fr] lg:pr-0">
+      <div className="hero-gutter grid grid-cols-1 gap-10 pr-6 sm:pr-10 lg:grid-cols-[minmax(0,32rem)_1fr] lg:items-stretch lg:gap-x-10 lg:pr-0">
         <div>
           <Reveal>
-            <h1 className="display text-hero text-balance text-ink lg:text-[3rem] xl:text-[3.25rem] 2xl:text-[3.75rem]">
+            <h1 className="display text-hero text-balance text-ink lg:text-[3rem] xl:text-[3.25rem]">
               {c.hero.headlineLines.map((line, i) => (
                 <span key={i} className="block">
                   {line}
@@ -86,14 +90,14 @@ export function Hero({ c }: { c: Content }) {
           </Reveal>
 
           <Reveal delay={320}>
-            <p className="mt-9 max-w-prose text-xl leading-[1.55] text-ink-soft 2xl:mt-12 2xl:text-[1.375rem]">
+            <p className="mt-9 max-w-prose text-xl leading-[1.55] text-ink-soft">
               {c.hero.subtitle}
             </p>
 
             {/* One button, not two. A pair of pills side by side is the most
                 generic thing a landing page owns; a single action with a quiet
                 link beside it reads as confidence rather than as a choice. */}
-            <div className="mt-11 flex flex-wrap items-center gap-x-8 gap-y-4 2xl:mt-14">
+            <div className="mt-11 flex flex-wrap items-center gap-x-8 gap-y-4">
               <ButtonLink href="#precos" variant="primary">
                 {c.hero.ctaPrimary}
               </ButtonLink>
@@ -119,7 +123,7 @@ export function Hero({ c }: { c: Content }) {
             label={c.hero.sceneAlt}
             eager
             className="lg:absolute lg:inset-0 lg:rounded-r-none"
-            frame="aspect-video [object-position:42%_center] lg:aspect-auto lg:h-full lg:[object-position:35%_center]"
+            frame="aspect-video [object-position:42%_center] lg:aspect-auto lg:h-full lg:[object-position:35%_68%]"
           />
         </Reveal>
       </div>
