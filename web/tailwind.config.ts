@@ -43,14 +43,6 @@ const config: Config = {
           line: 'rgb(var(--dark-line) / <alpha-value>)',
         },
       },
-      fontWeight: {
-        // Between Tailwind's medium and semibold, and only reachable because
-        // DM Sans is a variable font. It is the weight the whole hierarchy turns
-        // on: display type and every sub-heading use it, which is what keeps a
-        // 17px title from reading at the same strength as the 16px paragraph
-        // underneath it now that there is no serif to separate them.
-        mid: '550',
-      },
       fontFamily: {
         // One family for the entire interface, and the only one loaded. The
         // logotype's letterforms live inside its artwork, not in a webfont.
@@ -100,12 +92,13 @@ const config: Config = {
       },
       letterSpacing: {
         // Positive only for the small uppercase labels, which need it to stay
-        // readable. Everything else is pulled in; a sans set at its natural
-        // spacing looks loose at any size above body copy.
+        // readable. Everything above body copy is pulled in, but by less than
+        // DM Sans took: Suisse Intl is already tightly spaced, so the same
+        // negative values that merely settled the old family close this one up.
         label: '0.14em',
         display: '-0.02em',
-        tight: '-0.014em',
-        snug: '-0.008em',
+        tight: '-0.01em',
+        snug: '-0.005em',
       },
       fontSize: {
         // 18px body, per ch.5. Nothing smaller than 14px anywhere.
@@ -113,11 +106,11 @@ const config: Config = {
         label: ['0.75rem', { lineHeight: '1.4', letterSpacing: '0.14em' }],
         // A sans carries far more visual weight per point than the light serif
         // the site used to run, so every display size came down: a 96px headline
-        // in a 300-weight serif and an 80px one in DM Sans 550 occupy roughly
-        // the same amount of page.
+        // in a 300-weight serif and an 80px one in Suisse Intl Medium occupy
+        // roughly the same amount of page.
         //
-        // Leading went the other way. The serif ran at 1.01–1.06; DM Sans's
-        // larger x-height needs more room or the lines lock together.
+        // Leading went the other way. The serif ran at 1.01–1.06; a grotesque
+        // with this x-height needs more room or the lines lock together.
         //
         // The lower bounds are still set from a 320px screen, where the measure
         // is 272px and the Spanish headline is the longest of the three.

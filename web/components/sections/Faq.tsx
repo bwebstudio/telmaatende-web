@@ -32,7 +32,7 @@ export function Faq({ c }: { c: Content }) {
         <div id="faq-list" className="border-t border-line">
           {items.map((item, i) => (
             <details key={i} name="faq" className="group border-b border-line">
-              <summary className="flex cursor-pointer list-none items-start justify-between gap-10 py-8 text-[1.0625rem] font-mid tracking-tight text-ink transition-colors duration-fast ease-calm hover:text-brand-accent [&::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-10 py-8 text-[1.0625rem] font-medium tracking-tight text-ink transition-colors duration-fast ease-calm hover:text-brand-accent [&::-webkit-details-marker]:hidden">
                 <span>{item.q}</span>
                 <span
                   aria-hidden

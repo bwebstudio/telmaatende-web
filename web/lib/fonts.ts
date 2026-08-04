@@ -1,46 +1,48 @@
 import localFont from 'next/font/local'
 
 /**
- * ONE FAMILY: DM SANS.
+ * ONE FAMILY: SUISSE INTL.
  *
- * Everything on the site — headline, body, navigation, buttons, forms, labels,
- * prices — is set in DM Sans. There is no second family and no serif anywhere:
- * the drawn logotype arrived as artwork, so the wordmark's letterforms live
- * inside the image and cost nothing to load.
+ * The brand typeface. Everything on the site — headline, body, navigation,
+ * buttons, forms, labels, prices — is set in it. There is no second family and
+ * no serif anywhere: the drawn logotype arrived as artwork, so the wordmark's
+ * letterforms live inside the image and cost nothing to load.
  *
- * It replaces Inter, which was correct and forgettable. Inter is a neo-grotesque
- * built for neutrality, and neutrality is exactly what it delivered: nothing to
- * dislike, nothing to remember.
+ * It replaces DM Sans, which was a stand-in chosen for the register the brand
+ * was after. Suisse Intl is that register — a Swiss neo-grotesque, low contrast,
+ * tightly spaced, with numerals that make a price read as a fact rather than as
+ * a pitch. It is the family Telma owns, so the site stops approximating it.
  *
- * The register the brand is after — Apple, Spotify, Netflix — is not a font that
- * can be bought. SF Pro is not licensable off Apple's platforms, and Circular
- * and Netflix Sans are proprietary. What those three share is a type: a
- * geometric skeleton with humanist warmth and confident, tight spacing. Notion,
- * for what it is worth, runs Inter.
+ * THREE STATIC WEIGHTS, NOT A VARIABLE AXIS.
  *
- * Set against Plus Jakarta Sans and Figtree at production settings, DM Sans is
- * the one that holds. Jakarta is wider and reads informal — friendly in a way a
- * clinic buying a phone system does not need. DM Sans is geometric but
- * low-contrast, which is where the warmth comes from, and it is more composed
- * than anything else in the group. Its numerals settle the argument on their
- * own: a price set in it reads modern and certain.
+ * DM Sans was variable and the whole hierarchy turned on 550 — a weight between
+ * medium and semibold that only a variable font can reach. Suisse Intl ships as
+ * separate cuts, so that trick is gone and the hierarchy is now built from real
+ * drawn weights:
  *
- * Drawn by Colophon, open licence, commissioned through Google Fonts — so it
- * has institutional backing rather than one company's brand attached to it,
- * which is what the ten-year test actually turns on.
+ *   400  Regular  — body copy, and the great majority of the page.
+ *   500  Medium   — display type, sub-headings, buttons, labels. The one step
+ *                   up, and enough of one: a grotesque this tightly drawn
+ *                   carries far more presence at 500 than DM Sans did.
  *
- * THE OPTICAL AXIS IS DOING THE WORK THE SERIF USED TO DO.
+ * Two cuts, not four. Semibold and Bold exist in the family and neither is
+ * loaded, because next/font preloads every cut declared here — a weight nothing
+ * uses is 28 kB the reader pays for at first paint and never sees. Semibold is
+ * the one to reach for if a line ever has to out-rank a Medium heading beside
+ * it; public/fonts/README.txt has the command that builds it.
  *
- * This build carries `opsz` (9–40) as well as `wght` (100–1000). With
- * `font-optical-sizing: auto` the same file redraws itself between a 16px
- * paragraph and a 80px headline — looser and more open small, tighter and more
- * refined large. That is the contrast the page lost when the serif left, and it
- * costs one file rather than two families.
+ * Latin only: subset to the same 219 characters the DM Sans build carried,
+ * verified to cover every accent Portuguese, Spanish and English use. Two static
+ * cuts cost 53 kB against the variable file's 62 kB, so the brand typeface is
+ * also the lighter one.
  *
- * Latin only, on purpose: 222 glyphs covering every accent Portuguese, Spanish
- * and English use, verified character by character. An extended subset would be
- * dead weight — next/font/local cannot attach a unicode-range to a second file,
- * so it would never be selected as a fallback anyway.
+ * ---------------------------------------------------------------------------
+ * TRIAL FILES, LIVE. The .otf files these were built from are Swiss Typefaces'
+ * *Test* cuts, licensed for evaluation only, and they are what production is
+ * serving — a deliberate call, and the one loose end left on the typeface. The
+ * full licence delivers identically-named cuts: rebuild the two .woff2 files
+ * from those (see public/fonts/README.txt) and nothing else here changes.
+ * ---------------------------------------------------------------------------
  */
 export const sans = localFont({
   variable: '--font-sans',
@@ -49,8 +51,13 @@ export const sans = localFont({
   fallback: ['system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
   src: [
     {
-      path: '../public/fonts/DMSans-Variable-latin.woff2',
-      weight: '300 700',
+      path: '../public/fonts/SuisseIntl-Regular-latin.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/SuisseIntl-Medium-latin.woff2',
+      weight: '500',
       style: 'normal',
     },
   ],

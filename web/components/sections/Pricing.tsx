@@ -87,7 +87,7 @@ export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
         <Reveal delay={120} className="mt-5">
           <div className="flex flex-col gap-6 rounded-card border border-line bg-surface p-9 sm:flex-row sm:items-center sm:justify-between sm:p-11">
             <div>
-              <h3 className="text-[1.0625rem] font-mid tracking-tight text-ink">{custom.name}</h3>
+              <h3 className="text-[1.0625rem] font-medium tracking-tight text-ink">{custom.name}</h3>
               <p className="mt-2 text-ink-soft">{custom.audience}</p>
             </div>
             <div className="flex shrink-0 items-center gap-6">
@@ -111,7 +111,7 @@ export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
               <span className="text-label font-medium uppercase text-ink-mute">
                 {c.pricing.whatsapp.label}
               </span>
-              <h3 className="mt-2 text-[1.0625rem] font-mid tracking-tight text-ink">
+              <h3 className="mt-2 text-[1.0625rem] font-medium tracking-tight text-ink">
                 {c.pricing.whatsapp.name}
               </h3>
               <p className="mt-2 text-ink-soft">
@@ -179,7 +179,7 @@ function PlanCard({
           </span>
         )}
 
-        <h3 className="text-[1.0625rem] font-mid tracking-tight text-ink">{plan.name}</h3>
+        <h3 className="text-[1.0625rem] font-medium tracking-tight text-ink">{plan.name}</h3>
         <p className="mt-2 text-sm text-ink-mute">{plan.audience}</p>
 
         <div className="mt-8">

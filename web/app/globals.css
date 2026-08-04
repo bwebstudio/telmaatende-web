@@ -131,10 +131,10 @@
     font-family: var(--font-sans), system-ui, sans-serif;
     font-size: 1rem;
     line-height: 1.6;
-    font-optical-sizing: auto;
-    /* DM Sans is drawn a touch loose for reading sizes, so body copy takes a
-       little negative tracking to hold together. */
-    letter-spacing: -0.008em;
+    /* Suisse Intl is drawn tight already — the negative tracking DM Sans needed
+       at reading sizes closes it up here, so body copy is set at its natural
+       spacing and only display type is pulled in. */
+    letter-spacing: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -144,18 +144,16 @@
      Everything large. With no serif to carry the hierarchy, the weight and the
      tracking have to do it instead.
 
-     550 is the whole trick, and it is only reachable because DM Sans is
-     variable.
-     600 reads assertive, almost loud; 500 goes weak at 80px. 550 sits exactly
-     between confident and calm, which is where this brand lives.
+     Medium, not Semibold. DM Sans needed 550 because 500 went weak at 80px;
+     Suisse Intl does not have that problem — it is a grotesque with far less
+     stroke contrast, so its Medium holds a 80px line on its own and its
+     Semibold at that size reads loud. Confident and calm is 500 here.
 
      Display type set at its natural spacing always looks loose, so it is pulled
-     in — but only to −0.02em. The optical axis has already tightened the
-     spacing at these sizes, and stacking a large manual tracking on top of that
-     congests it. */
+     in. −0.02em, no further: the family is tightly spaced by design and a
+     heavier hand on top of that congests the counters. */
   .display {
-    font-weight: 550;
-    font-optical-sizing: auto;
+    font-weight: 500;
     letter-spacing: -0.02em;
   }
 

@@ -34,7 +34,7 @@ export function Integrations({ c }: { c: Content }) {
                 <span className="text-label font-medium uppercase text-ink-mute">
                   {level.tag}
                 </span>
-                <h3 className="mt-4 text-[1.0625rem] font-mid leading-snug tracking-tight text-ink">
+                <h3 className="mt-4 text-[1.0625rem] font-medium leading-snug tracking-tight text-ink">
                   {level.name}
                 </h3>
               </div>

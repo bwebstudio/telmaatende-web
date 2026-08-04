@@ -55,7 +55,7 @@ export function Problem({ c }: { c: Content }) {
               delay={i * 90}
               className="border-t border-line pt-7 [&:not(:first-child)]:mt-10"
             >
-              <h3 className="text-[1.0625rem] font-mid leading-snug tracking-tight text-ink">
+              <h3 className="text-[1.0625rem] font-medium leading-snug tracking-tight text-ink">
                 {item.title}
               </h3>
               <p className="mt-3 leading-relaxed text-ink-soft">{item.text}</p>

@@ -98,7 +98,7 @@ export function Voice({ c, src }: { c: Content; src: string }) {
           </button>
 
           <div className="min-w-0 flex-1">
-            <p className="text-[1.0625rem] font-mid tracking-tight text-ink">
+            <p className="text-[1.0625rem] font-medium tracking-tight text-ink">
               {playing ? c.voice.pause : c.voice.play}
             </p>
             <div className="mt-4 flex items-center gap-4">

@@ -7,8 +7,8 @@ import { Reveal } from '@/components/ui/Reveal'
  *
  * The step numbers are set at 44px and left almost as pale as the rule they sit
  * on. They are the section's entire ornament: no icons, no chips, no boxes —
- * four numerals, four hairlines, four short paragraphs. DM Sans's figures carry
- * this on their own, which is most of why it won the typeface comparison.
+ * four numerals, four hairlines, four short paragraphs. Suisse Intl's figures
+ * carry this on their own — they are the section's whole design.
  */
 export function HowItWorks({ c }: { c: Content }) {
   return (
@@ -20,11 +20,11 @@ export function HowItWorks({ c }: { c: Content }) {
           <Reveal as="li" key={step.n} delay={i * 90} className="border-t border-line pt-8">
             <span
               aria-hidden
-              className="text-[2.75rem] font-mid leading-none tracking-display text-line-strong"
+              className="text-[2.75rem] font-medium leading-none tracking-display text-line-strong"
             >
               {step.n}
             </span>
-            <h3 className="mt-10 text-[1.0625rem] font-mid leading-snug tracking-tight text-ink">
+            <h3 className="mt-10 text-[1.0625rem] font-medium leading-snug tracking-tight text-ink">
               {step.title}
             </h3>
             <p className="mt-4 leading-relaxed text-ink-soft">{step.text}</p>
