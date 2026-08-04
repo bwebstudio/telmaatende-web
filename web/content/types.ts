@@ -30,14 +30,39 @@ export interface FlowStep {
 export interface Plan {
   id: string
   name: string
+  /**
+   * Who the plan is for, written as something the clinic can check against
+   * itself without help: how many professionals, how many calls in a day. This
+   * is the line that decides the sale, so it says a number, not an adjective.
+   */
   audience: string
   // Monthly price as a plain number so annual pricing can be computed.
   // Use null for the custom "sob consulta" plan and fill priceText instead.
   priceMonthly: number | null
   priceText?: string
-  // One time installation fee for this plan, scaled to roughly one month of the
-  // plan. Null for the custom plan (quoted). Free on annual plans.
+  /**
+   * What the monthly price buys: one clinic, or a whole group. Sits next to the
+   * price because "is this per location or in total?" is the first question
+   * every multi site buyer asks, and the answer belongs where the number is.
+   */
+  priceUnit?: string
+  /**
+   * The metered allowance, in minutes of conversation. Minutes, not calls: the
+   * cost of running Telma is per minute, and a plan sold in calls prices a two
+   * minute booking the same as an eight minute one.
+   */
+  allowance?: string
+  /** The same allowance in calls, so the clinic can picture it. */
+  allowanceNote?: string
+  /**
+   * One time installation fee, per location. Null for the custom plan (quoted).
+   * Free on annual plans.
+   */
   installation: number | null
+  /** Extra installation charged per location beyond the first. Multi site only. */
+  installExtra?: string
+  /** What one location beyond those included costs. Multi site plan only. */
+  extraSite?: string
   features: string[]
   highlighted?: boolean
   isCustom?: boolean
@@ -133,6 +158,8 @@ export interface Content {
     label: string
     title: string
     intro: string
+    /** Tells the reader how to choose, without repeating the plans themselves. */
+    chooseHint: string
     monthly: string
     annual: string
     annualBadge: string

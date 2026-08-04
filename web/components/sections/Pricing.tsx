@@ -40,7 +40,13 @@ export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
         align="center"
       />
 
-      <Reveal className="mt-24 flex flex-col items-center gap-5 lg:mt-30">
+      {/* How to choose, not which to choose: the plans already say who they are
+          for, so this points the reader at the one number that decides it. */}
+      <Reveal delay={60} className="mt-6">
+        <p className="mx-auto max-w-xl text-center text-ink-mute">{c.pricing.chooseHint}</p>
+      </Reveal>
+
+      <Reveal className="mt-20 flex flex-col items-center gap-5 lg:mt-24">
         <div
           role="group"
           aria-label={`${c.pricing.monthly} / ${c.pricing.annual}`}
@@ -189,6 +195,11 @@ function PlanCard({
             </span>
             <span className="text-ink-mute">{c.pricing.perMonth}</span>
           </div>
+          {/* "Is this per location or in total?" is the first thing a group with
+              several addresses asks, so the answer sits against the number. */}
+          {plan.priceUnit && (
+            <p className="mt-2 text-sm font-medium text-ink-soft">{plan.priceUnit}</p>
+          )}
           {annual && (
             <p className="mt-2 text-sm text-ink-mute">
               <span className="line-through">
@@ -209,13 +220,26 @@ function PlanCard({
               ) : (
                 <>
                   {c.pricing.installLabel}: {formatEuro(plan.installation, lang)}
+                  {plan.installExtra ? `, ${plan.installExtra}` : null}
                 </>
               )}
             </p>
           )}
         </div>
 
-        <ul className="mt-10 flex flex-1 flex-col gap-3.5 border-t border-line pt-10">
+        {/* The allowance is the plan. It is metered in minutes because that is
+            how Telma costs, with the equivalent in calls underneath so a clinic
+            can picture it. */}
+        {plan.allowance && (
+          <div className="mt-9 border-t border-line pt-9">
+            <p className="font-medium text-ink">{plan.allowance}</p>
+            {plan.allowanceNote && (
+              <p className="mt-1 text-sm text-ink-mute">{plan.allowanceNote}</p>
+            )}
+          </div>
+        )}
+
+        <ul className="mt-9 flex flex-1 flex-col gap-3.5 border-t border-line pt-9">
           {plan.features.map((f, i) => (
             <li key={i} className="flex gap-3 text-ink-soft">
               <Check
@@ -228,6 +252,12 @@ function PlanCard({
             </li>
           ))}
         </ul>
+
+        {plan.extraSite && (
+          <p className="mt-9 border-t border-line pt-9 text-sm text-ink-mute">
+            {plan.extraSite}
+          </p>
+        )}
 
         <ButtonLink
           href="#contacto"
