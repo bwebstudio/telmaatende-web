@@ -100,7 +100,7 @@ export const en: Content = {
     paragraphs: [
       'The clinic sets which hours Telma can offer. Telma only offers those. There can never be an overlap with what the front desk books by hand.',
       'By default, Telma leaves a provisional booking that the clinic confirms. When calendar sync is in place, Telma can confirm directly.',
-      'All of this happens in the clinic dashboard, included on every plan: it is where you set the hours Telma may offer, block holidays and closures, confirm or change each provisional booking and listen to the calls. It opens on a phone like an app and updates live, so the front desk can keep up without sitting at a computer.',
+      'All of this happens in the clinic dashboard, included on every plan: it is where you set the hours Telma may offer, block holidays and closures, confirm or change each provisional booking and listen to the calls. It runs on the front desk computer, on a tablet and on a phone, and it updates live.',
     ],
   },
   pricing: {
@@ -135,7 +135,7 @@ export const en: Content = {
           'Automatic appointment booking',
           'Transfer to a real person',
           'A summary of every call by email',
-          'Clinic dashboard on your phone: bookings, hours, calls and recordings',
+          'Clinic dashboard: see and control everything, on any screen',
         ],
       },
       {
@@ -195,7 +195,7 @@ export const en: Content = {
     },
     finePrint: [
       'Installation included on every plan. There is no entry fee.',
-      'Additional minutes: 0.35€ per minute. We warn you before you reach the limit.',
+      'Additional minutes: 0.35€ per minute, or a pack of 250 minutes for 79€. We warn you before you reach the limit.',
       'A booking call lasts two to three minutes on average.',
       'Prices exclude VAT.',
       'No minimum term.',
@@ -284,11 +284,11 @@ export const en: Content = {
       },
       {
         q: 'What happens if I go over the minutes in my plan?',
-        a: 'Additional minutes are charged at 0.35€ each. Telma never stops answering because of the limit, and we warn you before you reach it. If it happens regularly, we suggest the next plan up.',
+        a: 'Additional minutes are charged at 0.35€ each, or you can add a pack of 250 minutes for 79€, which works out cheaper. Telma never stops answering because of the limit, and we warn you before you reach it. If it happens every month, the next plan up costs less than the extras.',
       },
       {
         q: 'What is the clinic dashboard, and what does it cost?',
-        a: 'It is where the clinic is in charge of Telma, and it is included on every plan at no extra cost. You see the day: provisional bookings waiting to be confirmed and the calls from today, updating live. You confirm, change or reject each booking and copy the patient details to paste into your clinic software. You mark on the calendar the hours Telma may offer and block holidays and closures. And you get the call history with filters, the written summary and the recording of each one. It installs on a phone like an app, with no store and no download.',
+        a: 'It is where the clinic is in charge of Telma, and it is included on every plan at no extra cost. You see the day: provisional bookings waiting to be confirmed and the calls from today, updating live. You confirm, change or reject each booking and copy the patient details to paste into your clinic software. You mark on the calendar the hours Telma may offer and block holidays and closures. And you get the call history with filters, the written summary and the recording of each one. It runs on any screen, and on a phone it installs like an app, with no store to go through.',
       },
       {
         q: 'Can I listen to the calls?',

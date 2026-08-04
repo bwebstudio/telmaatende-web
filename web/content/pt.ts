@@ -100,7 +100,7 @@ export const pt: Content = {
     paragraphs: [
       'A clínica define que horários pode oferecer a Telma. A Telma só oferece esses. Nunca pode haver sobreposição com o que a receção marca à mão.',
       'Por defeito, a Telma deixa uma pré-marcação que a clínica confirma. Quando existe sincronização de calendário, a Telma pode confirmar diretamente.',
-      'Tudo isto se faz no painel da clínica, incluído em todos os planos: é lá que marca os horários que a Telma pode oferecer, bloqueia feriados e férias, confirma ou altera cada pré-marcação e ouve as chamadas. Abre no telemóvel como uma aplicação e atualiza-se em direto, para a receção acompanhar sem estar ao computador.',
+      'Tudo isto se faz no painel da clínica, incluído em todos os planos: é lá que marca os horários que a Telma pode oferecer, bloqueia feriados e férias, confirma ou altera cada pré-marcação e ouve as chamadas. Funciona no computador da receção, no tablet e no telemóvel, e atualiza-se em direto.',
     ],
   },
   pricing: {
@@ -135,7 +135,7 @@ export const pt: Content = {
           'Marcação automática de consultas',
           'Transferência para pessoa real',
           'Resumo de cada chamada por email',
-          'Painel da clínica no telemóvel: marcações, horários, chamadas e gravações',
+          'Painel da clínica: vê e controla tudo, em qualquer ecrã',
         ],
       },
       {
@@ -195,7 +195,7 @@ export const pt: Content = {
     },
     finePrint: [
       'Instalação incluída em todos os planos. Não há custo de entrada.',
-      'Minutos adicionais: 0,35€ por minuto. Avisamos antes de chegar ao limite.',
+      'Minutos adicionais: 0,35€ por minuto, ou um pack de 250 minutos por 79€. Avisamos antes de chegar ao limite.',
       'Uma chamada de marcação dura, em média, dois a três minutos.',
       'Preços sem IVA.',
       'Sem período de permanência.',
@@ -284,11 +284,11 @@ export const pt: Content = {
       },
       {
         q: 'O que acontece se ultrapassar os minutos do meu plano?',
-        a: 'Os minutos adicionais são cobrados a 0,35€ cada. A Telma nunca deixa de atender por causa do limite, e avisamos antes de lá chegar. Se acontecer com regularidade, sugerimos o plano seguinte.',
+        a: 'Os minutos adicionais são cobrados a 0,35€ cada, ou pode juntar um pack de 250 minutos por 79€, que sai mais barato. A Telma nunca deixa de atender por causa do limite, e avisamos antes de lá chegar. Se acontecer todos os meses, o plano seguinte fica mais barato do que os extras.',
       },
       {
         q: 'O que é o painel da clínica, e quanto custa?',
-        a: 'É o sítio onde a clínica manda na Telma, e está incluído em todos os planos, sem custo extra. Vê o dia: as pré-marcações à espera de confirmação e as chamadas de hoje, a atualizar em direto. Confirma, altera ou rejeita cada marcação e copia os dados do paciente para colar no software da clínica. Marca no calendário os horários que a Telma pode oferecer e bloqueia feriados e férias. E tem o histórico de chamadas com filtros, o resumo escrito e a gravação de cada uma. Instala-se no telemóvel como uma aplicação, sem lojas nem descargas.',
+        a: 'É o sítio onde a clínica manda na Telma, e está incluído em todos os planos, sem custo extra. Vê o dia: as pré-marcações à espera de confirmação e as chamadas de hoje, a atualizar em direto. Confirma, altera ou rejeita cada marcação e copia os dados do paciente para colar no software da clínica. Marca no calendário os horários que a Telma pode oferecer e bloqueia feriados e férias. E tem o histórico de chamadas com filtros, o resumo escrito e a gravação de cada uma. Funciona em qualquer ecrã, e no telemóvel instala-se como uma aplicação, sem passar por lojas.',
       },
       {
         q: 'Posso ouvir as chamadas?',
