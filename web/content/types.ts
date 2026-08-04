@@ -61,6 +61,13 @@ export interface Plan {
    * (quoted). Free on annual plans, and payable in three parts on monthly ones.
    */
   installation: number | null
+  /**
+   * What the installation fee covers, when that is not obvious. The multi site
+   * plan is sold per group, so its installation covers the whole group and has
+   * to say so: a single figure next to a plan that includes three locations
+   * otherwise reads as the price of one.
+   */
+  installNote?: string
   /** What one location beyond those included costs. Multi site plan only. */
   extraSite?: string
   features: string[]

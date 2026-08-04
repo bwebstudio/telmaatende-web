@@ -220,6 +220,7 @@ function PlanCard({
               ) : (
                 <>
                   {c.pricing.installLabel}: {formatEuro(plan.installation, lang)}
+                  {plan.installNote ? ` ${plan.installNote}` : null}
                   <span aria-hidden className="mx-1.5 text-line-strong">
                     ·
                   </span>

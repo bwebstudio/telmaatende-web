@@ -172,7 +172,8 @@ export const es: Content = {
         priceUnit: 'por grupo, incluye 3 sedes',
         allowance: '2.000 minutos de conversación al mes',
         allowanceNote: 'unas 800 llamadas, compartidas entre las sedes',
-        installation: 480,
+        installation: 600,
+        installNote: 'por las tres sedes',
         extraSite:
           'Cada sede más allá de las tres: 149 € al mes, con 500 minutos más, y 180 € de instalación.',
         features: [
@@ -206,7 +207,7 @@ export const es: Content = {
       ],
     },
     finePrint: [
-      'Instalación: 180 € (Essencial), 300 € (Clínica), 480 € (Rede), más 180 € por cada sede adicional. Puede pagarse en tres plazos, y es gratis en los planes anuales.',
+      'Instalación: 180 € (Essencial), 300 € (Clínica), 600 € (Rede, por las tres sedes), más 180 € por cada sede adicional. Puede pagarse en tres plazos, y es gratis en los planes anuales.',
       'Minutos adicionales: 0,35 € por minuto. Le avisamos antes de llegar al límite.',
       'Una llamada para pedir cita dura, de media, entre dos y tres minutos.',
       'Precios sin IVA.',
@@ -264,7 +265,7 @@ export const es: Content = {
       },
       {
         q: 'Tengo cinco sedes. ¿Cuál es mi plan? ¿Pago por sede o en total?',
-        a: 'Su plan es el Rede, y paga en total, no por sede. El Rede cuesta 599 € al mes e incluye tres sedes; las dos restantes son 149 € cada una, así que 897 € al mes por las cinco. Un solo contrato, una sola factura y todas las sedes en el mismo panel, cada una con su número y su agenda.',
+        a: 'Su plan es el Rede, y paga en total, no por sede. El Rede cuesta 599 € al mes e incluye tres sedes; las dos restantes son 149 € cada una, así que 897 € al mes por las cinco. La instalación son 600 € por las tres incluidas más 180 € por cada una de las otras dos, 960 € en total, que puede pagar en tres plazos o no pagar en absoluto si elige el plan anual. Un solo contrato, una sola factura y todas las sedes en el mismo panel, cada una con su número y su agenda.',
       },
       {
         q: '¿Telma puede dar dos citas a la misma hora?',

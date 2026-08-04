@@ -164,7 +164,8 @@ export const pt: Content = {
         priceUnit: 'por grupo, inclui 3 sedes',
         allowance: '2.000 minutos de conversa por mês',
         allowanceNote: 'cerca de 800 chamadas, partilhados entre as sedes',
-        installation: 480,
+        installation: 600,
+        installNote: 'pelas três sedes',
         extraSite:
           'Cada sede além das três: 149€ por mês, com mais 500 minutos, e 180€ de instalação.',
         features: [
@@ -198,7 +199,7 @@ export const pt: Content = {
       ],
     },
     finePrint: [
-      'Instalação: 180€ (Essencial), 300€ (Clínica), 480€ (Rede), mais 180€ por cada sede adicional. Pode ser paga em três prestações, e é grátis nos planos anuais.',
+      'Instalação: 180€ (Essencial), 300€ (Clínica), 600€ (Rede, pelas três sedes), mais 180€ por cada sede adicional. Pode ser paga em três prestações, e é grátis nos planos anuais.',
       'Minutos adicionais: 0,35€ por minuto. Avisamos antes de chegar ao limite.',
       'Uma chamada de marcação dura, em média, dois a três minutos.',
       'Preços sem IVA.',
@@ -256,7 +257,7 @@ export const pt: Content = {
       },
       {
         q: 'Tenho cinco sedes. Qual é o meu plano? Pago por sede ou no total?',
-        a: 'O seu plano é o Rede, e paga no total, não por sede. O Rede custa 599€ por mês e inclui três sedes; as duas restantes ficam a 149€ cada, portanto 897€ por mês pelas cinco. Um só contrato, uma só fatura e todas as sedes no mesmo painel, cada uma com o seu número e a sua agenda.',
+        a: 'O seu plano é o Rede, e paga no total, não por sede. O Rede custa 599€ por mês e inclui três sedes; as duas restantes ficam a 149€ cada, portanto 897€ por mês pelas cinco. A instalação são 600€ pelas três incluídas mais 180€ por cada uma das outras duas, 960€ ao todo, que pode pagar em três prestações ou não pagar de todo se escolher o plano anual. Um só contrato, uma só fatura e todas as sedes no mesmo painel, cada uma com o seu número e a sua agenda.',
       },
       {
         q: 'A Telma pode marcar duas consultas à mesma hora?',

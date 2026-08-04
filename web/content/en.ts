@@ -164,7 +164,8 @@ export const en: Content = {
         priceUnit: 'per group, includes 3 locations',
         allowance: '2,000 minutes of conversation per month',
         allowanceNote: 'around 800 calls, shared across the locations',
-        installation: 480,
+        installation: 600,
+        installNote: 'for the three locations',
         extraSite:
           'Each location beyond the three: 149€ per month, with 500 more minutes, and 180€ of installation.',
         features: [
@@ -198,7 +199,7 @@ export const en: Content = {
       ],
     },
     finePrint: [
-      'Installation: 180€ (Essencial), 300€ (Clínica), 480€ (Rede), plus 180€ for each additional location. It can be paid in three instalments, and it is free on annual plans.',
+      'Installation: 180€ (Essencial), 300€ (Clínica), 600€ (Rede, for the three locations), plus 180€ for each additional location. It can be paid in three instalments, and it is free on annual plans.',
       'Additional minutes: 0.35€ per minute. We warn you before you reach the limit.',
       'A booking call lasts two to three minutes on average.',
       'Prices exclude VAT.',
@@ -256,7 +257,7 @@ export const en: Content = {
       },
       {
         q: 'I have five locations. Which plan is mine, and do I pay per location or in total?',
-        a: 'Your plan is Rede, and you pay in total, not per location. Rede is 599€ per month and includes three locations; the remaining two are 149€ each, so 897€ per month for all five. One contract, one invoice and every location in the same dashboard, each with its own number and its own schedule.',
+        a: 'Your plan is Rede, and you pay in total, not per location. Rede is 599€ per month and includes three locations; the remaining two are 149€ each, so 897€ per month for all five. Installation is 600€ for the three included plus 180€ for each of the other two, 960€ in all, which you can pay in three instalments or not pay at all if you choose the annual plan. One contract, one invoice and every location in the same dashboard, each with its own number and its own schedule.',
       },
       {
         q: 'Can Telma book two appointments at the same time?',
