@@ -187,34 +187,55 @@
   /* --- THE HERO'S VERTICAL SCALE ------------------------------------------
      The hero takes its height from the text column and the footage stretches to
      match, which is what puts both halves on the same two lines. The catch is
-     that a text block does not grow with the screen: measured on three
-     viewports, the hero ended at y=563 on all of them. On a 2560x1440 monitor
-     that left it occupying the top 39% and the next section already in view.
+     that a text block does not grow with the screen, so on a tall monitor the
+     composition sat in the top two thirds with the next section's eyebrow
+     already in view underneath it.
 
-     So the air inside the text grows instead. Widening the column cannot work —
-     it unwraps the headline and makes the block shorter — but spacing its parts
-     further apart lifts the whole composition: the button moves down, the
-     footage grows with it, and the two columns stay locked at top and bottom.
+     The previous fix grew the air inside the text, fluidly, with `100vw`. It was
+     the wrong variable and the measurements say so plainly. Keyed to width, the
+     hero filled 99% of a 1280x720 window, 75% of a 1728x1000 one and 68% of a
+     2560x1340 one — it got *worse* as the screen got taller, because the space
+     it had to fill grows with height while its own height grew with width.
 
-     Fluid rather than stepped. The lower bound is the value every screen under
-     1536px already used, so nothing below that moves and there is no threshold
-     to see. Above it the growth is linear in viewport width and capped, so a
-     wider monitor gets a taller hero and never a runaway one. */
+     So the frame is told what to fill. `.hero-fill` gives the section the
+     viewport minus the 104px navbar, which is a floor and not a fixed height:
+     where the composition is naturally taller — a short laptop window, a long
+     translation — it simply stays taller and nothing is squashed. */
   .hero-gap-lead {
-    margin-top: clamp(2.25rem, calc(2.25rem + (100vw - 96rem) * 0.051), 5.5rem);
+    margin-top: 2.25rem;
   }
 
   .hero-gap-action {
-    margin-top: clamp(2.75rem, calc(2.75rem + (100vw - 96rem) * 0.059), 6.5rem);
+    margin-top: 2.75rem;
   }
 
   .hero-tail {
-    padding-bottom: clamp(7.5rem, calc(7.5rem + (100vw - 96rem) * 0.088), 15rem);
+    padding-bottom: 7.5rem;
   }
 
   @media (min-width: 1024px) {
     .hero-tail {
-      padding-bottom: clamp(9.5rem, calc(9.5rem + (100vw - 96rem) * 0.088), 15rem);
+      padding-bottom: 9.5rem;
+    }
+
+    .hero-fill {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      /* svh, not vh: on the phones this rule never reaches, vh measures the
+         viewport as if the browser chrome were retracted, which is a hero taller
+         than the screen it is on. */
+      min-height: calc(100svh - 6.5rem);
+    }
+
+    /* The footage grows with the frame — it is absolutely positioned inside this
+       cell, so whatever height the row takes, it takes. Capped at 46rem, past
+       which a 16:9 source is cropped so narrow that the phone and the open book
+       start to leave the shot. Beyond the cap the leftover air is centred rather
+       than dropped at the bottom, which is what the complaint was about. */
+    .hero-frame {
+      flex: 1 1 auto;
+      max-height: 46rem;
     }
   }
 

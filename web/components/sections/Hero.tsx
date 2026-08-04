@@ -48,20 +48,25 @@ import { Cinemagraph } from '@/components/ui/Cinemagraph'
  * It also means the ratio is not a number I chose. It falls out of how much the
  * headline has to say, which is why it lands near 2:1 in every language.
  *
- * A wider screen does make the frame more panoramic, and widening the text
- * column cannot fix it: that unwraps the headline from four lines to two, which
- * shortens the block and makes the ratio worse instead of better. Stepping the
- * column at a breakpoint was worse still — it made the footage jump 191px
- * narrower crossing 1536px.
+ * AND ITS HEIGHT IS THE SCREEN'S.
  *
- * What does work is spacing the text apart rather than widening it. The gaps
- * inside the column grow with the viewport, so the button moves down, the
- * footage grows to match, and both halves stay locked top and bottom. See
- * .hero-gap-lead and .hero-gap-action in globals.css.
+ * Text alone cannot fill a window: measured, the hero held 99% of a 1280x720
+ * viewport and 68% of a 2560x1340 one, ending in a field of white with the next
+ * section's eyebrow stranded at the bottom of it. Growing the gaps inside the
+ * column was the first answer and it was keyed to viewport width, which is not
+ * the dimension that was short.
  *
- * So the column stays flat and the crop is centred on the appointment rather
- * than on the middle of the frame. What a wide screen takes away is wall and
- * ceiling; the phone, the book and the booking stay in shot at every width.
+ * `.hero-fill` sets the section to the viewport less the navbar and centres what
+ * is inside, and the row carrying both columns takes the slack. A minimum, not a
+ * height — where the composition is naturally taller it stays taller. The
+ * footage is absolutely positioned in its cell, so it grows with the row and the
+ * two halves stay locked top and bottom on every screen.
+ *
+ * Widening the text column was never an option: it unwraps the headline from
+ * four lines to two, which shortens the block and makes the ratio worse. So the
+ * column stays flat and the crop is centred on the appointment rather than on
+ * the middle of the frame. What a wide screen takes away is wall and ceiling;
+ * the phone, the book and the booking stay in shot at every width.
  *
  * No border, no shadow, no panel. The left corners carry the site's 12px; the
  * right ones do not exist.
@@ -81,9 +86,9 @@ import { Cinemagraph } from '@/components/ui/Cinemagraph'
  */
 export function Hero({ c }: { c: Content }) {
   return (
-    <section className="relative overflow-hidden hero-tail bg-bg pt-12 sm:pt-16 lg:pt-20">
-      <div className="hero-gutter grid grid-cols-1 gap-10 pr-6 sm:pr-10 lg:grid-cols-[minmax(0,32rem)_1fr] lg:items-stretch lg:gap-x-10 lg:pr-0">
-        <div>
+    <section className="hero-fill relative overflow-hidden hero-tail bg-bg pt-12 sm:pt-16 lg:pt-20">
+      <div className="hero-frame hero-gutter grid grid-cols-1 gap-10 pr-6 sm:pr-10 lg:grid-cols-[minmax(0,32rem)_1fr] lg:items-stretch lg:gap-x-10 lg:pr-0">
+        <div className="lg:flex lg:flex-col lg:justify-center">
           <Reveal>
             <h1 className="display text-hero text-balance text-ink lg:text-[3rem] xl:text-[3.25rem]">
               {c.hero.headlineLines.map((line, i) => (
