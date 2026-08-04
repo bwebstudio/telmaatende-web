@@ -86,6 +86,17 @@ export interface Content {
   meta: {
     title: string
     description: string
+    /**
+     * The share preview is three surfaces and they must not repeat each other.
+     * The card image already carries the claim — "Nenhuma chamada perdida" —
+     * drawn large, so the title says what Telma *is* and the description says
+     * what she *does*.
+     *
+     * ogTitle is the line every network shows, X and LinkedIn included, and
+     * both cut it near 70 characters. ogDescription is shown in full by
+     * WhatsApp and Facebook and dropped entirely by X, so it must add
+     * something and never be the only place a fact appears.
+     */
     ogTitle: string
     ogDescription: string
   }

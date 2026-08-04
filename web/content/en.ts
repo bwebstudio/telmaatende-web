@@ -5,8 +5,9 @@ export const en: Content = {
     title: 'Telma Atende: the receptionist who answers when no one can',
     description:
       'Telma is a voice receptionist that answers your clinic phone, answers patient questions using your clinic information, books appointments and hands the call to a real person when it is urgent. For dental and aesthetic clinics in Portugal.',
-    ogTitle: 'Telma Atende',
-    ogDescription: 'No missed calls. No lost patients.',
+    ogTitle: "Telma Atende — your clinic's virtual receptionist",
+    ogDescription:
+      'She answers the phone when no one can, replies to patient questions, books appointments and hands the call to a real person when it is urgent.',
   },
   langSwitchLabel: 'Language',
   skipToContent: 'Skip to content',

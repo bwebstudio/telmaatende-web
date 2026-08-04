@@ -5,8 +5,9 @@ export const pt: Content = {
     title: 'Telma Atende: a receção que atende quando ninguém pode',
     description:
       'A Telma é uma rececionista virtual com voz que atende o telefone da sua clínica, responde às dúvidas dos pacientes com a informação da clínica, marca consultas e passa a chamada a uma pessoa real quando é urgente. Para clínicas dentárias e de estética em Portugal.',
-    ogTitle: 'Telma Atende',
-    ogDescription: 'Nenhuma chamada perdida. Nenhum paciente perdido.',
+    ogTitle: 'Telma Atende — a rececionista virtual da sua clínica',
+    ogDescription:
+      'Atende o telefone quando ninguém pode, responde às dúvidas dos pacientes, marca consultas e passa a chamada a uma pessoa real quando é urgente.',
   },
   langSwitchLabel: 'Idioma',
   skipToContent: 'Saltar para o conteúdo',
