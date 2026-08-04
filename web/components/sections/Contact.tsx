@@ -42,7 +42,7 @@ export function Contact({ c }: { c: Content }) {
         `${f.message}:`,
         get('message'),
       ].join('\n')
-      const subject = `${c.contact.label} — ${get('name') || 'Telma'}`
+      const subject = `${c.contact.label}: ${get('name') || 'Telma'}`
       window.location.href = `mailto:${c.footer.email}?subject=${encodeURIComponent(
         subject
       )}&body=${encodeURIComponent(body)}`

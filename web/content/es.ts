@@ -13,7 +13,7 @@ export const es: Content = {
     title: 'Telma Atende: la recepción que atiende cuando nadie puede',
     description:
       'Telma es una recepcionista virtual con voz que atiende el teléfono de su clínica, responde a las dudas de los pacientes con la información de la clínica, concierta citas y pasa la llamada a una persona real cuando es urgente. Para clínicas dentales y de estética en Portugal.',
-    ogTitle: 'Telma Atende — la recepcionista virtual de su clínica',
+    ogTitle: 'Telma Atende: la recepcionista virtual de su clínica',
     ogDescription:
       'Atiende el teléfono cuando nadie puede, responde a las dudas de los pacientes, concierta citas y pasa la llamada a una persona real cuando es urgente.',
   },
