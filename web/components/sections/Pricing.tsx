@@ -73,13 +73,7 @@ export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
         </div>
 
         {annual && (
-          <p className="text-sm text-ink-soft">
-            <span className="font-medium text-brand-accent">{c.pricing.annualBadge}</span>
-            <span aria-hidden className="mx-2 text-line-strong">
-              ·
-            </span>
-            {c.pricing.installFreeAnnual}
-          </p>
+          <p className="text-sm font-medium text-brand-accent">{c.pricing.annualBadge}</p>
         )}
       </Reveal>
 
@@ -211,24 +205,12 @@ function PlanCard({
               {c.pricing.billedAnnually}
             </p>
           )}
-          {plan.installation !== null && (
-            <p className="mt-2 text-sm text-ink-mute">
-              {annual ? (
-                <span className="font-medium text-brand-accent">
-                  {c.pricing.installFreeAnnual}
-                </span>
-              ) : (
-                <>
-                  {c.pricing.installLabel}: {formatEuro(plan.installation, lang)}
-                  {plan.installNote ? ` ${plan.installNote}` : null}
-                  <span aria-hidden className="mx-1.5 text-line-strong">
-                    ·
-                  </span>
-                  {c.pricing.installSplit} {formatEuro(plan.installation / 3, lang)}
-                </>
-              )}
-            </p>
-          )}
+          {/* No entry fee on any plan. Setting a clinic up is real work, but it
+              is carried by the subscription: a number here is the one figure a
+              clinic sees before it knows whether any of this works. */}
+          <p className="mt-2 text-sm font-medium text-brand-accent">
+            {c.pricing.installIncluded}
+          </p>
         </div>
 
         {/* The allowance is the plan. It is metered in minutes because that is

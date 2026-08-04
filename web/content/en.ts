@@ -100,6 +100,7 @@ export const en: Content = {
     paragraphs: [
       'The clinic sets which hours Telma can offer. Telma only offers those. There can never be an overlap with what the front desk books by hand.',
       'By default, Telma leaves a provisional booking that the clinic confirms. When calendar sync is in place, Telma can confirm directly.',
+      'All of this happens in the clinic dashboard, included on every plan: it is where you set the hours Telma may offer, block holidays and closures, confirm or change each provisional booking and listen to the calls. It opens on a phone like an app and updates live, so the front desk can keep up without sitting at a computer.',
     ],
   },
   pricing: {
@@ -113,11 +114,9 @@ export const en: Content = {
     annualBadge: '2 months free',
     perMonth: '/mo',
     billedAnnually: 'billed annually',
-    installFreeAnnual: 'Free installation',
-    installSplit: 'or 3 payments of',
+    installIncluded: 'Installation included',
     mostChosen: 'Most chosen',
     fromLabel: 'was',
-    installLabel: 'Installation',
     whatsappCardNote: 'Add WhatsApp for +49€/mo',
     planCta: 'Talk to us',
     customCta: 'Talk to us',
@@ -130,13 +129,13 @@ export const en: Content = {
         priceUnit: 'per clinic',
         allowance: '250 minutes of conversation per month',
         allowanceNote: 'around 100 calls',
-        installation: 180,
         features: [
           '24 hour answering',
           'Answers questions using your clinic information',
           'Automatic appointment booking',
           'Transfer to a real person',
           'A summary of every call by email',
+          'Clinic dashboard on your phone: bookings, hours, calls and recordings',
         ],
       },
       {
@@ -147,7 +146,6 @@ export const en: Content = {
         priceUnit: 'per clinic',
         allowance: '750 minutes of conversation per month',
         allowanceNote: 'around 300 calls',
-        installation: 300,
         highlighted: true,
         features: [
           'Everything in Essencial',
@@ -164,10 +162,8 @@ export const en: Content = {
         priceUnit: 'per group, includes 3 locations',
         allowance: '2,000 minutes of conversation per month',
         allowanceNote: 'around 800 calls, shared across the locations',
-        installation: 600,
-        installNote: 'for the three locations',
         extraSite:
-          'Each location beyond the three: 149€ per month, with 500 more minutes, and 180€ of installation.',
+          'Each location beyond the three: 149€ per month, with 500 more minutes and installation included.',
         features: [
           'Everything in Clínica',
           'Every location in one dashboard, one contract and one invoice',
@@ -181,7 +177,6 @@ export const en: Content = {
         audience: 'For groups with more than 5 locations or over 2,000 minutes per month',
         priceMonthly: null,
         priceText: 'on request',
-        installation: null,
         isCustom: true,
         features: [],
       },
@@ -199,7 +194,7 @@ export const en: Content = {
       ],
     },
     finePrint: [
-      'Installation: 180€ (Essencial), 300€ (Clínica), 600€ (Rede, for the three locations), plus 180€ for each additional location. It can be paid in three instalments, and it is free on annual plans.',
+      'Installation included on every plan. There is no entry fee.',
       'Additional minutes: 0.35€ per minute. We warn you before you reach the limit.',
       'A booking call lasts two to three minutes on average.',
       'Prices exclude VAT.',
@@ -257,7 +252,7 @@ export const en: Content = {
       },
       {
         q: 'I have five locations. Which plan is mine, and do I pay per location or in total?',
-        a: 'Your plan is Rede, and you pay in total, not per location. Rede is 599€ per month and includes three locations; the remaining two are 149€ each, so 897€ per month for all five. Installation is 600€ for the three included plus 180€ for each of the other two, 960€ in all, which you can pay in three instalments or not pay at all if you choose the annual plan. One contract, one invoice and every location in the same dashboard, each with its own number and its own schedule.',
+        a: 'Your plan is Rede, and you pay in total, not per location. Rede is 599€ per month and includes three locations; the remaining two are 149€ each, so 897€ per month for all five, with installation of all five included. One contract, one invoice and every location in the same dashboard, each with its own number and its own schedule.',
       },
       {
         q: 'Can Telma book two appointments at the same time?',
@@ -272,8 +267,8 @@ export const en: Content = {
         a: 'Usually between 3 and 5 working days.',
       },
       {
-        q: 'Why is installation charged, and do I have to pay it all at once?',
-        a: "Installation is people doing work, not a fee: we gather your clinic information, write Telma's answers with you, choose the voice, sort the forwarding out with your operator, make test calls and train your front desk. It costs less on the smaller plans because it is less work: a practice with one or two professionals has fewer treatments to document and a single schedule. You do not have to pay it at once: you can split it into three instalments, and on the annual plan there is no installation fee at all.",
+        q: 'Does installation cost anything?',
+        a: "No. It is included on every plan and there is no entry fee. And it is real work: we gather your clinic information, write Telma's answers with you, choose the voice, sort the forwarding out with your operator, make test calls and train your front desk. You pay the first month and nothing else.",
       },
       {
         q: 'Does Telma speak English?',
@@ -290,6 +285,10 @@ export const en: Content = {
       {
         q: 'What happens if I go over the minutes in my plan?',
         a: 'Additional minutes are charged at 0.35€ each. Telma never stops answering because of the limit, and we warn you before you reach it. If it happens regularly, we suggest the next plan up.',
+      },
+      {
+        q: 'What is the clinic dashboard, and what does it cost?',
+        a: 'It is where the clinic is in charge of Telma, and it is included on every plan at no extra cost. You see the day: provisional bookings waiting to be confirmed and the calls from today, updating live. You confirm, change or reject each booking and copy the patient details to paste into your clinic software. You mark on the calendar the hours Telma may offer and block holidays and closures. And you get the call history with filters, the written summary and the recording of each one. It installs on a phone like an app, with no store and no download.',
       },
       {
         q: 'Can I listen to the calls?',

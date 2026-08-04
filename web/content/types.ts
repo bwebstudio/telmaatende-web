@@ -54,20 +54,6 @@ export interface Plan {
   allowance?: string
   /** The same allowance in calls, so the clinic can picture it. */
   allowanceNote?: string
-  /**
-   * One time installation fee. It scales with the plan because the work does:
-   * a two professional practice has fewer treatments to document, one schedule
-   * instead of six and a smaller team to train. Null for the custom plan
-   * (quoted). Free on annual plans, and payable in three parts on monthly ones.
-   */
-  installation: number | null
-  /**
-   * What the installation fee covers, when that is not obvious. The multi site
-   * plan is sold per group, so its installation covers the whole group and has
-   * to say so: a single figure next to a plan that includes three locations
-   * otherwise reads as the price of one.
-   */
-  installNote?: string
   /** What one location beyond those included costs. Multi site plan only. */
   extraSite?: string
   features: string[]
@@ -172,16 +158,15 @@ export interface Content {
     annualBadge: string
     perMonth: string
     billedAnnually: string
-    installFreeAnnual: string
     /**
-     * Prefix for the instalment option, e.g. "or in three payments of". The
-     * objection to an installation fee is usually when it is due, not what it
-     * costs, so the answer belongs on the card next to the amount.
+     * Setting a clinic up is ten to fifteen hours of real work, but every
+     * comparable product hands it over with no entry fee, so a figure here is
+     * the one number a clinic sees before it knows whether any of this works.
+     * The work is still done; it is carried by the subscription instead.
      */
-    installSplit: string
+    installIncluded: string
     mostChosen: string
     fromLabel: string
-    installLabel: string
     whatsappCardNote: string
     planCta: string
     customCta: string

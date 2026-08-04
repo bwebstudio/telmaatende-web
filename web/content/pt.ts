@@ -100,6 +100,7 @@ export const pt: Content = {
     paragraphs: [
       'A clínica define que horários pode oferecer a Telma. A Telma só oferece esses. Nunca pode haver sobreposição com o que a receção marca à mão.',
       'Por defeito, a Telma deixa uma pré-marcação que a clínica confirma. Quando existe sincronização de calendário, a Telma pode confirmar diretamente.',
+      'Tudo isto se faz no painel da clínica, incluído em todos os planos: é lá que marca os horários que a Telma pode oferecer, bloqueia feriados e férias, confirma ou altera cada pré-marcação e ouve as chamadas. Abre no telemóvel como uma aplicação e atualiza-se em direto, para a receção acompanhar sem estar ao computador.',
     ],
   },
   pricing: {
@@ -113,11 +114,9 @@ export const pt: Content = {
     annualBadge: '2 meses grátis',
     perMonth: '/mês',
     billedAnnually: 'faturado anualmente',
-    installFreeAnnual: 'Instalação gratuita',
-    installSplit: 'ou 3 prestações de',
+    installIncluded: 'Instalação incluída',
     mostChosen: 'Mais escolhido',
     fromLabel: 'antes',
-    installLabel: 'Instalação',
     whatsappCardNote: 'Junte o WhatsApp por +49€/mês',
     planCta: 'Falar connosco',
     customCta: 'Falar connosco',
@@ -130,13 +129,13 @@ export const pt: Content = {
         priceUnit: 'por clínica',
         allowance: '250 minutos de conversa por mês',
         allowanceNote: 'cerca de 100 chamadas',
-        installation: 180,
         features: [
           'Atendimento 24 horas',
           'Responde a dúvidas com a informação da clínica',
           'Marcação automática de consultas',
           'Transferência para pessoa real',
           'Resumo de cada chamada por email',
+          'Painel da clínica no telemóvel: marcações, horários, chamadas e gravações',
         ],
       },
       {
@@ -147,7 +146,6 @@ export const pt: Content = {
         priceUnit: 'por clínica',
         allowance: '750 minutos de conversa por mês',
         allowanceNote: 'cerca de 300 chamadas',
-        installation: 300,
         highlighted: true,
         features: [
           'Tudo o que inclui o Essencial',
@@ -164,10 +162,8 @@ export const pt: Content = {
         priceUnit: 'por grupo, inclui 3 sedes',
         allowance: '2.000 minutos de conversa por mês',
         allowanceNote: 'cerca de 800 chamadas, partilhados entre as sedes',
-        installation: 600,
-        installNote: 'pelas três sedes',
         extraSite:
-          'Cada sede além das três: 149€ por mês, com mais 500 minutos, e 180€ de instalação.',
+          'Cada sede além das três: 149€ por mês, com mais 500 minutos e a instalação incluída.',
         features: [
           'Tudo o que inclui o Clínica',
           'Todas as sedes num só painel, um só contrato e uma só fatura',
@@ -181,7 +177,6 @@ export const pt: Content = {
         audience: 'Para grupos com mais de 5 sedes ou mais de 2.000 minutos por mês',
         priceMonthly: null,
         priceText: 'sob consulta',
-        installation: null,
         isCustom: true,
         features: [],
       },
@@ -199,7 +194,7 @@ export const pt: Content = {
       ],
     },
     finePrint: [
-      'Instalação: 180€ (Essencial), 300€ (Clínica), 600€ (Rede, pelas três sedes), mais 180€ por cada sede adicional. Pode ser paga em três prestações, e é grátis nos planos anuais.',
+      'Instalação incluída em todos os planos. Não há custo de entrada.',
       'Minutos adicionais: 0,35€ por minuto. Avisamos antes de chegar ao limite.',
       'Uma chamada de marcação dura, em média, dois a três minutos.',
       'Preços sem IVA.',
@@ -257,7 +252,7 @@ export const pt: Content = {
       },
       {
         q: 'Tenho cinco sedes. Qual é o meu plano? Pago por sede ou no total?',
-        a: 'O seu plano é o Rede, e paga no total, não por sede. O Rede custa 599€ por mês e inclui três sedes; as duas restantes ficam a 149€ cada, portanto 897€ por mês pelas cinco. A instalação são 600€ pelas três incluídas mais 180€ por cada uma das outras duas, 960€ ao todo, que pode pagar em três prestações ou não pagar de todo se escolher o plano anual. Um só contrato, uma só fatura e todas as sedes no mesmo painel, cada uma com o seu número e a sua agenda.',
+        a: 'O seu plano é o Rede, e paga no total, não por sede. O Rede custa 599€ por mês e inclui três sedes; as duas restantes ficam a 149€ cada, portanto 897€ por mês pelas cinco, com a instalação das cinco incluída. Um só contrato, uma só fatura e todas as sedes no mesmo painel, cada uma com o seu número e a sua agenda.',
       },
       {
         q: 'A Telma pode marcar duas consultas à mesma hora?',
@@ -272,8 +267,8 @@ export const pt: Content = {
         a: 'Normalmente entre 3 e 5 dias úteis.',
       },
       {
-        q: 'Porque é que a instalação se paga, e tenho de a pagar de uma vez?',
-        a: 'A instalação é trabalho de pessoas, não uma taxa: recolhemos a informação da clínica, escrevemos com ela as respostas da Telma, escolhemos a voz, tratamos do encaminhamento com a sua operadora, fazemos chamadas de teste e formamos a receção. Custa menos nos planos mais pequenos porque também dá menos trabalho: um consultório de um ou dois profissionais tem menos tratamentos a documentar e uma só agenda. Não tem de a pagar de uma vez: pode dividi-la em três prestações, e no plano anual não paga instalação nenhuma.',
+        q: 'A instalação tem algum custo?',
+        a: 'Não. Está incluída em todos os planos e não há custo de entrada. E é trabalho a sério: recolhemos a informação da clínica, escrevemos consigo as respostas da Telma, escolhemos a voz, tratamos do encaminhamento com a sua operadora, fazemos chamadas de teste e formamos a receção. Paga a primeira mensalidade e mais nada.',
       },
       {
         q: 'A Telma fala inglês?',
@@ -290,6 +285,10 @@ export const pt: Content = {
       {
         q: 'O que acontece se ultrapassar os minutos do meu plano?',
         a: 'Os minutos adicionais são cobrados a 0,35€ cada. A Telma nunca deixa de atender por causa do limite, e avisamos antes de lá chegar. Se acontecer com regularidade, sugerimos o plano seguinte.',
+      },
+      {
+        q: 'O que é o painel da clínica, e quanto custa?',
+        a: 'É o sítio onde a clínica manda na Telma, e está incluído em todos os planos, sem custo extra. Vê o dia: as pré-marcações à espera de confirmação e as chamadas de hoje, a atualizar em direto. Confirma, altera ou rejeita cada marcação e copia os dados do paciente para colar no software da clínica. Marca no calendário os horários que a Telma pode oferecer e bloqueia feriados e férias. E tem o histórico de chamadas com filtros, o resumo escrito e a gravação de cada uma. Instala-se no telemóvel como uma aplicação, sem lojas nem descargas.',
       },
       {
         q: 'Posso ouvir as chamadas?',
