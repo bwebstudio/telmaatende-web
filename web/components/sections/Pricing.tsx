@@ -220,7 +220,10 @@ function PlanCard({
               ) : (
                 <>
                   {c.pricing.installLabel}: {formatEuro(plan.installation, lang)}
-                  {plan.installExtra ? `, ${plan.installExtra}` : null}
+                  <span aria-hidden className="mx-1.5 text-line-strong">
+                    ·
+                  </span>
+                  {c.pricing.installSplit} {formatEuro(plan.installation / 3, lang)}
                 </>
               )}
             </p>

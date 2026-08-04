@@ -55,12 +55,12 @@ export interface Plan {
   /** The same allowance in calls, so the clinic can picture it. */
   allowanceNote?: string
   /**
-   * One time installation fee, per location. Null for the custom plan (quoted).
-   * Free on annual plans.
+   * One time installation fee. It scales with the plan because the work does:
+   * a two professional practice has fewer treatments to document, one schedule
+   * instead of six and a smaller team to train. Null for the custom plan
+   * (quoted). Free on annual plans, and payable in three parts on monthly ones.
    */
   installation: number | null
-  /** Extra installation charged per location beyond the first. Multi site only. */
-  installExtra?: string
   /** What one location beyond those included costs. Multi site plan only. */
   extraSite?: string
   features: string[]
@@ -166,6 +166,12 @@ export interface Content {
     perMonth: string
     billedAnnually: string
     installFreeAnnual: string
+    /**
+     * Prefix for the instalment option, e.g. "or in three payments of". The
+     * objection to an installation fee is usually when it is due, not what it
+     * costs, so the answer belongs on the card next to the amount.
+     */
+    installSplit: string
     mostChosen: string
     fromLabel: string
     installLabel: string

@@ -114,6 +114,7 @@ export const en: Content = {
     perMonth: '/mo',
     billedAnnually: 'billed annually',
     installFreeAnnual: 'Free installation',
+    installSplit: 'or 3 payments of',
     mostChosen: 'Most chosen',
     fromLabel: 'was',
     installLabel: 'Installation',
@@ -129,7 +130,7 @@ export const en: Content = {
         priceUnit: 'per clinic',
         allowance: '250 minutes of conversation per month',
         allowanceNote: 'around 100 calls',
-        installation: 290,
+        installation: 180,
         features: [
           '24 hour answering',
           'Answers questions using your clinic information',
@@ -146,7 +147,7 @@ export const en: Content = {
         priceUnit: 'per clinic',
         allowance: '750 minutes of conversation per month',
         allowanceNote: 'around 300 calls',
-        installation: 290,
+        installation: 300,
         highlighted: true,
         features: [
           'Everything in Essencial',
@@ -163,9 +164,9 @@ export const en: Content = {
         priceUnit: 'per group, includes 3 locations',
         allowance: '2,000 minutes of conversation per month',
         allowanceNote: 'around 800 calls, shared across the locations',
-        installation: 290,
-        installExtra: 'plus 190€ for each location beyond the first',
-        extraSite: 'Each location beyond the three: 149€ per month, with 500 more minutes.',
+        installation: 480,
+        extraSite:
+          'Each location beyond the three: 149€ per month, with 500 more minutes, and 180€ of installation.',
         features: [
           'Everything in Clínica',
           'Every location in one dashboard, one contract and one invoice',
@@ -197,7 +198,7 @@ export const en: Content = {
       ],
     },
     finePrint: [
-      'Installation: 290€ per clinic, plus 190€ for each additional location. Free on annual plans.',
+      'Installation: 180€ (Essencial), 300€ (Clínica), 480€ (Rede), plus 180€ for each additional location. It can be paid in three instalments, and it is free on annual plans.',
       'Additional minutes: 0.35€ per minute. We warn you before you reach the limit.',
       'A booking call lasts two to three minutes on average.',
       'Prices exclude VAT.',
@@ -268,6 +269,10 @@ export const en: Content = {
       {
         q: 'How long does installation take?',
         a: 'Usually between 3 and 5 working days.',
+      },
+      {
+        q: 'Why is installation charged, and do I have to pay it all at once?',
+        a: "Installation is people doing work, not a fee: we gather your clinic information, write Telma's answers with you, choose the voice, sort the forwarding out with your operator, make test calls and train your front desk. It costs less on the smaller plans because it is less work: a practice with one or two professionals has fewer treatments to document and a single schedule. You do not have to pay it at once: you can split it into three instalments, and on the annual plan there is no installation fee at all.",
       },
       {
         q: 'Does Telma speak English?',

@@ -114,6 +114,7 @@ export const pt: Content = {
     perMonth: '/mês',
     billedAnnually: 'faturado anualmente',
     installFreeAnnual: 'Instalação gratuita',
+    installSplit: 'ou 3 prestações de',
     mostChosen: 'Mais escolhido',
     fromLabel: 'antes',
     installLabel: 'Instalação',
@@ -129,7 +130,7 @@ export const pt: Content = {
         priceUnit: 'por clínica',
         allowance: '250 minutos de conversa por mês',
         allowanceNote: 'cerca de 100 chamadas',
-        installation: 290,
+        installation: 180,
         features: [
           'Atendimento 24 horas',
           'Responde a dúvidas com a informação da clínica',
@@ -146,7 +147,7 @@ export const pt: Content = {
         priceUnit: 'por clínica',
         allowance: '750 minutos de conversa por mês',
         allowanceNote: 'cerca de 300 chamadas',
-        installation: 290,
+        installation: 300,
         highlighted: true,
         features: [
           'Tudo o que inclui o Essencial',
@@ -163,9 +164,9 @@ export const pt: Content = {
         priceUnit: 'por grupo, inclui 3 sedes',
         allowance: '2.000 minutos de conversa por mês',
         allowanceNote: 'cerca de 800 chamadas, partilhados entre as sedes',
-        installation: 290,
-        installExtra: 'mais 190€ por cada sede além da primeira',
-        extraSite: 'Cada sede além das três: 149€ por mês, com mais 500 minutos.',
+        installation: 480,
+        extraSite:
+          'Cada sede além das três: 149€ por mês, com mais 500 minutos, e 180€ de instalação.',
         features: [
           'Tudo o que inclui o Clínica',
           'Todas as sedes num só painel, um só contrato e uma só fatura',
@@ -197,7 +198,7 @@ export const pt: Content = {
       ],
     },
     finePrint: [
-      'Instalação: 290€ por clínica, mais 190€ por cada sede adicional. Grátis nos planos anuais.',
+      'Instalação: 180€ (Essencial), 300€ (Clínica), 480€ (Rede), mais 180€ por cada sede adicional. Pode ser paga em três prestações, e é grátis nos planos anuais.',
       'Minutos adicionais: 0,35€ por minuto. Avisamos antes de chegar ao limite.',
       'Uma chamada de marcação dura, em média, dois a três minutos.',
       'Preços sem IVA.',
@@ -268,6 +269,10 @@ export const pt: Content = {
       {
         q: 'Quanto tempo demora a instalação?',
         a: 'Normalmente entre 3 e 5 dias úteis.',
+      },
+      {
+        q: 'Porque é que a instalação se paga, e tenho de a pagar de uma vez?',
+        a: 'A instalação é trabalho de pessoas, não uma taxa: recolhemos a informação da clínica, escrevemos com ela as respostas da Telma, escolhemos a voz, tratamos do encaminhamento com a sua operadora, fazemos chamadas de teste e formamos a receção. Custa menos nos planos mais pequenos porque também dá menos trabalho: um consultório de um ou dois profissionais tem menos tratamentos a documentar e uma só agenda. Não tem de a pagar de uma vez: pode dividi-la em três prestações, e no plano anual não paga instalação nenhuma.',
       },
       {
         q: 'A Telma fala inglês?',
