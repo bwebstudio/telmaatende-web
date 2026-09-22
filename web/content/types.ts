@@ -180,6 +180,13 @@ export interface Content {
     fromLabel: string
     whatsappCardNote: string
     planCta: string
+    /**
+     * What the plan button says once self sign-up exists. Separate from
+     * `planCta` rather than replacing it: without NEXT_PUBLIC_ONBOARDING_URL
+     * the button still goes to the contact form, and a button that says "start
+     * now" and opens a contact form is a broken promise.
+     */
+    planCtaSignup: string
     customCta: string
     plans: Plan[]
     whatsapp: {

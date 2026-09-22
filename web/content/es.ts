@@ -128,6 +128,7 @@ export const es: Content = {
     fromLabel: 'antes',
     whatsappCardNote: 'Añada WhatsApp por +49 € al mes',
     planCta: 'Hablar con nosotros',
+    planCtaSignup: 'Empezar',
     customCta: 'Hablar con nosotros',
     plans: [
       {

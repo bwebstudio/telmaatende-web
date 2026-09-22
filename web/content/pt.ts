@@ -120,6 +120,7 @@ export const pt: Content = {
     fromLabel: 'antes',
     whatsappCardNote: 'Junte o WhatsApp por +49€/mês',
     planCta: 'Falar connosco',
+    planCtaSignup: 'Começar',
     customCta: 'Falar connosco',
     plans: [
       {

@@ -9,6 +9,7 @@ import { Section, SectionHeader } from '@/components/ui/Section'
 import { Card, ICON_STROKE, IconChip } from '@/components/ui/Card'
 import { Reveal } from '@/components/ui/Reveal'
 import { ButtonLink } from '@/components/ui/Button'
+import { signupUrl } from '@/lib/signup'
 
 function formatEuro(value: number, lang: Locale): string {
   return new Intl.NumberFormat(localeMeta[lang].numberLocale, {
@@ -166,6 +167,11 @@ function PlanCard({
   // Rounded to the euro to avoid prices like 165,83 €.
   const effective = annual ? Math.round((monthly * 10) / 12) : monthly
 
+  // The plan id travels to the wizard, so the last step opens on the plan the
+  // reader just chose. Choosing it twice is how a reader starts to wonder
+  // whether the first choice registered.
+  const signup = signupUrl(plan.id)
+
   return (
     <Reveal as="article" delay={delay} className="h-full">
       <Card
@@ -245,12 +251,16 @@ function PlanCard({
           </p>
         )}
 
+        {/* The one button on the page that can start a sign-up. It only says
+            so when there is a sign-up to start: with NEXT_PUBLIC_ONBOARDING_URL
+            unset this stays the contact form it has always been, rather than
+            promising a checkout that does not exist yet. */}
         <ButtonLink
-          href="#contacto"
+          href={signup ?? '#contacto'}
           variant={plan.highlighted ? 'primary' : 'secondary'}
           className="mt-12 w-full"
         >
-          {c.pricing.planCta}
+          {signup ? c.pricing.planCtaSignup : c.pricing.planCta}
         </ButtonLink>
       </Card>
     </Reveal>
