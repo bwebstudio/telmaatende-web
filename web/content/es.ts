@@ -207,7 +207,7 @@ export const es: Content = {
     finePrint: [
       'Instalación incluida en todos los planes. No hay coste de entrada.',
       'Los mensajes de confirmación al paciente van incluidos en todos los planes. Los avisos que programa la clínica cuentan como un minuto cada uno.',
-      'Minutos adicionales: 0,35 € por minuto, o un pack de 250 minutos por 79 €. Le avisamos antes de llegar al límite.',
+      'Minutos adicionales: 0,45 € por minuto, o un pack de 250 minutos por 79 €, que sale a 0,32 €. Le avisamos antes de llegar al límite.',
       'Una llamada para pedir cita dura, de media, entre dos y tres minutos.',
       'Precios sin IVA.',
       'Sin permanencia.',
@@ -296,7 +296,7 @@ export const es: Content = {
       },
       {
         q: '¿Qué pasa si supero los minutos de mi plan?',
-        a: 'Los minutos adicionales se cobran a 0,35 € cada uno, o puede añadir un pack de 250 minutos por 79 €, que sale más barato. Telma nunca deja de atender por el límite, y le avisamos antes de llegar. Si ocurre todos los meses, el plan siguiente sale más barato que los extras.',
+        a: 'Los minutos adicionales se cobran a 0,45 € cada uno, o puede añadir un pack de 250 minutos por 79 €, que sale a 0,32 € el minuto, casi un tercio menos. Telma nunca deja de atender por el límite, y le avisamos antes de llegar. Si ocurre todos los meses, el plan siguiente sale más barato que los extras.',
       },
       {
         q: '¿Qué es el panel de la clínica, y cuánto cuesta?',
