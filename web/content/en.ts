@@ -308,7 +308,7 @@ export const en: Content = {
       },
       {
         q: 'What exactly does Telma do on WhatsApp?',
-        a: 'It is Telma answering on WhatsApp, the same way she answers the telephone: the patient writes, she answers questions, books, reschedules and cancels. Booking confirmations are not the add-on — those are included on every plan, by SMS. What the add-on changes is that they arrive on WhatsApp instead, in the same conversation.',
+        a: 'It is Telma answering on WhatsApp, the same way she answers the telephone: the patient writes, she answers questions, books, reschedules and cancels. Booking confirmations are not the add-on: those are included on every plan, by SMS. What the add-on changes is that they arrive on WhatsApp instead, in the same conversation.',
       },
       {
         q: 'Can I cancel whenever I want?',

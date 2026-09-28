@@ -308,7 +308,7 @@ export const pt: Content = {
       },
       {
         q: 'O que faz exatamente a Telma no WhatsApp?',
-        a: 'É a Telma a atender no WhatsApp, da mesma maneira que atende ao telefone: o paciente escreve, ela responde às dúvidas, marca, remarca e desmarca. As confirmações de marcação não são o add-on — essas já vão incluídas em qualquer plano, por SMS. O que muda com o add-on é que passam a chegar por WhatsApp, na mesma conversa.',
+        a: 'É a Telma a atender no WhatsApp, da mesma maneira que atende ao telefone: o paciente escreve, ela responde às dúvidas, marca, remarca e desmarca. As confirmações de marcação não são o add-on: essas já vão incluídas em qualquer plano, por SMS. O que muda com o add-on é que passam a chegar por WhatsApp, na mesma conversa.',
       },
       {
         q: 'Posso cancelar quando quiser?',
