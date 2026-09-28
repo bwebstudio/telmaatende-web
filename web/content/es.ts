@@ -198,9 +198,9 @@ export const es: Content = {
       price: '+49 €',
       priceNote: 'al mes, en cualquier plan',
       features: [
-        'Las confirmaciones llegan por WhatsApp en vez de por SMS',
-        'El paciente puede escribir para pedir, cambiar o cancelar cita',
-        'Telma responde y se encarga de la cita',
+        'Telma atiende también en WhatsApp, no solo al teléfono',
+        'El paciente escribe para pedir, cambiar o cancelar cita, y ella se encarga',
+        'Las confirmaciones, que ya van incluidas en el plan, llegan por WhatsApp en vez de por SMS',
         'Hasta 1.000 mensajes al mes',
       ],
     },
@@ -316,7 +316,7 @@ export const es: Content = {
       },
       {
         q: '¿Qué hace exactamente Telma en WhatsApp?',
-        a: 'Dos cosas: envía confirmaciones y recordatorios automáticos, y permite que el paciente escriba para pedir, cambiar o cancelar cita.',
+        a: 'Es Telma atendiendo en WhatsApp, igual que atiende al teléfono: el paciente escribe, ella responde dudas, da cita, la cambia y la cancela. Las confirmaciones de cita no son el add-on: esas van incluidas en cualquier plan, por SMS. Lo que cambia con el add-on es que pasan a llegar por WhatsApp, en la misma conversación.',
       },
       {
         q: '¿Puedo cancelar cuando quiera?',

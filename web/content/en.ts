@@ -190,9 +190,9 @@ export const en: Content = {
       price: '+49€',
       priceNote: 'per month, on any plan',
       features: [
-        'Confirmations arrive on WhatsApp instead of by SMS',
-        'The patient can write to book, reschedule or cancel',
-        'Telma replies and handles the booking',
+        'Telma answers on WhatsApp too, not only on the telephone',
+        'The patient writes to book, reschedule or cancel, and she handles it',
+        'Confirmations, already included in the plan, arrive on WhatsApp instead of by SMS',
         'Up to 1,000 messages per month',
       ],
     },
@@ -308,7 +308,7 @@ export const en: Content = {
       },
       {
         q: 'What exactly does Telma do on WhatsApp?',
-        a: 'Two things: she sends automatic confirmations and reminders, and she lets the patient write to book, reschedule or cancel.',
+        a: 'It is Telma answering on WhatsApp, the same way she answers the telephone: the patient writes, she answers questions, books, reschedules and cancels. Booking confirmations are not the add-on — those are included on every plan, by SMS. What the add-on changes is that they arrive on WhatsApp instead, in the same conversation.',
       },
       {
         q: 'Can I cancel whenever I want?',

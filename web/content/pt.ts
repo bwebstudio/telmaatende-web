@@ -190,9 +190,9 @@ export const pt: Content = {
       price: '+49€',
       priceNote: 'por mês, em qualquer plano',
       features: [
-        'As confirmações chegam por WhatsApp em vez de SMS',
-        'O paciente pode escrever para marcar, remarcar ou cancelar',
-        'A Telma responde e trata da marcação',
+        'A Telma atende também no WhatsApp, não só ao telefone',
+        'O paciente escreve para marcar, remarcar ou cancelar, e ela trata de tudo',
+        'As confirmações, que já vão incluídas no plano, chegam por WhatsApp em vez de SMS',
         'Até 1.000 mensagens por mês',
       ],
     },
@@ -308,7 +308,7 @@ export const pt: Content = {
       },
       {
         q: 'O que faz exatamente a Telma no WhatsApp?',
-        a: 'Duas coisas: envia confirmações e lembretes automáticos, e permite que o paciente escreva para marcar, remarcar ou cancelar.',
+        a: 'É a Telma a atender no WhatsApp, da mesma maneira que atende ao telefone: o paciente escreve, ela responde às dúvidas, marca, remarca e desmarca. As confirmações de marcação não são o add-on — essas já vão incluídas em qualquer plano, por SMS. O que muda com o add-on é que passam a chegar por WhatsApp, na mesma conversa.',
       },
       {
         q: 'Posso cancelar quando quiser?',
