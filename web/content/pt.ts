@@ -147,8 +147,8 @@ export const pt: Content = {
         audience: 'Clínicas até 6 profissionais, até 25 chamadas por dia',
         priceMonthly: 249,
         priceUnit: 'por clínica',
-        allowance: '650 minutos de conversa por mês',
-        allowanceNote: 'cerca de 260 chamadas',
+        allowance: '700 minutos de conversa por mês',
+        allowanceNote: 'cerca de 280 chamadas',
         highlighted: true,
         features: [
           'Tudo o que inclui o Essencial',
@@ -163,8 +163,8 @@ export const pt: Content = {
         audience: 'Grupos com duas ou mais moradas, até cinco sedes',
         priceMonthly: 599,
         priceUnit: 'por grupo, inclui 3 sedes',
-        allowance: '1.600 minutos de conversa por mês',
-        allowanceNote: 'cerca de 640 chamadas, partilhados entre as sedes',
+        allowance: '1.750 minutos de conversa por mês',
+        allowanceNote: 'cerca de 700 chamadas, partilhados entre as sedes',
         extraSite:
           'Cada sede além das três: 149€ por mês, com mais 400 minutos e a instalação incluída.',
         features: [
@@ -177,7 +177,7 @@ export const pt: Content = {
       {
         id: 'personalizado',
         name: 'Personalizado',
-        audience: 'Para grupos com mais de 5 sedes ou mais de 1.600 minutos por mês',
+        audience: 'Para grupos com mais de 5 sedes ou mais de 1.750 minutos por mês',
         priceMonthly: null,
         priceText: 'sob consulta',
         isCustom: true,
@@ -199,7 +199,7 @@ export const pt: Content = {
     finePrint: [
       'Instalação incluída em todos os planos. Não há custo de entrada.',
       'As mensagens de confirmação ao paciente estão incluídas em todos os planos. Os avisos que a clínica agenda contam como um minuto cada um.',
-      'Minutos adicionais: 0,45€ por minuto, ou um pack de 250 minutos por 79€, que sai a 0,32€. Avisamos antes de chegar ao limite.',
+      'Minutos adicionais: 0,45€ por minuto, ou um pack de 250 minutos por 89€, que sai a 0,36€. Avisamos antes de chegar ao limite.',
       'Uma chamada de marcação dura, em média, dois a três minutos.',
       'Preços sem IVA.',
       'Sem período de permanência.',
@@ -288,7 +288,7 @@ export const pt: Content = {
       },
       {
         q: 'O que acontece se ultrapassar os minutos do meu plano?',
-        a: 'Os minutos adicionais são cobrados a 0,45€ cada, ou pode juntar um pack de 250 minutos por 79€, que sai a 0,32€ o minuto, quase um terço menos. A Telma nunca deixa de atender por causa do limite, e avisamos antes de lá chegar. Se acontecer todos os meses, o plano seguinte fica mais barato do que os extras.',
+        a: 'Os minutos adicionais são cobrados a 0,45€ cada, ou pode juntar um pack de 250 minutos por 89€, que sai a 0,36€ o minuto, um quinto menos. A Telma nunca deixa de atender por causa do limite, e avisamos antes de lá chegar. Se acontecer todos os meses, o plano seguinte fica mais barato do que os extras.',
       },
       {
         q: 'O que é o painel da clínica, e quanto custa?',

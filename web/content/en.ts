@@ -147,8 +147,8 @@ export const en: Content = {
         audience: 'Clinics with up to 6 professionals, up to 25 calls a day',
         priceMonthly: 249,
         priceUnit: 'per clinic',
-        allowance: '650 minutes of conversation per month',
-        allowanceNote: 'around 260 calls',
+        allowance: '700 minutes of conversation per month',
+        allowanceNote: 'around 280 calls',
         highlighted: true,
         features: [
           'Everything in Essencial',
@@ -163,8 +163,8 @@ export const en: Content = {
         audience: 'Groups with two or more locations, up to five',
         priceMonthly: 599,
         priceUnit: 'per group, includes 3 locations',
-        allowance: '1,600 minutes of conversation per month',
-        allowanceNote: 'around 640 calls, shared across the locations',
+        allowance: '1,750 minutes of conversation per month',
+        allowanceNote: 'around 700 calls, shared across the locations',
         extraSite:
           'Each location beyond the three: 149€ per month, with 400 more minutes and installation included.',
         features: [
@@ -177,7 +177,7 @@ export const en: Content = {
       {
         id: 'personalizado',
         name: 'Personalizado',
-        audience: 'For groups with more than 5 locations or over 1,600 minutes per month',
+        audience: 'For groups with more than 5 locations or over 1,750 minutes per month',
         priceMonthly: null,
         priceText: 'on request',
         isCustom: true,
@@ -199,7 +199,7 @@ export const en: Content = {
     finePrint: [
       'Installation included on every plan. There is no entry fee.',
       'Confirmation messages to the patient are included on every plan. Reminders the clinic schedules count as one minute each.',
-      'Additional minutes: 0.45€ per minute, or a pack of 250 minutes for 79€, which works out at 0.32€. We warn you before you reach the limit.',
+      'Additional minutes: 0.45€ per minute, or a pack of 250 minutes for 89€, which works out at 0.36€. We warn you before you reach the limit.',
       'A booking call lasts two to three minutes on average.',
       'Prices exclude VAT.',
       'No minimum term.',
@@ -288,7 +288,7 @@ export const en: Content = {
       },
       {
         q: 'What happens if I go over the minutes in my plan?',
-        a: 'Additional minutes are charged at 0.45€ each, or you can add a pack of 250 minutes for 79€, which works out at 0.32€ a minute, almost a third less. Telma never stops answering because of the limit, and we warn you before you reach it. If it happens every month, the next plan up costs less than the extras.',
+        a: 'Additional minutes are charged at 0.45€ each, or you can add a pack of 250 minutes for 89€, which works out at 0.36€ a minute, a fifth less. Telma never stops answering because of the limit, and we warn you before you reach it. If it happens every month, the next plan up costs less than the extras.',
       },
       {
         q: 'What is the clinic dashboard, and what does it cost?',

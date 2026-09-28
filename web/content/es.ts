@@ -155,8 +155,8 @@ export const es: Content = {
         audience: 'Clínicas de hasta 6 profesionales, hasta 25 llamadas al día',
         priceMonthly: 249,
         priceUnit: 'por clínica',
-        allowance: '650 minutos de conversación al mes',
-        allowanceNote: 'unas 260 llamadas',
+        allowance: '700 minutos de conversación al mes',
+        allowanceNote: 'unas 280 llamadas',
         highlighted: true,
         features: [
           'Todo lo que incluye Essencial',
@@ -171,8 +171,8 @@ export const es: Content = {
         audience: 'Grupos con dos o más sedes, hasta cinco sedes',
         priceMonthly: 599,
         priceUnit: 'por grupo, incluye 3 sedes',
-        allowance: '1.600 minutos de conversación al mes',
-        allowanceNote: 'unas 640 llamadas, compartidas entre las sedes',
+        allowance: '1.750 minutos de conversación al mes',
+        allowanceNote: 'unas 700 llamadas, compartidas entre las sedes',
         extraSite:
           'Cada sede más allá de las tres: 149 € al mes, con 400 minutos más y la instalación incluida.',
         features: [
@@ -185,7 +185,7 @@ export const es: Content = {
       {
         id: 'personalizado',
         name: 'Personalizado',
-        audience: 'Para grupos con más de 5 sedes o más de 1.600 minutos al mes',
+        audience: 'Para grupos con más de 5 sedes o más de 1.750 minutos al mes',
         priceMonthly: null,
         priceText: 'a consultar',
         isCustom: true,
@@ -207,7 +207,7 @@ export const es: Content = {
     finePrint: [
       'Instalación incluida en todos los planes. No hay coste de entrada.',
       'Los mensajes de confirmación al paciente van incluidos en todos los planes. Los avisos que programa la clínica cuentan como un minuto cada uno.',
-      'Minutos adicionales: 0,45 € por minuto, o un pack de 250 minutos por 79 €, que sale a 0,32 €. Le avisamos antes de llegar al límite.',
+      'Minutos adicionales: 0,45 € por minuto, o un pack de 250 minutos por 89 €, que sale a 0,36 €. Le avisamos antes de llegar al límite.',
       'Una llamada para pedir cita dura, de media, entre dos y tres minutos.',
       'Precios sin IVA.',
       'Sin permanencia.',
@@ -296,7 +296,7 @@ export const es: Content = {
       },
       {
         q: '¿Qué pasa si supero los minutos de mi plan?',
-        a: 'Los minutos adicionales se cobran a 0,45 € cada uno, o puede añadir un pack de 250 minutos por 79 €, que sale a 0,32 € el minuto, casi un tercio menos. Telma nunca deja de atender por el límite, y le avisamos antes de llegar. Si ocurre todos los meses, el plan siguiente sale más barato que los extras.',
+        a: 'Los minutos adicionales se cobran a 0,45 € cada uno, o puede añadir un pack de 250 minutos por 89 €, que sale a 0,36 € el minuto, un quinto menos. Telma nunca deja de atender por el límite, y le avisamos antes de llegar. Si ocurre todos los meses, el plan siguiente sale más barato que los extras.',
       },
       {
         q: '¿Qué es el panel de la clínica, y cuánto cuesta?',
