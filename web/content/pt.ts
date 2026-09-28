@@ -199,7 +199,7 @@ export const pt: Content = {
     finePrint: [
       'Instalação incluída em todos os planos. Não há custo de entrada.',
       'As mensagens de confirmação ao paciente estão incluídas em todos os planos. Os avisos que a clínica agenda contam como um minuto cada um.',
-      'Minutos adicionais: 0,35€ por minuto, ou um pack de 250 minutos por 89€. Avisamos antes de chegar ao limite.',
+      'Minutos adicionais: 0,35€ por minuto, ou um pack de 250 minutos por 79€. Avisamos antes de chegar ao limite.',
       'Uma chamada de marcação dura, em média, dois a três minutos.',
       'Preços sem IVA.',
       'Sem período de permanência.',
@@ -288,7 +288,7 @@ export const pt: Content = {
       },
       {
         q: 'O que acontece se ultrapassar os minutos do meu plano?',
-        a: 'Os minutos adicionais são cobrados a 0,35€ cada, ou pode juntar um pack de 250 minutos por 89€, que sai mais barato. A Telma nunca deixa de atender por causa do limite, e avisamos antes de lá chegar. Se acontecer todos os meses, o plano seguinte fica mais barato do que os extras.',
+        a: 'Os minutos adicionais são cobrados a 0,35€ cada, ou pode juntar um pack de 250 minutos por 79€, que sai mais barato. A Telma nunca deixa de atender por causa do limite, e avisamos antes de lá chegar. Se acontecer todos os meses, o plano seguinte fica mais barato do que os extras.',
       },
       {
         q: 'O que é o painel da clínica, e quanto custa?',

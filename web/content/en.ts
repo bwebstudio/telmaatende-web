@@ -199,7 +199,7 @@ export const en: Content = {
     finePrint: [
       'Installation included on every plan. There is no entry fee.',
       'Confirmation messages to the patient are included on every plan. Reminders the clinic schedules count as one minute each.',
-      'Additional minutes: 0.35€ per minute, or a pack of 250 minutes for 89€. We warn you before you reach the limit.',
+      'Additional minutes: 0.35€ per minute, or a pack of 250 minutes for 79€. We warn you before you reach the limit.',
       'A booking call lasts two to three minutes on average.',
       'Prices exclude VAT.',
       'No minimum term.',
@@ -288,7 +288,7 @@ export const en: Content = {
       },
       {
         q: 'What happens if I go over the minutes in my plan?',
-        a: 'Additional minutes are charged at 0.35€ each, or you can add a pack of 250 minutes for 89€, which works out cheaper. Telma never stops answering because of the limit, and we warn you before you reach it. If it happens every month, the next plan up costs less than the extras.',
+        a: 'Additional minutes are charged at 0.35€ each, or you can add a pack of 250 minutes for 79€, which works out cheaper. Telma never stops answering because of the limit, and we warn you before you reach it. If it happens every month, the next plan up costs less than the extras.',
       },
       {
         q: 'What is the clinic dashboard, and what does it cost?',
