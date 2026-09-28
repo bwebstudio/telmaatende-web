@@ -137,6 +137,7 @@ export const en: Content = {
           'Automatic appointment booking',
           'Transfer to a real person',
           'A summary of every call by email',
+          'SMS confirmation to the patient, included',
           'Clinic dashboard: see and control everything, on any screen',
         ],
       },
@@ -146,8 +147,8 @@ export const en: Content = {
         audience: 'Clinics with up to 6 professionals, up to 25 calls a day',
         priceMonthly: 249,
         priceUnit: 'per clinic',
-        allowance: '750 minutes of conversation per month',
-        allowanceNote: 'around 300 calls',
+        allowance: '650 minutes of conversation per month',
+        allowanceNote: 'around 260 calls',
         highlighted: true,
         features: [
           'Everything in Essencial',
@@ -162,10 +163,10 @@ export const en: Content = {
         audience: 'Groups with two or more locations, up to five',
         priceMonthly: 599,
         priceUnit: 'per group, includes 3 locations',
-        allowance: '2,000 minutes of conversation per month',
-        allowanceNote: 'around 800 calls, shared across the locations',
+        allowance: '1,600 minutes of conversation per month',
+        allowanceNote: 'around 640 calls, shared across the locations',
         extraSite:
-          'Each location beyond the three: 149€ per month, with 500 more minutes and installation included.',
+          'Each location beyond the three: 149€ per month, with 400 more minutes and installation included.',
         features: [
           'Everything in Clínica',
           'Every location in one dashboard, one contract and one invoice',
@@ -176,7 +177,7 @@ export const en: Content = {
       {
         id: 'personalizado',
         name: 'Personalizado',
-        audience: 'For groups with more than 5 locations or over 2,000 minutes per month',
+        audience: 'For groups with more than 5 locations or over 1,600 minutes per month',
         priceMonthly: null,
         priceText: 'on request',
         isCustom: true,
@@ -189,7 +190,7 @@ export const en: Content = {
       price: '+49€',
       priceNote: 'per month, on any plan',
       features: [
-        'Automatic appointment confirmations and reminders',
+        'Confirmations arrive on WhatsApp instead of by SMS',
         'The patient can write to book, reschedule or cancel',
         'Telma replies and handles the booking',
         'Up to 1,000 messages per month',
@@ -197,7 +198,8 @@ export const en: Content = {
     },
     finePrint: [
       'Installation included on every plan. There is no entry fee.',
-      'Additional minutes: 0.35€ per minute, or a pack of 250 minutes for 79€. We warn you before you reach the limit.',
+      'Confirmation messages to the patient are included on every plan. Reminders the clinic schedules count as one minute each.',
+      'Additional minutes: 0.35€ per minute, or a pack of 250 minutes for 89€. We warn you before you reach the limit.',
       'A booking call lasts two to three minutes on average.',
       'Prices exclude VAT.',
       'No minimum term.',
@@ -286,7 +288,7 @@ export const en: Content = {
       },
       {
         q: 'What happens if I go over the minutes in my plan?',
-        a: 'Additional minutes are charged at 0.35€ each, or you can add a pack of 250 minutes for 79€, which works out cheaper. Telma never stops answering because of the limit, and we warn you before you reach it. If it happens every month, the next plan up costs less than the extras.',
+        a: 'Additional minutes are charged at 0.35€ each, or you can add a pack of 250 minutes for 89€, which works out cheaper. Telma never stops answering because of the limit, and we warn you before you reach it. If it happens every month, the next plan up costs less than the extras.',
       },
       {
         q: 'What is the clinic dashboard, and what does it cost?',

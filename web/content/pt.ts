@@ -137,6 +137,7 @@ export const pt: Content = {
           'Marcação automática de consultas',
           'Transferência para pessoa real',
           'Resumo de cada chamada por email',
+          'Confirmação por SMS ao paciente, incluída',
           'Painel da clínica: vê e controla tudo, em qualquer ecrã',
         ],
       },
@@ -146,8 +147,8 @@ export const pt: Content = {
         audience: 'Clínicas até 6 profissionais, até 25 chamadas por dia',
         priceMonthly: 249,
         priceUnit: 'por clínica',
-        allowance: '750 minutos de conversa por mês',
-        allowanceNote: 'cerca de 300 chamadas',
+        allowance: '650 minutos de conversa por mês',
+        allowanceNote: 'cerca de 260 chamadas',
         highlighted: true,
         features: [
           'Tudo o que inclui o Essencial',
@@ -162,10 +163,10 @@ export const pt: Content = {
         audience: 'Grupos com duas ou mais moradas, até cinco sedes',
         priceMonthly: 599,
         priceUnit: 'por grupo, inclui 3 sedes',
-        allowance: '2.000 minutos de conversa por mês',
-        allowanceNote: 'cerca de 800 chamadas, partilhados entre as sedes',
+        allowance: '1.600 minutos de conversa por mês',
+        allowanceNote: 'cerca de 640 chamadas, partilhados entre as sedes',
         extraSite:
-          'Cada sede além das três: 149€ por mês, com mais 500 minutos e a instalação incluída.',
+          'Cada sede além das três: 149€ por mês, com mais 400 minutos e a instalação incluída.',
         features: [
           'Tudo o que inclui o Clínica',
           'Todas as sedes num só painel, um só contrato e uma só fatura',
@@ -176,7 +177,7 @@ export const pt: Content = {
       {
         id: 'personalizado',
         name: 'Personalizado',
-        audience: 'Para grupos com mais de 5 sedes ou mais de 2.000 minutos por mês',
+        audience: 'Para grupos com mais de 5 sedes ou mais de 1.600 minutos por mês',
         priceMonthly: null,
         priceText: 'sob consulta',
         isCustom: true,
@@ -189,7 +190,7 @@ export const pt: Content = {
       price: '+49€',
       priceNote: 'por mês, em qualquer plano',
       features: [
-        'Confirmações e lembretes automáticos de consultas',
+        'As confirmações chegam por WhatsApp em vez de SMS',
         'O paciente pode escrever para marcar, remarcar ou cancelar',
         'A Telma responde e trata da marcação',
         'Até 1.000 mensagens por mês',
@@ -197,7 +198,8 @@ export const pt: Content = {
     },
     finePrint: [
       'Instalação incluída em todos os planos. Não há custo de entrada.',
-      'Minutos adicionais: 0,35€ por minuto, ou um pack de 250 minutos por 79€. Avisamos antes de chegar ao limite.',
+      'As mensagens de confirmação ao paciente estão incluídas em todos os planos. Os avisos que a clínica agenda contam como um minuto cada um.',
+      'Minutos adicionais: 0,35€ por minuto, ou um pack de 250 minutos por 89€. Avisamos antes de chegar ao limite.',
       'Uma chamada de marcação dura, em média, dois a três minutos.',
       'Preços sem IVA.',
       'Sem período de permanência.',
@@ -286,7 +288,7 @@ export const pt: Content = {
       },
       {
         q: 'O que acontece se ultrapassar os minutos do meu plano?',
-        a: 'Os minutos adicionais são cobrados a 0,35€ cada, ou pode juntar um pack de 250 minutos por 79€, que sai mais barato. A Telma nunca deixa de atender por causa do limite, e avisamos antes de lá chegar. Se acontecer todos os meses, o plano seguinte fica mais barato do que os extras.',
+        a: 'Os minutos adicionais são cobrados a 0,35€ cada, ou pode juntar um pack de 250 minutos por 89€, que sai mais barato. A Telma nunca deixa de atender por causa do limite, e avisamos antes de lá chegar. Se acontecer todos os meses, o plano seguinte fica mais barato do que os extras.',
       },
       {
         q: 'O que é o painel da clínica, e quanto custa?',
