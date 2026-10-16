@@ -78,7 +78,7 @@ const RING_LIFE = 4200
  *  is at the top instead (pt-28 = 7rem). Centring vertically there laid the
  *  mark straight over the first two lines of the headline. Keyed to the same
  *  1024px Tailwind uses for lg, so the canvas and the padding switch together. */
-const LANE_TOP = 112
+const LANE_TOP = 160
 
 const CYCLE = 15000
 const T = { cloud: 0.1, gather: 0.26, paragraph: 0.4, contract: 0.52, mark: 0.7, release: 0.8, scatter: 0.94 }
@@ -182,13 +182,20 @@ export function TelmaSettle({
 
       // Height drives the mark on a wide band and width on a narrow one, with
       // a floor so it does not shrink to a crumb on a phone.
-      // On a wide band the mark takes its size from the band. In the lane at
-      // the top it takes it from the lane, or it grows past 112px somewhere
-      // around a tablet and leans back over the first line of the headline —
-      // the same collision, just narrower and easier to miss.
+      // On a wide band the mark takes its size from the band's height. In the
+      // lane at the top it takes it from the lane, or it outgrows it around a
+      // tablet and leans back over the first line of the headline.
+      //
+      // The phone number is not the desktop one scaled: the desktop rule is a
+      // share of the band's width, and a phone band is narrow enough that the
+      // share came out at 46px and the 76px floor was doing all the work. At
+      // that size three rounded bars read as three things scribbled out, not
+      // as a mark, which is the opposite of what this band is for. A third of
+      // the width gets it back to roughly half the band's height, which is the
+      // proportion the band was designed around.
       const markH = wide.matches
         ? Math.min(h * 0.44, Math.max(w * 0.135, 76))
-        : Math.min(LANE_TOP - 24, Math.max(w * 0.135, 76))
+        : Math.min(LANE_TOP - 28, Math.max(w * 0.33, 96))
       const k = markH / VH
       const ox = Math.max(w * 0.035, 14)
       const oy = wide.matches
