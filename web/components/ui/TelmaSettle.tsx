@@ -72,6 +72,14 @@ const HALO = 0.85
 const RING_SPEED = 1.15
 const RING_LIFE = 4200
 
+/** The lane Band.tsx leaves clear for the mark. On wide screens it is down
+ *  the left (lg:pl-[17rem]) and the mark centres in the band's height; on a
+ *  phone that lane does not exist — the headline starts at px-8 — and the room
+ *  is at the top instead (pt-28 = 7rem). Centring vertically there laid the
+ *  mark straight over the first two lines of the headline. Keyed to the same
+ *  1024px Tailwind uses for lg, so the canvas and the padding switch together. */
+const LANE_TOP = 112
+
 const CYCLE = 15000
 const T = { cloud: 0.1, gather: 0.26, paragraph: 0.4, contract: 0.52, mark: 0.7, release: 0.8, scatter: 0.94 }
 
@@ -150,6 +158,9 @@ export function TelmaSettle({
     let h = 0
 
     const fine = !window.matchMedia('(pointer: coarse)').matches
+    // Held as the list, not as a boolean: the band is redrawn on resize and
+    // rotation, and `.matches` has to be current at that moment.
+    const wide = window.matchMedia('(min-width: 1024px)')
     const ptr = { x: 0, y: 0, at: 0, to: 0 }
     let rings: { x: number; y: number; born: number }[] = []
 
@@ -174,7 +185,9 @@ export function TelmaSettle({
       const markH = Math.min(h * 0.44, Math.max(w * 0.135, 76))
       const k = markH / VH
       const ox = Math.max(w * 0.035, 14)
-      const oy = (h - markH) / 2
+      const oy = wide.matches
+        ? (h - markH) / 2
+        : Math.max((LANE_TOP - markH) / 2, 12)
       const cx = ox + (VW * k) / 2
       const cy = oy + markH / 2
 

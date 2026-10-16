@@ -340,6 +340,18 @@
     }
   }
 
+  /* The hero's phone spacer. Zero by default and only given height once the
+     sculpture reports itself live, because createField returns null wherever
+     WebGL2 is missing and the alternative is two thirds of a screen of black
+     with nothing in it. Desktop never sees this: the div carries lg:hidden. */
+  [data-field-spacer] {
+    height: 0;
+  }
+  [data-field-live] [data-field-spacer] {
+    height: 62svh;
+    min-height: 22rem;
+  }
+
   /* A hairline is the brand's structural element — it does the job shadows and
      borders were doing before. */
   .rule {

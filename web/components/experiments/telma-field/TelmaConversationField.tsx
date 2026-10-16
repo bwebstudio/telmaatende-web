@@ -50,9 +50,16 @@ export function TelmaConversationField({
           fontFamily: family,
           centered,
         })
+        // No field, no reserved space. createField returns null when the
+        // browser has no WebGL2 — an older phone, Lockdown Mode, some in-app
+        // browsers — and the phone layout holds a spacer the height of two
+        // thirds of the screen for a sculpture that would never arrive. The
+        // flag is what that spacer keys off; without it the hero is a
+        // screenful of black nothing, which is worse than no sculpture.
         if (!field) return
         dispose = field.dispose
         canvas.style.opacity = '1'
+        surface.dataset.fieldLive = 'true'
       } catch (error) {
         console.error('[TelmaConversationField]', error)
       }
@@ -61,6 +68,7 @@ export function TelmaConversationField({
     return () => {
       cancelled = true
       dispose?.()
+      delete surface.dataset.fieldLive
     }
   }, [centered])
 

@@ -50,8 +50,11 @@ export function HeroFieldExperiment({ c }: { c: Content }) {
           </Reveal>
         </div>
 
-        {/* On phones the sheet lies under the copy, so it needs room of its own. */}
-        <div className="h-[62svh] min-h-[22rem] lg:hidden" />
+        {/* On phones the sheet lies under the copy, so it needs room of its
+            own — but only once there is a sheet. The height lives in
+            globals.css behind [data-field-live], so a browser without WebGL2
+            collapses this to nothing instead of showing an empty screenful. */}
+        <div data-field-spacer className="lg:hidden" />
       </div>
     </section>
   )

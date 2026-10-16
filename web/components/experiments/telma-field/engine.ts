@@ -77,11 +77,16 @@ function presetFor(width: number, lowPower: boolean): Preset {
       offset: [0, -0.75, 0],
       yaw: -0.35,
       pitch: -0.38,
-      width: 7.0,
-      height: 5.6,
+      // A phone frame is portrait and the sheet was landscape, so at this
+      // distance only about a quarter of its width was ever in shot and the
+      // glyphs that survived read as grain rather than as writing. Turned to
+      // stand up in the frame, and the count raised to keep the same density
+      // over the smaller sheet.
+      width: 4.4,
+      height: 7.6,
       fold: 3.0,
-      count: Math.round(16000 * scale),
-      worldSize: 0.05,
+      count: Math.round(26000 * scale),
+      worldSize: 0.055,
       thickness: 0.4,
       massTravel: [0.7, 0.3],
       massRadius: [1.8, 1.7],
