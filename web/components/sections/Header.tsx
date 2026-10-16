@@ -1,35 +1,59 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import type { Content } from '@/content'
 import { locales, localeMeta, type Locale } from '@/content'
-import { Container } from '@/components/ui/Container'
-import { ButtonLink } from '@/components/ui/Button'
 import { LogoLink } from '@/components/ui/Logo'
 import { ICON_STROKE } from '@/components/ui/Card'
 
 /**
- * 104px tall on the desktop, stepping down to 80px on a phone — at full
- * height it ate a sixth of an iPhone SE screen. Transparent over the hero, growing a hairline and a blur only once
- * the page has scrolled — so the first screen is one uninterrupted surface
- * rather than a strip and a page.
+ * EXPERIMENT (local): a floating bar, after the reference. The previous header
+ * is in git (`git checkout web/components/sections/Header.tsx`).
  *
- * The navigation is pushed right, against the language switch and the CTA,
- * instead of floating in the middle. Centred nav links are what make a header
- * read as a navigation bar; a wordmark alone on the left with everything else
- * gathered on the right reads as a masthead.
+ * It floats: inset from the edges and the top of the window, rounded, frosted,
+ * with the page passing underneath it. It is a surface, not a strip, so it can
+ * sit on the hero without cutting the first screen in two.
+ *
+ * It reads the page under it. Over a section marked data-nav-theme="dark" the
+ * bar turns dark and its type white; over everything else it is a pale grey.
+ * The check samples the element under the bar's middle, once per frame at
+ * most, only while scrolling.
+ *
+ * The bar sits at the container's width, so the wordmark lines up with every
+ * section below it. The page's first section clears it with --nav-h.
  */
 export function Header({ c, lang }: { c: Content; lang: Locale }) {
   const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [dark, setDark] = useState(false)
+  const barRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    let raf = 0
+    const check = () => {
+      raf = 0
+      const bar = barRef.current
+      if (!bar) return
+      const r = bar.getBoundingClientRect()
+      const y = r.top + r.height / 2
+      // The first thing under the bar that is not the bar itself.
+      const under = document
+        .elementsFromPoint(window.innerWidth / 2, y)
+        .find((el) => !bar.contains(el))
+      setDark(!!under?.closest('[data-nav-theme="dark"]'))
+    }
+    const schedule = () => {
+      if (!raf) raf = requestAnimationFrame(check)
+    }
+    check()
+    window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule)
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', schedule)
+      window.removeEventListener('resize', schedule)
+    }
   }, [])
 
   // A menu open behind a locked body is the one place the page may not scroll.
@@ -40,93 +64,106 @@ export function Header({ c, lang }: { c: Content; lang: Locale }) {
     }
   }, [open])
 
+  const t = dark
+    ? {
+        bar: 'bg-[rgb(24_24_24/0.72)] text-white',
+        link: 'text-white/80 hover:text-white',
+        rule: 'border-white/15',
+        cta: 'bg-white text-ink hover:bg-white/90',
+        icon: 'text-white hover:bg-white/10',
+      }
+    : {
+        bar: 'bg-[rgb(228_228_226/0.78)] text-ink',
+        link: 'text-ink/80 hover:text-ink',
+        rule: 'border-ink/10',
+        cta: 'bg-ink text-white hover:bg-ink/85',
+        icon: 'text-ink hover:bg-ink/5',
+      }
+
   return (
-    <header
-      className={`sticky top-0 z-50 transition-colors duration-fast ease-calm ${
-        scrolled || open
-          ? 'border-b border-line bg-bg/95 backdrop-blur-xl'
-          : 'border-b border-transparent'
-      }`}
-    >
-      <Container className="flex h-20 items-center justify-between gap-8 sm:h-24 lg:h-26">
-        <LogoLink href={`/${lang}`} />
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-5">
+      <div
+        ref={barRef}
+        className={`pointer-events-auto mx-auto max-w-[calc(82.5rem-3rem)] overflow-hidden rounded-[12px] backdrop-blur-xl transition-colors duration-500 ease-calm lg:max-w-[calc(82.5rem-4rem)] ${t.bar}`}
+      >
+        <div className="flex h-[3.75rem] items-center justify-between gap-6 pl-5 pr-2.5 sm:h-[4.5rem] sm:pl-7 sm:pr-3.5">
+          <div className="flex items-center gap-10 xl:gap-12">
+            <span className={dark ? 'brightness-0 invert' : ''}>
+              <LogoLink href={`/${lang}`} />
+            </span>
+            <nav className="hidden items-center gap-8 lg:flex" aria-label={c.header.navLabel}>
+              {c.header.nav.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={`whitespace-nowrap text-[0.9375rem] transition-colors duration-fast ease-calm ${t.link}`}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          </div>
 
-        <div className="flex items-center gap-6 xl:gap-10">
-          <nav
-            className="hidden items-center gap-8 lg:flex xl:gap-12"
-            aria-label={c.header.navLabel}
-          >
-            {c.header.nav.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="whitespace-nowrap text-[0.9375rem] text-ink-soft transition-colors duration-fast ease-calm hover:text-ink"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          <LangSwitch
-            c={c}
-            lang={lang}
-            className="hidden shrink-0 sm:flex lg:border-l lg:border-line lg:pl-6 xl:pl-10"
-          />
-
-          <ButtonLink
-            href="#contacto"
-            variant="primary"
-            className="hidden shrink-0 whitespace-nowrap sm:inline-flex"
-          >
-            {c.header.cta}
-          </ButtonLink>
-
-          <button
-            type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-input border border-line-strong bg-surface text-ink lg:hidden"
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            aria-label={c.header.navLabel}
-            onClick={() => setOpen((v) => !v)}
-          >
-            {open ? (
-              <X size={20} strokeWidth={ICON_STROKE} aria-hidden />
-            ) : (
-              <Menu size={20} strokeWidth={ICON_STROKE} aria-hidden />
-            )}
-          </button>
+          <div className="flex items-center gap-5">
+            <LangSwitch c={c} lang={lang} dark={dark} className="hidden sm:flex" />
+            <a
+              href="#contacto"
+              className={`hidden h-11 shrink-0 items-center whitespace-nowrap rounded-pill px-5 text-[0.9375rem] font-medium transition-colors duration-fast ease-calm sm:inline-flex ${t.cta}`}
+            >
+              {c.header.cta}
+            </a>
+            <button
+              type="button"
+              className={`inline-flex h-11 w-11 items-center justify-center rounded-[10px] transition-colors duration-fast lg:hidden ${t.icon}`}
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              aria-label={c.header.navLabel}
+              onClick={() => setOpen((v) => !v)}
+            >
+              {open ? (
+                <X size={20} strokeWidth={ICON_STROKE} aria-hidden />
+              ) : (
+                <Menu size={20} strokeWidth={ICON_STROKE} aria-hidden />
+              )}
+            </button>
+          </div>
         </div>
-      </Container>
 
-      {open && (
+        {/* The menu opens inside the bar: the same surface, taller. */}
         <div
           id="mobile-menu"
-          className="border-t border-line bg-bg lg:hidden"
+          className={`grid transition-[grid-template-rows] duration-500 ease-calm lg:hidden ${
+            open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+          }`}
         >
-          <Container className="flex flex-col gap-1 py-6">
-            {c.header.nav.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="py-3.5 text-lg text-ink"
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
-            <div className="mt-4 flex items-center justify-between gap-4 border-t border-line pt-6">
-              <LangSwitch c={c} lang={lang} />
-              <ButtonLink
-                href="#contacto"
-                variant="primary"
-                onClick={() => setOpen(false)}
-              >
-                {c.header.cta}
-              </ButtonLink>
+          <div className="overflow-hidden">
+            <div className={`mx-5 flex flex-col border-t py-3 sm:mx-7 ${t.rule}`}>
+              {c.header.nav.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  tabIndex={open ? 0 : -1}
+                  className="py-3 text-lg"
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
+              <div className={`mt-2 flex items-center justify-between gap-4 border-t pb-2 pt-5 ${t.rule}`}>
+                <LangSwitch c={c} lang={lang} dark={dark} />
+                <a
+                  href="#contacto"
+                  tabIndex={open ? 0 : -1}
+                  className={`inline-flex h-11 items-center rounded-pill px-5 text-[0.9375rem] font-medium ${t.cta}`}
+                  onClick={() => setOpen(false)}
+                >
+                  {c.header.cta}
+                </a>
+              </div>
             </div>
-          </Container>
+          </div>
         </div>
-      )}
+      </div>
     </header>
   )
 }
@@ -138,10 +175,12 @@ export function Header({ c, lang }: { c: Content; lang: Locale }) {
 function LangSwitch({
   c,
   lang,
+  dark,
   className = '',
 }: {
   c: Content
   lang: Locale
+  dark: boolean
   className?: string
 }) {
   // Keep the reader on the same section when switching language: anchor ids are
@@ -152,26 +191,25 @@ function LangSwitch({
   }
 
   return (
-    <div
-      className={`flex items-center gap-1 text-sm ${className}`}
-      aria-label={c.langSwitchLabel}
-    >
+    <div className={`flex items-center gap-1 text-sm ${className}`} aria-label={c.langSwitchLabel}>
       {locales.map((code, i) => (
         <span key={code} className="flex items-center gap-1">
           {i > 0 && (
-            <span aria-hidden className="text-line-strong">
+            <span aria-hidden className={dark ? 'text-white/30' : 'text-ink/25'}>
               ·
             </span>
           )}
           {code === lang ? (
-            <span aria-current="true" className="font-medium text-ink">
+            <span aria-current="true" className="font-medium">
               {localeMeta[code].label}
             </span>
           ) : (
             <Link
               href={`/${code}`}
               onClick={(e) => switchLang(e, code)}
-              className="px-1 text-ink-mute transition-colors duration-fast ease-calm hover:text-ink"
+              className={`px-1 transition-colors duration-fast ease-calm ${
+                dark ? 'text-white/55 hover:text-white' : 'text-ink/50 hover:text-ink'
+              }`}
             >
               {localeMeta[code].label}
             </Link>

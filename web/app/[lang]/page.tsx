@@ -11,9 +11,23 @@ import { Agenda } from '@/components/sections/Agenda'
 import { Integrations } from '@/components/sections/Integrations'
 import { Pricing } from '@/components/sections/Pricing'
 import { Faq } from '@/components/sections/Faq'
+import { Trust } from '@/components/sections/Trust'
+import { Clinics } from '@/components/sections/Clinics'
+import { Banner } from '@/components/sections/Banner'
+import { Band } from '@/components/sections/Band'
+import { Calls } from '@/components/sections/Calls'
+import { Resources } from '@/components/sections/Resources'
 import { Contact } from '@/components/sections/Contact'
 import { FinalCta } from '@/components/sections/FinalCta'
 import { Footer } from '@/components/sections/Footer'
+import {
+  CONVERSATION_FLOW_EXPERIMENT,
+  ConversationFlowSection,
+} from '@/components/experiments/conversation-flow/ConversationFlowSection'
+import {
+  PROCESS_ANIMATION_EXPERIMENT,
+  ProcessAnimationSection,
+} from '@/components/experiments/process-animation/ProcessAnimationSection'
 
 /**
  * The home page, in narrative order. Each section answers exactly one question
@@ -25,13 +39,13 @@ import { Footer } from '@/components/sections/Footer'
  *   How it works  how does it actually work?
  *   Agenda        do I lose control of my diary?
  *   Integrations  do I have to change anything?
+ *   Trust         can I rely on it?
  *   Pricing       what does it cost?
  *   FAQ           everything else
  *   Final CTA     what is the next step?
  *
- * Still missing, and waiting on real content rather than on design: a trust
- * block (GDPR, EU hosting, who is behind Telma — currently buried in the FAQ)
- * and testimonials. Neither can be written without real clinics to quote.
+ * Still missing, and waiting on real content rather than on design:
+ * testimonials. Neither can be written without real clinics to quote.
  */
 export default async function Page({
   params,
@@ -62,10 +76,20 @@ export default async function Page({
         {voiceSample && <Voice c={c} src={voiceSample} />}
         <Problem c={c} />
         <HowItWorks c={c} />
+        {/* EXPERIMENT (local): conversation flow. Remove this line and the import. */}
+        {CONVERSATION_FLOW_EXPERIMENT && <ConversationFlowSection />}
+        {/* EXPERIMENT (local): process animation. Remove this line and the import. */}
+        {PROCESS_ANIMATION_EXPERIMENT && <ProcessAnimationSection c={c} />}
+        <Calls c={c} />
         <Agenda c={c} />
+        <Banner c={c} />
         <Integrations c={c} />
+        <Trust c={c} />
+        <Band c={c} />
+        <Clinics c={c} />
         <Pricing c={c} lang={locale} />
         <Faq c={c} />
+        <Resources c={c} lang={locale} />
         <Contact c={c} />
         <FinalCta c={c} />
       </main>

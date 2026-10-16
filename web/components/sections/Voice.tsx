@@ -69,67 +69,48 @@ export function Voice({ c, src }: { c: Content; src: string }) {
 
   return (
     <Section id="voz" tone="bg">
-      <SectionHeader
-        eyebrow={c.voice.label}
-        title={c.voice.title}
-        lead={c.voice.lead}
-        align="center"
-      />
+      {/* Light and centred, after the reference's "hear it in action": the
+          recording is the evidence, so it gets the middle of the page and a
+          grey well of its own, and nothing competes with it. */}
+      <SectionHeader eyebrow={c.voice.label} title={c.voice.title} lead={c.voice.lead} align="center" />
 
-      <Reveal delay={120} className="mx-auto mt-24 max-w-3xl lg:mt-30">
-        <div className="flex items-center gap-7 border-y border-line py-10">
-          <button
-            type="button"
-            onClick={toggle}
-            aria-label={playing ? c.voice.pause : c.voice.play}
-            className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-brand text-white transition-all duration-fast ease-calm hover:bg-brand-hover hover:scale-[1.04]"
-          >
-            {playing ? (
-              <Pause size={20} strokeWidth={ICON_STROKE} aria-hidden />
-            ) : (
-              // Nudged right so the triangle looks centred, which it is not.
-              <Play
-                size={20}
-                strokeWidth={ICON_STROKE}
-                aria-hidden
-                className="translate-x-[1px]"
-              />
-            )}
-          </button>
-
-          <div className="min-w-0 flex-1">
-            <p className="text-[1.0625rem] font-medium tracking-tight text-ink">
-              {playing ? c.voice.pause : c.voice.play}
-            </p>
-            <div className="mt-4 flex items-center gap-4">
-              {/* Decorative. The button already announces play and pause, and a
-                  progress bar that a screen reader cannot act on only adds
-                  noise to the one control this block has. */}
-              <span aria-hidden className="h-px flex-1 bg-line-strong">
-                <span
-                  className="block h-px bg-brand-accent transition-[width] duration-fast ease-linear"
-                  style={{ width: `${progress}%` }}
-                />
-              </span>
-              {/* Blank until the duration is actually known. With preload="none"
-                  the browser has not read the header yet, so this used to sit
-                  at "0:00 / 0:00" — which reads as a broken player rather than
-                  as one that has not started. The width is reserved so nothing
-                  shifts when the real figures arrive. */}
+      <Reveal delay={120} className="mx-auto mt-12 max-w-3xl">
+        <div className="rounded-[20px] bg-surface-sunken p-3">
+          <div className="flex items-center gap-5 rounded-[14px] bg-white px-5 py-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)] sm:px-6">
+            <button
+              type="button"
+              onClick={toggle}
+              aria-label={playing ? c.voice.pause : c.voice.play}
+              className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full transition-all duration-fast ease-calm hover:scale-[1.04] ${
+                playing ? 'bg-accent text-ink' : 'bg-ink text-white'
+              }`}
+            >
+              {playing ? (
+                <Pause size={18} strokeWidth={ICON_STROKE} aria-hidden />
+              ) : (
+                // Nudged right so the triangle looks centred, which it is not.
+                <Play size={18} strokeWidth={ICON_STROKE} aria-hidden className="translate-x-[1px]" />
+              )}
+            </button>
+            <span
+              aria-hidden
+              className="w-[5.5rem] shrink-0 font-mono text-[0.8125rem] tabular-nums text-ink-mute"
+            >
+              {formatTime(current)} / {duration > 0 ? formatTime(duration) : '–:––'}
+            </span>
+            {/* Decorative: the button already announces play and pause. */}
+            <span aria-hidden className="h-[3px] flex-1 rounded-full bg-line">
               <span
-                aria-hidden
-                className="w-[5.5rem] shrink-0 text-right text-sm tabular-nums text-ink-mute"
-              >
-                {duration > 0 ? `${formatTime(current)} / ${formatTime(duration)}` : ''}
-              </span>
-            </div>
+                className="block h-[3px] rounded-full bg-accent-strong transition-[width] duration-fast ease-linear"
+                style={{ width: `${progress}%` }}
+              />
+            </span>
           </div>
         </div>
 
-        <p className="mx-auto mt-12 max-w-xl text-center text-[0.9375rem] leading-relaxed text-ink-mute">
+        <p className="mx-auto mt-8 max-w-xl text-center text-[0.9375rem] leading-relaxed text-ink-mute">
           {c.voice.note}
         </p>
-
         <audio ref={audioRef} src={src} preload="none" />
       </Reveal>
     </Section>

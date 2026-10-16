@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export type ButtonVariant = 'primary' | 'secondary' | 'quiet'
+export type ButtonVariant = 'primary' | 'secondary' | 'quiet' | 'accent'
 
 /**
  * One button, three weights, two tones.
@@ -23,6 +23,8 @@ const light: Record<ButtonVariant, string> = {
   secondary:
     'border border-line-strong bg-surface text-ink shadow-1 hover:border-ink/25 hover:-translate-y-px active:translate-y-0',
   quiet: 'px-2 text-ink-soft hover:text-brand-accent',
+  // EXPERIMENT (local): the accent, for the one action a block leads with.
+  accent: 'bg-accent text-ink hover:bg-accent-soft hover:-translate-y-px active:translate-y-0',
 }
 
 const dark: Record<ButtonVariant, string> = {
@@ -31,6 +33,7 @@ const dark: Record<ButtonVariant, string> = {
   secondary:
     'border border-white/20 bg-white/[0.06] text-white hover:bg-white/[0.12] hover:-translate-y-px active:translate-y-0',
   quiet: 'px-2 text-white/70 hover:text-white',
+  accent: 'bg-accent text-ink hover:bg-accent-soft hover:-translate-y-px active:translate-y-0',
 }
 
 function classesFor(variant: ButtonVariant, onDark: boolean, className: string) {

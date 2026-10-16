@@ -25,8 +25,9 @@ export const en: Content = {
   hero: {
     name: 'Telma',
     headlineLines: ['No missed calls.', 'No lost patients.'],
+    eyebrow: 'Virtual receptionist for clinics',
     subtitle:
-      "Telma is your clinic's virtual receptionist. She answers the phone, replies to patient questions, books appointments and transfers to the front desk when needed.",
+      'Answers with care when reception cannot.',
     ctaPrimary: 'See pricing',
     ctaSecondary: 'Talk to us',
     sceneAlt:
@@ -103,6 +104,7 @@ export const en: Content = {
       'By default, Telma leaves a provisional booking that the clinic confirms. When calendar sync is in place, Telma can confirm directly.',
       'All of this happens in the clinic dashboard, included on every plan: it is where you set the hours Telma may offer, block holidays and closures, confirm or change each provisional booking and listen to the calls. It runs on the front desk computer, on a tablet and on a phone, and it updates live.',
     ],
+    preview: { heading: 'Schedule', day: 'Tuesday', confirmed: 'Confirmed', pending: 'To confirm', free: 'Free slot', booking: 'New booking' },
   },
   pricing: {
     label: 'Plans and pricing',
@@ -232,6 +234,44 @@ export const en: Content = {
     closing:
       'In most clinics we start at Level 1 on day one. There is no need to wait for integrations.',
   },
+  clinics: {
+    label: 'Who it is for',
+    title: 'For any clinic that books by phone.',
+    lead: 'Telma works for any clinic that takes bookings by phone.',
+    items: [{ id: 'dental', name: 'Dentistry' }, { id: 'general', name: 'General practice' }, { id: 'aesthetic', name: 'Aesthetics' }, { id: 'physio', name: 'Physiotherapy' }],
+  },
+  calls: {
+    title: 'Built for the calls that cannot wait.',
+    lead: 'Callers are answered first time, at any hour, and reception knows everything that was said.',
+    listen: 'Hear Telma',
+    items: [
+      { tag: 'For callers', title: 'Answered first time', text: 'When reception cannot pick up, Telma does. Nobody is left waiting or sent to voicemail.' },
+      { tag: 'For callers', title: 'Out of hours too', text: 'At the end of the day, at weekends and on holidays, the call is answered and the request is recorded.' },
+      { tag: 'For the team', title: 'Nothing gets lost', text: 'Every call reaches reception with a written summary and the recording, ready to confirm and move on.' },
+    ],
+  },
+  banner: { title: 'Reception looks after the person at the desk. Telma answers the phone.', cta: 'Talk to us' },
+  band: { title: 'From the conversation, the essential stays.' },
+  resources: {
+    title: 'Worth reading',
+    prev: 'Previous',
+    next: 'Next',
+    readingTime: '{n} min read',
+    more: 'More to read',
+    unwritten: 'This one is not written yet. In the meantime, talk to us and we will go through it on the phone.',
+  },
+  trust: {
+    label: 'Trust',
+    title: 'The clinic stays in charge.',
+    items: [
+      { icon: 'shield', title: 'Data in the European Union', text: 'We comply with the GDPR and the data is hosted in the EU.' },
+      { icon: 'mic', title: 'Recorded with notice', text: 'Calls are recorded with prior notice, and you can listen to each one and read its summary.' },
+      { icon: 'siren', title: 'Urgent calls straight to the clinic', text: 'Telma detects urgent situations and passes the call straight on.' },
+      { icon: 'calendar', title: 'Only the hours you set', text: 'Telma only offers the hours the clinic chooses. She never books two appointments at the same time.' },
+      { icon: 'phone', title: 'The same number', text: 'You keep your number and install nothing. Unanswered calls are forwarded to Telma.' },
+      { icon: 'unlock', title: 'No minimum term', text: 'Installation included and no minimum term. Cancel whenever you like.' },
+    ],
+  },
   faq: {
     label: 'Frequently asked questions',
     title: 'Frequently asked questions.',
@@ -267,7 +307,7 @@ export const en: Content = {
         a: 'No. You keep your number. Unanswered calls are forwarded to Telma.',
       },
       {
-        q: 'How long does installation take?',
+        q: 'How long until it is up and running?',
         a: 'Usually between 3 and 5 working days.',
       },
       {
@@ -356,6 +396,7 @@ export const en: Content = {
   footer: {
     tagline: 'Telma answers when no one can.',
     contactHeading: 'Contact',
+    productHeading: 'Product',
     email: 'ola@telmaatende.com',
     phone: '+351 000 000 000',
     companyHeading: 'Company',

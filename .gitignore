@@ -3,6 +3,13 @@
 # for convenience. It must never be committed into this one.
 dashboard/
 
+# Image and font masters dropped in while redesigning. 42MB that nothing in the
+# code imports: the site serves the WebP in web/public/images and the subset
+# .woff2 in web/public/fonts, both built from these. Same rule as
+# assets/photography above, and this repository is public — the two .zip files
+# here are retail type families, which must not be redistributed from it.
+web/assets/
+
 # macOS
 .DS_Store
 

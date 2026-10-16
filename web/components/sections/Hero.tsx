@@ -4,6 +4,10 @@ import { Reveal } from '@/components/ui/Reveal'
 import { ButtonLink } from '@/components/ui/Button'
 import { ICON_STROKE } from '@/components/ui/Card'
 import { Cinemagraph } from '@/components/ui/Cinemagraph'
+import {
+  HERO_FIELD_EXPERIMENT,
+  HeroFieldExperiment,
+} from '@/components/experiments/telma-field/HeroFieldExperiment'
 
 /**
  * The first screen: the promise on the left, the room it happens in on the right.
@@ -85,11 +89,17 @@ import { Cinemagraph } from '@/components/ui/Cinemagraph'
  * separates every other pair: air.
  */
 export function Hero({ c }: { c: Content }) {
+  // EXPERIMENT (local): typographic field hero. Revert this line and the import.
+  if (HERO_FIELD_EXPERIMENT) return <HeroFieldExperiment c={c} />
+
   return (
-    <section className="hero-fill relative overflow-hidden hero-tail bg-bg pt-12 sm:pt-16 lg:pt-20">
+    <section className="hero-fill relative overflow-hidden hero-tail bg-bg pt-[calc(var(--nav-h)+3rem)] sm:pt-[calc(var(--nav-h)+4rem)] lg:pt-[calc(var(--nav-h)+5rem)]">
       <div className="hero-frame hero-gutter grid grid-cols-1 gap-10 pr-6 sm:pr-10 lg:grid-cols-[minmax(0,32rem)_1fr] lg:items-stretch lg:gap-x-10 lg:pr-0">
         <div className="lg:flex lg:flex-col lg:justify-center">
           <Reveal>
+            <span className="mb-6 inline-block font-mono text-[0.8125rem] uppercase tracking-[0.1em] text-ink-mute">
+              {c.hero.eyebrow}
+            </span>
             <h1 className="display text-hero text-balance text-ink lg:text-[3rem] xl:text-[3.25rem]">
               {c.hero.headlineLines.map((line, i) => (
                 <span key={i} className="block">

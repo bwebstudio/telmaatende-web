@@ -44,7 +44,7 @@ import localFont from 'next/font/local'
  * from those (see public/fonts/README.txt) and nothing else here changes.
  * ---------------------------------------------------------------------------
  */
-export const sans = localFont({
+const suisse = localFont({
   variable: '--font-sans',
   display: 'swap',
   adjustFontFallback: 'Arial',
@@ -62,3 +62,31 @@ export const sans = localFont({
     },
   ],
 })
+
+/**
+ * EXPERIMENT (local): Matter, with Matter Mono for system labels, standing in
+ * for the PolyAI pairing (Matter SQ + Basis Grotesque Mono). Built from the TRIAL cuts, licensed for personal use only: fine
+ * to evaluate locally, NOT to publish. Flip TYPE_EXPERIMENT to false to go
+ * back to Suisse Intl.
+ */
+export const TYPE_EXPERIMENT = true
+
+const matter = localFont({
+  variable: '--font-sans',
+  display: 'swap',
+  adjustFontFallback: 'Arial',
+  fallback: ['system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+  src: [
+    { path: '../public/fonts/Matter-Regular-latin.woff2', weight: '400', style: 'normal' },
+    { path: '../public/fonts/Matter-Medium-latin.woff2', weight: '500', style: 'normal' },
+  ],
+})
+
+export const mono = localFont({
+  variable: '--font-mono',
+  display: 'swap',
+  fallback: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+  src: [{ path: '../public/fonts/BasisGrotesqueMonoPro-Regular-latin.woff2', weight: '400', style: 'normal' }],
+})
+
+export const sans = TYPE_EXPERIMENT ? matter : suisse

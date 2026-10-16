@@ -113,6 +113,8 @@ export interface Content {
   hero: {
     name: string
     headlineLines: string[]
+    /** A tag above the headline naming the category, so the niche reads at a glance. */
+    eyebrow: string
     subtitle: string
     ctaPrimary: string
     ctaSecondary: string
@@ -157,6 +159,8 @@ export interface Content {
     label: string
     title: string
     paragraphs: string[]
+    /** Labels for the small day view beside the copy; it uses the dashboard's own words. */
+    preview: { heading: string; day: string; confirmed: string; pending: string; free: string; booking: string }
   }
   pricing: {
     label: string
@@ -204,6 +208,45 @@ export interface Content {
     levels: IntegrationLevel[]
     closing: string
   }
+  /** Who it is for: the kinds of clinic that book by phone. */
+  clinics: {
+    label: string
+    title: string
+    lead: string
+    items: { id: 'dental' | 'general' | 'aesthetic' | 'physio'; name: string }[]
+  }
+  /** Why it matters to whoever calls and to the team, in three cards. */
+  calls: {
+    title: string
+    lead: string
+    listen: string
+    items: { tag: string; title: string; text: string }[]
+  }
+  /** A wide photograph with one line over it, between two text-heavy blocks. */
+  banner: { title: string; cta: string }
+  /** The brand's one still moment: the mark assembling out of its own letters,
+   *  with the single line that says what the animation is doing. */
+  band: { title: string }
+  /**
+   * Articles that make the case for the service. PLACEHOLDER: the titles are
+   * the planned pieces; none is written yet and none links anywhere.
+   */
+  resources: {
+    title: string
+    prev: string
+    next: string
+    /** `{n}` is replaced with the number of minutes. */
+    readingTime: string
+    more: string
+    /** Shown in place of a body that has not been written yet. */
+    unwritten: string
+  }
+  /** What a clinic can rely on. Every line restates a fact the FAQ already gives. */
+  trust: {
+    label: string
+    title: string
+    items: { icon: 'shield' | 'mic' | 'siren' | 'calendar' | 'phone' | 'unlock'; title: string; text: string }[]
+  }
   faq: {
     label: string
     title: string
@@ -244,6 +287,8 @@ export interface Content {
   footer: {
     tagline: string
     contactHeading: string
+    /** Heading of the footer column that repeats the page's sections. */
+    productHeading: string
     email: string
     phone: string
     companyHeading: string

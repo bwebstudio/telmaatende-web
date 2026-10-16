@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { sans } from '@/lib/fonts'
+import { mono, sans } from '@/lib/fonts'
 import { getContent, isLocale, locales, localeMeta, defaultLocale } from '@/content'
 import '../globals.css'
 
@@ -65,7 +65,7 @@ export default async function LangLayout({
     // warning for this node's attributes only — children still hydrate normally.
     <html
       lang={lang}
-      className={sans.variable}
+      className={`${sans.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
       <head>

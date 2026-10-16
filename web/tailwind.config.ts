@@ -29,6 +29,40 @@ const config: Config = {
           mute: 'rgb(var(--ink-mute) / <alpha-value>)',
         },
         bg: 'rgb(var(--bg) / <alpha-value>)',
+        // The four ramps, by name. Nothing in this codebase used Tailwind's
+        // own `blue`, `red` or `purple`, so these replace them outright rather
+        // than sitting beside near-identical defaults nobody meant to reach for.
+        macaw: {
+          DEFAULT: 'rgb(var(--macaw) / <alpha-value>)',
+          400: 'rgb(var(--macaw-400) / <alpha-value>)',
+          200: 'rgb(var(--macaw-200) / <alpha-value>)',
+          100: 'rgb(var(--macaw-100) / <alpha-value>)',
+        },
+        purple: {
+          DEFAULT: 'rgb(var(--purple) / <alpha-value>)',
+          400: 'rgb(var(--purple-400) / <alpha-value>)',
+          200: 'rgb(var(--purple-200) / <alpha-value>)',
+          100: 'rgb(var(--purple-100) / <alpha-value>)',
+        },
+        blue: {
+          DEFAULT: 'rgb(var(--blue) / <alpha-value>)',
+          400: 'rgb(var(--blue-400) / <alpha-value>)',
+          200: 'rgb(var(--blue-200) / <alpha-value>)',
+          100: 'rgb(var(--blue-100) / <alpha-value>)',
+        },
+        red: {
+          DEFAULT: 'rgb(var(--red) / <alpha-value>)',
+          400: 'rgb(var(--red-400) / <alpha-value>)',
+          200: 'rgb(var(--red-200) / <alpha-value>)',
+          100: 'rgb(var(--red-100) / <alpha-value>)',
+        },
+        // The semantic accent, pointed at one of them in globals.css.
+        accent: {
+          DEFAULT: 'rgb(var(--accent) / <alpha-value>)',
+          strong: 'rgb(var(--accent-strong) / <alpha-value>)',
+          soft: 'rgb(var(--accent-soft) / <alpha-value>)',
+          wash: 'rgb(var(--accent-wash) / <alpha-value>)',
+        },
         surface: {
           DEFAULT: 'rgb(var(--surface) / <alpha-value>)',
           sunken: 'rgb(var(--surface-sunken) / <alpha-value>)',
@@ -47,6 +81,8 @@ const config: Config = {
         // One family for the entire interface, and the only one loaded. The
         // logotype's letterforms live inside its artwork, not in a webfont.
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        // EXPERIMENT (local): system labels, as in the reference.
+        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       borderRadius: {
         media: 'var(--radius-media)',

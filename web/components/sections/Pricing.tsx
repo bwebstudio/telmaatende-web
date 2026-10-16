@@ -1,12 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { Check, MessageCircle } from 'lucide-react'
+import { Check, MessageCircle, Plus } from 'lucide-react'
 import type { Content, Locale } from '@/content'
 import { localeMeta } from '@/content'
 import type { Plan } from '@/content/types'
 import { Section, SectionHeader } from '@/components/ui/Section'
-import { Card, ICON_STROKE, IconChip } from '@/components/ui/Card'
+import { ICON_STROKE } from '@/components/ui/Card'
 import { Reveal } from '@/components/ui/Reveal'
 import { ButtonLink } from '@/components/ui/Button'
 import { signupUrl } from '@/lib/signup'
@@ -21,10 +21,13 @@ function formatEuro(value: number, lang: Locale): string {
 }
 
 /**
- * Three plans, per the Brand Bible's "tres tarjetas máximo". The custom plan is
- * a fourth product but not a fourth card — comparing three things is a
- * decision, comparing four is a task, and the custom plan is not something
- * anyone compares anyway. It sits below as a single quiet line.
+ * Three plans, per the Brand Bible's "tres tarjetas máximo", in the reference's
+ * figures grammar: grey panels where the price is the largest thing, set like
+ * a statistic. The most chosen plan is the one tile that carries the accent.
+ *
+ * The custom plan and the WhatsApp add-on are not plans to compare, so they
+ * leave the grid for one dark panel underneath, side by side. The fine print
+ * becomes a quiet grid instead of a centred paragraph.
  */
 export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
   const [annual, setAnnual] = useState(false)
@@ -34,112 +37,108 @@ export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
 
   return (
     <Section id="precos" tone="bg" rule>
-      <SectionHeader
-        eyebrow={c.pricing.label}
-        title={c.pricing.title}
-        lead={c.pricing.intro}
-        align="center"
-      />
-
-      {/* How to choose, not which to choose: the plans already say who they are
-          for, so this points the reader at the one number that decides it. */}
-      <Reveal delay={60} className="mt-6">
-        <p className="mx-auto max-w-xl text-center text-ink-mute">{c.pricing.chooseHint}</p>
-      </Reveal>
-
-      <Reveal className="mt-20 flex flex-col items-center gap-5 lg:mt-24">
-        <div
-          role="group"
-          aria-label={`${c.pricing.monthly} / ${c.pricing.annual}`}
-          className="inline-flex rounded-pill border border-line-strong bg-surface p-1"
-        >
-          {[
-            { label: c.pricing.monthly, value: false },
-            { label: c.pricing.annual, value: true },
-          ].map((option) => (
-            <button
-              key={option.label}
-              type="button"
-              aria-pressed={annual === option.value}
-              onClick={() => setAnnual(option.value)}
-              className={`min-h-[2.75rem] rounded-pill px-6 text-base font-medium transition-all duration-fast ease-calm ${
-                annual === option.value
-                  ? 'bg-brand text-white'
-                  : 'text-ink-mute hover:text-ink'
-              }`}
-            >
-              {option.label}
-            </button>
-          ))}
+      <div className="flex flex-col items-center gap-8 text-center">
+        <div>
+          <SectionHeader eyebrow={c.pricing.label} title={c.pricing.title} lead={c.pricing.intro} align="center" />
+          {/* How to choose, not which to choose: the plans already say who they
+              are for, so this points the reader at the one number that decides it. */}
+          <p className="mx-auto mt-4 max-w-lead text-ink-mute">{c.pricing.chooseHint}</p>
         </div>
 
-        {annual && (
-          <p className="text-sm font-medium text-brand-accent">{c.pricing.annualBadge}</p>
-        )}
-      </Reveal>
+        <Reveal className="flex flex-col items-center gap-3">
+          <div
+            role="group"
+            aria-label={`${c.pricing.monthly} / ${c.pricing.annual}`}
+            className="inline-flex rounded-pill border border-ink/25 p-1.5"
+          >
+            {[
+              { label: c.pricing.monthly, value: false },
+              { label: c.pricing.annual, value: true },
+            ].map((option) => (
+              <button
+                key={option.label}
+                type="button"
+                aria-pressed={annual === option.value}
+                onClick={() => setAnnual(option.value)}
+                className={`min-h-[2.75rem] rounded-pill px-7 text-base transition-all duration-fast ease-calm ${
+                  annual === option.value ? 'bg-ink text-white' : 'text-ink hover:bg-ink/5'
+                }`}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+          <p
+            className={`font-mono text-[0.8125rem] uppercase tracking-[0.08em] transition-opacity duration-fast ${
+              annual ? 'text-ink opacity-100' : 'opacity-0'
+            }`}
+            aria-hidden={!annual}
+          >
+            {c.pricing.annualBadge}
+          </p>
+        </Reveal>
+      </div>
 
-      <div className="mt-20 grid items-stretch gap-5 lg:grid-cols-3">
+      <div className="mt-14 grid items-stretch gap-5 lg:mt-16 lg:grid-cols-3">
         {standard.map((plan, i) => (
           <PlanCard key={plan.id} plan={plan} annual={annual} lang={lang} c={c} delay={i * 90} />
         ))}
       </div>
 
-      {custom && (
-        <Reveal delay={120} className="mt-5">
-          <div className="flex flex-col gap-6 rounded-card border border-line bg-surface p-9 sm:flex-row sm:items-center sm:justify-between sm:p-11">
+      {/* The custom plan and the WhatsApp add-on are footnotes to the grid, not
+          rivals to it: two slim rows, each one line of what it is and one way
+          in. The add-on's features sit behind its name instead of on the page. */}
+      <Reveal delay={120} className="mt-5 grid gap-5 lg:grid-cols-2">
+        {custom && (
+          <div className="flex flex-col gap-5 rounded-[20px] border border-line p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
             <div>
-              <h3 className="text-[1.0625rem] font-medium tracking-tight text-ink">{custom.name}</h3>
-              <p className="mt-2 text-ink-soft">{custom.audience}</p>
-            </div>
-            <div className="flex shrink-0 items-center gap-6">
-              <span className="display text-xl text-ink">{custom.priceText}</span>
-              <ButtonLink href="#contacto" variant="secondary">
-                {c.pricing.customCta}
-              </ButtonLink>
-            </div>
-          </div>
-        </Reveal>
-      )}
-
-      {/* The WhatsApp add-on. Previously a gradient panel with a glow and a fake
-          chat mock — the loudest thing on the page for a €39 extra. It is an
-          add-on, so it looks like one. */}
-      <Reveal delay={140} className="mt-5">
-        <div className="flex flex-col gap-8 rounded-card border border-line bg-surface p-9 sm:p-11 lg:flex-row lg:items-center lg:gap-16">
-          <div className="flex items-start gap-5 lg:w-2/5">
-            <IconChip icon={MessageCircle} />
-            <div>
-              <span className="text-label font-medium uppercase text-ink-mute">
-                {c.pricing.whatsapp.label}
-              </span>
-              <h3 className="mt-2 text-[1.0625rem] font-medium tracking-tight text-ink">
-                {c.pricing.whatsapp.name}
-              </h3>
-              <p className="mt-2 text-ink-soft">
-                <span className="font-medium text-ink">{c.pricing.whatsapp.price}</span>{' '}
-                {c.pricing.whatsapp.priceNote}
+              <p className="font-medium tracking-tight text-ink">
+                {custom.name} <span className="text-ink-mute">· {custom.priceText}</span>
               </p>
+              <p className="mt-1 text-sm text-ink-soft">{custom.audience}</p>
             </div>
+            <ButtonLink href="#contacto" variant="secondary" className="shrink-0">
+              {c.pricing.customCta}
+            </ButtonLink>
           </div>
+        )}
 
-          <ul className="flex flex-1 flex-col gap-3">
-            {c.pricing.whatsapp.features.map((f, i) => (
-              <li key={i} className="flex gap-3 leading-relaxed text-ink-soft">
-                <Check
-                  size={17}
-                  strokeWidth={ICON_STROKE}
-                  aria-hidden
-                  className="mt-1 shrink-0 text-brand-accent"
-                />
+        <details className="group rounded-[20px] border border-line p-6 sm:p-8">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-5 [&::-webkit-details-marker]:hidden">
+            <span className="flex items-center gap-4">
+              <MessageCircle size={20} strokeWidth={ICON_STROKE} aria-hidden className="shrink-0 text-ink" />
+              <span>
+                <span className="block font-medium tracking-tight text-ink">
+                  {c.pricing.whatsapp.name}{' '}
+                  <span className="ml-1 rounded-pill bg-accent-wash px-2 py-0.5 font-mono text-[0.6875rem] uppercase tracking-[0.08em] text-ink">
+                    {c.pricing.whatsapp.label}
+                  </span>
+                </span>
+                <span className="mt-1 block text-sm text-ink-soft">
+                  {c.pricing.whatsapp.price} {c.pricing.whatsapp.priceNote}
+                </span>
+              </span>
+            </span>
+            <Plus
+              size={18}
+              strokeWidth={ICON_STROKE}
+              aria-hidden
+              className="shrink-0 text-ink transition-transform duration-fast group-open:rotate-45"
+            />
+          </summary>
+          <ul className="mt-5 flex flex-col gap-2 border-t border-line pt-5">
+            {c.pricing.whatsapp.features.map((f, k) => (
+              <li key={k} className="flex gap-3 text-sm leading-relaxed text-ink-soft">
+                <Check size={15} strokeWidth={ICON_STROKE} aria-hidden className="mt-0.5 shrink-0 text-ink" />
                 <span>{f}</span>
               </li>
             ))}
           </ul>
-        </div>
+        </details>
       </Reveal>
 
-      <Reveal delay={160} className="mt-20">
-        <ul className="flex flex-col gap-2 text-sm text-ink-mute sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-8">
+      <Reveal delay={160} className="mt-14">
+        <ul className="grid gap-x-10 gap-y-4 border-t border-line pt-8 text-sm leading-relaxed text-ink-mute sm:grid-cols-2 lg:grid-cols-3">
           {c.pricing.finePrint.map((line, i) => (
             <li key={i}>{line}</li>
           ))}
@@ -174,23 +173,27 @@ function PlanCard({
 
   return (
     <Reveal as="article" delay={delay} className="h-full">
-      <Card
-        className={`relative flex h-full flex-col ${
-          plan.highlighted ? 'border-brand/30' : ''
+      <div
+        className={`relative flex h-full flex-col rounded-[24px] p-8 sm:p-10 ${
+          // The one highlighted tile carries the accent, as the reference
+          // highlights one customer among many.
+          plan.highlighted
+            ? 'bg-[linear-gradient(160deg,rgb(var(--accent-soft)),rgb(var(--accent-wash))_75%)]'
+            : 'panel-grey'
         }`}
       >
         {plan.highlighted && (
-          <span className="absolute -top-3 left-9 rounded-pill border border-line bg-brand-wash px-4 py-1 text-label font-medium uppercase text-brand-accent">
+          <span className="absolute right-8 top-8 rounded-pill bg-ink px-3 py-1 font-mono text-[0.6875rem] uppercase tracking-[0.08em] text-white sm:right-10 sm:top-10">
             {c.pricing.mostChosen}
           </span>
         )}
 
-        <h3 className="text-[1.0625rem] font-medium tracking-tight text-ink">{plan.name}</h3>
-        <p className="mt-2 text-sm text-ink-mute">{plan.audience}</p>
+        <h3 className="text-[1.5rem] font-medium tracking-tight text-ink">{plan.name}</h3>
+        <p className="mt-2 max-w-[28ch] text-ink-soft">{plan.audience}</p>
 
-        <div className="mt-8">
+        <div className="mt-12">
           <div className="flex flex-wrap items-baseline gap-x-2">
-            <span className="display text-[2.75rem] leading-none tabular-nums text-ink sm:text-[3rem]">
+            <span className="display text-[4rem] leading-none tracking-[-0.03em] tabular-nums text-ink sm:text-[4.5rem]">
               {formatEuro(effective, lang)}
             </span>
             <span className="text-ink-mute">{c.pricing.perMonth}</span>
@@ -214,7 +217,7 @@ function PlanCard({
           {/* No entry fee on any plan. Setting a clinic up is real work, but it
               is carried by the subscription: a number here is the one figure a
               clinic sees before it knows whether any of this works. */}
-          <p className="mt-2 text-sm font-medium text-brand-accent">
+          <p className="mt-3 font-mono text-[0.75rem] uppercase tracking-[0.08em] text-ink-soft">
             {c.pricing.installIncluded}
           </p>
         </div>
@@ -223,7 +226,7 @@ function PlanCard({
             how Telma costs, with the equivalent in calls underneath so a clinic
             can picture it. */}
         {plan.allowance && (
-          <div className="mt-9 border-t border-line pt-9">
+          <div className="mt-9 border-t border-ink/10 pt-8">
             <p className="font-medium text-ink">{plan.allowance}</p>
             {plan.allowanceNote && (
               <p className="mt-1 text-sm text-ink-mute">{plan.allowanceNote}</p>
@@ -231,14 +234,14 @@ function PlanCard({
           </div>
         )}
 
-        <ul className="mt-9 flex flex-1 flex-col gap-3.5 border-t border-line pt-9">
+        <ul className="mt-8 flex flex-1 flex-col gap-3.5 border-t border-ink/10 pt-8">
           {plan.features.map((f, i) => (
             <li key={i} className="flex gap-3 text-ink-soft">
               <Check
                 size={17}
                 strokeWidth={ICON_STROKE}
                 aria-hidden
-                className="mt-1 shrink-0 text-brand-accent"
+                className="mt-1 shrink-0 text-ink"
               />
               <span>{f}</span>
             </li>
@@ -246,7 +249,7 @@ function PlanCard({
         </ul>
 
         {plan.extraSite && (
-          <p className="mt-9 border-t border-line pt-9 text-sm text-ink-mute">
+          <p className="mt-8 border-t border-ink/10 pt-8 text-sm text-ink-mute">
             {plan.extraSite}
           </p>
         )}
@@ -258,11 +261,11 @@ function PlanCard({
         <ButtonLink
           href={signup ?? '#contacto'}
           variant={plan.highlighted ? 'primary' : 'secondary'}
-          className="mt-12 w-full"
+          className="mt-10 w-full"
         >
           {signup ? c.pricing.planCtaSignup : c.pricing.planCta}
         </ButtonLink>
-      </Card>
+      </div>
     </Reveal>
   )
 }

@@ -11,19 +11,36 @@ import { ICON_STROKE } from '@/components/ui/Card'
  */
 export function Footer({ c, lang }: { c: Content; lang: Locale }) {
   return (
-    <footer className="bg-dark text-white">
+    <footer data-nav-theme="dark" className="bg-dark text-white">
       <Container>
-        <div className="border-t border-dark-line py-24">
-          <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="lg:col-span-2">
+        <div className="pb-16 pt-8">
+          <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
+            <div>
               <Logo onDark />
               <p className="mt-6 max-w-xs text-body-lg text-white/60">
                 {c.footer.tagline}
               </p>
             </div>
 
+            {/* The page's own sections, as the reference's footer lists its
+                product: the bar's links, repeated where the reader ends up. */}
             <div>
-              <h2 className="text-label font-medium uppercase text-white/40">
+              <h2 className="font-mono text-[0.8125rem] uppercase tracking-[0.08em] text-white/45">
+                {c.footer.productHeading}
+              </h2>
+              <ul className="mt-5 flex flex-col gap-3">
+                {c.header.nav.map((item) => (
+                  <li key={item.href}>
+                    <a href={item.href} className="text-[1.0625rem] text-white/85 transition-colors duration-fast ease-calm hover:text-white">
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h2 className="font-mono text-[0.8125rem] uppercase tracking-[0.08em] text-white/45">
                 {c.footer.contactHeading}
               </h2>
               <a
@@ -36,14 +53,14 @@ export function Footer({ c, lang }: { c: Content; lang: Locale }) {
                   aria-hidden
                   // The primary green is all but invisible on ink; the lighter
                   // accent clears the 3:1 a non-text glyph needs.
-                  className="shrink-0 text-brand-accent"
+                  className="shrink-0 text-white/60"
                 />
                 {c.footer.email}
               </a>
             </div>
 
             <div>
-              <h2 className="text-label font-medium uppercase text-white/40">
+              <h2 className="font-mono text-[0.8125rem] uppercase tracking-[0.08em] text-white/45">
                 {c.footer.companyHeading}
               </h2>
               <p className="mt-5 text-white/80">{c.footer.companyText}</p>

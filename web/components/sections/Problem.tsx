@@ -1,67 +1,47 @@
 import type { Content } from '@/content'
-import { Section, SectionHeader } from '@/components/ui/Section'
+import { Eyebrow, Section } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
-import { Cinemagraph } from '@/components/ui/Cinemagraph'
 
 /**
- * The enemy, stated once and calmly.
- *
- * The scene and the three symptoms now sit side by side instead of stacked, and
- * the scene is a cinemagraph rather than a still: an empty reception counter
- * with a phone nobody is answering, light drifting across the wall. It is the
- * argument the section makes, so it belongs beside the argument — not below it
- * as a full-bleed slab, which is what it was and which read as decoration.
- *
- * Seven columns of twelve for the footage, four for the symptoms, one left
- * empty between them. The gap under the title is a third of what it was: the
- * distance was making the image feel like a separate exhibit.
- *
- * The two halves are centred against each other rather than aligned at the top.
- * The footage is a 2:1 crop and the symptoms run to three paragraphs, so
- * top-aligning left two hundred pixels of void under the image and the pair
- * read as though one of them had slipped.
- *
- * No cards, no icons, no colour, and no rounded corners on the media. Weight
- * here comes from a quiet moving image and plain type.
+ * The three ways a clinic loses a call, as a bento of grey panels: one wide,
+ * two beside each other underneath, after the reference's figures section.
+ * There are no figures here, on purpose. Telma has no measured numbers yet, so
+ * the large type carries the situation itself, which a clinic recognises at a
+ * glance, instead of a statistic nobody can stand behind.
  */
 export function Problem({ c }: { c: Content }) {
-  return (
-    <Section id="problema" tone="sunken">
-      <SectionHeader eyebrow={c.problem.label} title={c.problem.title} />
+  const [first, ...rest] = c.problem.items
 
-      <div className="mt-16 grid gap-14 lg:mt-20 lg:grid-cols-12 lg:items-center lg:gap-x-10">
-        <Reveal className="lg:col-span-7">
-          <div className="relative">
-            <Cinemagraph
-              mp4="/video/reception.mp4"
-              webm="/video/reception.webm"
-              poster="/video/reception-poster.jpg"
-              label={c.problem.sceneAlt}
-              frame="aspect-[2/1]"
-            />
-            {/* The same hairline the photographs carry, so the footage sits on
-                the page rather than being pasted onto it. */}
-            <span
-              aria-hidden
-              className="pointer-events-none absolute inset-0 rounded-media ring-1 ring-inset ring-line-strong"
-            />
-          </div>
+  return (
+    <Section id="problema" tone="bg">
+      {/* The claim stays for screen readers and search, but not on screen: the
+          bento below says the same thing at a much larger size, and stating it
+          twice in a row was one heading too many. */}
+      <h2 className="sr-only">{c.problem.title}</h2>
+      <Eyebrow>{c.problem.label}</Eyebrow>
+
+      <div className="mt-10 grid gap-5 lg:grid-cols-2">
+        <Reveal className="lg:col-span-2">
+          <article className="panel-grey grid gap-10 rounded-[24px] p-8 sm:p-12 lg:grid-cols-[1.4fr_1fr] lg:items-center lg:gap-16 lg:p-16">
+            <h3 className="display text-[2.25rem] leading-[1.05] text-ink sm:text-[3rem] lg:text-[4rem]">
+              {first.title}
+            </h3>
+            <p className="max-w-[30ch] text-[1.25rem] leading-snug text-ink sm:text-[1.5rem]">
+              {first.text}
+            </p>
+          </article>
         </Reveal>
 
-        <div className="flex flex-col lg:col-span-4 lg:col-start-9">
-          {c.problem.items.map((item, i) => (
-            <Reveal
-              key={i}
-              delay={i * 90}
-              className="border-t border-line pt-7 [&:not(:first-child)]:mt-10"
-            >
-              <h3 className="text-[1.0625rem] font-medium leading-snug tracking-tight text-ink">
+        {rest.map((item, i) => (
+          <Reveal key={i} delay={(i + 1) * 90}>
+            <article className="panel-grey flex h-full min-h-[18rem] flex-col justify-between gap-12 rounded-[24px] p-8 sm:p-12">
+              <h3 className="display text-[1.875rem] leading-[1.08] text-ink sm:text-[2.5rem]">
                 {item.title}
               </h3>
-              <p className="mt-3 leading-relaxed text-ink-soft">{item.text}</p>
-            </Reveal>
-          ))}
-        </div>
+              <p className="max-w-[36ch] text-[1.125rem] leading-snug text-ink">{item.text}</p>
+            </article>
+          </Reveal>
+        ))}
       </div>
     </Section>
   )

@@ -25,8 +25,9 @@ export const pt: Content = {
   hero: {
     name: 'Telma',
     headlineLines: ['Nenhuma chamada perdida.', 'Nenhum paciente perdido.'],
+    eyebrow: 'Rececionista virtual para clínicas',
     subtitle:
-      'A Telma é a rececionista virtual da sua clínica.',
+      'Atende com cuidado quando a receção não pode.',
     ctaPrimary: 'Ver preços',
     ctaSecondary: 'Falar connosco',
     sceneAlt:
@@ -103,6 +104,7 @@ export const pt: Content = {
       'Por defeito, a Telma deixa uma pré-marcação que a clínica confirma. Quando existe sincronização de calendário, a Telma pode confirmar diretamente.',
       'Tudo isto se faz no painel da clínica, incluído em todos os planos: é lá que marca os horários que a Telma pode oferecer, bloqueia feriados e férias, confirma ou altera cada pré-marcação e ouve as chamadas. Funciona no computador da receção, no tablet e no telemóvel, e atualiza-se em direto.',
     ],
+    preview: { heading: 'Agenda', day: 'Terça-feira', confirmed: 'Confirmada', pending: 'Por confirmar', free: 'Hora livre', booking: 'Nova marcação' },
   },
   pricing: {
     label: 'Planos e preços',
@@ -232,6 +234,44 @@ export const pt: Content = {
     closing:
       'Na maioria das clínicas começamos no Nível 1 no primeiro dia. Não é preciso esperar por integrações.',
   },
+  clinics: {
+    label: 'Para quem',
+    title: 'Para qualquer clínica que marque por telefone.',
+    lead: 'A Telma funciona em qualquer clínica que receba marcações por telefone.',
+    items: [{ id: 'dental', name: 'Medicina dentária' }, { id: 'general', name: 'Medicina geral' }, { id: 'aesthetic', name: 'Estética' }, { id: 'physio', name: 'Fisioterapia' }],
+  },
+  calls: {
+    title: 'Feita para as chamadas que não podem esperar.',
+    lead: 'Quem liga é atendido à primeira, a qualquer hora, e a receção fica a saber de tudo o que foi falado.',
+    listen: 'Ouvir a Telma',
+    items: [
+      { tag: 'Para quem liga', title: 'Atendida à primeira', text: 'Quando a receção não pode atender, a Telma atende. Quem liga não fica à espera nem cai no correio de voz.' },
+      { tag: 'Para quem liga', title: 'Também fora de horário', text: 'Ao fim do dia, ao fim de semana e nos feriados, a chamada é atendida e o pedido fica registado.' },
+      { tag: 'Para a equipa', title: 'Nada se perde pelo caminho', text: 'Cada chamada chega à receção com um resumo escrito e a gravação, para confirmar e seguir em frente.' },
+    ],
+  },
+  banner: { title: 'A receção atende quem está ao balcão. A Telma atende o telefone.', cta: 'Falar connosco' },
+  band: { title: 'Da conversa, fica o essencial.' },
+  resources: {
+    title: 'Para ler com calma',
+    prev: 'Anterior',
+    next: 'Seguinte',
+    readingTime: '{n} min de leitura',
+    more: 'Mais para ler',
+    unwritten: 'Este texto ainda está por escrever. Entretanto, fale connosco e explicamos o mesmo ao telefone.',
+  },
+  trust: {
+    label: 'Confiança',
+    title: 'A clínica continua no controlo.',
+    items: [
+      { icon: 'shield', title: 'Dados na União Europeia', text: 'Cumprimos o RGPD e os dados ficam alojados na UE.' },
+      { icon: 'mic', title: 'Gravação com aviso', text: 'As chamadas são gravadas com aviso prévio, e pode ouvi-las e ler o resumo de cada uma.' },
+      { icon: 'siren', title: 'Urgências direto para a clínica', text: 'A Telma deteta situações urgentes e passa a chamada de imediato.' },
+      { icon: 'calendar', title: 'Só os horários que define', text: 'A Telma só oferece os horários que a clínica escolhe. Nunca marca duas consultas à mesma hora.' },
+      { icon: 'phone', title: 'O mesmo número', text: 'Mantém o seu número e não instala nada. As chamadas não atendidas seguem para a Telma.' },
+      { icon: 'unlock', title: 'Sem permanência', text: 'Instalação incluída e sem período de permanência. Cancela quando quiser.' },
+    ],
+  },
   faq: {
     label: 'Perguntas frequentes',
     title: 'Perguntas frequentes.',
@@ -267,7 +307,7 @@ export const pt: Content = {
         a: 'Não. Mantém o seu número. As chamadas não atendidas são reencaminhadas para a Telma.',
       },
       {
-        q: 'Quanto tempo demora a instalação?',
+        q: 'Quanto tempo até estar a funcionar?',
         a: 'Normalmente entre 3 e 5 dias úteis.',
       },
       {
@@ -356,6 +396,7 @@ export const pt: Content = {
   footer: {
     tagline: 'A Telma atende quando ninguém pode.',
     contactHeading: 'Contacto',
+    productHeading: 'Produto',
     email: 'ola@telmaatende.com',
     phone: '+351 000 000 000',
     companyHeading: 'Empresa',

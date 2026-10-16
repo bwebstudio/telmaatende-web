@@ -63,6 +63,15 @@
        that need to recede — never a grey. */
     --bg: 252 252 250;
     --surface: 255 255 255;
+    /* The accent's fallback. The palette block further down re-points these
+       at one of the four ramps; these values are what `bg-accent` lands on if
+       that block is ever deleted, so the utility never renders colourless. */
+    --accent: 195 175 254;
+    --accent-strong: 157 127 243;
+    --accent-soft: 216 203 255;
+    --accent-wash: 244 240 255;
+    /* The floating bar's footprint: top inset plus its height. */
+    --nav-h: 4.5rem;
     --surface-sunken: 244 244 240;
     --border: 231 234 232;
     --border-strong: 212 217 214;
@@ -116,6 +125,92 @@
     --dur-fast: 320ms;
     --dur: 520ms;
     --dur-slow: 800ms;
+
+    /* --- PALETTE (local): four ramps, four steps ---------------------------
+       Replaces the forest green. Delete this block and the base palette above
+       takes over again; nothing outside it holds a literal colour.
+
+       ── HOW IT IS BUILT ──────────────────────────────────────────────────
+       Four hues, four steps each, and the steps mean the same thing in every
+       hue: 400 is the saturated one for a border or a small solid, the base is
+       a ground you can read ink on, 200 is a hover, 100 is a wash. That is the
+       difference between a palette and a set of nice colours: sixteen values
+       with fixed relationships, so a component can move across hues without
+       anybody re-checking contrast.
+
+       ── THE ONE RULE ─────────────────────────────────────────────────────
+       The ink is always the near-black. Measured on the bases: macaw 14.65:1,
+       blue 12.30:1, purple 9.79:1, red 8.79:1, all AA for body text. White
+       fails on every 400 (macaw 1.65:1, blue 2.02:1, purple 3.10:1, red
+       3.11:1), so a white label never goes on one of these. The ramps are
+       grounds and marks; the action colour is ink.
+
+       ── WHERE IT COMES FROM, AND WHAT THAT COSTS ─────────────────────────
+       These are PolyAI's brand ramps, adopted as a deliberate decision rather
+       than by drift: the lilac was already in this file hex for hex before
+       anybody chose it. PolyAI sells voice assistants for customer service,
+       which is this category, so the risk is real and it is accepted. If the
+       two brands ever sit side by side at a trade stand, macaw and purple are
+       the two that will read as theirs; the blue and the red are the two that
+       carry least of their signature, which is worth knowing when picking a
+       hue for something that will be seen next to them. */
+    --macaw-400: 192 212 52;
+    --macaw: 217 238 80;
+    --macaw-200: 234 248 146;
+    --macaw-100: 247 253 208;
+
+    --purple-400: 157 127 243;
+    --purple: 195 175 254;
+    --purple-200: 216 203 255;
+    --purple-100: 244 240 255;
+
+    --blue-400: 54 200 216;
+    --blue: 111 225 238;
+    --blue-200: 167 243 252;
+    --blue-100: 217 251 255;
+
+    --red-400: 233 108 91;
+    --red: 255 146 146;
+    --red-200: 255 189 189;
+    --red-100: 255 241 241;
+
+    /* Neutrals carry the page. The ramps mark one thing at a time. */
+    --brand: 17 17 17;
+    --brand-hover: 48 48 48;
+    --brand-accent: 82 82 82;
+    --brand-wash: 241 241 239;
+    --brand-wash-strong: 226 226 223;
+    --ink: 17 17 17;
+    --ink-soft: 82 82 82;
+    --ink-mute: 112 112 110;
+    --bg: 255 255 255;
+    --surface-sunken: 245 245 243;
+    --border: 232 232 230;
+    --border-strong: 214 214 211;
+    --dark: 11 11 11;
+    --dark-soft: 26 26 26;
+    --dark-line: 44 44 44;
+
+    /* The semantic accent points at one ramp, so every `bg-accent` in the
+       codebase moves together by editing this line and nothing else. Macaw is
+       the loud one, which is what an accent is for. */
+    --accent: var(--macaw);
+    --accent-strong: var(--macaw-400);
+    --accent-soft: var(--macaw-200);
+    --accent-wash: var(--macaw-100);
+
+    --shadow-1: 0 1px 1px rgba(0, 0, 0, 0.02), 0 2px 6px -3px rgba(0, 0, 0, 0.06);
+    --shadow-2: 0 1px 2px rgba(0, 0, 0, 0.02), 0 10px 24px -14px rgba(0, 0, 0, 0.1);
+    --shadow-3: 0 2px 4px rgba(0, 0, 0, 0.02), 0 24px 52px -30px rgba(0, 0, 0, 0.14);
+    --shadow-brand: 0 10px 24px -14px rgba(0, 0, 0, 0.3);
+  }
+
+  /* EXPERIMENT (local): the reference's panel ground, a grey with a soft
+     light across it. Used for the inset panels that replace full-bleed tints. */
+  .panel-grey {
+    background:
+      radial-gradient(120% 90% at 85% 15%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 60%),
+      rgb(236 236 234);
   }
 
   html {
@@ -153,8 +248,10 @@
      in. −0.02em, no further: the family is tightly spaced by design and a
      heavier hand on top of that congests the counters. */
   .display {
-    font-weight: 500;
-    letter-spacing: -0.02em;
+    /* EXPERIMENT (local): Matter Regular, pulled in, as the reference sets
+       every heading. Medium at display sizes read heavy next to it. */
+    font-weight: 400;
+    letter-spacing: -0.035em;
   }
 
   /* --- THE HERO'S LEFT EDGE ----------------------------------------------
@@ -173,6 +270,8 @@
   }
 
   @media (min-width: 640px) {
+    :root { --nav-h: 5.75rem; }
+
     .hero-gutter {
       padding-left: 2.5rem;
     }
@@ -210,12 +309,12 @@
   }
 
   .hero-tail {
-    padding-bottom: 7.5rem;
+    padding-bottom: 4rem;
   }
 
   @media (min-width: 1024px) {
     .hero-tail {
-      padding-bottom: 9.5rem;
+      padding-bottom: 5rem;
     }
 
     .hero-fill {
@@ -225,7 +324,9 @@
       /* svh, not vh: on the phones this rule never reaches, vh measures the
          viewport as if the browser chrome were retracted, which is a hero taller
          than the screen it is on. */
-      min-height: calc(100svh - 6.5rem);
+      /* EXPERIMENT (local): the floating bar overlaps the hero, so the hero
+         is the whole window; it was the window less the old 104px header. */
+      min-height: 100svh;
     }
 
     /* The footage grows with the frame — it is absolutely positioned inside this

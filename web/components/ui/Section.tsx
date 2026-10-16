@@ -39,21 +39,19 @@ export function Section({
   // section's own top padding rather than being drawn inside it. Placed inside,
   // it read as a hairline floating in the middle of nowhere and doubled the gap
   // to nearly 600px, which is the point where air stops being composure.
-  const pad = 'pt-32 sm:pt-40 lg:pt-48'
+  // EXPERIMENT (local): the reference's rhythm, about 160px between two
+  // sections on a desktop instead of nearly 400, and no hairlines: sections are
+  // separated by air alone. `rule` is accepted and ignored.
+  void rule
+  const pad = 'pt-16 sm:pt-20'
 
   return (
     <section
       id={id}
-      className={`${tones[tone]} scroll-mt-32 pb-32 sm:pb-40 lg:pb-48 ${
-        rule ? '' : pad
-      } ${className}`}
+      data-nav-theme={tone === 'dark' ? 'dark' : undefined}
+      className={`${tones[tone]} scroll-mt-32 pb-16 sm:pb-20 ${pad} ${className}`}
     >
-      {rule && (
-        <Container>
-          <span aria-hidden className="block h-px bg-line" />
-        </Container>
-      )}
-      <Container className={rule ? pad : ''}>{children}</Container>
+      <Container>{children}</Container>
     </section>
   )
 }
@@ -77,8 +75,10 @@ export function Eyebrow({
 }) {
   return (
     <span
-      className={`inline-block text-label font-medium uppercase ${
-        onDark ? 'text-white/55' : 'text-brand-accent'
+      // EXPERIMENT (local): set in the mono, grey, as the reference labels its
+      // sections; the accent is no longer spent on labels.
+      className={`inline-block rounded-[6px] px-3 py-1.5 font-mono text-[0.75rem] uppercase tracking-[0.1em] ${
+        onDark ? 'bg-white/10 text-white/70' : 'bg-surface-sunken text-ink-soft'
       }`}
     >
       {children}
@@ -113,19 +113,19 @@ export function SectionHeader({
   return (
     <Reveal
       as="header"
-      className={`flex flex-col ${centered ? 'items-center text-center' : ''} ${className}`}
+      className={`flex flex-col ${centered ? 'items-center text-center' : 'items-start'} ${className}`}
     >
       {eyebrow && <Eyebrow onDark={onDark}>{eyebrow}</Eyebrow>}
       <h2
-        className={`display text-h2 text-balance ${eyebrow ? 'mt-10' : ''} ${
-          centered ? 'max-w-[20ch]' : 'max-w-[17ch]'
+        className={`display text-h2 text-balance ${eyebrow ? 'mt-6' : ''} ${
+          centered ? 'max-w-[24ch]' : 'max-w-[17ch]'
         } ${onDark ? 'text-white' : 'text-ink'}`}
       >
         {title}
       </h2>
       {lead && (
         <p
-          className={`mt-9 max-w-lead text-body-lg leading-relaxed ${
+          className={`mt-6 max-w-lead text-body-lg leading-relaxed ${
             onDark ? 'text-white/65' : 'text-ink-soft'
           }`}
         >

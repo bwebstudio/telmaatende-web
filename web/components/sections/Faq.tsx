@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Plus } from 'lucide-react'
+import { Minus, Plus } from 'lucide-react'
 import type { Content } from '@/content'
 import { Section, SectionHeader } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
@@ -26,30 +26,34 @@ export function Faq({ c }: { c: Content }) {
 
   return (
     <Section id="perguntas" tone="bg" rule>
-      <SectionHeader eyebrow={c.faq.label} title={c.faq.title} align="center" />
+      <div className="grid gap-16 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
+      <div className="lg:sticky lg:top-[calc(var(--nav-h)+3rem)] lg:self-start">
+        <SectionHeader eyebrow={c.faq.label} title={c.faq.title} />
+      </div>
 
-      <Reveal delay={80} className="mx-auto mt-24 max-w-3xl lg:mt-30">
-        <div id="faq-list" className="border-t border-line">
+      <Reveal delay={80}>
+        {/* One grey card per question, after the reference: a black disc that
+            turns from plus to minus, and the answer opening inside the card. */}
+        <div id="faq-list" className="flex flex-col gap-3">
           {items.map((item, i) => (
-            <details key={i} name="faq" className="group border-b border-line">
-              <summary className="flex cursor-pointer list-none items-start justify-between gap-10 py-8 text-[1.0625rem] font-medium tracking-tight text-ink transition-colors duration-fast ease-calm hover:text-brand-accent [&::-webkit-details-marker]:hidden">
+            <details key={i} name="faq" className="group rounded-[16px] bg-surface-sunken px-6 sm:px-8">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-8 py-6 text-[1.125rem] font-medium tracking-tight text-ink [&::-webkit-details-marker]:hidden">
                 <span>{item.q}</span>
                 <span
                   aria-hidden
-                  className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-line-strong text-ink-mute transition-all duration-fast ease-calm group-open:rotate-45 group-open:border-brand-accent group-open:text-brand-accent"
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-ink text-white transition-colors duration-fast ease-calm group-open:bg-accent group-open:text-ink"
                 >
-                  <Plus size={15} strokeWidth={ICON_STROKE} />
+                  <Plus size={15} strokeWidth={2} className="group-open:hidden" />
+                  <Minus size={15} strokeWidth={2} className="hidden group-open:block" />
                 </span>
               </summary>
-              <p className="max-w-prose pb-10 pr-12 leading-relaxed text-ink-soft">
-                {item.a}
-              </p>
+              <p className="max-w-prose pb-7 pr-12 leading-relaxed text-ink-soft">{item.a}</p>
             </details>
           ))}
         </div>
 
         {hasMore && (
-          <div className="mt-16 flex justify-center">
+          <div className="mt-12">
             <Button
               type="button"
               variant="secondary"
@@ -62,6 +66,7 @@ export function Faq({ c }: { c: Content }) {
           </div>
         )}
       </Reveal>
+      </div>
     </Section>
   )
 }
