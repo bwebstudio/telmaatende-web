@@ -29,6 +29,8 @@ export const es: Content = {
       { label: 'Preguntas', href: '#perguntas' },
     ],
     cta: 'Hablar con nosotros',
+    signIn: 'Entrar',
+    signUp: 'Crear cuenta',
   },
   hero: {
     name: 'Telma',

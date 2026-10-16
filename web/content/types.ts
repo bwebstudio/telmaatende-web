@@ -104,6 +104,10 @@ export interface Content {
   /** Label for the "skip to content" link that opens the page. */
   skipToContent: string
   header: {
+    /** Both doors into the panel app. Shown only when it exists; see
+     *  lib/signup.ts. */
+    signIn: string
+    signUp: string
     productBy: string
     nav: NavItem[]
     /** Accessible name for the main navigation landmark. */

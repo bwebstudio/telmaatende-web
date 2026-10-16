@@ -21,6 +21,8 @@ export const pt: Content = {
       { label: 'Perguntas', href: '#perguntas' },
     ],
     cta: 'Falar connosco',
+    signIn: 'Entrar',
+    signUp: 'Criar conta',
   },
   hero: {
     name: 'Telma',

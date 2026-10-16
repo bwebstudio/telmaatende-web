@@ -23,3 +23,14 @@ export function signupUrl(plan?: string): string | null {
 export function signupEnabled(): boolean {
   return Boolean(BASE)
 }
+
+/**
+ * And where the clinics that already pay us go back in.
+ *
+ * Same switch as the sign-up, on purpose: both doors are in the panel app, so
+ * either both exist or neither does. A site offering "Entrar" with nothing to
+ * enter is worse than a site that only offers to talk.
+ */
+export function loginUrl(): string | null {
+  return BASE ? `${BASE}/login` : null
+}

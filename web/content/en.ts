@@ -21,6 +21,8 @@ export const en: Content = {
       { label: 'Questions', href: '#perguntas' },
     ],
     cta: 'Talk to us',
+    signIn: 'Sign in',
+    signUp: 'Create an account',
   },
   hero: {
     name: 'Telma',

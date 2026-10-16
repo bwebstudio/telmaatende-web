@@ -7,6 +7,7 @@ import type { Content } from '@/content'
 import { locales, localeMeta, type Locale } from '@/content'
 import { LogoLink } from '@/components/ui/Logo'
 import { ICON_STROKE } from '@/components/ui/Card'
+import { loginUrl, signupUrl } from '@/lib/signup'
 
 /**
  * EXPERIMENT (local): a floating bar, after the reference. The previous header
@@ -64,6 +65,11 @@ export function Header({ c, lang }: { c: Content; lang: Locale }) {
     }
   }, [open])
 
+  // Both doors, or neither. Unset means the panel is not launched and the bar
+  // falls back to the single "talk to us" it has always had — see lib/signup.
+  const signIn = loginUrl()
+  const signUp = signupUrl()
+
   const t = dark
     ? {
         bar: 'bg-[rgb(24_24_24/0.72)] text-white',
@@ -106,11 +112,24 @@ export function Header({ c, lang }: { c: Content; lang: Locale }) {
 
           <div className="flex items-center gap-5">
             <LangSwitch c={c} lang={lang} dark={dark} className="hidden sm:flex" />
+            {/* Entrar is quiet and Criar conta is the solid one: the clinics
+                that already pay us know where they are going and need a door,
+                not an invitation. "Falar connosco" is not dropped so much as
+                moved — it is the hero's second action, and three things to
+                press in one bar is a bar nobody reads. */}
+            {signIn && (
+              <a
+                href={signIn}
+                className={`hidden shrink-0 whitespace-nowrap text-[0.9375rem] transition-colors duration-fast ease-calm sm:inline-flex ${t.link}`}
+              >
+                {c.header.signIn}
+              </a>
+            )}
             <a
-              href="#contacto"
+              href={signUp ?? '#contacto'}
               className={`hidden h-11 shrink-0 items-center whitespace-nowrap rounded-pill px-5 text-[0.9375rem] font-medium transition-colors duration-fast ease-calm sm:inline-flex ${t.cta}`}
             >
-              {c.header.cta}
+              {signUp ? c.header.signUp : c.header.cta}
             </a>
             <button
               type="button"
@@ -151,14 +170,26 @@ export function Header({ c, lang }: { c: Content; lang: Locale }) {
               ))}
               <div className={`mt-2 flex items-center justify-between gap-4 border-t pb-2 pt-5 ${t.rule}`}>
                 <LangSwitch c={c} lang={lang} dark={dark} />
-                <a
-                  href="#contacto"
-                  tabIndex={open ? 0 : -1}
-                  className={`inline-flex h-11 items-center rounded-pill px-5 text-[0.9375rem] font-medium ${t.cta}`}
-                  onClick={() => setOpen(false)}
-                >
-                  {c.header.cta}
-                </a>
+                <div className="flex items-center gap-4">
+                  {signIn && (
+                    <a
+                      href={signIn}
+                      tabIndex={open ? 0 : -1}
+                      className="text-[0.9375rem]"
+                      onClick={() => setOpen(false)}
+                    >
+                      {c.header.signIn}
+                    </a>
+                  )}
+                  <a
+                    href={signUp ?? '#contacto'}
+                    tabIndex={open ? 0 : -1}
+                    className={`inline-flex h-11 items-center rounded-pill px-5 text-[0.9375rem] font-medium ${t.cta}`}
+                    onClick={() => setOpen(false)}
+                  >
+                    {signUp ? c.header.signUp : c.header.cta}
+                  </a>
+                </div>
               </div>
             </div>
           </div>

@@ -10,6 +10,15 @@ dashboard/
 # here are retail type families, which must not be redistributed from it.
 web/assets/
 
+# Finder duplicates. Fifteen of these were committed by a careless `git add -A`
+# and reached a public repository, where they were stale copies of live files —
+# one of them a 2MB video, another a content file complete enough for
+# TypeScript to compile it and fail the build on a key the original had grown.
+* 2.*
+
+# next build --experimental-build-verify leaves this behind.
+.next-verify/
+
 # macOS
 .DS_Store
 
