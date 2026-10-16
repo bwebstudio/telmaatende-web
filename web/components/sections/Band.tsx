@@ -19,15 +19,16 @@ import { TelmaSettle } from '@/components/ui/TelmaSettle'
  * across all of it and are clipped by its rounded edge. Nothing was padded
  * out to make space: the space was already there, behind the headline.
  *
- * The text keeps a left inset on wide screens so the settled mark has a lane
- * of its own; on a phone it sits above, which is why the padding moves to the
- * top. Those two numbers are the only coupling between the canvas and the
- * layout, and they are both approximate on purpose — a character or two of
- * the cloud passing behind the headline is the effect, not a mistake.
+ * The text keeps a left inset at every width, because the mark keeps a lane
+ * down the left at every width. It used to move to the top on a phone, with
+ * the headline underneath, which meant two arrangements to keep in step and a
+ * media query repeated in this file and in the canvas. One arrangement is
+ * fewer things to break, and it is the one the band was drawn as.
  *
- * pt-40 and not pt-28: the phone lane has to hold a mark big enough to read
- * as the mark. TelmaSettle's LANE_TOP is this number, and the two have to be
- * changed together or the mark lands on the headline again.
+ * The inset is a percentage below lg because the lane is a percentage: the
+ * mark takes 30% of the band's width, capped, and the text starts clear of
+ * it. Approximate on purpose — a character or two of the cloud passing behind
+ * the headline is the effect, not a mistake.
  *
  * ── THE BAND IS THE ACCENT, AND THAT IS A DECISION ─────────────────────────
  * It was built dark first, on the argument that macaw is the reference's own
@@ -47,11 +48,16 @@ export function Band({ c }: { c: Content }) {
         <Reveal>
           <div className="relative overflow-hidden rounded-[24px] bg-accent text-ink">
             <TelmaSettle className="absolute inset-0 h-full w-full" />
-            <div className="relative flex min-h-[15rem] flex-col gap-10 px-8 pb-14 pt-40 sm:px-14 sm:pb-16 lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:py-16 lg:pl-[17rem]">
-              <h2 className="display max-w-[16ch] text-h2 text-balance">{c.band.title}</h2>
-              <ButtonLink href="#precos" variant="primary" className="shrink-0 self-start lg:self-auto">
-                {c.hero.ctaPrimary}
-              </ButtonLink>
+            <div className="relative flex min-h-[15rem] items-center gap-6 py-10 pl-[38%] pr-6 sm:gap-10 sm:py-14 sm:pl-[36%] sm:pr-10 lg:justify-between lg:gap-16 lg:py-16 lg:pl-[19rem] lg:pr-14">
+              {/* Stacked under each other until there is room to sit side by
+                  side. The headline and its action belong together: at narrow
+                  widths they are one column beside the mark, not two. */}
+              <div className="flex flex-col items-start gap-6 lg:flex-1 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
+                <h2 className="display max-w-[16ch] text-h2 text-balance">{c.band.title}</h2>
+                <ButtonLink href="#precos" variant="primary" className="shrink-0">
+                  {c.hero.ctaPrimary}
+                </ButtonLink>
+              </div>
             </div>
           </div>
         </Reveal>

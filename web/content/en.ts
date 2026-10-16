@@ -137,6 +137,7 @@ export const en: Content = {
         allowanceNote: 'around 100 calls',
         features: [
           '24 hour answering',
+          'Answers in one language, whichever the clinic chooses',
           'Answers questions using your clinic information',
           'Automatic appointment booking',
           'Transfer to a real person',
@@ -156,6 +157,7 @@ export const en: Content = {
         highlighted: true,
         features: [
           'Everything in Essencial',
+          'Answers in two languages',
           'Personalised voice',
           'Monthly call report',
           'Phone support during office hours',
@@ -173,6 +175,7 @@ export const en: Content = {
           'Each location beyond the three: 149€ per month, with 400 more minutes and installation included.',
         features: [
           'Everything in Clínica',
+          'Answers in all three: Portuguese, Spanish and English',
           'Every location in one dashboard, one contract and one invoice',
           'Each location with its own number and its own schedule',
           'Priority support',
@@ -317,8 +320,8 @@ export const en: Content = {
         a: "No. It is included on every plan and there is no entry fee. And it is real work: we gather your clinic information, write Telma's answers with you, choose the voice, sort the forwarding out with your operator, make test calls and train your front desk. You pay the first month and nothing else.",
       },
       {
-        q: 'Does Telma speak English?',
-        a: 'Yes, she answers in Portuguese and in English.',
+        q: 'Which languages does Telma answer in?',
+        a: 'Portuguese, Spanish and English. Telma answers in the language the clinic chooses and, when there is more than one, says at the greeting how to ask for the others: "for English say English". The caller asks and she switches. The plan decides how many of the three a clinic uses. French, German and Italian are on the way.',
       },
       {
         q: 'Is the price per clinic or per professional?',

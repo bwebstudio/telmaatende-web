@@ -137,6 +137,7 @@ export const pt: Content = {
         allowanceNote: 'cerca de 100 chamadas',
         features: [
           'Atendimento 24 horas',
+          'Atende num idioma, o que a clínica escolher',
           'Responde a dúvidas com a informação da clínica',
           'Marcação automática de consultas',
           'Transferência para pessoa real',
@@ -156,6 +157,7 @@ export const pt: Content = {
         highlighted: true,
         features: [
           'Tudo o que inclui o Essencial',
+          'Atende em dois idiomas',
           'Voz personalizada',
           'Relatório mensal de chamadas',
           'Apoio por telefone em horário de escritório',
@@ -173,6 +175,7 @@ export const pt: Content = {
           'Cada sede além das três: 149€ por mês, com mais 400 minutos e a instalação incluída.',
         features: [
           'Tudo o que inclui o Clínica',
+          'Atende nos três idiomas: português, espanhol e inglês',
           'Todas as sedes num só painel, um só contrato e uma só fatura',
           'Cada sede com o seu número e a sua agenda',
           'Apoio prioritário',
@@ -317,8 +320,8 @@ export const pt: Content = {
         a: 'Não. Está incluída em todos os planos e não há custo de entrada. E é trabalho a sério: recolhemos a informação da clínica, escrevemos consigo as respostas da Telma, escolhemos a voz, tratamos do encaminhamento com a sua operadora, fazemos chamadas de teste e formamos a receção. Paga a primeira mensalidade e mais nada.',
       },
       {
-        q: 'A Telma fala inglês?',
-        a: 'Sim, atende em português e em inglês.',
+        q: 'Em que idiomas atende a Telma?',
+        a: 'Em português, espanhol e inglês. A Telma atende no idioma que a clínica escolher e, se tiver mais do que um, diz logo na saudação como pedir os outros: "for English say English". Quem liga pede e ela muda. O plano decide quantos desses três a clínica usa. Francês, alemão e italiano estão a caminho.',
       },
       {
         q: 'O preço é por clínica ou por profissional?',

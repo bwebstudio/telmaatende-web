@@ -145,6 +145,7 @@ export const es: Content = {
         allowanceNote: 'unas 100 llamadas',
         features: [
           'Atención 24 horas',
+          'Atiende en un idioma, el que elija la clínica',
           'Responde a dudas con la información de la clínica',
           'Cita automática',
           'Transferencia a una persona real',
@@ -164,6 +165,7 @@ export const es: Content = {
         highlighted: true,
         features: [
           'Todo lo que incluye Essencial',
+          'Atiende en dos idiomas',
           'Voz personalizada',
           'Informe mensual de llamadas',
           'Soporte telefónico en horario de oficina',
@@ -181,6 +183,7 @@ export const es: Content = {
           'Cada sede más allá de las tres: 149 € al mes, con 400 minutos más y la instalación incluida.',
         features: [
           'Todo lo que incluye Clínica',
+          'Atiende en los tres idiomas: portugués, español e inglés',
           'Todas las sedes en un solo panel, un solo contrato y una sola factura',
           'Cada sede con su número y su agenda',
           'Soporte prioritario',
@@ -326,7 +329,7 @@ export const es: Content = {
       },
       {
         q: '¿En qué idiomas atiende Telma?',
-        a: 'Atiende en español y en inglés.',
+        a: 'En español, portugués e inglés. Telma atiende en el idioma que elija la clínica y, si tiene más de uno, lo dice al descolgar para que quien llama pueda pedirlo: "for English say English". El plan decide cuántos de esos tres usa la clínica. Francés, alemán e italiano están en camino.',
       },
       {
         q: '¿El precio es por clínica o por profesional?',
