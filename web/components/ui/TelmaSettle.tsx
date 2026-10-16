@@ -182,7 +182,13 @@ export function TelmaSettle({
 
       // Height drives the mark on a wide band and width on a narrow one, with
       // a floor so it does not shrink to a crumb on a phone.
-      const markH = Math.min(h * 0.44, Math.max(w * 0.135, 76))
+      // On a wide band the mark takes its size from the band. In the lane at
+      // the top it takes it from the lane, or it grows past 112px somewhere
+      // around a tablet and leans back over the first line of the headline —
+      // the same collision, just narrower and easier to miss.
+      const markH = wide.matches
+        ? Math.min(h * 0.44, Math.max(w * 0.135, 76))
+        : Math.min(LANE_TOP - 24, Math.max(w * 0.135, 76))
       const k = markH / VH
       const ox = Math.max(w * 0.035, 14)
       const oy = wide.matches
