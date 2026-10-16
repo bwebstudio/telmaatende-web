@@ -8,7 +8,13 @@ dashboard/
 # .woff2 in web/public/fonts, both built from these. Same rule as
 # assets/photography above, and this repository is public — the two .zip files
 # here are retail type families, which must not be redistributed from it.
-web/assets/
+web/assets/*
+# …except the OG card's own files, which app/[lang]/opengraph-image.tsx reads
+# at build time. They were already tracked when the rule above was added, and
+# git does not ignore what it already follows, so this build kept working by
+# luck rather than by intent. Named here so the next person adding a file to
+# that folder does not watch it vanish.
+!web/assets/og/
 
 # Finder duplicates. Fifteen of these were committed by a careless `git add -A`
 # and reached a public repository, where they were stale copies of live files —
