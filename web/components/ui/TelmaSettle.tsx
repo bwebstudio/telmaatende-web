@@ -86,8 +86,8 @@ const RING_LIFE = 4200
  * Capped, because past a certain size it stops being a mark and becomes a
  * wall, and floored by the band's own height so it never overflows it.
  */
-const LANE_SHARE = 0.3
-const LANE_MAX = 230
+const LANE_SHARE = 0.28
+const LANE_MAX = 220
 
 const CYCLE = 15000
 const T = { cloud: 0.1, gather: 0.26, paragraph: 0.4, contract: 0.52, mark: 0.7, release: 0.8, scatter: 0.94 }
@@ -189,7 +189,10 @@ export function TelmaSettle({
       // One rule at every width: the mark fills its share of the lane, unless
       // the band is short enough that its height is the tighter of the two.
       const laneW = Math.min(w * LANE_SHARE, LANE_MAX)
-      const markH = Math.min(laneW / (VW / VH), h * 0.52)
+      // 0.62 and not 0.52: the band is shorter below lg now, and the mark was
+      // taking its size from the lane either way. The ceiling only bites on a
+      // band squat enough that a lane-sized mark would overflow it.
+      const markH = Math.min(laneW / (VW / VH), h * 0.62)
       const k = markH / VH
       const ox = Math.max(w * 0.045, 14)
       const oy = (h - markH) / 2

@@ -48,12 +48,18 @@ export function Band({ c }: { c: Content }) {
         <Reveal>
           <div className="relative overflow-hidden rounded-[24px] bg-accent text-ink">
             <TelmaSettle className="absolute inset-0 h-full w-full" />
-            <div className="relative flex min-h-[15rem] items-center gap-6 py-10 pl-[38%] pr-6 sm:gap-10 sm:py-14 sm:pl-[36%] sm:pr-10 lg:justify-between lg:gap-16 lg:py-16 lg:pl-[19rem] lg:pr-14">
+            <div className="relative flex min-h-[11rem] items-center gap-5 py-7 pl-[34%] pr-5 sm:min-h-[13rem] sm:gap-8 sm:py-9 sm:pl-[33%] sm:pr-8 lg:min-h-[15rem] lg:justify-between lg:gap-16 lg:py-16 lg:pl-[19rem] lg:pr-14">
               {/* Stacked under each other until there is room to sit side by
                   side. The headline and its action belong together: at narrow
                   widths they are one column beside the mark, not two. */}
-              <div className="flex flex-col items-start gap-6 lg:flex-1 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
-                <h2 className="display max-w-[16ch] text-h2 text-balance">{c.band.title}</h2>
+              <div className="flex flex-col items-start gap-4 sm:gap-6 lg:flex-1 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
+                {/* Smaller than text-h2 until there is room for it. The column
+                    beside the mark is about a third of a phone's width, and
+                    the fluid h2 bottoms out at 28px: five words a line becomes
+                    two, and the sentence becomes a stack. */}
+                <h2 className="display max-w-[16ch] text-[1.4rem] leading-[1.15] text-balance sm:text-h2">
+                  {c.band.title}
+                </h2>
                 <ButtonLink href="#precos" variant="primary" className="shrink-0">
                   {c.hero.ctaPrimary}
                 </ButtonLink>
