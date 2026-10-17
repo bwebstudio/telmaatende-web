@@ -57,7 +57,10 @@ export function Band({ c }: { c: Content }) {
                     beside the mark is about a third of a phone's width, and
                     the fluid h2 bottoms out at 28px: five words a line becomes
                     two, and the sentence becomes a stack. */}
-                <h2 className="display max-w-[16ch] text-[1.4rem] leading-[1.15] text-balance sm:text-h2">
+                <h2
+                  data-band-copy
+                  className="display max-w-[16ch] text-[1.4rem] leading-[1.15] text-balance sm:text-h2"
+                >
                   {c.band.title}
                 </h2>
                 <ButtonLink href="#precos" variant="primary" className="shrink-0">

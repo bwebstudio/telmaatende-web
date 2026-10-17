@@ -195,7 +195,30 @@ export function TelmaSettle({
       const markH = Math.min(laneW / (VW / VH), h * 0.62)
       const k = markH / VH
       const ox = Math.max(w * 0.045, 14)
-      const oy = (h - markH) / 2
+
+      // ── THE MARK LINES UP WITH THE HEADLINE, NOT WITH THE BAND ──────────
+      // Both used to be centred in the band, which is not the same thing:
+      // the mark and the block of copy are different heights, so two things
+      // centred in the same box start and end at four different places. It
+      // read as a mark that had been dropped in rather than set.
+      //
+      // Measured, not guessed. The band's padding changes three times across
+      // the breakpoints and the copy is a different height in each, so any
+      // number written here would be right at one width. `[data-band-copy]`
+      // is the headline; the mark's first bar aligns to the top of its first
+      // line, nudged down by the slack a line box carries above the letters.
+      //
+      // Falls back to centred when the element is not there, so this cannot
+      // be what breaks the band.
+      const copy = host.parentElement?.querySelector<HTMLElement>('[data-band-copy]')
+      let oy = (h - markH) / 2
+      if (copy) {
+        const a = cv.getBoundingClientRect()
+        const b = copy.getBoundingClientRect()
+        const size = parseFloat(getComputedStyle(copy).fontSize) || 24
+        const top = b.top - a.top + size * 0.14
+        oy = Math.max(8, Math.min(top, h - markH - 8))
+      }
       const cx = ox + (VW * k) / 2
       const cy = oy + markH / 2
 
