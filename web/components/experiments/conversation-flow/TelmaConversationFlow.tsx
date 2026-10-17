@@ -2,6 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Check } from 'lucide-react'
+import type { FlowScene, FlowStep } from '@/content'
 
 /**
  * DA CONVERSA, FICA O NECESSÁRIO.
@@ -22,91 +23,14 @@ import { Check } from 'lucide-react'
 
 // --- Content -------------------------------------------------------------------
 
-type Step =
-  | { kind: 'call'; label: string; quote: string; duration: string; related: string[] }
-  | { kind: 'identified'; label: string; title: string; lines: string[]; badge: string; related: string[] }
-  | { kind: 'agenda'; label: string; day: string; detail: string; status: string; related: string[] }
-  | { kind: 'summary'; label: string; title: string; lines: string[]; channels: string[]; related: string[] }
-
-/** One tab's worth of scene: what the card says, and what drifts behind it. */
-export type Scene = { steps: Step[]; facts: { text: string; caption?: string }[] }
-
 /**
- * Three calls, three steps each. Nothing here is a person, a price or a
- * clinical detail, and nothing claims a booking exists: every outcome is
- * "por confirmar", because that is what the clinic still has to do.
+ * The scenes moved to content/{pt,es,en}.ts. They were three arrays of
+ * Portuguese dialogue inside a component that renders on the Spanish and
+ * English homepages too, under a comment that said "pt-PT only, like the
+ * rest of this experiment". The experiment shipped and the comment did not
+ * stop being true for the data.
  */
-const BOOKING_STEPS: Step[] = [
-  {
-    kind: 'call',
-    label: 'Chamada',
-    quote: 'Olá, queria marcar para terça-feira de manhã, se houver disponibilidade.',
-    duration: '12 s',
-    related: ['chamada atendida', 'terça-feira', 'de manhã'],
-  },
-  {
-    kind: 'identified',
-    label: 'Telma identificou',
-    title: 'Marcação',
-    lines: ['terça-feira', 'de manhã'],
-    badge: 'Por confirmar',
-    related: ['marcação', 'terça-feira', 'de manhã'],
-  },
-  {
-    kind: 'agenda',
-    label: 'Na agenda',
-    day: 'Terça-feira',
-    detail: 'Manhã',
-    status: 'Por confirmar',
-    related: ['por confirmar', 'terça-feira'],
-  },
-  {
-    kind: 'call',
-    label: 'Chamada',
-    quote: 'Boa tarde. Precisava de mudar a consulta de quinta para sexta, à tarde.',
-    duration: '9 s',
-    related: ['chamada atendida', 'quinta-feira', 'sexta-feira'],
-  },
-  {
-    kind: 'identified',
-    label: 'Telma identificou',
-    title: 'Alteração',
-    lines: ['de quinta-feira para sexta-feira', 'à tarde'],
-    badge: 'Por confirmar',
-    related: ['alteração', 'sexta-feira', 'à tarde'],
-  },
-  {
-    kind: 'agenda',
-    label: 'Na agenda',
-    day: 'Sexta-feira',
-    detail: 'Tarde',
-    status: 'Por confirmar',
-    related: ['por confirmar', 'sexta-feira'],
-  },
-  {
-    kind: 'call',
-    label: 'Chamada',
-    quote: 'Bom dia. Amanhã não vou conseguir ir, queria cancelar, por favor.',
-    duration: '7 s',
-    related: ['chamada atendida', 'amanhã'],
-  },
-  {
-    kind: 'identified',
-    label: 'Telma identificou',
-    title: 'Cancelamento',
-    lines: ['amanhã'],
-    badge: 'Por confirmar',
-    related: ['cancelamento', 'amanhã'],
-  },
-  {
-    kind: 'agenda',
-    label: 'Na agenda',
-    day: 'Amanhã',
-    detail: 'Cancelamento pedido',
-    status: 'Por confirmar',
-    related: ['por confirmar', 'cancelamento'],
-  },
-]
+type Step = FlowStep
 
 /** How long each kind of step holds, in ms. A call is read; the rest glanced. */
 const HOLD: Record<Step['kind'], number> = { call: 3300, identified: 2700, agenda: 3900, summary: 3600 }
@@ -125,132 +49,8 @@ const SURGE = {
   reach: 0.28,
 }
 
-/** The facts in the current. A caption is optional; most are a single word. */
-const BOOKING_FACTS: Scene['facts'] = [
-  { text: 'terça-feira' },
-  { text: 'de manhã' },
-  { text: 'marcação', caption: 'Pedido' },
-  { text: 'alteração', caption: 'Pedido' },
-  { text: 'cancelamento', caption: 'Pedido' },
-  { text: 'por confirmar', caption: 'Estado' },
-  { text: 'chamada atendida' },
-  { text: 'quinta-feira' },
-  { text: 'sexta-feira', caption: 'Quando' },
-  { text: 'à tarde' },
-  { text: 'amanhã' },
-  { text: 'primeira consulta' },
-  { text: 'ligar de volta' },
-  { text: 'de manhã', caption: 'Quando' },
-  { text: 'marcação' },
-  { text: 'por confirmar' },
-]
-
 /** A few marks with no card at all, so the current is not only boxes. */
 const MARKS = ['12 s', '9 s', '7 s', '“', '…', '?']
-
-/**
- * The summary the reception gets after every call (content: "resumo de cada
- * chamada", sent by email or WhatsApp). Two calls, two steps each.
- */
-const SUMMARY_STEPS: Step[] = [
-  {
-    kind: 'call',
-    label: 'Chamada',
-    quote: 'Bom dia. É a primeira vez que ligo. Queria marcar uma consulta para a próxima semana, de tarde.',
-    duration: '24 s',
-    related: ['chamada atendida', 'primeira consulta'],
-  },
-  {
-    kind: 'summary',
-    label: 'Resumo para a receção',
-    title: 'Primeira consulta',
-    lines: ['Pedido de marcação', 'Próxima semana, à tarde', 'Por confirmar'],
-    channels: ['Email', 'WhatsApp'],
-    related: ['resumo', 'email', 'whatsapp', 'à tarde'],
-  },
-  {
-    kind: 'call',
-    label: 'Chamada',
-    quote: 'Boa tarde. Liguei há pouco e esqueci-me de perguntar a que horas abrem ao sábado.',
-    duration: '11 s',
-    related: ['chamada atendida', 'pergunta'],
-  },
-  {
-    kind: 'summary',
-    label: 'Resumo para a receção',
-    title: 'Pergunta respondida',
-    lines: ['Horário de sábado', 'Sem marcação'],
-    channels: ['Email', 'WhatsApp'],
-    related: ['resumo', 'email', 'pergunta'],
-  },
-]
-
-const SUMMARY_FACTS: Scene['facts'] = [
-  { text: 'resumo', caption: 'Para a receção' },
-  { text: 'email' },
-  { text: 'whatsapp' },
-  { text: 'chamada atendida' },
-  { text: 'primeira consulta', caption: 'Pedido' },
-  { text: 'próxima semana', caption: 'Quando' },
-  { text: 'à tarde' },
-  { text: 'pergunta', caption: 'Pedido' },
-  { text: 'gravação' },
-  { text: 'por confirmar', caption: 'Estado' },
-  { text: 'resumo' },
-  { text: 'sábado' },
-]
-
-/**
- * Telma on WhatsApp (the add-on): the client writes, Telma answers, the
- * booking lands in the agenda to be confirmed, as on the phone.
- */
-const WHATSAPP_STEPS: Step[] = [
-  {
-    kind: 'call',
-    label: 'WhatsApp · Cliente',
-    quote: 'Olá! Dá para marcar para sexta de manhã?',
-    duration: '10:42',
-    related: ['whatsapp', 'sexta-feira', 'de manhã'],
-  },
-  {
-    kind: 'call',
-    label: 'WhatsApp · Telma',
-    quote: 'Claro. Tenho às 10:00 ou às 11:30. Qual prefere?',
-    duration: '10:42',
-    related: ['whatsapp', '10:00', 'mensagem'],
-  },
-  {
-    kind: 'agenda',
-    label: 'Na agenda',
-    day: 'Sexta-feira',
-    detail: '10:00 · pedido por WhatsApp',
-    status: 'Por confirmar',
-    related: ['por confirmar', 'sexta-feira', 'marcação'],
-  },
-]
-
-const WHATSAPP_FACTS: Scene['facts'] = [
-  { text: 'whatsapp' },
-  { text: 'mensagem', caption: 'Canal' },
-  { text: 'sexta-feira', caption: 'Quando' },
-  { text: 'de manhã' },
-  { text: '10:00' },
-  { text: 'marcação', caption: 'Pedido' },
-  { text: 'por confirmar', caption: 'Estado' },
-  { text: 'remarcar' },
-  { text: 'cancelar' },
-  { text: 'confirmação', caption: 'Por WhatsApp' },
-  { text: 'whatsapp' },
-  { text: '11:30' },
-]
-
-export const SCENES = {
-  booking: { steps: BOOKING_STEPS, facts: BOOKING_FACTS },
-  summary: { steps: SUMMARY_STEPS, facts: SUMMARY_FACTS },
-  whatsapp: { steps: WHATSAPP_STEPS, facts: WHATSAPP_FACTS },
-} satisfies Record<string, Scene>
-
-// --- Planes ----------------------------------------------------------------------
 
 type Plane = { speed: number; scale: number; opacity: number; blur: number; z: number }
 
@@ -282,7 +82,7 @@ type Item = {
 
 // --- Component ---------------------------------------------------------------------
 
-export function TelmaConversationFlow({ scene = SCENES.booking }: { scene?: Scene }) {
+export function TelmaConversationFlow({ scene }: { scene: FlowScene }) {
   // Read once per mount: a different scene is a different mount (keyed by the
   // tab), so every loop below starts clean on the new material.
   const STEPS = scene.steps
@@ -310,7 +110,7 @@ export function TelmaConversationFlow({ scene = SCENES.booking }: { scene?: Scen
 
   useEffect(() => {
     relatedRef.current = STEPS[step].related
-  }, [step])
+  }, [STEPS, step])
 
   useEffect(() => {
     const reduced = matchMedia('(prefers-reduced-motion: reduce)')
@@ -334,7 +134,7 @@ export function TelmaConversationFlow({ scene = SCENES.booking }: { scene?: Scen
       window.clearTimeout(hold)
       window.clearTimeout(swap)
     }
-  }, [step])
+  }, [STEPS, step])
 
   // --- The hand ------------------------------------------------------------------
   // On the agenda step a pointer drifts in and presses the status: the person
@@ -375,7 +175,7 @@ export function TelmaConversationFlow({ scene = SCENES.booking }: { scene?: Scen
     at(1480, () => setHand((h) => ({ ...h, pressed: false })))
     at(2800, () => setHand((h) => ({ ...h, x: h.x + 70, y: h.y + 60, shown: false })))
     return () => timers.forEach((t) => window.clearTimeout(t))
-  }, [step, phase])
+  }, [STEPS, step, phase])
 
   // --- The current ---------------------------------------------------------------
   useEffect(() => {
@@ -575,7 +375,9 @@ export function TelmaConversationFlow({ scene = SCENES.booking }: { scene?: Scen
       ro.disconnect()
       document.removeEventListener('visibilitychange', onVisibility)
     }
-  }, [])
+    // FACTS is the scene's own array, and a scene is one mount: the tab list
+    // keys this component by tab, so this never re-runs in practice.
+  }, [FACTS])
 
   const s = STEPS[step]
 

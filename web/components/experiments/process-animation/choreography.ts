@@ -25,8 +25,10 @@ export const LOOP = 19
 
 export type Tracks = Record<string, Key[]>
 
-// The facts beside the conversation, and which fragments they came from.
-export const CHIPS = ['Marcação', 'terça-feira', 'manhã', '~10:00']
+// The facts beside the conversation used to be written here, in Portuguese.
+// They are copy, so they live in content/{pt,es,en}.ts as `process.facts`, and
+// the fragments they come from are lit by index below. There are four of them,
+// which is what `chipPos` lays out.
 
 // Periphery: what surrounds a call inside Telma. Position, depth (0 sharp,
 // 1 mid, 2 far), and which phone layout keeps it.

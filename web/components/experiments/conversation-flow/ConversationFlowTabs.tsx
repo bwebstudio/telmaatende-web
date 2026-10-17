@@ -1,23 +1,22 @@
 'use client'
 
 import { useState } from 'react'
-import { SCENES, TelmaConversationFlow } from './TelmaConversationFlow'
+import { TelmaConversationFlow } from './TelmaConversationFlow'
+import type { FlowContent } from '@/content'
 
 /**
  * The reference's segmented tabs over one stage: each tab is the same scene
  * mechanism with different material. Changing tab fades the stage out, swaps
  * the scene (a fresh mount, so its loops start clean) and fades it back in.
- * pt-PT only, like the rest of this experiment.
+ * The labels and the scenes come from the dictionary now. They were written
+ * here in Portuguese, under a comment saying this experiment was pt-PT only,
+ * on a section that renders on all three homepages.
  */
-const TABS = [
-  { id: 'booking', label: 'Marca e organiza' },
-  { id: 'summary', label: 'Resume cada chamada' },
-  { id: 'whatsapp', label: 'Também no WhatsApp' },
-] as const
+const TAB_IDS = ['booking', 'summary', 'whatsapp'] as const
 
-type TabId = (typeof TABS)[number]['id']
+type TabId = (typeof TAB_IDS)[number]
 
-export function ConversationFlowTabs() {
+export function ConversationFlowTabs({ flow }: { flow: FlowContent }) {
   const [active, setActive] = useState<TabId>('booking')
   const [shown, setShown] = useState<TabId>('booking')
   const [fading, setFading] = useState(false)
@@ -37,21 +36,21 @@ export function ConversationFlowTabs() {
       <div className="flex justify-center">
         <div
           role="tablist"
-          aria-label="Exemplos"
+          aria-label={flow.tabsLabel}
           className="inline-flex max-w-full gap-1 overflow-x-auto rounded-pill border border-ink/25 p-1.5"
         >
-          {TABS.map((t) => (
+          {TAB_IDS.map((id) => (
             <button
-              key={t.id}
+              key={id}
               role="tab"
               type="button"
-              aria-selected={active === t.id}
-              onClick={() => choose(t.id)}
+              aria-selected={active === id}
+              onClick={() => choose(id)}
               className={`min-h-[2.75rem] shrink-0 whitespace-nowrap rounded-pill px-5 text-[0.9375rem] transition-colors duration-fast ease-calm sm:px-7 sm:text-base ${
-                active === t.id ? 'bg-ink text-white' : 'text-ink hover:bg-ink/5'
+                active === id ? 'bg-ink text-white' : 'text-ink hover:bg-ink/5'
               }`}
             >
-              {t.label}
+              {flow.tabs[id]}
             </button>
           ))}
         </div>
@@ -62,7 +61,7 @@ export function ConversationFlowTabs() {
         className="mt-10 transition-[opacity,filter] duration-300 ease-calm"
         style={{ opacity: fading ? 0 : 1, filter: fading ? 'blur(6px)' : 'blur(0px)' }}
       >
-        <TelmaConversationFlow key={shown} scene={SCENES[shown]} />
+        <TelmaConversationFlow key={shown} scene={flow.scenes[shown]} />
       </div>
     </>
   )

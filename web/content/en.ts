@@ -4,10 +4,10 @@ export const en: Content = {
   meta: {
     title: 'Telma Atende: the receptionist who answers when no one can',
     description:
-      'Telma is a voice receptionist that answers your clinic phone, answers patient questions using your clinic information, books appointments and hands the call to a real person when it is urgent. For dental and aesthetic clinics in Portugal.',
+      'Telma is a virtual receptionist for clinics. She answers calls, handles patient questions and appointments, and transfers calls to your team when needed.',
     ogTitle: "Telma Atende: your clinic's virtual receptionist",
     ogDescription:
-      'She answers the phone when no one can, replies to patient questions, books appointments and hands the call to a real person when it is urgent.',
+      'Telma is a virtual receptionist for clinics. She answers calls, handles patient questions and appointments, and transfers calls to your team when needed.',
   },
   langSwitchLabel: 'Language',
   skipToContent: 'Skip to content',
@@ -26,10 +26,10 @@ export const en: Content = {
   },
   hero: {
     name: 'Telma',
-    headlineLines: ['No missed calls.', 'No lost patients.'],
+    headlineLines: ['Telma answers', 'when no one can.'],
     eyebrow: 'Virtual receptionist for clinics',
     subtitle:
-      'Answers with care when reception cannot.',
+      'Answers calls, handles patient questions and manages appointments when your front desk cannot.',
     ctaPrimary: 'See pricing',
     ctaSecondary: 'Talk to us',
     sceneAlt:
@@ -46,16 +46,16 @@ export const en: Content = {
   voice: {
     label: 'Hear her',
     title: 'This is how Telma answers.',
-    lead: 'A real call, unedited. It is the fastest way to answer the question everybody asks first.',
+    lead: 'A real call, unedited. Hear how Telma handles a patient call.',
     play: 'Listen to the call',
     pause: 'Pause',
-    note: 'If a patient asks directly, Telma answers honestly that she is a virtual assistant.',
+    note: 'If the patient asks, Telma explains that she is the clinic\u2019s virtual assistant.',
   },
   problem: {
     label: 'The problem',
     sceneAlt:
       'An empty clinic reception counter, the phone resting unanswered, morning light crossing the wall.',
-    title: 'Every call that goes unanswered is a patient calling another clinic.',
+    title: 'When the front desk cannot answer, some calls go unanswered.',
     items: [
       {
         title: 'Missed calls while you help a patient',
@@ -88,7 +88,7 @@ export const en: Content = {
       {
         n: '03',
         title: 'Telma books the appointment',
-        text: 'Telma understands what the patient needs and books the appointment within the hours the clinic has set.',
+        text: 'Telma identifies the reason for the call and books the appointment within the hours the clinic has set.',
       },
       {
         n: '04',
@@ -104,7 +104,7 @@ export const en: Content = {
     paragraphs: [
       'The clinic sets which hours Telma can offer. Telma only offers those. There can never be an overlap with what the front desk books by hand.',
       'By default, Telma leaves a provisional booking that the clinic confirms. When calendar sync is in place, Telma can confirm directly.',
-      'All of this happens in the clinic dashboard, included on every plan: it is where you set the hours Telma may offer, block holidays and closures, confirm or change each provisional booking and listen to the calls. It runs on the front desk computer, on a tablet and on a phone, and it updates live.',
+      'Everything is managed from the clinic dashboard, included with every plan. You can set available hours, block holidays and time off, confirm appointments and review calls. The dashboard updates in real time and works on desktop, tablet and mobile.',
     ],
     preview: { heading: 'Schedule', day: 'Tuesday', confirmed: 'Confirmed', pending: 'To confirm', free: 'Free slot', booking: 'New booking' },
   },
@@ -143,7 +143,7 @@ export const en: Content = {
           'Transfer to a real person',
           'A summary of every call by email',
           'SMS confirmation to the patient, included',
-          'Clinic dashboard: see and control everything, on any screen',
+          'Clinic dashboard to manage appointments and calls from any screen.',
         ],
       },
       {
@@ -198,7 +198,7 @@ export const en: Content = {
       priceNote: 'per month, on any plan',
       features: [
         'Telma answers on WhatsApp too, not only on the telephone',
-        'The patient writes to book, reschedule or cancel, and she handles it',
+        'Patients can book, reschedule or cancel an appointment directly on WhatsApp',
         'Confirmations, already included in the plan, arrive on WhatsApp instead of by SMS',
         'Up to 1,000 messages per month',
       ],
@@ -217,46 +217,46 @@ export const en: Content = {
     title: 'It connects to your system.',
     levels: [
       {
-        tag: 'Level 1',
+        tag: 'No integration',
         name: 'Works with any system',
         badge: 'Included in every plan',
         badgeStrong: true,
         text: 'Nothing needs to change. Telma records bookings in a shared calendar and sends the front desk a summary of every call by email or WhatsApp. The front desk copies the booking into the clinic software in seconds.',
       },
       {
-        tag: 'Level 2',
-        name: 'Calendar sync',
+        tag: 'Calendar sync',
+        name: 'Google Calendar or iCal',
         badge: 'Included where available',
         text: 'If the clinic software syncs with Google Calendar or exports iCal, bookings appear directly in the existing schedule.',
       },
       {
-        tag: 'Level 3',
-        name: 'Direct API integration',
+        tag: 'API integration',
+        name: 'For software with an API',
         badge: 'Separate project',
         text: 'For clinics whose software offers an API. We review the case and provide a quote.',
       },
     ],
     closing:
-      'In most clinics we start at Level 1 on day one. There is no need to wait for integrations.',
+      'In most clinics we start with no integration on day one. There is no need to wait for integrations.',
   },
   clinics: {
     label: 'Who it is for',
-    title: 'For any clinic that books by phone.',
-    lead: 'Telma works for any clinic that takes bookings by phone.',
+    title: 'For clinics that take appointments by phone.',
+    lead: 'Telma adapts to the way each clinic works.',
     items: [{ id: 'dental', name: 'Dentistry' }, { id: 'general', name: 'General practice' }, { id: 'aesthetic', name: 'Aesthetics' }, { id: 'physio', name: 'Physiotherapy' }],
   },
   calls: {
     title: 'Built for the calls that cannot wait.',
-    lead: 'Callers are answered first time, at any hour, and reception knows everything that was said.',
+    lead: 'When the front desk cannot answer, Telma takes the call and records what the team needs to know.',
     listen: 'Hear Telma',
     items: [
-      { tag: 'For callers', title: 'Answered first time', text: 'When reception cannot pick up, Telma does. Nobody is left waiting or sent to voicemail.' },
+      { tag: 'For callers', title: 'Without sending the call to voicemail', text: 'The call the front desk cannot take goes to Telma, and she is the one who answers.' },
       { tag: 'For callers', title: 'Out of hours too', text: 'At the end of the day, at weekends and on holidays, the call is answered and the request is recorded.' },
-      { tag: 'For the team', title: 'Nothing gets lost', text: 'Every call reaches reception with a written summary and the recording, ready to confirm and move on.' },
+      { tag: 'For the team', title: 'Nothing gets lost', text: 'Every call reaches the front desk with a written summary and the recording, ready to confirm and move on.' },
     ],
   },
   banner: { title: 'Reception looks after the person at the desk. Telma answers the phone.', cta: 'Talk to us' },
-  band: { title: 'From the conversation, the essential stays.' },
+  band: { title: 'From each conversation, only what is needed remains.' },
   resources: {
     title: 'Worth reading',
     prev: 'Previous',
@@ -267,7 +267,7 @@ export const en: Content = {
   },
   trust: {
     label: 'Trust',
-    title: 'The clinic stays in charge.',
+    title: 'The clinic stays in control.',
     items: [
       { icon: 'shield', title: 'Data in the European Union', text: 'We comply with the GDPR and the data is hosted in the EU.' },
       { icon: 'mic', title: 'Recorded with notice', text: 'Calls are recorded with prior notice, and you can listen to each one and read its summary.' },
@@ -285,7 +285,7 @@ export const en: Content = {
     items: [
       {
         q: 'Can the patient tell they are talking to a virtual assistant?',
-        a: 'The voice is very natural. If the patient asks directly, Telma answers honestly that she is a virtual assistant.',
+        a: 'The voice is natural. If the patient asks, Telma explains that she is the clinic\u2019s virtual assistant.',
       },
       {
         q: 'Can Telma answer questions about the clinic?',
@@ -317,7 +317,7 @@ export const en: Content = {
       },
       {
         q: 'Does installation cost anything?',
-        a: "No. It is included on every plan and there is no entry fee. And it is real work: we gather your clinic information, write Telma's answers with you, choose the voice, sort the forwarding out with your operator, make test calls and train your front desk. You pay the first month and nothing else.",
+        a: "No. Setup is included with every plan. We configure the clinic information, Telma's answers, voice and call forwarding. We then run the necessary tests and support the team before activation.",
       },
       {
         q: 'Which languages does Telma answer in?',
@@ -329,7 +329,7 @@ export const en: Content = {
       },
       {
         q: 'Why are the plans in minutes rather than calls?',
-        a: 'Because that is how Telma costs. A call asking about opening hours lasts twenty seconds and a booking with a reschedule lasts six minutes; counting them the same would mean charging everyone more. In minutes, each clinic pays for what it uses. For reference, a booking call lasts two to three minutes on average.',
+        a: 'Because call length varies considerably. A simple question may take only a few seconds, while booking or rescheduling an appointment can take several minutes. Charging by the minute allows the plan to reflect the clinic\u2019s actual usage. As a reference, an appointment-booking call lasts two to three minutes on average.',
       },
       {
         q: 'What happens if I go over the minutes in my plan?',
@@ -337,7 +337,7 @@ export const en: Content = {
       },
       {
         q: 'What is the clinic dashboard, and what does it cost?',
-        a: 'It is where the clinic is in charge of Telma, and it is included on every plan at no extra cost. You see the day: provisional bookings waiting to be confirmed and the calls from today, updating live. You confirm, change or reject each booking and copy the patient details to paste into your clinic software. You mark on the calendar the hours Telma may offer and block holidays and closures. And you get the call history with filters, the written summary and the recording of each one. It runs on any screen, and on a phone it installs like an app, with no store to go through.',
+        a: 'It is the dashboard where the clinic manages Telma, and it is included on every plan at no extra cost. You see the day: provisional bookings waiting to be confirmed and the calls from today, updating live. You confirm, change or reject each booking and copy the patient details to paste into your clinic software. You mark on the calendar the hours Telma may offer and block holidays and closures. And you get the call history with filters, the written summary and the recording of each one. It runs on any screen, and on a phone it installs like an app, with no store to go through.',
       },
       {
         q: 'Can I listen to the calls?',
@@ -370,8 +370,8 @@ export const en: Content = {
     ],
   },
   finalCta: {
-    title: 'Keep your clinic running, even when nobody can pick up the phone.',
-    lead: 'We will show you Telma using your own schedule and opening hours. No commitment.',
+    title: 'When your front desk cannot answer, Telma can.',
+    lead: 'We\u2019ll show you how Telma would work in your clinic, with your opening hours and your schedule. No commitment.',
     cta: 'Talk to us',
     secondary: 'See pricing',
   },
@@ -393,9 +393,7 @@ export const en: Content = {
     submit: 'Send',
     sending: 'Sending...',
     success: 'We have your request. We will be in touch soon.',
-    error: 'We could not send it. Please try again or email us.',
-    notConfigured:
-      'The form is not configured yet. Set the NEXT_PUBLIC_CONTACT_ENDPOINT variable or email us directly.',
+    error: 'We could not send your request. Please try again or email us.',
     directEmail: 'Or write to',
   },
   footer: {
@@ -403,16 +401,129 @@ export const en: Content = {
     contactHeading: 'Contact',
     productHeading: 'Product',
     email: 'ola@telmaatende.com',
-    phone: '+351 000 000 000',
     companyHeading: 'Company',
     companyText: 'Telma is a Bweb Studio product.',
     companyLinkLabel: 'bwebstudio.com',
     companyLink: 'https://bwebstudio.com',
-    legalPlaceholder:
-      'Reserved space for tax number, address and registered company name (to be filled in before publishing).',
     privacyLabel: 'Privacy Policy',
     termsLabel: 'Terms',
     rights: 'All rights reserved.',
+  },
+  flow: {
+    title: 'From each conversation, only what is needed remains.',
+    description:
+      'Each call ends up where it belongs: in the schedule, in a summary for the front desk or in a WhatsApp reply.',
+    tabsLabel: 'Examples',
+    tabs: {
+      booking: 'Books and organises',
+      summary: 'Summarises each call',
+      whatsapp: 'Also on WhatsApp',
+    },
+    scenes: {
+      booking: {
+        steps: [
+          { kind: 'call', label: 'Call', quote: 'Hi, I\u2019d like to book an appointment for Tuesday morning, if there\u2019s availability.', duration: '12 s', related: ['call answered', 'Tuesday', 'morning'] },
+          { kind: 'identified', label: 'Telma identified', title: 'Booking', lines: ['Tuesday', 'morning'], badge: 'To be confirmed', related: ['booking', 'Tuesday', 'morning'] },
+          { kind: 'agenda', label: 'In the schedule', day: 'Tuesday', detail: 'Morning', status: 'To be confirmed', related: ['to be confirmed', 'Tuesday'] },
+          { kind: 'call', label: 'Call', quote: 'Good afternoon. I need to move my appointment from Thursday to Friday afternoon.', duration: '9 s', related: ['call answered', 'Thursday', 'Friday'] },
+          { kind: 'identified', label: 'Telma identified', title: 'Change', lines: ['from Thursday to Friday', 'afternoon'], badge: 'To be confirmed', related: ['change', 'Friday', 'afternoon'] },
+          { kind: 'agenda', label: 'In the schedule', day: 'Friday', detail: 'Afternoon', status: 'To be confirmed', related: ['to be confirmed', 'Friday'] },
+          { kind: 'call', label: 'Call', quote: 'Good morning. I can\u2019t make it tomorrow, I\u2019d like to cancel, please.', duration: '7 s', related: ['call answered', 'tomorrow'] },
+          { kind: 'identified', label: 'Telma identified', title: 'Cancellation', lines: ['tomorrow'], badge: 'To be confirmed', related: ['cancellation', 'tomorrow'] },
+          { kind: 'agenda', label: 'In the schedule', day: 'Tomorrow', detail: 'Cancellation requested', status: 'To be confirmed', related: ['to be confirmed', 'cancellation'] },
+        ],
+        facts: [
+          { text: 'Tuesday' },
+          { text: 'morning' },
+          { text: 'booking', caption: 'Request' },
+          { text: 'change', caption: 'Request' },
+          { text: 'cancellation', caption: 'Request' },
+          { text: 'to be confirmed', caption: 'Status' },
+          { text: 'call answered' },
+          { text: 'Thursday' },
+          { text: 'Friday', caption: 'When' },
+          { text: 'afternoon' },
+          { text: 'tomorrow' },
+          { text: 'first appointment' },
+          { text: 'call back' },
+          { text: 'morning', caption: 'When' },
+          { text: 'booking' },
+          { text: 'to be confirmed' },
+        ],
+      },
+      summary: {
+        steps: [
+          { kind: 'call', label: 'Call', quote: 'Good morning. This is my first time calling. I\u2019d like an appointment next week, in the afternoon.', duration: '24 s', related: ['call answered', 'first appointment'] },
+          { kind: 'summary', label: 'Summary for the front desk', title: 'First appointment', lines: ['Booking request', 'Next week, afternoon', 'To be confirmed'], channels: ['Email', 'WhatsApp'], related: ['summary', 'email', 'whatsapp', 'afternoon'] },
+          { kind: 'call', label: 'Call', quote: 'Good afternoon. I called earlier and forgot to ask what time you open on Saturdays.', duration: '11 s', related: ['call answered', 'question'] },
+          { kind: 'summary', label: 'Summary for the front desk', title: 'Question answered', lines: ['Saturday opening hours', 'No booking'], channels: ['Email', 'WhatsApp'], related: ['summary', 'email', 'question'] },
+        ],
+        facts: [
+          { text: 'summary', caption: 'For the front desk' },
+          { text: 'email' },
+          { text: 'whatsapp' },
+          { text: 'call answered' },
+          { text: 'first appointment', caption: 'Request' },
+          { text: 'next week', caption: 'When' },
+          { text: 'afternoon' },
+          { text: 'question', caption: 'Request' },
+          { text: 'recording' },
+          { text: 'to be confirmed', caption: 'Status' },
+          { text: 'summary' },
+          { text: 'Saturday' },
+        ],
+      },
+      whatsapp: {
+        steps: [
+          { kind: 'call', label: 'WhatsApp \u00b7 Patient', quote: 'Hi! Can I book for Friday morning?', duration: '10:42', related: ['whatsapp', 'Friday', 'morning'] },
+          { kind: 'call', label: 'WhatsApp \u00b7 Telma', quote: 'Of course. I have 10:00 or 11:30. Which would you prefer?', duration: '10:42', related: ['whatsapp', '10:00', 'message'] },
+          { kind: 'agenda', label: 'In the schedule', day: 'Friday', detail: '10:00 \u00b7 requested on WhatsApp', status: 'To be confirmed', related: ['to be confirmed', 'Friday', 'booking'] },
+        ],
+        facts: [
+          { text: 'whatsapp' },
+          { text: 'message', caption: 'Channel' },
+          { text: 'Friday', caption: 'When' },
+          { text: 'morning' },
+          { text: '10:00' },
+          { text: 'booking', caption: 'Request' },
+          { text: 'to be confirmed', caption: 'Status' },
+          { text: 'reschedule' },
+          { text: 'cancel' },
+          { text: 'confirmation', caption: 'On WhatsApp' },
+          { text: 'whatsapp' },
+          { text: '11:30' },
+        ],
+      },
+    },
+  },
+  process: {
+    title: 'From the call to the schedule.',
+    lead: 'Telma answers, identifies the reason for the call and organises the information in the schedule.',
+    chapters: [
+      {
+        title: 'Answers the call',
+        text: 'When the front desk cannot answer, Telma takes the call with a natural voice and identifies the reason for the call.',
+      },
+      {
+        title: 'Organises the schedule',
+        text: 'The request sits in the schedule as unconfirmed, and the front desk receives a written summary of what was agreed.',
+      },
+    ],
+    agenda: 'Schedule',
+    day: 'Tuesday',
+    newBooking: 'New appointment',
+    dayAndTime: 'Tuesday \u00b7 10:00',
+    callInProgress: 'Call in progress',
+    morning: 'Morning',
+    statusLabel: 'Status',
+    toConfirm: 'To be confirmed',
+    speakers: { caller: 'Patient', telma: 'Telma' },
+    dialogue: {
+      caller1: ['Hi,', ' I\u2019d like to book', ' for Tuesday', ' morning,', ' if there\u2019s availability.'],
+      telma1: ['Of course.', ' Do you have a preferred time in the morning?'],
+      caller2: ['Around ten,', ' if possible.'],
+    },
+    facts: ['Appointment', 'Tuesday', 'morning', '~10:00'],
   },
   legal: {
     privacy: {

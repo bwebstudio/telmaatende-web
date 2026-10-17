@@ -4,10 +4,10 @@ export const pt: Content = {
   meta: {
     title: 'Telma Atende: a receção que atende quando ninguém pode',
     description:
-      'A Telma é uma rececionista virtual com voz que atende o telefone da sua clínica, responde às dúvidas dos pacientes com a informação da clínica, marca consultas e passa a chamada a uma pessoa real quando é urgente. Para clínicas dentárias e de estética em Portugal.',
+      'A Telma é uma rececionista virtual para clínicas. Atende chamadas, responde a dúvidas, gere marcações e encaminha para a equipa quando é necessário.',
     ogTitle: 'Telma Atende: a rececionista virtual da sua clínica',
     ogDescription:
-      'Atende o telefone quando ninguém pode, responde às dúvidas dos pacientes, marca consultas e passa a chamada a uma pessoa real quando é urgente.',
+      'A Telma é uma rececionista virtual para clínicas. Atende chamadas, responde a dúvidas, gere marcações e encaminha para a equipa quando é necessário.',
   },
   langSwitchLabel: 'Idioma',
   skipToContent: 'Saltar para o conteúdo',
@@ -26,10 +26,10 @@ export const pt: Content = {
   },
   hero: {
     name: 'Telma',
-    headlineLines: ['Nenhuma chamada perdida.', 'Nenhum paciente perdido.'],
+    headlineLines: ['A Telma atende', 'quando ninguém pode.'],
     eyebrow: 'Rececionista virtual para clínicas',
     subtitle:
-      'Atende com cuidado quando a receção não pode.',
+      'Atende chamadas, responde a dúvidas e trata das marcações quando a receção não pode.',
     ctaPrimary: 'Ver preços',
     ctaSecondary: 'Falar connosco',
     sceneAlt:
@@ -46,16 +46,16 @@ export const pt: Content = {
   voice: {
     label: 'Oiça a Telma',
     title: 'É assim que a Telma atende.',
-    lead: 'Uma chamada real, sem edição. É a forma mais rápida de responder à pergunta que toda a gente faz primeiro.',
+    lead: 'Uma chamada real, sem edição. Oiça como a Telma atende um paciente.',
     play: 'Ouvir a chamada',
     pause: 'Pausa',
-    note: 'Se o paciente perguntar diretamente, a Telma responde com honestidade que é uma assistente virtual.',
+    note: 'Se o paciente perguntar, a Telma explica com naturalidade que é a assistente virtual da clínica.',
   },
   problem: {
     label: 'O problema',
     sceneAlt:
       'Balcão de receção de uma clínica, vazio, com o telefone pousado e a luz da manhã a atravessar a parede.',
-    title: 'Cada chamada que fica sem resposta é um paciente que liga a outra clínica.',
+    title: 'Quando a receção não pode atender, algumas chamadas ficam por responder.',
     items: [
       {
         title: 'Chamadas perdidas enquanto se atende um paciente',
@@ -88,7 +88,7 @@ export const pt: Content = {
       {
         n: '03',
         title: 'A Telma marca a consulta',
-        text: 'A Telma percebe o que o paciente precisa e marca a consulta nos horários que a clínica definiu.',
+        text: 'A Telma identifica o motivo da chamada e marca a consulta nos horários que a clínica definiu.',
       },
       {
         n: '04',
@@ -104,7 +104,7 @@ export const pt: Content = {
     paragraphs: [
       'A clínica define que horários pode oferecer a Telma. A Telma só oferece esses. Nunca pode haver sobreposição com o que a receção marca à mão.',
       'Por defeito, a Telma deixa uma pré-marcação que a clínica confirma. Quando existe sincronização de calendário, a Telma pode confirmar diretamente.',
-      'Tudo isto se faz no painel da clínica, incluído em todos os planos: é lá que marca os horários que a Telma pode oferecer, bloqueia feriados e férias, confirma ou altera cada pré-marcação e ouve as chamadas. Funciona no computador da receção, no tablet e no telemóvel, e atualiza-se em direto.',
+      'Tudo é gerido no painel da clínica, incluído em todos os planos. Aí pode definir horários, bloquear férias e feriados, confirmar marcações e consultar as chamadas. O painel atualiza-se em tempo real e funciona no computador, tablet e telemóvel.',
     ],
     preview: { heading: 'Agenda', day: 'Terça-feira', confirmed: 'Confirmada', pending: 'Por confirmar', free: 'Hora livre', booking: 'Nova marcação' },
   },
@@ -143,7 +143,7 @@ export const pt: Content = {
           'Transferência para pessoa real',
           'Resumo de cada chamada por email',
           'Confirmação por SMS ao paciente, incluída',
-          'Painel da clínica: vê e controla tudo, em qualquer ecrã',
+          'Painel da clínica para gerir marcações e chamadas, em qualquer ecrã.',
         ],
       },
       {
@@ -198,7 +198,7 @@ export const pt: Content = {
       priceNote: 'por mês, em qualquer plano',
       features: [
         'A Telma atende também no WhatsApp, não só ao telefone',
-        'O paciente escreve para marcar, remarcar ou cancelar, e ela trata de tudo',
+        'O paciente pode marcar, remarcar ou cancelar diretamente pelo WhatsApp',
         'As confirmações, que já vão incluídas no plano, chegam por WhatsApp em vez de SMS',
         'Até 1.000 mensagens por mês',
       ],
@@ -217,46 +217,46 @@ export const pt: Content = {
     title: 'Liga-se ao seu sistema.',
     levels: [
       {
-        tag: 'Nível 1',
+        tag: 'Sem integração',
         name: 'Funciona com qualquer sistema',
         badge: 'Incluído em todos os planos',
         badgeStrong: true,
         text: 'Não é preciso mudar nada. A Telma regista as marcações num calendário partilhado e envia à receção um resumo de cada chamada por email ou WhatsApp. A receção passa a marcação para o software da clínica em segundos.',
       },
       {
-        tag: 'Nível 2',
-        name: 'Sincronização de calendário',
+        tag: 'Sincronização de calendário',
+        name: 'Google Calendar ou iCal',
         badge: 'Incluído se disponível',
         text: 'Se o software da clínica sincroniza com o Google Calendar ou exporta iCal, as marcações aparecem diretamente na agenda existente.',
       },
       {
-        tag: 'Nível 3',
-        name: 'Integração direta por API',
+        tag: 'Integração por API',
+        name: 'Para software com API',
         badge: 'Projeto à parte',
         text: 'Para clínicas cujo software disponibilize API. Analisamos o caso e apresentamos orçamento.',
       },
     ],
     closing:
-      'Na maioria das clínicas começamos no Nível 1 no primeiro dia. Não é preciso esperar por integrações.',
+      'Na maioria das clínicas começamos sem integração no primeiro dia. Não é preciso esperar por integrações.',
   },
   clinics: {
     label: 'Para quem',
-    title: 'Para qualquer clínica que marque por telefone.',
-    lead: 'A Telma funciona em qualquer clínica que receba marcações por telefone.',
+    title: 'Para clínicas que recebem marcações por telefone.',
+    lead: 'A Telma adapta-se à forma de trabalhar de cada clínica.',
     items: [{ id: 'dental', name: 'Medicina dentária' }, { id: 'general', name: 'Medicina geral' }, { id: 'aesthetic', name: 'Estética' }, { id: 'physio', name: 'Fisioterapia' }],
   },
   calls: {
     title: 'Feita para as chamadas que não podem esperar.',
-    lead: 'Quem liga é atendido à primeira, a qualquer hora, e a receção fica a saber de tudo o que foi falado.',
+    lead: 'Quando a receção não pode atender, a Telma atende a chamada e deixa tudo registado para a equipa.',
     listen: 'Ouvir a Telma',
     items: [
-      { tag: 'Para quem liga', title: 'Atendida à primeira', text: 'Quando a receção não pode atender, a Telma atende. Quem liga não fica à espera nem cai no correio de voz.' },
+      { tag: 'Para quem liga', title: 'Sem deixar a chamada no correio de voz', text: 'A chamada que a receção não pode atender segue para a Telma, e é ela que responde.' },
       { tag: 'Para quem liga', title: 'Também fora de horário', text: 'Ao fim do dia, ao fim de semana e nos feriados, a chamada é atendida e o pedido fica registado.' },
       { tag: 'Para a equipa', title: 'Nada se perde pelo caminho', text: 'Cada chamada chega à receção com um resumo escrito e a gravação, para confirmar e seguir em frente.' },
     ],
   },
   banner: { title: 'A receção atende quem está ao balcão. A Telma atende o telefone.', cta: 'Falar connosco' },
-  band: { title: 'Da conversa, fica o essencial.' },
+  band: { title: 'Da conversa, fica o necessário.' },
   resources: {
     title: 'Para ler com calma',
     prev: 'Anterior',
@@ -267,7 +267,7 @@ export const pt: Content = {
   },
   trust: {
     label: 'Confiança',
-    title: 'A clínica continua no controlo.',
+    title: 'A clínica mantém o controlo.',
     items: [
       { icon: 'shield', title: 'Dados na União Europeia', text: 'Cumprimos o RGPD e os dados ficam alojados na UE.' },
       { icon: 'mic', title: 'Gravação com aviso', text: 'As chamadas são gravadas com aviso prévio, e pode ouvi-las e ler o resumo de cada uma.' },
@@ -285,7 +285,7 @@ export const pt: Content = {
     items: [
       {
         q: 'O paciente percebe que está a falar com uma assistente virtual?',
-        a: 'A voz é muito natural. Se o paciente perguntar diretamente, a Telma responde com honestidade que é uma assistente virtual.',
+        a: 'A voz é natural. Se o paciente perguntar, a Telma explica com naturalidade que é a assistente virtual da clínica.',
       },
       {
         q: 'A Telma sabe responder a perguntas sobre a clínica?',
@@ -317,7 +317,7 @@ export const pt: Content = {
       },
       {
         q: 'A instalação tem algum custo?',
-        a: 'Não. Está incluída em todos os planos e não há custo de entrada. E é trabalho a sério: recolhemos a informação da clínica, escrevemos consigo as respostas da Telma, escolhemos a voz, tratamos do encaminhamento com a sua operadora, fazemos chamadas de teste e formamos a receção. Paga a primeira mensalidade e mais nada.',
+        a: 'Não. A instalação está incluída em todos os planos. Configuramos a informação da clínica, as respostas da Telma, a voz e o encaminhamento das chamadas. Depois fazemos os testes necessários e acompanhamos a equipa antes da ativação.',
       },
       {
         q: 'Em que idiomas atende a Telma?',
@@ -329,7 +329,7 @@ export const pt: Content = {
       },
       {
         q: 'Porque é que os planos são em minutos e não em chamadas?',
-        a: 'Porque é assim que a Telma custa. Uma chamada para saber o horário dura vinte segundos e uma marcação com remarcação dura seis minutos; contá-las como iguais obrigaria a encarecer o plano para todos. Em minutos, cada clínica paga o que usa. Para referência, uma chamada de marcação dura em média dois a três minutos.',
+        a: 'Porque a duração das chamadas varia bastante. Uma pergunta simples pode durar poucos segundos, enquanto uma marcação ou remarcação pode levar vários minutos. Cobrar por minutos permite ajustar o plano ao uso real da clínica. Como referência, uma chamada de marcação dura, em média, dois a três minutos.',
       },
       {
         q: 'O que acontece se ultrapassar os minutos do meu plano?',
@@ -337,7 +337,7 @@ export const pt: Content = {
       },
       {
         q: 'O que é o painel da clínica, e quanto custa?',
-        a: 'É o sítio onde a clínica manda na Telma, e está incluído em todos os planos, sem custo extra. Vê o dia: as pré-marcações à espera de confirmação e as chamadas de hoje, a atualizar em direto. Confirma, altera ou rejeita cada marcação e copia os dados do paciente para colar no software da clínica. Marca no calendário os horários que a Telma pode oferecer e bloqueia feriados e férias. E tem o histórico de chamadas com filtros, o resumo escrito e a gravação de cada uma. Funciona em qualquer ecrã, e no telemóvel instala-se como uma aplicação, sem passar por lojas.',
+        a: 'É o painel onde a clínica gere a Telma, e está incluído em todos os planos, sem custo extra. Vê o dia: as pré-marcações à espera de confirmação e as chamadas de hoje, a atualizar em direto. Confirma, altera ou rejeita cada marcação e copia os dados do paciente para colar no software da clínica. Marca no calendário os horários que a Telma pode oferecer e bloqueia feriados e férias. E tem o histórico de chamadas com filtros, o resumo escrito e a gravação de cada uma. Funciona em qualquer ecrã, e no telemóvel instala-se como uma aplicação, sem passar por lojas.',
       },
       {
         q: 'Posso ouvir as chamadas?',
@@ -370,8 +370,8 @@ export const pt: Content = {
     ],
   },
   finalCta: {
-    title: 'Que a sua clínica continue a funcionar, mesmo quando ninguém pode atender.',
-    lead: 'Mostramos-lhe a Telma com a agenda e os horários da sua clínica. Sem compromisso.',
+    title: 'Quando a receção não pode atender, a Telma pode.',
+    lead: 'Mostramos-lhe como funcionaria na sua clínica, com os seus horários e a sua agenda. Sem compromisso.',
     cta: 'Falar connosco',
     secondary: 'Ver preços',
   },
@@ -393,9 +393,7 @@ export const pt: Content = {
     submit: 'Enviar',
     sending: 'A enviar...',
     success: 'Recebemos o seu pedido. Entramos em contacto em breve.',
-    error: 'Não foi possível enviar. Tente novamente ou escreva-nos por email.',
-    notConfigured:
-      'O formulário ainda não está configurado. Configure a variável NEXT_PUBLIC_CONTACT_ENDPOINT ou escreva-nos diretamente.',
+    error: 'Não foi possível enviar o pedido. Tente novamente ou escreva-nos por email.',
     directEmail: 'Ou escreva para',
   },
   footer: {
@@ -403,16 +401,129 @@ export const pt: Content = {
     contactHeading: 'Contacto',
     productHeading: 'Produto',
     email: 'ola@telmaatende.com',
-    phone: '+351 000 000 000',
     companyHeading: 'Empresa',
     companyText: 'Telma é um produto Bweb Studio.',
     companyLinkLabel: 'bwebstudio.com',
     companyLink: 'https://bwebstudio.com',
-    legalPlaceholder:
-      'Espaço reservado para NIF, morada e denominação social (a preencher antes de publicar).',
     privacyLabel: 'Política de Privacidade',
     termsLabel: 'Termos',
     rights: 'Todos os direitos reservados.',
+  },
+  flow: {
+    title: 'Da conversa, fica o necessário.',
+    description:
+      'Cada chamada termina no sítio certo: na agenda, num resumo para a receção, ou numa resposta no WhatsApp.',
+    tabsLabel: 'Exemplos',
+    tabs: {
+      booking: 'Marca e organiza',
+      summary: 'Resume cada chamada',
+      whatsapp: 'Também no WhatsApp',
+    },
+    scenes: {
+      booking: {
+        steps: [
+          { kind: 'call', label: 'Chamada', quote: 'Olá, queria marcar para terça-feira de manhã, se houver disponibilidade.', duration: '12 s', related: ['chamada atendida', 'terça-feira', 'de manhã'] },
+          { kind: 'identified', label: 'Telma identificou', title: 'Marcação', lines: ['terça-feira', 'de manhã'], badge: 'Por confirmar', related: ['marcação', 'terça-feira', 'de manhã'] },
+          { kind: 'agenda', label: 'Na agenda', day: 'Terça-feira', detail: 'Manhã', status: 'Por confirmar', related: ['por confirmar', 'terça-feira'] },
+          { kind: 'call', label: 'Chamada', quote: 'Boa tarde. Precisava de mudar a consulta de quinta para sexta, à tarde.', duration: '9 s', related: ['chamada atendida', 'quinta-feira', 'sexta-feira'] },
+          { kind: 'identified', label: 'Telma identificou', title: 'Alteração', lines: ['de quinta-feira para sexta-feira', 'à tarde'], badge: 'Por confirmar', related: ['alteração', 'sexta-feira', 'à tarde'] },
+          { kind: 'agenda', label: 'Na agenda', day: 'Sexta-feira', detail: 'Tarde', status: 'Por confirmar', related: ['por confirmar', 'sexta-feira'] },
+          { kind: 'call', label: 'Chamada', quote: 'Bom dia. Amanhã não vou conseguir ir, queria cancelar, por favor.', duration: '7 s', related: ['chamada atendida', 'amanhã'] },
+          { kind: 'identified', label: 'Telma identificou', title: 'Cancelamento', lines: ['amanhã'], badge: 'Por confirmar', related: ['cancelamento', 'amanhã'] },
+          { kind: 'agenda', label: 'Na agenda', day: 'Amanhã', detail: 'Cancelamento pedido', status: 'Por confirmar', related: ['por confirmar', 'cancelamento'] },
+        ],
+        facts: [
+          { text: 'terça-feira' },
+          { text: 'de manhã' },
+          { text: 'marcação', caption: 'Pedido' },
+          { text: 'alteração', caption: 'Pedido' },
+          { text: 'cancelamento', caption: 'Pedido' },
+          { text: 'por confirmar', caption: 'Estado' },
+          { text: 'chamada atendida' },
+          { text: 'quinta-feira' },
+          { text: 'sexta-feira', caption: 'Quando' },
+          { text: 'à tarde' },
+          { text: 'amanhã' },
+          { text: 'primeira consulta' },
+          { text: 'ligar de volta' },
+          { text: 'de manhã', caption: 'Quando' },
+          { text: 'marcação' },
+          { text: 'por confirmar' },
+        ],
+      },
+      summary: {
+        steps: [
+          { kind: 'call', label: 'Chamada', quote: 'Bom dia. É a primeira vez que ligo. Queria marcar uma consulta para a próxima semana, de tarde.', duration: '24 s', related: ['chamada atendida', 'primeira consulta'] },
+          { kind: 'summary', label: 'Resumo para a receção', title: 'Primeira consulta', lines: ['Pedido de marcação', 'Próxima semana, à tarde', 'Por confirmar'], channels: ['Email', 'WhatsApp'], related: ['resumo', 'email', 'whatsapp', 'à tarde'] },
+          { kind: 'call', label: 'Chamada', quote: 'Boa tarde. Liguei há pouco e esqueci-me de perguntar a que horas abrem ao sábado.', duration: '11 s', related: ['chamada atendida', 'pergunta'] },
+          { kind: 'summary', label: 'Resumo para a receção', title: 'Pergunta respondida', lines: ['Horário de sábado', 'Sem marcação'], channels: ['Email', 'WhatsApp'], related: ['resumo', 'email', 'pergunta'] },
+        ],
+        facts: [
+          { text: 'resumo', caption: 'Para a receção' },
+          { text: 'email' },
+          { text: 'whatsapp' },
+          { text: 'chamada atendida' },
+          { text: 'primeira consulta', caption: 'Pedido' },
+          { text: 'próxima semana', caption: 'Quando' },
+          { text: 'à tarde' },
+          { text: 'pergunta', caption: 'Pedido' },
+          { text: 'gravação' },
+          { text: 'por confirmar', caption: 'Estado' },
+          { text: 'resumo' },
+          { text: 'sábado' },
+        ],
+      },
+      whatsapp: {
+        steps: [
+          { kind: 'call', label: 'WhatsApp · Cliente', quote: 'Olá! Dá para marcar para sexta de manhã?', duration: '10:42', related: ['whatsapp', 'sexta-feira', 'de manhã'] },
+          { kind: 'call', label: 'WhatsApp · Telma', quote: 'Claro. Tenho às 10:00 ou às 11:30. Qual prefere?', duration: '10:42', related: ['whatsapp', '10:00', 'mensagem'] },
+          { kind: 'agenda', label: 'Na agenda', day: 'Sexta-feira', detail: '10:00 · pedido por WhatsApp', status: 'Por confirmar', related: ['por confirmar', 'sexta-feira', 'marcação'] },
+        ],
+        facts: [
+          { text: 'whatsapp' },
+          { text: 'mensagem', caption: 'Canal' },
+          { text: 'sexta-feira', caption: 'Quando' },
+          { text: 'de manhã' },
+          { text: '10:00' },
+          { text: 'marcação', caption: 'Pedido' },
+          { text: 'por confirmar', caption: 'Estado' },
+          { text: 'remarcar' },
+          { text: 'cancelar' },
+          { text: 'confirmação', caption: 'Por WhatsApp' },
+          { text: 'whatsapp' },
+          { text: '11:30' },
+        ],
+      },
+    },
+  },
+  process: {
+    title: 'Da chamada à agenda.',
+    lead: 'A Telma atende, identifica o motivo da chamada e deixa a informação organizada na agenda.',
+    chapters: [
+      {
+        title: 'Atende a chamada',
+        text: 'Quando a receção não pode responder, a Telma atende com voz natural e identifica o motivo da chamada.',
+      },
+      {
+        title: 'Organiza a agenda',
+        text: 'O pedido fica na agenda por confirmar, e a receção recebe um resumo escrito do que ficou combinado.',
+      },
+    ],
+    agenda: 'Agenda',
+    day: 'Terça-feira',
+    newBooking: 'Nova marcação',
+    dayAndTime: 'Terça-feira · 10:00',
+    callInProgress: 'Chamada em curso',
+    morning: 'Manhã',
+    statusLabel: 'Estado',
+    toConfirm: 'Por confirmar',
+    speakers: { caller: 'Paciente', telma: 'Telma' },
+    dialogue: {
+      caller1: ['Olá,', ' queria marcar', ' para terça-feira', ' de manhã,', ' se houver disponibilidade.'],
+      telma1: ['Claro.', ' Prefere algum horário durante a manhã?'],
+      caller2: ['Por volta das dez,', ' se possível.'],
+    },
+    facts: ['Marcação', 'terça-feira', 'manhã', '~10:00'],
   },
   legal: {
     privacy: {

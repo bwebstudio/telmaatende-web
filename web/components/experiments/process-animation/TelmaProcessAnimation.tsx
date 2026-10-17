@@ -14,8 +14,9 @@ import {
   UserRound,
   type LucideIcon,
 } from 'lucide-react'
-import { CHIPS, LOOP, PERIPHERY, choreography } from './choreography'
+import { LOOP, PERIPHERY, choreography } from './choreography'
 import { compile, sample, type Props } from './timeline'
+import type { ProcessContent } from '@/content'
 
 /**
  * A CALL, PASSING THROUGH TELMA.
@@ -28,13 +29,17 @@ import { compile, sample, type Props } from './timeline'
  * again while it plays.
  *
  * The agenda at the end borrows the dashboard's own day list: service colour
- * bar, the time as the largest thing in the row, the amber "Por confirmar".
+ * bar, the time as the largest thing in the row, the amber pending tag.
+ *
+ * Every word in it comes from `process` in the dictionary, because the section
+ * renders on all three homepages and used to show Portuguese to everybody.
  *
  * EXPERIMENT. Local only. See ./README.md.
  */
 
-// The system around a call, as plain tiles: telefone, agenda, hora,
-// notificação, estado, marcação, conversa, cliente, resumo.
+// The system around a call, as plain tiles: telephone, agenda, time,
+// notification, status, booking, conversation, caller, summary. Icons only, so
+// nothing here needs translating.
 const PERI_ICONS: LucideIcon[] = [
   Phone, CalendarDays, Clock, Bell, CircleDot, CalendarPlus, MessageSquare, Clock, UserRound, FileText,
 ]
@@ -109,10 +114,12 @@ export type ProcessControl = { seek: (t: number) => void }
 
 export function TelmaProcessAnimation({
   className = 'h-[37.5rem] sm:h-[41.25rem]',
+  copy,
   onTick,
   controlRef,
 }: {
   className?: string
+  copy: ProcessContent
   /** Called every frame with the loop time, for anything that follows it. */
   onTick?: (t: number) => void
   /** Lets the page jump the scene to a moment (the chapter list does). */
@@ -329,8 +336,8 @@ export function TelmaProcessAnimation({
         {/* The agenda, borrowed from the dashboard's day list. */}
         <Tracked name="dash" className={`w-[19.5rem] overflow-hidden sm:w-[28rem] ${card} !rounded-[12px]`}>
           <div data-track="dashRest" data-inline="" className="px-5 py-4">
-            <span className="text-label font-medium uppercase text-ink-mute">Agenda</span>
-            <p className="mt-1 text-xl font-medium tracking-tight text-ink">Terça-feira</p>
+            <span className="text-label font-medium uppercase text-ink-mute">{copy.agenda}</span>
+            <p className="mt-1 text-xl font-medium tracking-tight text-ink">{copy.day}</p>
           </div>
           <ol className="divide-y divide-line border-t border-line">
             <li data-track="dashRest" data-inline="" className="flex items-start gap-4 px-5 py-3.5">
@@ -346,15 +353,15 @@ export function TelmaProcessAnimation({
                 <span aria-hidden className="-my-3.5 w-1 self-stretch rounded-full bg-[rgb(254_233_213)]" />
                 <span className="w-14 text-lg font-medium tabular-nums text-ink">10:00</span>
                 <span className="min-w-0 flex-1">
-                  <span className="block whitespace-nowrap font-medium text-ink">Nova marcação</span>
-                  <span className="block whitespace-nowrap text-sm text-ink-soft">Terça-feira · 10:00</span>
+                  <span className="block whitespace-nowrap font-medium text-ink">{copy.newBooking}</span>
+                  <span className="block whitespace-nowrap text-sm text-ink-soft">{copy.dayAndTime}</span>
                   {/* On a phone the status goes under the entry, not beside it. */}
                   <span className={`mt-2 inline-flex rounded-pill px-2.5 py-1 text-sm font-medium sm:hidden ${PENDING}`}>
-                    Por confirmar
+                    {copy.toConfirm}
                   </span>
                 </span>
                 <span className={`hidden shrink-0 rounded-pill px-2.5 py-1 text-sm font-medium sm:inline-flex ${PENDING}`}>
-                  Por confirmar
+                  {copy.toConfirm}
                 </span>
               </div>
             </li>
@@ -375,22 +382,18 @@ export function TelmaProcessAnimation({
           className={`flex w-[17rem] items-center gap-3 !rounded-full px-4 py-2.5 sm:w-[20rem] ${card}`}
         >
           <Phone size={16} strokeWidth={1.75} className="text-brand" aria-hidden />
-          <span className="text-sm font-medium text-ink">Chamada em curso</span>
+          <span className="text-sm font-medium text-ink">{copy.callInProgress}</span>
           <span ref={timerRef} className="ml-auto text-sm tabular-nums text-ink-mute">
             00:03
           </span>
         </Tracked>
 
-        <Speech
-          track="m1"
-          who="Cliente"
-          phrases={['Olá,', ' queria marcar', ' para terça-feira', ' de manhã,', ' se houver disponibilidade.']}
-        />
-        <Speech track="t1" who="Telma" telma phrases={['Claro.', ' Prefere algum horário durante a manhã?']} />
-        <Speech track="m2" who="Cliente" phrases={['Por volta das dez,', ' se possível.']} />
+        <Speech track="m1" who={copy.speakers.caller} phrases={copy.dialogue.caller1} />
+        <Speech track="t1" who={copy.speakers.telma} telma phrases={copy.dialogue.telma1} />
+        <Speech track="m2" who={copy.speakers.caller} phrases={copy.dialogue.caller2} />
 
         {/* What Telma took from it. */}
-        {CHIPS.map((c, i) => {
+        {copy.facts.map((c, i) => {
           const Icon = CHIP_ICONS[i]
           return (
             <Tracked
@@ -408,15 +411,15 @@ export function TelmaProcessAnimation({
 
         {/* The entry they become. */}
         <Tracked name="booking" className={`w-[17rem] px-6 py-5 sm:w-[19rem] ${card}`}>
-          <span className="text-label font-medium uppercase text-ink-mute">Nova marcação</span>
-          <p className="mt-3 text-[1.5rem] font-medium leading-tight tracking-tight text-ink">Terça-feira</p>
+          <span className="text-label font-medium uppercase text-ink-mute">{copy.newBooking}</span>
+          <p className="mt-3 text-[1.5rem] font-medium leading-tight tracking-tight text-ink">{copy.day}</p>
           <p className="mt-1 flex items-baseline gap-2 text-ink-soft">
             <span className="font-medium tabular-nums text-ink">10:00</span>
-            <span>Manhã</span>
+            <span>{copy.morning}</span>
           </p>
           <div className="mt-5 flex items-center justify-between border-t border-line pt-4">
-            <span className="text-sm text-ink-mute">Estado</span>
-            <span className={`rounded-pill px-2.5 py-1 text-sm font-medium ${PENDING}`}>Por confirmar</span>
+            <span className="text-sm text-ink-mute">{copy.statusLabel}</span>
+            <span className={`rounded-pill px-2.5 py-1 text-sm font-medium ${PENDING}`}>{copy.toConfirm}</span>
           </div>
         </Tracked>
       </div>

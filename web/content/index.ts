@@ -45,4 +45,4 @@ export function getContent(lang: string): Content {
   return dictionaries[lang] ?? dictionaries[defaultLocale]
 }
 
-export type { Content }
+export type { Content, FlowContent, FlowScene, FlowStep, ProcessContent } from './types'

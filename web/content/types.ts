@@ -1,3 +1,77 @@
+
+/**
+ * ── THE CONVERSATION FLOW, AND WHY ITS DATA LIVES HERE ─────────────────────
+ * It used to live inside the component, in Portuguese, with a comment saying
+ * "pt-PT only, like the rest of this experiment". The experiment shipped: the
+ * section renders on the Spanish and English homepages too, and a Spanish
+ * clinic was reading Portuguese dialogue. The shapes are here so the three
+ * dictionaries can carry their own version and the component can stay a
+ * component.
+ *
+ * `related` is the bridge between a step and the words drifting behind it, so
+ * the strings in it have to match `facts` entries in the same language.
+ */
+export type FlowStep =
+  | { kind: 'call'; label: string; quote: string; duration: string; related: string[] }
+  | { kind: 'identified'; label: string; title: string; lines: string[]; badge: string; related: string[] }
+  | { kind: 'agenda'; label: string; day: string; detail: string; status: string; related: string[] }
+  | { kind: 'summary'; label: string; title: string; lines: string[]; channels: string[]; related: string[] }
+
+export interface FlowScene {
+  steps: FlowStep[]
+  facts: { text: string; caption?: string }[]
+}
+
+export interface FlowContent {
+  title: string
+  description: string
+  tabsLabel: string
+  tabs: { booking: string; summary: string; whatsapp: string }
+  scenes: { booking: FlowScene; summary: FlowScene; whatsapp: FlowScene }
+}
+
+/**
+ * The call-to-schedule animation, for the same reason.
+ *
+ * The lengths are fixed on purpose. The animation reveals the dialogue one
+ * fragment at a time, and the choreography names those fragments by index
+ * (`m1_0` … `m1_4`), lighting fragments 2 and 3 of the first line and 0 of the
+ * last because the facts beside the conversation come from exactly those
+ * words. A translation with four fragments instead of five would leave one
+ * track addressing nothing and the words it lights would be the wrong ones, so
+ * the tuples here make that a compile error rather than a silent regression.
+ */
+export interface ProcessContent {
+  title: string
+  lead: string
+  /** Two chapters. The timings stay in the component: they are not copy. */
+  chapters: [ProcessChapter, ProcessChapter]
+  agenda: string
+  day: string
+  newBooking: string
+  dayAndTime: string
+  callInProgress: string
+  morning: string
+  statusLabel: string
+  toConfirm: string
+  /** Who is speaking. 'Telma' is a name and stays one in every language. */
+  speakers: { caller: string; telma: string }
+  dialogue: {
+    /** Five fragments. The third and fourth name the day and the time of day. */
+    caller1: [string, string, string, string, string]
+    telma1: [string, string]
+    /** Two fragments. The first names the hour. */
+    caller2: [string, string]
+  }
+  /** The four facts Telma keeps, in the order they surface. */
+  facts: [string, string, string, string]
+}
+
+export interface ProcessChapter {
+  title: string
+  text: string
+}
+
 // Shared content shape for every language.
 // To add a new language, create content/<lang>.ts implementing this same type
 // and register it in content/index.ts. Nothing else needs to change.
@@ -23,7 +97,7 @@ export interface Step {
  * used to sit under each one turned the scene into an interface, which is the
  * one thing it must not be. The specifics live further down the page.
  */
-export interface FlowStep {
+export interface HeroFlowStep {
   label: string
 }
 
@@ -130,7 +204,7 @@ export interface Content {
      * reception is told. Nothing else belongs on the first screen.
      */
     flow: {
-      steps: FlowStep[]
+      steps: HeroFlowStep[]
     }
   }
   /**
@@ -284,8 +358,12 @@ export interface Content {
     submit: string
     sending: string
     success: string
+    /**
+     * What the visitor sees when the send fails. One message for every cause:
+     * there used to be a second one naming an environment variable, which is a
+     * thing to fix in a deploy, not a thing to read in a clinic.
+     */
     error: string
-    notConfigured: string
     directEmail: string
   }
   footer: {
@@ -294,16 +372,23 @@ export interface Content {
     /** Heading of the footer column that repeats the page's sections. */
     productHeading: string
     email: string
-    phone: string
     companyHeading: string
     companyText: string
     companyLinkLabel: string
     companyLink: string
-    legalPlaceholder: string
+    /**
+     * The telephone and the legal identity (company name, VAT number, address)
+     * are not here. They were, as `+351 000 000 000` and a note saying the slot
+     * had to be filled before publishing, and neither was ever rendered. A
+     * placeholder nobody shows is still a placeholder somebody can wire up by
+     * mistake, so the fields go back only with the real data in them.
+     */
     privacyLabel: string
     termsLabel: string
     rights: string
   }
+  flow: FlowContent
+  process: ProcessContent
   legal: {
     privacy: LegalPage
     terms: LegalPage

@@ -12,10 +12,10 @@ export const es: Content = {
   meta: {
     title: 'Telma Atende: la recepción que atiende cuando nadie puede',
     description:
-      'Telma es una recepcionista virtual con voz que atiende el teléfono de su clínica, responde a las dudas de los pacientes con la información de la clínica, concierta citas y pasa la llamada a una persona real cuando es urgente. Para clínicas dentales y de estética en Portugal.',
+      'Telma es una recepcionista virtual para clínicas. Atiende llamadas, responde a preguntas, gestiona citas y deriva la llamada al equipo cuando es necesario.',
     ogTitle: 'Telma Atende: la recepcionista virtual de su clínica',
     ogDescription:
-      'Atiende el teléfono cuando nadie puede, responde a las dudas de los pacientes, concierta citas y pasa la llamada a una persona real cuando es urgente.',
+      'Telma es una recepcionista virtual para clínicas. Atiende llamadas, responde a preguntas, gestiona citas y deriva la llamada al equipo cuando es necesario.',
   },
   langSwitchLabel: 'Idioma',
   skipToContent: 'Saltar al contenido',
@@ -34,10 +34,10 @@ export const es: Content = {
   },
   hero: {
     name: 'Telma',
-    headlineLines: ['Ninguna llamada perdida.', 'Ningún paciente perdido.'],
+    headlineLines: ['Telma atiende', 'cuando nadie puede.'],
     eyebrow: 'Recepcionista virtual para clínicas',
     subtitle:
-      'Atiende con cuidado cuando recepción no puede.',
+      'Atiende llamadas, responde a preguntas y gestiona las citas cuando recepción no puede.',
     ctaPrimary: 'Ver precios',
     ctaSecondary: 'Hablar con nosotros',
     sceneAlt:
@@ -54,16 +54,16 @@ export const es: Content = {
   voice: {
     label: 'Escúchela',
     title: 'Así atiende Telma.',
-    lead: 'Una llamada real, sin editar. Es la forma más rápida de responder a la pregunta que todo el mundo hace primero.',
+    lead: 'Una llamada real, sin editar. Escuche cómo atiende Telma a un paciente.',
     play: 'Escuchar la llamada',
     pause: 'Pausar',
-    note: 'Si el paciente pregunta directamente, Telma responde con honestidad que es una asistente virtual.',
+    note: 'Si el paciente pregunta, Telma explica con naturalidad que es la asistente virtual de la clínica.',
   },
   problem: {
     label: 'El problema',
     sceneAlt:
       'Mostrador de recepción de una clínica, vacío, con el teléfono apoyado y la luz de la mañana cruzando la pared.',
-    title: 'Cada llamada que queda sin respuesta es un paciente que llama a otra clínica.',
+    title: 'Cuando recepción no puede atender, algunas llamadas quedan sin respuesta.',
     items: [
       {
         title: 'Llamadas perdidas mientras se atiende a un paciente',
@@ -96,7 +96,7 @@ export const es: Content = {
       {
         n: '03',
         title: 'Telma concierta la cita',
-        text: 'Telma entiende lo que el paciente necesita y concierta la cita en los horarios que la clínica ha definido.',
+        text: 'Telma identifica el motivo de la llamada y concierta la cita en los horarios que la clínica ha definido.',
       },
       {
         n: '04',
@@ -112,7 +112,7 @@ export const es: Content = {
     paragraphs: [
       'La clínica define qué horarios puede ofrecer Telma. Telma solo ofrece esos. Nunca puede haber solapamiento con lo que recepción reserva a mano.',
       'Por defecto, Telma deja una cita provisional que la clínica confirma. Cuando hay sincronización de calendario, Telma puede confirmar directamente.',
-      'Todo esto se hace en el panel de la clínica, incluido en todos los planes: ahí marca los horarios que Telma puede ofrecer, bloquea festivos y vacaciones, confirma o cambia cada cita provisional y escucha las llamadas. Funciona en el ordenador de recepción, en la tablet y en el móvil, y se actualiza en directo.',
+      'Todo se gestiona desde el panel de la clínica, incluido en todos los planes. Desde allí puede definir horarios, bloquear vacaciones y festivos, confirmar citas y consultar las llamadas. El panel se actualiza en tiempo real y funciona en ordenador, tablet y móvil.',
     ],
     preview: { heading: 'Agenda', day: 'Martes', confirmed: 'Confirmada', pending: 'Por confirmar', free: 'Hora libre', booking: 'Nueva cita' },
   },
@@ -138,7 +138,7 @@ export const es: Content = {
       {
         id: 'essencial',
         name: 'Essencial',
-        audience: 'Consultas de 1 a 2 profesionales, hasta 8 llamadas al día',
+        audience: 'Consultorios de 1 a 2 profesionales, hasta 8 llamadas al día',
         priceMonthly: 99,
         priceUnit: 'por clínica',
         allowance: '250 minutos de conversación al mes',
@@ -151,7 +151,7 @@ export const es: Content = {
           'Transferencia a una persona real',
           'Resumen de cada llamada por correo',
           'Confirmación por SMS al paciente, incluida',
-          'Panel de la clínica: lo ve y lo controla todo, en cualquier pantalla',
+          'Panel de la clínica para gestionar citas y llamadas desde cualquier pantalla.',
         ],
       },
       {
@@ -206,7 +206,7 @@ export const es: Content = {
       priceNote: 'al mes, en cualquier plan',
       features: [
         'Telma atiende también en WhatsApp, no solo al teléfono',
-        'El paciente escribe para pedir, cambiar o cancelar cita, y ella se encarga',
+        'El paciente puede pedir, cambiar o cancelar una cita directamente por WhatsApp',
         'Las confirmaciones, que ya van incluidas en el plan, llegan por WhatsApp en vez de por SMS',
         'Hasta 1.000 mensajes al mes',
       ],
@@ -225,46 +225,46 @@ export const es: Content = {
     title: 'Se conecta con su sistema.',
     levels: [
       {
-        tag: 'Nivel 1',
+        tag: 'Sin integración',
         name: 'Funciona con cualquier sistema',
         badge: 'Incluido en todos los planes',
         badgeStrong: true,
         text: 'No hace falta cambiar nada. Telma registra las citas en un calendario compartido y envía a recepción un resumen de cada llamada por correo o WhatsApp. Recepción pasa la cita al software de la clínica en segundos.',
       },
       {
-        tag: 'Nivel 2',
-        name: 'Sincronización de calendario',
+        tag: 'Sincronización de calendario',
+        name: 'Google Calendar o iCal',
         badge: 'Incluido si está disponible',
         text: 'Si el software de la clínica sincroniza con Google Calendar o exporta iCal, las citas aparecen directamente en la agenda existente.',
       },
       {
-        tag: 'Nivel 3',
-        name: 'Integración directa por API',
+        tag: 'Integración por API',
+        name: 'Para software con API',
         badge: 'Proyecto aparte',
         text: 'Para clínicas cuyo software disponga de API. Analizamos el caso y presentamos presupuesto.',
       },
     ],
     closing:
-      'En la mayoría de las clínicas empezamos en el Nivel 1 el primer día. No hace falta esperar a las integraciones.',
+      'En la mayoría de las clínicas empezamos sin integración el primer día. No hace falta esperar a las integraciones.',
   },
   clinics: {
     label: 'Para quién',
-    title: 'Para cualquier clínica que dé citas por teléfono.',
-    lead: 'Telma funciona en cualquier clínica que reciba citas por teléfono.',
+    title: 'Para clínicas que reciben citas por teléfono.',
+    lead: 'Telma se adapta a la forma de trabajar de cada clínica.',
     items: [{ id: 'dental', name: 'Odontología' }, { id: 'general', name: 'Medicina general' }, { id: 'aesthetic', name: 'Estética' }, { id: 'physio', name: 'Fisioterapia' }],
   },
   calls: {
     title: 'Hecha para las llamadas que no pueden esperar.',
-    lead: 'Quien llama es atendido a la primera, a cualquier hora, y recepción se entera de todo lo hablado.',
+    lead: 'Cuando recepción no puede atender, Telma atiende la llamada y deja la información registrada para el equipo.',
     listen: 'Escuchar a Telma',
     items: [
-      { tag: 'Para quien llama', title: 'Atendida a la primera', text: 'Cuando recepción no puede atender, atiende Telma. Nadie se queda esperando ni acaba en el buzón de voz.' },
+      { tag: 'Para quien llama', title: 'Sin dejar la llamada en el buzón de voz', text: 'La llamada que recepción no puede atender pasa a Telma, y es ella quien responde.' },
       { tag: 'Para quien llama', title: 'También fuera de horario', text: 'Al final del día, el fin de semana y en festivos, la llamada se atiende y la petición queda registrada.' },
       { tag: 'Para el equipo', title: 'Nada se pierde por el camino', text: 'Cada llamada llega a recepción con un resumen escrito y la grabación, lista para confirmar y seguir.' },
     ],
   },
   banner: { title: 'Recepción atiende a quien está en el mostrador. Telma atiende el teléfono.', cta: 'Hablar con nosotros' },
-  band: { title: 'De la conversación queda lo esencial.' },
+  band: { title: 'De la conversación, queda lo necesario.' },
   resources: {
     title: 'Para leer con calma',
     prev: 'Anterior',
@@ -275,7 +275,7 @@ export const es: Content = {
   },
   trust: {
     label: 'Confianza',
-    title: 'La clínica sigue al mando.',
+    title: 'La clínica mantiene el control.',
     items: [
       { icon: 'shield', title: 'Datos en la Unión Europea', text: 'Cumplimos el RGPD y los datos se alojan en la UE.' },
       { icon: 'mic', title: 'Grabación con aviso', text: 'Las llamadas se graban con aviso previo, y puede escucharlas y leer el resumen de cada una.' },
@@ -293,7 +293,7 @@ export const es: Content = {
     items: [
       {
         q: '¿El paciente se da cuenta de que habla con una asistente virtual?',
-        a: 'La voz es muy natural. Si el paciente lo pregunta directamente, Telma responde con honestidad que es una asistente virtual.',
+        a: 'La voz es natural. Si el paciente pregunta, Telma explica con naturalidad que es la asistente virtual de la clínica.',
       },
       {
         q: '¿Telma sabe responder a preguntas sobre la clínica?',
@@ -320,12 +320,12 @@ export const es: Content = {
         a: 'No. Mantiene su número. Las llamadas no atendidas se desvían a Telma.',
       },
       {
-        q: '¿Cuánto falta para que esté funcionando?',
+        q: '¿Cuánto tarda en estar funcionando?',
         a: 'Normalmente entre 3 y 5 días laborables.',
       },
       {
         q: '¿La instalación tiene algún coste?',
-        a: 'No. Está incluida en todos los planes y no hay coste de entrada. Y es trabajo de verdad: recogemos la información de la clínica, escribimos con usted las respuestas de Telma, elegimos la voz, gestionamos el desvío con su operadora, hacemos llamadas de prueba y formamos a recepción. Paga la primera mensualidad y nada más.',
+        a: 'No. La instalación está incluida en todos los planes. Configuramos la información de la clínica, las respuestas de Telma, la voz y el desvío de llamadas. Después hacemos las pruebas necesarias y acompañamos al equipo antes de la activación.',
       },
       {
         q: '¿En qué idiomas atiende Telma?',
@@ -337,7 +337,7 @@ export const es: Content = {
       },
       {
         q: '¿Por qué los planes van en minutos y no en llamadas?',
-        a: 'Porque así es como cuesta Telma. Una llamada para preguntar el horario dura veinte segundos y una cita con cambio de fecha dura seis minutos; contarlas igual obligaría a encarecer el plan para todos. En minutos, cada clínica paga lo que usa. Como referencia, una llamada para pedir cita dura de media entre dos y tres minutos.',
+        a: 'Porque la duración de las llamadas varía bastante. Una pregunta sencilla puede durar pocos segundos, mientras que pedir o cambiar una cita puede llevar varios minutos. Cobrar por minutos permite ajustar el plan al uso real de la clínica. Como referencia, una llamada para pedir cita dura, de media, entre dos y tres minutos.',
       },
       {
         q: '¿Qué pasa si supero los minutos de mi plan?',
@@ -345,7 +345,7 @@ export const es: Content = {
       },
       {
         q: '¿Qué es el panel de la clínica, y cuánto cuesta?',
-        a: 'Es el sitio desde donde la clínica manda sobre Telma, y está incluido en todos los planes, sin coste extra. Ve el día: las citas provisionales pendientes de confirmar y las llamadas de hoy, actualizándose en directo. Confirma, cambia o rechaza cada cita y copia los datos del paciente para pegarlos en el software de la clínica. Marca en el calendario los horarios que Telma puede ofrecer y bloquea festivos y vacaciones. Y tiene el historial de llamadas con filtros, el resumen escrito y la grabación de cada una. Funciona en cualquier pantalla, y en el móvil se instala como una aplicación, sin pasar por tiendas.',
+        a: 'Es el panel desde el que la clínica gestiona Telma, y está incluido en todos los planes, sin coste extra. Ve el día: las citas provisionales pendientes de confirmar y las llamadas de hoy, actualizándose en directo. Confirma, cambia o rechaza cada cita y copia los datos del paciente para pegarlos en el software de la clínica. Marca en el calendario los horarios que Telma puede ofrecer y bloquea festivos y vacaciones. Y tiene el historial de llamadas con filtros, el resumen escrito y la grabación de cada una. Funciona en cualquier pantalla, y en el móvil se instala como una aplicación, sin pasar por tiendas.',
       },
       {
         q: '¿Puedo escuchar las llamadas?',
@@ -378,8 +378,8 @@ export const es: Content = {
     ],
   },
   finalCta: {
-    title: 'Que su clínica siga funcionando, también cuando nadie puede atender.',
-    lead: 'Le enseñamos Telma con la agenda y los horarios de su clínica. Sin compromiso.',
+    title: 'Cuando recepción no puede atender, Telma puede.',
+    lead: 'Le mostramos cómo funcionaría en su clínica, con sus horarios y su agenda. Sin compromiso.',
     cta: 'Hablar con nosotros',
     secondary: 'Ver precios',
   },
@@ -401,9 +401,7 @@ export const es: Content = {
     submit: 'Enviar',
     sending: 'Enviando...',
     success: 'Hemos recibido su solicitud. Nos pondremos en contacto en breve.',
-    error: 'No hemos podido enviarlo. Inténtelo de nuevo o escríbanos por correo.',
-    notConfigured:
-      'El formulario todavía no está configurado. Configure la variable NEXT_PUBLIC_CONTACT_ENDPOINT o escríbanos directamente.',
+    error: 'No hemos podido enviar la solicitud. Inténtelo de nuevo o escríbanos por email.',
     directEmail: 'O escriba a',
   },
   footer: {
@@ -411,16 +409,129 @@ export const es: Content = {
     contactHeading: 'Contacto',
     productHeading: 'Producto',
     email: 'ola@telmaatende.com',
-    phone: '+351 000 000 000',
     companyHeading: 'Empresa',
     companyText: 'Telma es un producto Bweb Studio.',
     companyLinkLabel: 'bwebstudio.com',
     companyLink: 'https://bwebstudio.com',
-    legalPlaceholder:
-      'Espacio reservado para NIF, dirección y denominación social (a rellenar antes de publicar).',
     privacyLabel: 'Política de Privacidad',
     termsLabel: 'Términos',
     rights: 'Todos los derechos reservados.',
+  },
+  flow: {
+    title: 'De la conversación, queda lo necesario.',
+    description:
+      'Cada llamada termina donde corresponde: en la agenda, en un resumen para recepción o en una respuesta por WhatsApp.',
+    tabsLabel: 'Ejemplos',
+    tabs: {
+      booking: 'Agenda y organiza',
+      summary: 'Resume cada llamada',
+      whatsapp: 'También en WhatsApp',
+    },
+    scenes: {
+      booking: {
+        steps: [
+          { kind: 'call', label: 'Llamada', quote: 'Hola, quería pedir cita para el martes por la mañana, si hay disponibilidad.', duration: '12 s', related: ['llamada atendida', 'martes', 'por la mañana'] },
+          { kind: 'identified', label: 'Telma ha identificado', title: 'Cita', lines: ['martes', 'por la mañana'], badge: 'Por confirmar', related: ['cita', 'martes', 'por la mañana'] },
+          { kind: 'agenda', label: 'En la agenda', day: 'Martes', detail: 'Mañana', status: 'Por confirmar', related: ['por confirmar', 'martes'] },
+          { kind: 'call', label: 'Llamada', quote: 'Buenas tardes. Necesitaba cambiar la cita del jueves al viernes, por la tarde.', duration: '9 s', related: ['llamada atendida', 'jueves', 'viernes'] },
+          { kind: 'identified', label: 'Telma ha identificado', title: 'Cambio', lines: ['del jueves al viernes', 'por la tarde'], badge: 'Por confirmar', related: ['cambio', 'viernes', 'por la tarde'] },
+          { kind: 'agenda', label: 'En la agenda', day: 'Viernes', detail: 'Tarde', status: 'Por confirmar', related: ['por confirmar', 'viernes'] },
+          { kind: 'call', label: 'Llamada', quote: 'Buenos días. Mañana no voy a poder ir, quería cancelar, por favor.', duration: '7 s', related: ['llamada atendida', 'mañana'] },
+          { kind: 'identified', label: 'Telma ha identificado', title: 'Cancelación', lines: ['mañana'], badge: 'Por confirmar', related: ['cancelación', 'mañana'] },
+          { kind: 'agenda', label: 'En la agenda', day: 'Mañana', detail: 'Cancelación pedida', status: 'Por confirmar', related: ['por confirmar', 'cancelación'] },
+        ],
+        facts: [
+          { text: 'martes' },
+          { text: 'por la mañana' },
+          { text: 'cita', caption: 'Petición' },
+          { text: 'cambio', caption: 'Petición' },
+          { text: 'cancelación', caption: 'Petición' },
+          { text: 'por confirmar', caption: 'Estado' },
+          { text: 'llamada atendida' },
+          { text: 'jueves' },
+          { text: 'viernes', caption: 'Cuándo' },
+          { text: 'por la tarde' },
+          { text: 'mañana' },
+          { text: 'primera consulta' },
+          { text: 'devolver la llamada' },
+          { text: 'por la mañana', caption: 'Cuándo' },
+          { text: 'cita' },
+          { text: 'por confirmar' },
+        ],
+      },
+      summary: {
+        steps: [
+          { kind: 'call', label: 'Llamada', quote: 'Buenos días. Es la primera vez que llamo. Quería pedir cita para la semana que viene, por la tarde.', duration: '24 s', related: ['llamada atendida', 'primera consulta'] },
+          { kind: 'summary', label: 'Resumen para recepción', title: 'Primera consulta', lines: ['Petición de cita', 'La semana que viene, por la tarde', 'Por confirmar'], channels: ['Email', 'WhatsApp'], related: ['resumen', 'email', 'whatsapp', 'por la tarde'] },
+          { kind: 'call', label: 'Llamada', quote: 'Buenas tardes. He llamado hace un rato y se me olvidó preguntar a qué hora abren los sábados.', duration: '11 s', related: ['llamada atendida', 'pregunta'] },
+          { kind: 'summary', label: 'Resumen para recepción', title: 'Pregunta respondida', lines: ['Horario del sábado', 'Sin cita'], channels: ['Email', 'WhatsApp'], related: ['resumen', 'email', 'pregunta'] },
+        ],
+        facts: [
+          { text: 'resumen', caption: 'Para recepción' },
+          { text: 'email' },
+          { text: 'whatsapp' },
+          { text: 'llamada atendida' },
+          { text: 'primera consulta', caption: 'Petición' },
+          { text: 'semana que viene', caption: 'Cuándo' },
+          { text: 'por la tarde' },
+          { text: 'pregunta', caption: 'Petición' },
+          { text: 'grabación' },
+          { text: 'por confirmar', caption: 'Estado' },
+          { text: 'resumen' },
+          { text: 'sábado' },
+        ],
+      },
+      whatsapp: {
+        steps: [
+          { kind: 'call', label: 'WhatsApp · Paciente', quote: '¡Hola! ¿Se puede pedir cita para el viernes por la mañana?', duration: '10:42', related: ['whatsapp', 'viernes', 'por la mañana'] },
+          { kind: 'call', label: 'WhatsApp · Telma', quote: 'Claro. Tengo a las 10:00 o a las 11:30. ¿Cuál prefiere?', duration: '10:42', related: ['whatsapp', '10:00', 'mensaje'] },
+          { kind: 'agenda', label: 'En la agenda', day: 'Viernes', detail: '10:00 · pedida por WhatsApp', status: 'Por confirmar', related: ['por confirmar', 'viernes', 'cita'] },
+        ],
+        facts: [
+          { text: 'whatsapp' },
+          { text: 'mensaje', caption: 'Canal' },
+          { text: 'viernes', caption: 'Cuándo' },
+          { text: 'por la mañana' },
+          { text: '10:00' },
+          { text: 'cita', caption: 'Petición' },
+          { text: 'por confirmar', caption: 'Estado' },
+          { text: 'cambiar' },
+          { text: 'cancelar' },
+          { text: 'confirmación', caption: 'Por WhatsApp' },
+          { text: 'whatsapp' },
+          { text: '11:30' },
+        ],
+      },
+    },
+  },
+  process: {
+    title: 'De la llamada a la agenda.',
+    lead: 'Telma atiende, identifica el motivo de la llamada y deja la información organizada en la agenda.',
+    chapters: [
+      {
+        title: 'Atiende la llamada',
+        text: 'Cuando recepción no puede responder, Telma atiende con voz natural e identifica el motivo de la llamada.',
+      },
+      {
+        title: 'Organiza la agenda',
+        text: 'La petición queda en la agenda por confirmar, y recepción recibe un resumen escrito de lo acordado.',
+      },
+    ],
+    agenda: 'Agenda',
+    day: 'Martes',
+    newBooking: 'Nueva cita',
+    dayAndTime: 'Martes · 10:00',
+    callInProgress: 'Llamada en curso',
+    morning: 'Mañana',
+    statusLabel: 'Estado',
+    toConfirm: 'Por confirmar',
+    speakers: { caller: 'Paciente', telma: 'Telma' },
+    dialogue: {
+      caller1: ['Hola,', ' quería pedir cita', ' para el martes', ' por la mañana,', ' si hay disponibilidad.'],
+      telma1: ['Claro.', ' ¿Prefiere alguna hora durante la mañana?'],
+      caller2: ['Hacia las diez,', ' si es posible.'],
+    },
+    facts: ['Cita', 'martes', 'mañana', '~10:00'],
   },
   legal: {
     privacy: {

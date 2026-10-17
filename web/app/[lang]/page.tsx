@@ -14,7 +14,6 @@ import { Faq } from '@/components/sections/Faq'
 import { Trust } from '@/components/sections/Trust'
 import { Clinics } from '@/components/sections/Clinics'
 import { Banner } from '@/components/sections/Banner'
-import { Band } from '@/components/sections/Band'
 import { Calls } from '@/components/sections/Calls'
 import { Resources } from '@/components/sections/Resources'
 import { Contact } from '@/components/sections/Contact'
@@ -77,7 +76,7 @@ export default async function Page({
         <Problem c={c} />
         <HowItWorks c={c} />
         {/* EXPERIMENT (local): conversation flow. Remove this line and the import. */}
-        {CONVERSATION_FLOW_EXPERIMENT && <ConversationFlowSection />}
+        {CONVERSATION_FLOW_EXPERIMENT && <ConversationFlowSection c={c} />}
         {/* EXPERIMENT (local): process animation. Remove this line and the import. */}
         {PROCESS_ANIMATION_EXPERIMENT && <ProcessAnimationSection c={c} />}
         <Calls c={c} />
@@ -85,7 +84,6 @@ export default async function Page({
         <Banner c={c} />
         <Integrations c={c} />
         <Trust c={c} />
-        <Band c={c} />
         <Clinics c={c} />
         <Pricing c={c} lang={locale} />
         <Faq c={c} />

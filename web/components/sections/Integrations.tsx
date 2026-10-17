@@ -40,7 +40,11 @@ export function Integrations({ c }: { c: Content }) {
                 {c.integrations.levels.map((level, i) => (
                   <li key={i} className="border-b border-ink/10 py-6">
                     <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
-                      <span className="flex items-baseline gap-4">
+                      {/* The category used to be "Nível 1/2/3", three characters
+                          wide. It is now the category spelled out, which at
+                          phone width leaves nothing for the name beside it, so
+                          below sm the two stack instead of sharing a line. */}
+                      <span className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
                         <span className="shrink-0 whitespace-nowrap font-mono text-[0.8125rem] uppercase tracking-[0.08em] text-ink-mute">
                           {level.tag}
                         </span>

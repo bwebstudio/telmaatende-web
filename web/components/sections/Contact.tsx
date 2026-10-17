@@ -28,8 +28,12 @@ export function Contact({ c }: { c: Content }) {
     const data = new FormData(form)
 
     // With no form backend configured, fall back to the visitor's mail client,
-    // pre-filled and addressed to the clinic inbox.
+    // pre-filled and addressed to the clinic inbox. The visitor is never told
+    // why: a missing environment variable is ours to fix, and the copy that
+    // used to name it was being read by people in clinics. It goes to the
+    // console, where the person who can act on it is looking.
     if (!configured) {
+      console.warn('[contact] NEXT_PUBLIC_CONTACT_ENDPOINT is empty: falling back to mailto.')
       const get = (k: string) => (data.get(k) as string)?.trim() ?? ''
       const f = c.contact.fields
       const body = [

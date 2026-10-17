@@ -5,6 +5,18 @@ import { ButtonLink } from '@/components/ui/Button'
 import { TelmaSettle } from '@/components/ui/TelmaSettle'
 
 /**
+ * NOT ON THE PAGE. Kept, not deleted, and here is why.
+ *
+ * Its line was "Da conversa, fica o essencial", a second wording of the brand
+ * sentence. Unifying the wording across the site left the band saying, word
+ * for word, what the conversation section above it already says, twice on one
+ * page. The band is the restatement, so the band is what went.
+ *
+ * Nothing else used it: `c.band.title` and TelmaSettle are now unreferenced
+ * too. Put `<Band c={c} />` back in app/[lang]/page.tsx to restore it, and
+ * give it a line of its own first.
+ *
+ * ── WHAT IT WAS ────────────────────────────────────────────────────────────
  * The brand's one still moment: a full-bleed band where the mark assembles out
  * of its own letters, and a line that says what it is doing.
  *
