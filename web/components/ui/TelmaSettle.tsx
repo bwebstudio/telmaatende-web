@@ -73,22 +73,17 @@ const RING_SPEED = 1.15
 const RING_LIFE = 4200
 
 /**
- * The lane Band.tsx leaves clear for the mark: down the left, at every width.
+ * The lane Band.tsx leaves clear for the mark: down the left, in the band's
+ * own height.
  *
- * It used to move. Wide screens had the lane on the left and a phone had it
- * across the top, with the headline underneath, and the two layouts had to be
- * kept in step through a media query that existed in both files. Keeping the
- * mark beside the words at every size is one arrangement instead of two, and
- * it is the one the band was drawn as.
- *
- * The share of the width, not a fixed number: at 30% the mark still reads as
- * the mark on a phone and still leaves the headline a column it can wrap in.
- * Capped, because past a certain size it stops being a mark and becomes a
- * wall, and floored by the band's own height so it never overflows it.
+ * One arrangement, because the band is shown on one kind of screen. It used
+ * to have a second for phones -- the mark across the top, the headline below
+ * -- and then a third where the two sat side by side in a narrow column. Both
+ * were tried and neither held: the composition is a line of display type
+ * beside a mark, and it does not become narrow gracefully. The band is hidden
+ * below lg now, so the numbers here are the wide ones and there is no media
+ * query to keep in step with the layout.
  */
-const LANE_SHARE = 0.28
-const LANE_MAX = 220
-
 const CYCLE = 15000
 const T = { cloud: 0.1, gather: 0.26, paragraph: 0.4, contract: 0.52, mark: 0.7, release: 0.8, scatter: 0.94 }
 
@@ -186,39 +181,13 @@ export function TelmaSettle({
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
       ctx.clearRect(0, 0, w, h)
 
-      // One rule at every width: the mark fills its share of the lane, unless
-      // the band is short enough that its height is the tighter of the two.
-      const laneW = Math.min(w * LANE_SHARE, LANE_MAX)
-      // 0.62 and not 0.52: the band is shorter below lg now, and the mark was
-      // taking its size from the lane either way. The ceiling only bites on a
-      // band squat enough that a lane-sized mark would overflow it.
-      const markH = Math.min(laneW / (VW / VH), h * 0.62)
+      // The mark takes its size from the band's height, with a floor so a
+      // short band does not shrink it to a crumb.
+      const markH = Math.min(h * 0.44, Math.max(w * 0.135, 76))
       const k = markH / VH
-      const ox = Math.max(w * 0.045, 14)
+      const ox = Math.max(w * 0.035, 14)
 
-      // ── THE MARK LINES UP WITH THE HEADLINE, NOT WITH THE BAND ──────────
-      // Both used to be centred in the band, which is not the same thing:
-      // the mark and the block of copy are different heights, so two things
-      // centred in the same box start and end at four different places. It
-      // read as a mark that had been dropped in rather than set.
-      //
-      // Measured, not guessed. The band's padding changes three times across
-      // the breakpoints and the copy is a different height in each, so any
-      // number written here would be right at one width. `[data-band-copy]`
-      // is the headline; the mark's first bar aligns to the top of its first
-      // line, nudged down by the slack a line box carries above the letters.
-      //
-      // Falls back to centred when the element is not there, so this cannot
-      // be what breaks the band.
-      const copy = host.parentElement?.querySelector<HTMLElement>('[data-band-copy]')
-      let oy = (h - markH) / 2
-      if (copy) {
-        const a = cv.getBoundingClientRect()
-        const b = copy.getBoundingClientRect()
-        const size = parseFloat(getComputedStyle(copy).fontSize) || 24
-        const top = b.top - a.top + size * 0.14
-        oy = Math.max(8, Math.min(top, h - markH - 8))
-      }
+      const oy = (h - markH) / 2
       const cx = ox + (VW * k) / 2
       const cy = oy + markH / 2
 

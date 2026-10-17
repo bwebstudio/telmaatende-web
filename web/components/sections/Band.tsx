@@ -19,16 +19,22 @@ import { TelmaSettle } from '@/components/ui/TelmaSettle'
  * across all of it and are clipped by its rounded edge. Nothing was padded
  * out to make space: the space was already there, behind the headline.
  *
- * The text keeps a left inset at every width, because the mark keeps a lane
- * down the left at every width. It used to move to the top on a phone, with
- * the headline underneath, which meant two arrangements to keep in step and a
- * media query repeated in this file and in the canvas. One arrangement is
- * fewer things to break, and it is the one the band was drawn as.
+ * ── DESKTOP ONLY, AND THAT IS THE DECISION ────────────────────────────────
+ * The band was drawn as one shape: a mark down the left with a lane of its
+ * own, and a line of display type beside it. It does not survive being made
+ * narrow. Stacked on a phone the mark sat above a headline it had nothing to
+ * do with; side by side, the lane ate a third of the width and the headline
+ * came apart into a stack of two-word lines. Both were tried.
  *
- * The inset is a percentage below lg because the lane is a percentage: the
- * mark takes 30% of the band's width, capped, and the text starts clear of
- * it. Approximate on purpose — a character or two of the cloud passing behind
- * the headline is the effect, not a mistake.
+ * So below lg it is not shown. Nothing is lost that the page does not say
+ * elsewhere: the line is a restatement, and its button repeats the one in the
+ * hero and the one on every plan. A phone gets a shorter page instead of a
+ * compromised version of a composition that was never meant to be narrow.
+ *
+ * The text keeps a left inset so the settled mark has a lane of its own. That
+ * number is the only coupling between the canvas and the layout, and it is
+ * approximate on purpose — a character or two of the cloud passing behind the
+ * headline is the effect, not a mistake.
  *
  * ── THE BAND IS THE ACCENT, AND THAT IS A DECISION ─────────────────────────
  * It was built dark first, on the argument that macaw is the reference's own
@@ -43,30 +49,16 @@ import { TelmaSettle } from '@/components/ui/TelmaSettle'
  */
 export function Band({ c }: { c: Content }) {
   return (
-    <section className="py-16 sm:py-20">
+    <section className="hidden py-16 lg:block lg:py-20">
       <Container>
         <Reveal>
           <div className="relative overflow-hidden rounded-[24px] bg-accent text-ink">
             <TelmaSettle className="absolute inset-0 h-full w-full" />
-            <div className="relative flex min-h-[11rem] items-center gap-5 py-7 pl-[34%] pr-5 sm:min-h-[13rem] sm:gap-8 sm:py-9 sm:pl-[33%] sm:pr-8 lg:min-h-[15rem] lg:justify-between lg:gap-16 lg:py-16 lg:pl-[19rem] lg:pr-14">
-              {/* Stacked under each other until there is room to sit side by
-                  side. The headline and its action belong together: at narrow
-                  widths they are one column beside the mark, not two. */}
-              <div className="flex flex-col items-start gap-4 sm:gap-6 lg:flex-1 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
-                {/* Smaller than text-h2 until there is room for it. The column
-                    beside the mark is about a third of a phone's width, and
-                    the fluid h2 bottoms out at 28px: five words a line becomes
-                    two, and the sentence becomes a stack. */}
-                <h2
-                  data-band-copy
-                  className="display max-w-[16ch] text-[1.4rem] leading-[1.15] text-balance sm:text-h2"
-                >
-                  {c.band.title}
-                </h2>
-                <ButtonLink href="#precos" variant="primary" className="shrink-0">
-                  {c.hero.ctaPrimary}
-                </ButtonLink>
-              </div>
+            <div className="relative flex min-h-[15rem] items-center justify-between gap-16 py-16 pl-[17rem] pr-14">
+              <h2 className="display max-w-[16ch] text-h2 text-balance">{c.band.title}</h2>
+              <ButtonLink href="#precos" variant="primary" className="shrink-0">
+                {c.hero.ctaPrimary}
+              </ButtonLink>
             </div>
           </div>
         </Reveal>
