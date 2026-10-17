@@ -200,6 +200,21 @@ export function Header({ c, lang }: { c: Content; lang: Locale }) {
 }
 
 /**
+ * The id of the section the reader is in: the last one whose top has passed a
+ * line a third of the way down the window. Null above the first one (the hero
+ * has no id) and on pages without sections, so those open at the top.
+ */
+function sectionInView(): string | null {
+  const line = window.innerHeight / 3
+  let current: string | null = null
+  for (const el of document.querySelectorAll<HTMLElement>('main section[id]')) {
+    if (el.getBoundingClientRect().top > line) break
+    current = el.id
+  }
+  return current
+}
+
+/**
  * Every registered language, current one marked. Built from the locale list so
  * adding a fourth language needs no change here.
  */
@@ -214,11 +229,15 @@ function LangSwitch({
   dark: boolean
   className?: string
 }) {
-  // Keep the reader on the same section when switching language: anchor ids are
-  // shared across languages, so the hash travels with them.
+  // Keep the reader where they are when switching language. Paths and anchor ids
+  // are shared across languages, so only the first segment changes. The hash is
+  // not trusted: it holds the last menu link clicked, not where the reader has
+  // scrolled since, so the section on screen is read at the moment of the click.
   function switchLang(e: React.MouseEvent, target: Locale) {
     e.preventDefault()
-    window.location.href = `/${target}${window.location.hash}`
+    const rest = window.location.pathname.replace(/^\/[^/]+/, '')
+    const section = sectionInView()
+    window.location.href = `/${target}${rest}${section ? `#${section}` : ''}`
   }
 
   return (
