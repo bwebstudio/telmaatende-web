@@ -39,7 +39,7 @@ export const pt: Content = {
         { label: 'Chamada a entrar' },
         { label: 'A Telma atende' },
         { label: 'Consulta marcada' },
-        { label: 'Resumo enviado' },
+        { label: 'Resumo pronto' },
       ],
     },
   },
@@ -92,8 +92,8 @@ export const pt: Content = {
       },
       {
         n: '04',
-        title: 'A receção recebe um resumo de cada chamada',
-        text: 'No fim de cada chamada, a receção recebe um resumo escrito com o que ficou combinado.',
+        title: 'A receção tem o resumo de cada chamada',
+        text: 'No fim de cada chamada fica um resumo escrito com o que ficou combinado, no painel da clínica.',
       },
     ],
     note: 'Em caso de urgência, ou se o paciente pedir, a Telma passa a chamada para uma pessoa real.',
@@ -141,7 +141,7 @@ export const pt: Content = {
           'Responde a dúvidas com a informação da clínica',
           'Marcação automática de consultas',
           'Transferência para pessoa real',
-          'Resumo de cada chamada por email',
+          'Resumo escrito de cada chamada no painel',
           'Confirmação por SMS ao paciente, incluída',
           'Painel da clínica para gerir marcações e chamadas, em qualquer ecrã.',
         ],
@@ -184,7 +184,7 @@ export const pt: Content = {
       {
         id: 'personalizado',
         name: 'Personalizado',
-        audience: 'Para grupos com mais de 5 sedes ou mais de 1.750 minutos por mês',
+        audience: 'Para grupos com várias sedes ou mais de 1.750 minutos por mês',
         priceMonthly: null,
         priceText: 'sob consulta',
         isCustom: true,
@@ -221,7 +221,7 @@ export const pt: Content = {
         name: 'Funciona com qualquer sistema',
         badge: 'Incluído em todos os planos',
         badgeStrong: true,
-        text: 'Não é preciso mudar nada. A Telma regista as marcações num calendário partilhado e envia à receção um resumo de cada chamada por email ou WhatsApp. A receção passa a marcação para o software da clínica em segundos.',
+        text: 'Não é preciso mudar nada. A Telma regista as marcações num calendário partilhado e deixa o resumo escrito de cada chamada no painel da clínica. A receção passa a marcação para o software da clínica em segundos.',
       },
       {
         tag: 'Sincronização de calendário',
@@ -252,7 +252,7 @@ export const pt: Content = {
     items: [
       { tag: 'Para quem liga', title: 'Sem deixar a chamada no correio de voz', text: 'A chamada que a receção não pode atender segue para a Telma, e é ela que responde.' },
       { tag: 'Para quem liga', title: 'Também fora de horário', text: 'Ao fim do dia, ao fim de semana e nos feriados, a chamada é atendida e o pedido fica registado.' },
-      { tag: 'Para a equipa', title: 'Nada se perde pelo caminho', text: 'Cada chamada chega à receção com um resumo escrito e a gravação, para confirmar e seguir em frente.' },
+      { tag: 'Para a equipa', title: 'Nada se perde pelo caminho', text: 'Cada chamada fica no painel com um resumo escrito e a gravação, para confirmar e seguir em frente.' },
     ],
   },
   banner: { title: 'A receção atende quem está ao balcão. A Telma atende o telefone.', cta: 'Falar connosco' },
@@ -300,8 +300,8 @@ export const pt: Content = {
         a: 'O Essencial. É o plano de um consultório com um ou dois profissionais, que recebe até oito chamadas por dia. Se costuma passar disso, o Clínica sai mais barato do que o Essencial com minutos adicionais.',
       },
       {
-        q: 'Tenho cinco sedes. Qual é o meu plano? Pago por sede ou no total?',
-        a: 'O seu plano é o Rede, e paga no total, não por sede. O Rede custa 599€ por mês e inclui três sedes; as duas restantes ficam a 149€ cada, portanto 897€ por mês pelas cinco, com a instalação das cinco incluída. Um só contrato, uma só fatura e todas as sedes no mesmo painel, cada uma com o seu número e a sua agenda.',
+        q: 'Tenho várias sedes. Qual é o meu plano?',
+        a: 'Falemos. Hoje cada sede contrata-se como uma clínica, com o seu próprio número e a sua própria agenda, e ainda não há um painel único que as junte: estamos a construí-lo. Diga-nos quantas sedes tem e como trabalham entre si, e dizemos-lhe o que podemos fazer hoje e o que fica para quando estiver pronto.',
       },
       {
         q: 'A Telma pode marcar duas consultas à mesma hora?',
@@ -313,7 +313,7 @@ export const pt: Content = {
       },
       {
         q: 'Quanto tempo até estar a funcionar?',
-        a: 'Normalmente entre 3 e 5 dias úteis.',
+        a: 'Depende da disponibilidade do número da Telma. Avisamos por email assim que estiver ativo e, entretanto, já pode configurar a Telma no painel.',
       },
       {
         q: 'A instalação tem algum custo?',
@@ -325,7 +325,7 @@ export const pt: Content = {
       },
       {
         q: 'O preço é por clínica ou por profissional?',
-        a: 'Por clínica. Não cobramos por profissional nem por utilizador do painel. No Essencial e no Clínica, o preço é de uma clínica numa morada. No Rede, é de um grupo com várias moradas.',
+        a: 'Por clínica. Não cobramos por profissional nem por utilizador do painel. O preço é de uma clínica numa morada. Se tem várias sedes, falamos.',
       },
       {
         q: 'Porque é que os planos são em minutos e não em chamadas?',
@@ -341,7 +341,7 @@ export const pt: Content = {
       },
       {
         q: 'Posso ouvir as chamadas?',
-        a: 'Sim. Recebe um resumo escrito de cada chamada e pode aceder às gravações.',
+        a: 'Sim. No painel tem o resumo escrito de cada chamada e pode aceder às gravações.',
       },
       {
         q: 'Como funciona a proteção de dados?',
@@ -350,10 +350,6 @@ export const pt: Content = {
       {
         q: 'Preciso de instalar software?',
         a: 'Não. A Telma funciona sobre a linha telefónica atual da clínica.',
-      },
-      {
-        q: 'O que faz exatamente a Telma no WhatsApp?',
-        a: 'É a Telma a atender no WhatsApp, da mesma maneira que atende ao telefone: o paciente escreve, ela responde às dúvidas, marca, remarca e desmarca. As confirmações de marcação não são o add-on: essas já vão incluídas em qualquer plano, por SMS. O que muda com o add-on é que passam a chegar por WhatsApp, na mesma conversa.',
       },
       {
         q: 'Posso cancelar quando quiser?',
@@ -389,7 +385,7 @@ export const pt: Content = {
       message: 'Mensagem',
     },
     planPlaceholder: 'Escolha um plano',
-    planOptions: ['Essencial', 'Clínica', 'Rede', 'Personalizado', 'Telma no WhatsApp'],
+    planOptions: ['Essencial', 'Clínica', 'Rede', 'Personalizado'],
     submit: 'Enviar',
     sending: 'A enviar...',
     success: 'Recebemos o seu pedido. Entramos em contacto em breve.',
@@ -412,7 +408,7 @@ export const pt: Content = {
   flow: {
     title: 'Da conversa, fica o necessário.',
     description:
-      'Cada chamada termina no sítio certo: na agenda, num resumo para a receção, ou numa resposta no WhatsApp.',
+      'Cada chamada termina no sítio certo: na agenda ou num resumo para a receção.',
     tabsLabel: 'Exemplos',
     tabs: {
       booking: 'Marca e organiza',
@@ -454,14 +450,13 @@ export const pt: Content = {
       summary: {
         steps: [
           { kind: 'call', label: 'Chamada', quote: 'Bom dia. É a primeira vez que ligo. Queria marcar uma consulta para a próxima semana, de tarde.', duration: '24 s', related: ['chamada atendida', 'primeira consulta'] },
-          { kind: 'summary', label: 'Resumo para a receção', title: 'Primeira consulta', lines: ['Pedido de marcação', 'Próxima semana, à tarde', 'Por confirmar'], channels: ['Email', 'WhatsApp'], related: ['resumo', 'email', 'whatsapp', 'à tarde'] },
+          { kind: 'summary', label: 'Resumo para a receção', title: 'Primeira consulta', lines: ['Pedido de marcação', 'Próxima semana, à tarde', 'Por confirmar'], channels: ['Painel da clínica'], related: ['resumo', 'painel', 'à tarde'] },
           { kind: 'call', label: 'Chamada', quote: 'Boa tarde. Liguei há pouco e esqueci-me de perguntar a que horas abrem ao sábado.', duration: '11 s', related: ['chamada atendida', 'pergunta'] },
-          { kind: 'summary', label: 'Resumo para a receção', title: 'Pergunta respondida', lines: ['Horário de sábado', 'Sem marcação'], channels: ['Email', 'WhatsApp'], related: ['resumo', 'email', 'pergunta'] },
+          { kind: 'summary', label: 'Resumo para a receção', title: 'Pergunta respondida', lines: ['Horário de sábado', 'Sem marcação'], channels: ['Painel da clínica'], related: ['resumo', 'painel', 'pergunta'] },
         ],
         facts: [
           { text: 'resumo', caption: 'Para a receção' },
-          { text: 'email' },
-          { text: 'whatsapp' },
+          { text: 'painel', caption: 'Onde fica' },
           { text: 'chamada atendida' },
           { text: 'primeira consulta', caption: 'Pedido' },
           { text: 'próxima semana', caption: 'Quando' },
@@ -506,7 +501,7 @@ export const pt: Content = {
       },
       {
         title: 'Organiza a agenda',
-        text: 'O pedido fica na agenda por confirmar, e a receção recebe um resumo escrito do que ficou combinado.',
+        text: 'O pedido fica na agenda por confirmar, com um resumo escrito do que ficou combinado no painel.',
       },
     ],
     agenda: 'Agenda',

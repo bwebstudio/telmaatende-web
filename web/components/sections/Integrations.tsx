@@ -1,4 +1,4 @@
-import { CalendarDays, CalendarSync, Code2, Mail, MessageCircle, MessageSquareText } from 'lucide-react'
+import { CalendarDays, CalendarSync, Code2, Mail, MessageSquareText } from 'lucide-react'
 import type { Content } from '@/content'
 import { Container } from '@/components/ui/Container'
 import { Reveal } from '@/components/ui/Reveal'
@@ -12,11 +12,12 @@ import { Reveal } from '@/components/ui/Reveal'
  *
  * The level included on every plan carries the page's one accent.
  */
+// No WhatsApp tile: nothing in the product receives a WhatsApp message, and a
+// tile is a claim like any other. It comes back with the add-on.
 const TILES = [
   { icon: CalendarDays, name: 'Google Calendar' },
   { icon: CalendarSync, name: 'iCal' },
   { icon: Mail, name: 'Email' },
-  { icon: MessageCircle, name: 'WhatsApp' },
   { icon: MessageSquareText, name: 'SMS' },
   { icon: Code2, name: 'API' },
 ]

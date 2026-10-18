@@ -12,7 +12,9 @@ import type { FlowContent } from '@/content'
  * here in Portuguese, under a comment saying this experiment was pt-PT only,
  * on a section that renders on all three homepages.
  */
-const TAB_IDS = ['booking', 'summary', 'whatsapp'] as const
+// No WhatsApp tab: its scene showed Telma booking on WhatsApp, which she does
+// not do yet. The scene stays in content/ for when she does.
+const TAB_IDS = ['booking', 'summary'] as const
 
 type TabId = (typeof TAB_IDS)[number]
 

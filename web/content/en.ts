@@ -39,7 +39,7 @@ export const en: Content = {
         { label: 'Incoming call' },
         { label: 'Telma answers' },
         { label: 'Appointment booked' },
-        { label: 'Summary sent' },
+        { label: 'Summary ready' },
       ],
     },
   },
@@ -92,8 +92,8 @@ export const en: Content = {
       },
       {
         n: '04',
-        title: 'The front desk gets a summary of every call',
-        text: 'At the end of each call, the front desk receives a written summary of what was agreed.',
+        title: 'The front desk has a summary of every call',
+        text: 'At the end of each call a written summary of what was agreed is waiting in the clinic dashboard.',
       },
     ],
     note: 'In case of an emergency, or if the patient asks, Telma passes the call to a real person.',
@@ -141,7 +141,7 @@ export const en: Content = {
           'Answers questions using your clinic information',
           'Automatic appointment booking',
           'Transfer to a real person',
-          'A summary of every call by email',
+          'A written summary of every call in the dashboard',
           'SMS confirmation to the patient, included',
           'Clinic dashboard to manage appointments and calls from any screen.',
         ],
@@ -184,7 +184,7 @@ export const en: Content = {
       {
         id: 'personalizado',
         name: 'Personalizado',
-        audience: 'For groups with more than 5 locations or over 1,750 minutes per month',
+        audience: 'For groups with several locations or over 1,750 minutes per month',
         priceMonthly: null,
         priceText: 'on request',
         isCustom: true,
@@ -221,7 +221,7 @@ export const en: Content = {
         name: 'Works with any system',
         badge: 'Included in every plan',
         badgeStrong: true,
-        text: 'Nothing needs to change. Telma records bookings in a shared calendar and sends the front desk a summary of every call by email or WhatsApp. The front desk copies the booking into the clinic software in seconds.',
+        text: 'Nothing needs to change. Telma records bookings in a shared calendar and leaves a written summary of every call in the clinic dashboard. The front desk copies the booking into the clinic software in seconds.',
       },
       {
         tag: 'Calendar sync',
@@ -252,7 +252,7 @@ export const en: Content = {
     items: [
       { tag: 'For callers', title: 'Without sending the call to voicemail', text: 'The call the front desk cannot take goes to Telma, and she is the one who answers.' },
       { tag: 'For callers', title: 'Out of hours too', text: 'At the end of the day, at weekends and on holidays, the call is answered and the request is recorded.' },
-      { tag: 'For the team', title: 'Nothing gets lost', text: 'Every call reaches the front desk with a written summary and the recording, ready to confirm and move on.' },
+      { tag: 'For the team', title: 'Nothing gets lost', text: 'Every call lands in the dashboard with a written summary and the recording, ready to confirm and move on.' },
     ],
   },
   banner: { title: 'Reception looks after the person at the desk. Telma answers the phone.', cta: 'Talk to us' },
@@ -300,8 +300,8 @@ export const en: Content = {
         a: 'Essencial. It is the plan for a practice with one or two professionals taking up to eight calls a day. If you regularly go beyond that, Clínica works out cheaper than Essencial plus additional minutes.',
       },
       {
-        q: 'I have five locations. Which plan is mine, and do I pay per location or in total?',
-        a: 'Your plan is Rede, and you pay in total, not per location. Rede is 599€ per month and includes three locations; the remaining two are 149€ each, so 897€ per month for all five, with installation of all five included. One contract, one invoice and every location in the same dashboard, each with its own number and its own schedule.',
+        q: 'I have several locations. Which plan is mine?',
+        a: 'Let us talk. Today each location is taken out as its own clinic, with its own number and its own schedule, and there is not yet a single dashboard that brings them together: we are building it. Tell us how many locations you have and how they work with each other, and we will tell you what we can do today and what has to wait.',
       },
       {
         q: 'Can Telma book two appointments at the same time?',
@@ -313,7 +313,7 @@ export const en: Content = {
       },
       {
         q: 'How long until it is up and running?',
-        a: 'Usually between 3 and 5 working days.',
+        a: 'It depends on when Telma’s number becomes available. We email you as soon as it is active, and meanwhile you can already set Telma up in the panel.',
       },
       {
         q: 'Does installation cost anything?',
@@ -325,7 +325,7 @@ export const en: Content = {
       },
       {
         q: 'Is the price per clinic or per professional?',
-        a: 'Per clinic. We do not charge per professional or per dashboard user. On Essencial and Clínica the price is for one clinic at one address. On Rede it is for a group with several addresses.',
+        a: 'Per clinic. We do not charge per professional or per dashboard user. The price is for one clinic at one address. If you have several locations, let us talk.',
       },
       {
         q: 'Why are the plans in minutes rather than calls?',
@@ -341,7 +341,7 @@ export const en: Content = {
       },
       {
         q: 'Can I listen to the calls?',
-        a: 'Yes. You get a written summary of every call and you can access the recordings.',
+        a: 'Yes. The dashboard holds a written summary of every call and you can access the recordings.',
       },
       {
         q: 'How does data protection work?',
@@ -350,10 +350,6 @@ export const en: Content = {
       {
         q: 'Do I need to install software?',
         a: "No. Telma works over the clinic's current phone line.",
-      },
-      {
-        q: 'What exactly does Telma do on WhatsApp?',
-        a: 'It is Telma answering on WhatsApp, the same way she answers the telephone: the patient writes, she answers questions, books, reschedules and cancels. Booking confirmations are not the add-on: those are included on every plan, by SMS. What the add-on changes is that they arrive on WhatsApp instead, in the same conversation.',
       },
       {
         q: 'Can I cancel whenever I want?',
@@ -389,7 +385,7 @@ export const en: Content = {
       message: 'Message',
     },
     planPlaceholder: 'Choose a plan',
-    planOptions: ['Essencial', 'Clínica', 'Rede', 'Personalizado', 'Telma on WhatsApp'],
+    planOptions: ['Essencial', 'Clínica', 'Rede', 'Personalizado'],
     submit: 'Send',
     sending: 'Sending...',
     success: 'We have your request. We will be in touch soon.',
@@ -412,7 +408,7 @@ export const en: Content = {
   flow: {
     title: 'From each conversation, only what is needed remains.',
     description:
-      'Each call ends up where it belongs: in the schedule, in a summary for the front desk or in a WhatsApp reply.',
+      'Each call ends up where it belongs: in the schedule or in a summary for the front desk.',
     tabsLabel: 'Examples',
     tabs: {
       booking: 'Books and organises',
@@ -454,14 +450,13 @@ export const en: Content = {
       summary: {
         steps: [
           { kind: 'call', label: 'Call', quote: 'Good morning. This is my first time calling. I\u2019d like an appointment next week, in the afternoon.', duration: '24 s', related: ['call answered', 'first appointment'] },
-          { kind: 'summary', label: 'Summary for the front desk', title: 'First appointment', lines: ['Booking request', 'Next week, afternoon', 'To be confirmed'], channels: ['Email', 'WhatsApp'], related: ['summary', 'email', 'whatsapp', 'afternoon'] },
+          { kind: 'summary', label: 'Summary for the front desk', title: 'First appointment', lines: ['Booking request', 'Next week, afternoon', 'To be confirmed'], channels: ['Clinic dashboard'], related: ['summary', 'dashboard', 'afternoon'] },
           { kind: 'call', label: 'Call', quote: 'Good afternoon. I called earlier and forgot to ask what time you open on Saturdays.', duration: '11 s', related: ['call answered', 'question'] },
-          { kind: 'summary', label: 'Summary for the front desk', title: 'Question answered', lines: ['Saturday opening hours', 'No booking'], channels: ['Email', 'WhatsApp'], related: ['summary', 'email', 'question'] },
+          { kind: 'summary', label: 'Summary for the front desk', title: 'Question answered', lines: ['Saturday opening hours', 'No booking'], channels: ['Clinic dashboard'], related: ['summary', 'dashboard', 'question'] },
         ],
         facts: [
           { text: 'summary', caption: 'For the front desk' },
-          { text: 'email' },
-          { text: 'whatsapp' },
+          { text: 'dashboard', caption: 'Where it lands' },
           { text: 'call answered' },
           { text: 'first appointment', caption: 'Request' },
           { text: 'next week', caption: 'When' },
@@ -506,7 +501,7 @@ export const en: Content = {
       },
       {
         title: 'Organises the schedule',
-        text: 'The request sits in the schedule as unconfirmed, and the front desk receives a written summary of what was agreed.',
+        text: 'The request sits in the schedule as unconfirmed, with a written summary of what was agreed in the dashboard.',
       },
     ],
     agenda: 'Schedule',
