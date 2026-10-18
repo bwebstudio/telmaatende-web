@@ -29,10 +29,38 @@ function formatEuro(value: number, lang: Locale): string {
  * leave the grid for one dark panel underneath, side by side. The fine print
  * becomes a quiet grid instead of a centred paragraph.
  */
+/**
+ * The WhatsApp add-on is off the price list until Telma answers on WhatsApp.
+ * Today nothing receives a WhatsApp message, so it cannot be sold as Telma
+ * answering and booking there. The content stays in content/ for when it does;
+ * the panel has the same switch (WHATSAPP_ON_SALE in lib/onboarding/catalog.ts).
+ */
+const WHATSAPP_ON_SALE = false
+
+/**
+ * Rede is off the price list until the product has locations.
+ *
+ * It is sold as several locations under one contract, each with its own number
+ * and its own agenda, all in one panel. None of that exists: a user belongs to
+ * one clinic, a clinic is one row with one number and one agenda, and there is
+ * no table of locations and no way to see two at once. The grid is the one
+ * place on the site that can start a checkout, so this is the place it has to
+ * come off; a group with several addresses goes to the contact row instead,
+ * whose audience line now says so.
+ *
+ * Nothing about Rede is deleted. Its price, audience and features are still in
+ * content/, its row is still in the `plans` table, and the sign-up has the same
+ * switch (SIGNUP_PLANS in lib/onboarding/catalog.ts). The day there are real
+ * locations, this line is where it comes back.
+ */
+const REDE_ON_SALE = false
+
 export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
   const [annual, setAnnual] = useState(false)
 
-  const standard = c.pricing.plans.filter((p) => !p.isCustom)
+  const standard = c.pricing.plans.filter(
+    (p) => !p.isCustom && (REDE_ON_SALE || p.id !== 'rede')
+  )
   const custom = c.pricing.plans.find((p) => p.isCustom)
 
   return (
@@ -79,7 +107,13 @@ export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
         </Reveal>
       </div>
 
-      <div className="mt-14 grid items-stretch gap-5 lg:mt-16 lg:grid-cols-3">
+      {/* As many columns as there are plans, so two cards do not sit in a
+          three-column grid with a hole where Rede used to be. */}
+      <div
+        className={`mt-14 grid items-stretch gap-5 lg:mt-16 ${
+          standard.length > 2 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'
+        }`}
+      >
         {standard.map((plan, i) => (
           <PlanCard key={plan.id} plan={plan} annual={annual} lang={lang} c={c} delay={i * 90} />
         ))}
@@ -88,7 +122,7 @@ export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
       {/* The custom plan and the WhatsApp add-on are footnotes to the grid, not
           rivals to it: two slim rows, each one line of what it is and one way
           in. The add-on's features sit behind its name instead of on the page. */}
-      <Reveal delay={120} className="mt-5 grid gap-5 lg:grid-cols-2">
+      <Reveal delay={120} className={`mt-5 grid gap-5 ${WHATSAPP_ON_SALE ? 'lg:grid-cols-2' : ''}`}>
         {custom && (
           <div className="flex flex-col gap-5 rounded-[20px] border border-line p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
             <div>
@@ -103,6 +137,7 @@ export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
           </div>
         )}
 
+        {WHATSAPP_ON_SALE && (
         <details className="group rounded-[20px] border border-line p-6 sm:p-8">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-5 [&::-webkit-details-marker]:hidden">
             <span className="flex items-center gap-4">
@@ -135,6 +170,7 @@ export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
             ))}
           </ul>
         </details>
+        )}
       </Reveal>
 
       <Reveal delay={160} className="mt-14">
