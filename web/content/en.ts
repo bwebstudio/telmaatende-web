@@ -176,7 +176,7 @@ export const en: Content = {
         features: [
           'Everything in Clínica',
           'Answers in all three: Portuguese, Spanish and English',
-          'Every location in one dashboard, one contract and one invoice',
+          'One contract and one invoice for the whole group',
           'Each location with its own number and its own schedule',
           'Priority support',
         ],
@@ -184,7 +184,7 @@ export const en: Content = {
       {
         id: 'personalizado',
         name: 'Personalizado',
-        audience: 'For groups with several locations or over 1,750 minutes per month',
+        audience: 'For groups with more than 5 locations or over 1,750 minutes per month',
         priceMonthly: null,
         priceText: 'on request',
         isCustom: true,

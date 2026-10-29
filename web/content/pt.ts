@@ -176,7 +176,7 @@ export const pt: Content = {
         features: [
           'Tudo o que inclui o Clínica',
           'Atende nos três idiomas: português, espanhol e inglês',
-          'Todas as sedes num só painel, um só contrato e uma só fatura',
+          'Um contrato e uma fatura para todo o grupo',
           'Cada sede com o seu número e a sua agenda',
           'Apoio prioritário',
         ],
@@ -184,7 +184,7 @@ export const pt: Content = {
       {
         id: 'personalizado',
         name: 'Personalizado',
-        audience: 'Para grupos com várias sedes ou mais de 1.750 minutos por mês',
+        audience: 'Para grupos com mais de 5 sedes ou mais de 1.750 minutos por mês',
         priceMonthly: null,
         priceText: 'sob consulta',
         isCustom: true,

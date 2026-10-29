@@ -38,29 +38,37 @@ function formatEuro(value: number, lang: Locale): string {
 const WHATSAPP_ON_SALE = false
 
 /**
- * Rede is off the price list until the product has locations.
+ * Rede is on the page, and it is the one card that cannot be bought.
  *
- * It is sold as several locations under one contract, each with its own number
- * and its own agenda, all in one panel. None of that exists: a user belongs to
- * one clinic, a clinic is one row with one number and one agenda, and there is
- * no table of locations and no way to see two at once. The grid is the one
- * place on the site that can start a checkout, so this is the place it has to
- * come off; a group with several addresses goes to the contact row instead,
- * whose audience line now says so.
+ * ── WHY IT IS BOTH OF THOSE THINGS ─────────────────────────────────────────
+ * It had left the grid entirely, because the grid is the only place on this
+ * site that can start a checkout and a group cannot be delivered: a user
+ * belongs to one clinic, a clinic is one row with one number and one agenda,
+ * and there is no table of locations. Taking the card down took the price with
+ * it, and a group reading the page had no idea the plan existed -- which is
+ * the state it was found in.
  *
- * Nothing about Rede is deleted. Its price, audience and features are still in
- * content/, its row is still in the `plans` table, and the sign-up has the same
- * switch (SIGNUP_PLANS in lib/onboarding/catalog.ts). The day there are real
- * locations, this line is where it comes back.
+ * So the card is back and the checkout is not. Its button goes to the contact
+ * form, like the custom plan's, and `signupUrl` is never asked for the plan
+ * id: a conversation is how a group with several addresses is served today,
+ * and it is the only way it can be served honestly. The panel keeps its own
+ * switch for the form (SIGNUP_PLANS in lib/onboarding/catalog.ts), and the two
+ * agree, because neither of them sells it.
+ *
+ * `REDE_SELF_SERVE` is where the checkout comes back: the day a group is a
+ * real thing in the database, this is the line to flip, here and there.
  */
-const REDE_ON_SALE = false
+const REDE_SELF_SERVE = false
+
+/** The plans a reader can buy without talking to anybody. */
+function selfServe(planId: string): boolean {
+  return planId !== 'rede' || REDE_SELF_SERVE
+}
 
 export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
   const [annual, setAnnual] = useState(false)
 
-  const standard = c.pricing.plans.filter(
-    (p) => !p.isCustom && (REDE_ON_SALE || p.id !== 'rede')
-  )
+  const standard = c.pricing.plans.filter((p) => !p.isCustom)
   const custom = c.pricing.plans.find((p) => p.isCustom)
 
   return (
@@ -107,8 +115,8 @@ export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
         </Reveal>
       </div>
 
-      {/* As many columns as there are plans, so two cards do not sit in a
-          three-column grid with a hole where Rede used to be. */}
+      {/* As many columns as there are plans, so a plan leaving the grid does
+          not leave a hole where it used to be. */}
       <div
         className={`mt-14 grid items-stretch gap-5 lg:mt-16 ${
           standard.length > 2 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'
@@ -205,7 +213,11 @@ function PlanCard({
   // The plan id travels to the wizard, so the last step opens on the plan the
   // reader just chose. Choosing it twice is how a reader starts to wonder
   // whether the first choice registered.
-  const signup = signupUrl(plan.id)
+  //
+  // Null on a plan that is not sold from a form, which is how Rede's card ends
+  // up with the contact form behind its button instead of a sign-up that would
+  // not know what to do with it: the wizard's SIGNUP_PLANS does not list it.
+  const signup = selfServe(plan.id) ? signupUrl(plan.id) : null
 
   return (
     <Reveal as="article" delay={delay} className="h-full">
