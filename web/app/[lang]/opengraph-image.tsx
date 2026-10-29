@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { ImageResponse } from 'next/og'
@@ -10,6 +11,8 @@ import { getContent, locales } from '@/content'
  * any language — rather than quoting the claim, which would be Portuguese on
  * the English and Spanish pages. Portuguese because that is the default locale.
  */
+const ASSETS = join(process.cwd(), 'assets', 'og')
+
 export const alt =
   'Telma Atende. O balcão de receção de uma clínica: o telefone, a agenda aberta do dia e a luz da manhã.'
 export const size = { width: 1200, height: 630 }
@@ -25,8 +28,64 @@ export const size = { width: 1200, height: 630 }
  */
 export const contentType = 'image/jpeg'
 
-export function generateStaticParams() {
-  return locales.map((lang) => ({ lang }))
+/**
+ * Both params, because of `dynamicParams: false` below: with an id in the path
+ * the route is /[lang]/opengraph-image/[__metadata_id__], and a route pinned to
+ * its static params has to name every one of them. The id is the same token
+ * `generateImageMetadata` hands to the metadata, so the file that gets written
+ * is the file the <meta> tag points at.
+ */
+export async function generateStaticParams() {
+  return Promise.all(
+    locales.map(async (lang) => ({ lang, __metadata_id__: await cardVersion(lang) }))
+  )
+}
+
+/**
+ * THE CARD'S ADDRESS HAS TO CHANGE WHEN THE CARD DOES.
+ *
+ * Next appends a hash to this route's URL -- /pt/opengraph-image?83eac4e52... --
+ * and that hash is of *this file*, not of the picture it draws. The picture is
+ * drawn from content/, so every word on it can change without the address
+ * moving a character.
+ *
+ * Which is what happened. The headline became "A Telma atende quando ninguém
+ * pode" on 2026-10-17; this file had not been touched since 2026-08-04. The
+ * server has been serving the new card ever since, and WhatsApp has been
+ * showing the old one, because WhatsApp, Facebook and LinkedIn cache by URL:
+ * they fetched it once in August and nothing has told them to look again. A
+ * share card nobody can refresh is worse than no share card, because it goes on
+ * being wrong in every group it is forwarded to.
+ *
+ * `generateImageMetadata` is the way out: the `id` it returns becomes part of
+ * the path, so a token computed from what the card draws makes the address move
+ * with the drawing. Change a headline and the URL is new, so the caches have
+ * never seen it and fetch it.
+ *
+ * The token covers the three things on the card: the claim, the by-line, and
+ * the artwork, hashed from the bytes rather than from a version somebody has to
+ * remember to bump. Twelve characters of sha1 is not cryptography, it is a
+ * cache key.
+ */
+async function cardVersion(lang: string): Promise<string> {
+  const c = getContent(lang)
+  const art = await Promise.all([
+    readFile(join(ASSETS, 'logotype.png')),
+    readFile(join(ASSETS, 'reception.jpg')),
+  ])
+  const h = createHash('sha1')
+  h.update([...c.hero.headlineLines, c.header.productBy].join('\u0000'))
+  for (const file of art) h.update(file)
+  return h.digest('hex').slice(0, 12)
+}
+
+export async function generateImageMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }> | { lang: string }
+}) {
+  const { lang } = await params
+  return [{ id: await cardVersion(lang), alt, size, contentType }]
 }
 
 /**
@@ -68,8 +127,6 @@ export const dynamicParams = false
 const BG = '#FCFCFA'
 const INK = '#111827'
 const MUTE = '#5F6B66'
-
-const ASSETS = join(process.cwd(), 'assets', 'og')
 
 export default async function OgImage({
   params,
