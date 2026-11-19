@@ -24,7 +24,11 @@ const MEDIA = [
   '/images/how-summary.webp',
 ]
 
-export function HowItWorks({ c }: { c: Content }) {
+/**
+ * `media` replaces the four photographs on a vertical page. An entry that is
+ * null leaves its card without a picture rather than showing a clinic's.
+ */
+export function HowItWorks({ c, media = MEDIA }: { c: Content; media?: (string | null)[] }) {
   return (
     <Section id="como-funciona" tone="bg" rule>
       <SectionHeader eyebrow={c.how.label} title={c.how.title} align="center" />
@@ -37,12 +41,14 @@ export function HowItWorks({ c }: { c: Content }) {
             delay={i * 90}
             className="overflow-hidden rounded-[16px] border border-line bg-surface"
           >
-            <MediaSlot
-              src={MEDIA[i]}
-              alt=""
-              className="aspect-[4/3]"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            />
+            {media[i] && (
+              <MediaSlot
+                src={media[i]}
+                alt=""
+                className="aspect-[4/3]"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              />
+            )}
             <div className="p-6 sm:p-7">
               <span className="font-mono text-[0.8125rem] uppercase tracking-[0.08em] text-ink-mute">
                 {step.n}

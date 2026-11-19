@@ -15,17 +15,17 @@ import { MediaSlot } from '@/components/ui/MediaSlot'
  * is an empty corridor, and what names the speciality — the red counter, the
  * flowers, the shelf of products — is all on the right. So it holds right.
  */
-const MEDIA: Record<
-  Content['clinics']['items'][number]['id'],
-  { src: string; focus?: string }
-> = {
+export type AudienceMedia = Record<string, { src: string; focus?: string }>
+
+const MEDIA: AudienceMedia = {
   dental: { src: '/images/for-dental.webp' },
   general: { src: '/images/for-general.webp' },
   aesthetic: { src: '/images/for-aesthetic.webp', focus: 'object-[88%_center]' },
   physio: { src: '/images/for-physio.webp' },
 }
 
-export function Clinics({ c }: { c: Content }) {
+/** `media` replaces the clinic photographs on a vertical page (hotels, ...). */
+export function Clinics({ c, media = MEDIA }: { c: Content; media?: AudienceMedia }) {
   return (
     <Section id="para-quem" tone="bg" rule>
       <SectionHeader eyebrow={c.clinics.label} title={c.clinics.title} lead={c.clinics.lead} align="center" />
@@ -39,9 +39,9 @@ export function Clinics({ c }: { c: Content }) {
             className="group overflow-hidden rounded-[16px] border border-line bg-surface"
           >
             <MediaSlot
-              src={MEDIA[item.id].src}
+              src={media[item.id].src}
               alt=""
-              focus={MEDIA[item.id].focus}
+              focus={media[item.id].focus}
               className="aspect-[4/5]"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             />

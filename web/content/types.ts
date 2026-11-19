@@ -291,7 +291,9 @@ export interface Content {
     label: string
     title: string
     lead: string
-    items: { id: 'dental' | 'general' | 'aesthetic' | 'physio'; name: string }[]
+    /** The id picks the picture; see the MEDIA map in components/sections/Clinics.tsx,
+     *  or the `media` a vertical page passes in. */
+    items: { id: string; name: string }[]
   }
   /** Why it matters to whoever calls and to the team, in three cards. */
   calls: {

@@ -11,7 +11,9 @@ import { ICON_STROKE } from '@/components/ui/Card'
  * them. Every line restates something the page already promises elsewhere
  * (answering when reception cannot, out of hours, the summary and recording).
  */
-export function Calls({ c }: { c: Content }) {
+/** `listen` false hides the button that jumps to the voice sample, for a page
+ *  that has no sample of its own yet. */
+export function Calls({ c, listen = true }: { c: Content; listen?: boolean }) {
   return (
     <Section tone="bg">
       <SectionHeader title={c.calls.title} lead={c.calls.lead} align="center" />
@@ -39,10 +41,12 @@ export function Calls({ c }: { c: Content }) {
       </ul>
 
       <Reveal delay={200} className="mt-12 flex flex-wrap justify-center gap-3">
-        <ButtonLink href="#voz" variant="primary">
-          {c.calls.listen}
-        </ButtonLink>
-        <ButtonLink href="#contacto" variant="secondary">
+        {listen && (
+          <ButtonLink href="#voz" variant="primary">
+            {c.calls.listen}
+          </ButtonLink>
+        )}
+        <ButtonLink href="#contacto" variant={listen ? 'secondary' : 'primary'}>
           {c.header.cta}
           <ArrowRight size={16} strokeWidth={ICON_STROKE} aria-hidden />
         </ButtonLink>

@@ -65,7 +65,19 @@ function selfServe(planId: string): boolean {
   return planId !== 'rede' || REDE_SELF_SERVE
 }
 
-export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
+/**
+ * `selfSignup` false sends every plan to the contact form. The sign-up wizard
+ * sets up a clinic, so a page for another kind of business talks first.
+ */
+export function Pricing({
+  c,
+  lang,
+  selfSignup = true,
+}: {
+  c: Content
+  lang: Locale
+  selfSignup?: boolean
+}) {
   const [annual, setAnnual] = useState(false)
 
   const standard = c.pricing.plans.filter((p) => !p.isCustom)
@@ -123,7 +135,7 @@ export function Pricing({ c, lang }: { c: Content; lang: Locale }) {
         }`}
       >
         {standard.map((plan, i) => (
-          <PlanCard key={plan.id} plan={plan} annual={annual} lang={lang} c={c} delay={i * 90} />
+          <PlanCard key={plan.id} plan={plan} annual={annual} lang={lang} c={c} delay={i * 90} selfSignup={selfSignup} />
         ))}
       </div>
 
@@ -198,12 +210,14 @@ function PlanCard({
   lang,
   c,
   delay,
+  selfSignup,
 }: {
   plan: Plan
   annual: boolean
   lang: Locale
   c: Content
   delay: number
+  selfSignup: boolean
 }) {
   const monthly = plan.priceMonthly ?? 0
   // Annual plans pay for ten months, so the effective monthly figure is lower.
@@ -217,7 +231,7 @@ function PlanCard({
   // Null on a plan that is not sold from a form, which is how Rede's card ends
   // up with the contact form behind its button instead of a sign-up that would
   // not know what to do with it: the wizard's SIGNUP_PLANS does not list it.
-  const signup = selfServe(plan.id) ? signupUrl(plan.id) : null
+  const signup = selfSignup && selfServe(plan.id) ? signupUrl(plan.id) : null
 
   return (
     <Reveal as="article" delay={delay} className="h-full">

@@ -25,7 +25,19 @@ import { loginUrl, signupUrl } from '@/lib/signup'
  * The bar sits at the container's width, so the wordmark lines up with every
  * section below it. The page's first section clears it with --nav-h.
  */
-export function Header({ c, lang }: { c: Content; lang: Locale }) {
+export function Header({
+  c,
+  lang,
+  selfSignup = true,
+  home,
+}: {
+  c: Content
+  lang: Locale
+  /** False keeps the bar on "talk to us"; see Pricing. */
+  selfSignup?: boolean
+  /** Where the logo goes. Defaults to the language's home page. */
+  home?: string
+}) {
   const [open, setOpen] = useState(false)
   const [dark, setDark] = useState(false)
   const barRef = useRef<HTMLDivElement>(null)
@@ -67,8 +79,8 @@ export function Header({ c, lang }: { c: Content; lang: Locale }) {
 
   // Both doors, or neither. Unset means the panel is not launched and the bar
   // falls back to the single "talk to us" it has always had — see lib/signup.
-  const signIn = loginUrl()
-  const signUp = signupUrl()
+  const signIn = selfSignup ? loginUrl() : null
+  const signUp = selfSignup ? signupUrl() : null
 
   const t = dark
     ? {
@@ -95,7 +107,7 @@ export function Header({ c, lang }: { c: Content; lang: Locale }) {
         <div className="flex h-[3.75rem] items-center justify-between gap-6 pl-5 pr-2.5 sm:h-[4.5rem] sm:pl-7 sm:pr-3.5">
           <div className="flex items-center gap-10 xl:gap-12">
             <span className={dark ? 'brightness-0 invert' : ''}>
-              <LogoLink href={`/${lang}`} />
+              <LogoLink href={home ?? `/${lang}`} />
             </span>
             <nav className="hidden items-center gap-8 lg:flex" aria-label={c.header.navLabel}>
               {c.header.nav.map((item) => (

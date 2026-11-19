@@ -23,21 +23,30 @@ import { ICON_STROKE } from '@/components/ui/Card'
  * desktop slot, so on a phone the 4:5 slot was cropping a crop and the people
  * fell out of frame. Full frame in, every breakpoint takes what it needs.
  */
-export function Banner({ c }: { c: Content }) {
+export function Banner({
+  c,
+  src = '/images/reception-desk.webp',
+  focus = 'object-left sm:object-center',
+}: {
+  c: Content
+  /** A vertical page passes its own photograph. */
+  src?: string
+  focus?: string
+}) {
   return (
     <section className="py-16 sm:py-20">
       <Container>
         <Reveal>
           <div data-nav-theme="dark" className="relative overflow-hidden rounded-[24px]">
             <MediaSlot
-              src="/images/reception-desk.webp"
+              src={src}
               alt=""
               className="aspect-[4/5] sm:aspect-[16/9] lg:aspect-[21/9]"
               // The two people live in the left half, so the narrow phone slot
               // holds left; from 16/9 up the crop keeps the full width and
               // only the vertical matters, which centred puts the faces and
               // the counter in frame together.
-              focus="object-left sm:object-center"
+              focus={focus}
               sizes="100vw"
             />
             {/* The headline sits over pale concrete and a lit lamp, so the
