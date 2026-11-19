@@ -16,8 +16,9 @@ existe en la ruta indicada y se hace deploy, sin tocar código:
 | `web/public/images/hoteis/para-hostel.webp` | Para quem: Hostels | ídem |
 | `web/public/audio/telma-hotel-pt.mp3` y `telma-hotel-en.mp3` | Bloque "Oiça a Telma" | ya están |
 
-Las 4 de "Como funciona" conviene subirlas juntas: con dos fotos y dos huecos
-la fila queda desigual.
+Las 4 de "Como funciona" salen juntas o ninguna: con tres fotos y una tarjeta
+vacía la fila parece rota. Hechas: como-chamada, como-atende, como-painel
+(originales en `assets/photography/hoteis/`, fuera de git). Falta como-resumo.
 
 ## Estilo común (pegar delante de cada prompt)
 

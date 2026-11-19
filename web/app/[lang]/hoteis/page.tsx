@@ -46,9 +46,12 @@ import {
 const PATH = 'hoteis'
 
 const IMG = '/images/hoteis'
-const HOW = ['como-chamada', 'como-atende', 'como-painel', 'como-resumo'].map((n) =>
+// All four or none: a row with three photographs and a bare card reads as
+// broken, so the photographs wait for the last one to land.
+const HOW_FILES = ['como-chamada', 'como-atende', 'como-painel', 'como-resumo'].map((n) =>
   publicFile(`${IMG}/${n}.webp`)
 )
+const HOW = HOW_FILES.every(Boolean) ? HOW_FILES : HOW_FILES.map(() => null)
 const AUDIENCE = {
   hotel: `${IMG}/para-hotel.webp`,
   local: `${IMG}/para-local.webp`,
