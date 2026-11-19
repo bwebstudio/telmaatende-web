@@ -13,7 +13,7 @@ existe en la ruta indicada y se hace deploy, sin tocar código:
 | `web/public/images/hoteis/para-hotel.webp` | Para quem: Hotéis | no sale la sección (necesita las 4) |
 | `web/public/images/hoteis/para-local.webp` | Para quem: Alojamento local | ídem |
 | `web/public/images/hoteis/para-rural.webp` | Para quem: Turismo rural | ídem |
-| `web/public/images/hoteis/para-hostel.webp` | Para quem: Hostels | ídem |
+| `web/public/images/hoteis/para-hostel.webp` | Para quem: Hostels | opcional: hoy la sección va con 3 tarjetas; si llega esta foto, se vuelve a añadir "Hostels e guest houses" en `content/verticals/hoteis-pt.ts` y en `AUDIENCE` de la página |
 | `web/public/audio/telma-hotel-pt.mp3` y `telma-hotel-en.mp3` | Bloque "Oiça a Telma" | ya están |
 
 Las 4 de "Como funciona" salen juntas o ninguna: con tres fotos y una tarjeta

@@ -52,13 +52,15 @@ const HOW_FILES = ['como-chamada', 'como-atende', 'como-painel', 'como-resumo'].
   publicFile(`${IMG}/${n}.webp`)
 )
 const HOW = HOW_FILES.every(Boolean) ? HOW_FILES : HOW_FILES.map(() => null)
-const AUDIENCE = {
-  hotel: `${IMG}/para-hotel.webp`,
-  local: `${IMG}/para-local.webp`,
-  rural: `${IMG}/para-rural.webp`,
-  hostel: `${IMG}/para-hostel.webp`,
+// Cropped to 4:5 on the card, so each one says where it holds. The local
+// lodging holds right: the key safe and the suitcase are what make it self
+// check-in rather than a hotel door.
+const AUDIENCE: Record<string, { src: string; focus?: string }> = {
+  hotel: { src: `${IMG}/para-hotel.webp` },
+  local: { src: `${IMG}/para-local.webp`, focus: 'object-[65%_center]' },
+  rural: { src: `${IMG}/para-rural.webp`, focus: 'object-[45%_center]' },
 }
-const AUDIENCE_READY = Object.values(AUDIENCE).every((src) => publicFile(src))
+const AUDIENCE_READY = Object.values(AUDIENCE).every(({ src }) => publicFile(src))
 const BANNER = publicFile(`${IMG}/rececao.webp`)
 // The same kind of call twice: once in Portuguese, once with a guest who asks
 // for English, which is the argument a hotel cares about most.
@@ -142,10 +144,7 @@ export default async function HotelPage({
         {BANNER && <Banner c={c} src={BANNER} focus="object-[55%_center] sm:object-center" />}
         <Trust c={c} />
         {AUDIENCE_READY && (
-          <Clinics
-            c={c}
-            media={Object.fromEntries(Object.entries(AUDIENCE).map(([id, src]) => [id, { src }]))}
-          />
+          <Clinics c={c} media={AUDIENCE} />
         )}
         <Pricing c={c} lang="pt" selfSignup={false} />
         <Faq c={c} />

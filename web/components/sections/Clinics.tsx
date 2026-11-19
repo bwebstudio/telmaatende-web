@@ -30,7 +30,13 @@ export function Clinics({ c, media = MEDIA }: { c: Content; media?: AudienceMedi
     <Section id="para-quem" tone="bg" rule>
       <SectionHeader eyebrow={c.clinics.label} title={c.clinics.title} lead={c.clinics.lead} align="center" />
 
-      <ul className="mt-16 grid gap-5 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
+      {/* Four kinds of clinic; a vertical page may have three, and then three
+          columns from tablet up rather than a row with a hole in it. */}
+      <ul
+        className={`mt-16 grid gap-5 lg:mt-20 ${
+          c.clinics.items.length === 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2 lg:grid-cols-4'
+        }`}
+      >
         {c.clinics.items.map((item, i) => (
           <Reveal
             as="li"
@@ -43,7 +49,7 @@ export function Clinics({ c, media = MEDIA }: { c: Content; media?: AudienceMedi
               alt=""
               focus={media[item.id].focus}
               className="aspect-[4/5]"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              sizes={c.clinics.items.length === 3 ? '(max-width: 640px) 100vw, 33vw' : '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw'}
             />
             <div className="px-6 py-5">
               <span className="font-mono text-[0.8125rem] uppercase tracking-[0.08em] text-ink-mute">

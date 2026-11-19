@@ -185,7 +185,6 @@ export const hoteisPt: Content = {
       { id: 'hotel', name: 'Hotéis' },
       { id: 'local', name: 'Alojamento local' },
       { id: 'rural', name: 'Turismo rural' },
-      { id: 'hostel', name: 'Hostels e guest houses' },
     ],
   },
   calls: {
