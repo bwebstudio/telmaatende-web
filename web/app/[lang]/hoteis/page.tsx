@@ -137,7 +137,9 @@ export default async function HotelPage({
         {CONVERSATION_FLOW_EXPERIMENT && <ConversationFlowSection c={c} />}
         {PROCESS_ANIMATION_EXPERIMENT && <ProcessAnimationSection c={c} />}
         <Calls c={c} listen={VOICE.length > 0} />
-        {BANNER && <Banner c={c} src={BANNER} focus="object-center" />}
+        {/* On a phone the 4:5 slot keeps a third of the frame: the receptionist
+            handing over the key, which is the moment the line is about. */}
+        {BANNER && <Banner c={c} src={BANNER} focus="object-[55%_center] sm:object-center" />}
         <Trust c={c} />
         {AUDIENCE_READY && (
           <Clinics
