@@ -182,9 +182,21 @@ export const hoteisPt: Content = {
     title: 'Para alojamentos que recebem chamadas de hóspedes.',
     lead: 'A Telma aprende a informação de cada casa: horários, regras, serviços e como lá chegar.',
     items: [
-      { id: 'hotel', name: 'Hotéis' },
-      { id: 'local', name: 'Alojamento local' },
-      { id: 'rural', name: 'Turismo rural' },
+      {
+        id: 'hotel',
+        name: 'Hotéis',
+        text: 'Quando a receção está ao balcão com um check-in, ou sozinha durante a noite, a Telma atende e trata da reserva.',
+      },
+      {
+        id: 'local',
+        name: 'Alojamento local',
+        text: 'Não há receção. A Telma responde a quem liga sobre o check-in autónomo, os horários ou onde estacionar.',
+      },
+      {
+        id: 'rural',
+        name: 'Turismo rural',
+        text: 'Quem gere a casa raramente está ao pé do telefone. A Telma atende, explica como lá chegar e faz a reserva.',
+      },
     ],
   },
   calls: {
@@ -223,7 +235,7 @@ export const hoteisPt: Content = {
       },
       {
         q: 'Em que idiomas atende a Telma?',
-        a: 'Em português, inglês e espanhol. Se o hotel tiver mais do que um, a Telma diz logo na saudação como pedir os outros: "for English say English". Quem liga pede e ela muda. O plano decide quantos desses três o hotel usa. Francês, alemão e italiano estão a caminho.',
+        a: 'Em português, inglês e espanhol. Se o hotel tiver mais do que um, a Telma diz logo na saudação como pedir os outros: "for English say English". Quem liga pede e ela muda. O plano decide quantos desses três o hotel usa.',
       },
       {
         q: 'O que sabe responder?',

@@ -81,6 +81,13 @@ export function Header({
   // falls back to the single "talk to us" it has always had — see lib/signup.
   const signIn = selfSignup ? loginUrl() : null
   const signUp = selfSignup ? signupUrl() : null
+  const here = home ?? `/${lang}`
+  // The sector switch takes the room the section links had between lg and xl,
+  // so on those pages the links wait for xl and live in the menu until then.
+  // Full class names, so Tailwind sees them.
+  const wide = c.header.sectors
+    ? { show: 'xl:flex', hide: 'xl:hidden' }
+    : { show: 'lg:flex', hide: 'lg:hidden' }
 
   const t = dark
     ? {
@@ -109,7 +116,8 @@ export function Header({
             <span className={dark ? 'brightness-0 invert' : ''}>
               <LogoLink href={home ?? `/${lang}`} />
             </span>
-            <nav className="hidden items-center gap-8 lg:flex" aria-label={c.header.navLabel}>
+            <SectorSwitch c={c} current={here} dark={dark} className="hidden lg:flex" />
+            <nav className={`hidden items-center gap-8 ${wide.show}`} aria-label={c.header.navLabel}>
               {c.header.nav.map((item) => (
                 <a
                   key={item.href}
@@ -145,7 +153,7 @@ export function Header({
             </a>
             <button
               type="button"
-              className={`inline-flex h-11 w-11 items-center justify-center rounded-[10px] transition-colors duration-fast lg:hidden ${t.icon}`}
+              className={`inline-flex h-11 w-11 items-center justify-center rounded-[10px] transition-colors duration-fast ${wide.hide} ${t.icon}`}
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={c.header.navLabel}
@@ -163,12 +171,17 @@ export function Header({
         {/* The menu opens inside the bar: the same surface, taller. */}
         <div
           id="mobile-menu"
-          className={`grid transition-[grid-template-rows] duration-500 ease-calm lg:hidden ${
+          className={`grid transition-[grid-template-rows] duration-500 ease-calm ${wide.hide} ${
             open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
           }`}
         >
           <div className="overflow-hidden">
             <div className={`mx-5 flex flex-col border-t py-3 sm:mx-7 ${t.rule}`}>
+              {c.header.sectors && (
+                <div className="pb-2 pt-3 lg:hidden">
+                  <SectorSwitch c={c} current={here} dark={dark} tabIndex={open ? 0 : -1} />
+                </div>
+              )}
               {c.header.nav.map((item) => (
                 <a
                   key={item.href}
@@ -208,6 +221,58 @@ export function Header({
         </div>
       </div>
     </header>
+  )
+}
+
+/**
+ * Clínicas | Hotéis: which sector page this is, and the way to the other one.
+ * A segmented pill rather than two more menu links, because it is not a place
+ * on this page but a choice of page, and it has to read as that at a glance.
+ * Renders nothing for a language with a single sector page.
+ */
+function SectorSwitch({
+  c,
+  current,
+  dark,
+  className = '',
+  tabIndex,
+}: {
+  c: Content
+  current: string
+  dark: boolean
+  className?: string
+  tabIndex?: number
+}) {
+  const sectors = c.header.sectors
+  if (!sectors) return null
+  return (
+    <nav
+      aria-label={sectors.label}
+      className={`items-center gap-0.5 rounded-pill p-1 ${dark ? 'bg-white/10' : 'bg-ink/[0.06]'} ${
+        className || 'flex w-fit'
+      }`}
+    >
+      {sectors.items.map((item) => {
+        const isCurrent = item.href === current
+        return (
+          <Link
+            key={item.href}
+            href={item.href}
+            tabIndex={tabIndex}
+            aria-current={isCurrent ? 'page' : undefined}
+            className={`inline-flex h-8 items-center whitespace-nowrap rounded-pill px-3.5 text-[0.875rem] transition-colors duration-fast ease-calm ${
+              isCurrent
+                ? 'bg-white font-medium text-ink shadow-[0_1px_2px_rgba(0,0,0,0.08)]'
+                : dark
+                  ? 'text-white/70 hover:text-white'
+                  : 'text-ink/60 hover:text-ink'
+            }`}
+          >
+            {item.label}
+          </Link>
+        )
+      })}
+    </nav>
   )
 }
 

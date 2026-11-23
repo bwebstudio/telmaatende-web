@@ -329,7 +329,7 @@ export const es: Content = {
       },
       {
         q: '¿En qué idiomas atiende Telma?',
-        a: 'En español, portugués e inglés. Telma atiende en el idioma que elija la clínica y, si tiene más de uno, lo dice al descolgar para que quien llama pueda pedirlo: "for English say English". El plan decide cuántos de esos tres usa la clínica. Francés, alemán e italiano están en camino.',
+        a: 'En español, portugués e inglés. Telma atiende en el idioma que elija la clínica y, si tiene más de uno, lo dice al descolgar para que quien llama pueda pedirlo: "for English say English". El plan decide cuántos de esos tres usa la clínica.',
       },
       {
         q: '¿El precio es por clínica o por profesional?',

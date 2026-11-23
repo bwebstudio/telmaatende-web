@@ -20,6 +20,13 @@ export const pt: Content = {
       { label: 'Integrações', href: '#integracoes' },
       { label: 'Perguntas', href: '#perguntas' },
     ],
+    sectors: {
+      label: 'Setor',
+      items: [
+        { label: 'Clínicas', href: '/pt' },
+        { label: 'Hotéis', href: '/pt/hoteis' },
+      ],
+    },
     cta: 'Falar connosco',
     signIn: 'Entrar',
     signUp: 'Criar conta',
@@ -321,7 +328,7 @@ export const pt: Content = {
       },
       {
         q: 'Em que idiomas atende a Telma?',
-        a: 'Em português, espanhol e inglês. A Telma atende no idioma que a clínica escolher e, se tiver mais do que um, diz logo na saudação como pedir os outros: "for English say English". Quem liga pede e ela muda. O plano decide quantos desses três a clínica usa. Francês, alemão e italiano estão a caminho.',
+        a: 'Em português, espanhol e inglês. A Telma atende no idioma que a clínica escolher e, se tiver mais do que um, diz logo na saudação como pedir os outros: "for English say English". Quem liga pede e ela muda. O plano decide quantos desses três a clínica usa.',
       },
       {
         q: 'O preço é por clínica ou por profissional?',

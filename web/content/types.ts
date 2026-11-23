@@ -184,6 +184,10 @@ export interface Content {
     signUp: string
     productBy: string
     nav: NavItem[]
+    /** The sector switch beside the logo (Clínicas | Hotéis). Only where a
+     *  language has more than one sector page; the current one is the item
+     *  whose href is the page's home. */
+    sectors?: { label: string; items: NavItem[] }
     /** Accessible name for the main navigation landmark. */
     navLabel: string
     cta: string
@@ -293,7 +297,12 @@ export interface Content {
     lead: string
     /** The id picks the picture; see the MEDIA map in components/sections/Clinics.tsx,
      *  or the `media` a vertical page passes in. */
-    items: { id: string; name: string }[]
+    items: {
+      id: string
+      name: string
+      /** One line under the name: what Telma solves for that kind of place. */
+      text?: string
+    }[]
   }
   /** Why it matters to whoever calls and to the team, in three cards. */
   calls: {

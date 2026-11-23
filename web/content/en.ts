@@ -321,7 +321,7 @@ export const en: Content = {
       },
       {
         q: 'Which languages does Telma answer in?',
-        a: 'Portuguese, Spanish and English. Telma answers in the language the clinic chooses and, when there is more than one, says at the greeting how to ask for the others: "for English say English". The caller asks and she switches. The plan decides how many of the three a clinic uses. French, German and Italian are on the way.',
+        a: 'Portuguese, Spanish and English. Telma answers in the language the clinic chooses and, when there is more than one, says at the greeting how to ask for the others: "for English say English". The caller asks and she switches. The plan decides how many of the three a clinic uses.',
       },
       {
         q: 'Is the price per clinic or per professional?',

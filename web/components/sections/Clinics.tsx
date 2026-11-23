@@ -56,6 +56,9 @@ export function Clinics({ c, media = MEDIA }: { c: Content; media?: AudienceMedi
                 0{i + 1}
               </span>
               <h3 className="mt-2 text-[1.1875rem] font-medium tracking-tight text-ink">{item.name}</h3>
+              {item.text && (
+                <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink-mute">{item.text}</p>
+              )}
             </div>
           </Reveal>
         ))}
