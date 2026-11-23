@@ -24,7 +24,9 @@ function formatTime(seconds: number): string {
  * The player carries no panel and no card. It is two hairlines with a control
  * between them, which is the most restrained way to say "press this".
  *
- * `preload="none"` keeps the 1.5MB file off the page load until somebody asks.
+ * `preload="metadata"` fetches only enough of the file to know its length, so
+ * the player shows "0:00 / 1:03" from the start. With "none" it read "–:––"
+ * until pressed, which looks like a broken file on the block that matters most.
  */
 export interface VoiceTrack {
   /** Shown above the player when there is more than one. */
@@ -99,6 +101,8 @@ function Player({
 
     audio.addEventListener('timeupdate', onTime)
     audio.addEventListener('loadedmetadata', onMeta)
+    // The metadata often lands before hydration, so the event has been and gone.
+    if (audio.readyState >= 1) onMeta()
     audio.addEventListener('ended', onEnd)
     return () => {
       audio.removeEventListener('timeupdate', onTime)
@@ -169,7 +173,7 @@ function Player({
           />
         </span>
       </div>
-      <audio ref={audioRef} src={track.src} preload="none" />
+      <audio ref={audioRef} src={track.src} preload="metadata" />
     </div>
   )
 }
