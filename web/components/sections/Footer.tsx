@@ -6,6 +6,15 @@ import { Logo } from '@/components/ui/Logo'
 import { ICON_STROKE } from '@/components/ui/Card'
 
 /**
+ * The same two profiles in every language, and the names are brands, so they
+ * live here rather than in the content files. Both checked live on 24/11/2026.
+ */
+const SOCIAL = [
+  { label: 'Instagram', href: 'https://www.instagram.com/somos.telma', icon: InstagramIcon },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/telma-atende', icon: LinkedInIcon },
+]
+
+/**
  * Dark, very clean, and directly continuous with the final CTA above it — one
  * ink field, split by a hairline, rather than two dark blocks stacked.
  */
@@ -57,6 +66,21 @@ export function Footer({ c, lang }: { c: Content; lang: Locale }) {
                 />
                 {c.footer.email}
               </a>
+              <ul className="mt-4 flex flex-col gap-3">
+                {SOCIAL.map(({ label, href, icon: Icon }) => (
+                  <li key={href}>
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2.5 text-white/80 transition-colors duration-fast ease-calm hover:text-white"
+                    >
+                      <Icon />
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <div>
@@ -95,5 +119,46 @@ export function Footer({ c, lang }: { c: Content; lang: Locale }) {
         </div>
       </Container>
     </footer>
+  )
+}
+
+/* lucide-react dropped its brand icons, so these two are drawn here: the shapes
+   lucide used to ship, on the same 24 grid and stroke as the Mail beside them. */
+function SocialIcon({ children }: { children: React.ReactNode }) {
+  return (
+    <svg
+      width={16}
+      height={16}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={ICON_STROKE}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+      className="shrink-0 text-white/60"
+    >
+      {children}
+    </svg>
+  )
+}
+
+function InstagramIcon() {
+  return (
+    <SocialIcon>
+      <rect x="2" y="2" width="20" height="20" rx="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </SocialIcon>
+  )
+}
+
+function LinkedInIcon() {
+  return (
+    <SocialIcon>
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect x="2" y="9" width="4" height="12" />
+      <circle cx="4" cy="4" r="2" />
+    </SocialIcon>
   )
 }
