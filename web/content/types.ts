@@ -277,6 +277,18 @@ export interface Content {
     plans: Plan[]
     whatsapp: {
       label: string
+      /**
+       * The state of the add-on, on the chip beside its name.
+       *
+       * It is on the page without being for sale: `WHATSAPP_PREVIEW` in
+       * components/sections/Pricing.tsx shows the card and the sign-up's own
+       * switch (WHATSAPP_ON_SALE in the dashboard's lib/onboarding/catalog.ts)
+       * stays off, so nothing can buy it. These two strings are what keeps that
+       * honest on the page: the chip says it is being built and the note says
+       * what a reader gets instead, which is a conversation.
+       */
+      soon: string
+      soonNote: string
       name: string
       price: string
       priceNote: string

@@ -193,6 +193,9 @@ export const en: Content = {
     ],
     whatsapp: {
       label: 'Add-on',
+      soon: 'In development',
+      soonNote:
+        'Not available yet: today Telma answers the telephone. If you want it, talk to us and we will tell you the moment it is ready.',
       name: 'Telma on WhatsApp',
       price: '+49€',
       priceNote: 'per month, on any plan',
