@@ -39,14 +39,16 @@ function formatEuro(value: number, lang: Locale): string {
  * clinic could pay today for something that does not exist.
  *
  * What a salesperson needs is different from what a checkout needs: something
- * to show, with its price, and a way to register interest. So the card is back
- * with the state said on it (`soon`) and a note that it is not available yet,
- * its button goes to the contact form, and the sign-up's own switch
+ * to show, with its price, and a way to start the conversation. So the card is
+ * back and the payment is not, and it is built like the custom plan's row: no
+ * checkout, one button, the contact form behind it. The sign-up's own switch
  * (WHATSAPP_ON_SALE in the dashboard's lib/onboarding/catalog.ts) stays false,
  * which is what keeps it unbuyable. Nothing here starts a payment.
  *
- * `WHATSAPP_ON_SALE` there is the line to flip the day Telma answers on
- * WhatsApp; this one is what takes the chip and the note off the card.
+ * Nothing on the card says it is still being built -- a decision taken with
+ * that stated, because the only action it offers is a conversation and that is
+ * where it gets said. `WHATSAPP_ON_SALE` there is the line to flip the day
+ * Telma answers on WhatsApp; this one takes the card off the page.
  */
 const WHATSAPP_PREVIEW = true
 
@@ -180,9 +182,6 @@ export function Pricing({
                   {c.pricing.whatsapp.name}{' '}
                   <span className="ml-1 rounded-pill bg-accent-wash px-2 py-0.5 font-mono text-[0.6875rem] uppercase tracking-[0.08em] text-ink">
                     {c.pricing.whatsapp.label}
-                  </span>{' '}
-                  <span className="ml-0.5 rounded-pill border border-ink/25 px-2 py-0.5 font-mono text-[0.6875rem] uppercase tracking-[0.08em] text-ink-soft">
-                    {c.pricing.whatsapp.soon}
                   </span>
                 </span>
                 <span className="mt-1 block text-sm text-ink-soft">
@@ -190,12 +189,25 @@ export function Pricing({
                 </span>
               </span>
             </span>
-            <Plus
-              size={18}
-              strokeWidth={ICON_STROKE}
-              aria-hidden
-              className="shrink-0 text-ink transition-transform duration-fast group-open:rotate-45"
-            />
+            <span className="flex shrink-0 items-center gap-4">
+              {/* The row's one way in, the same as the custom plan's. The click
+                  is stopped here so that following the link does not also open
+                  the disclosure behind it: the plus is what opens that. */}
+              <ButtonLink
+                href="#contacto"
+                variant="secondary"
+                className="hidden sm:inline-flex"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {c.pricing.customCta}
+              </ButtonLink>
+              <Plus
+                size={18}
+                strokeWidth={ICON_STROKE}
+                aria-hidden
+                className="shrink-0 text-ink transition-transform duration-fast group-open:rotate-45"
+              />
+            </span>
           </summary>
           <ul className="mt-5 flex flex-col gap-2 border-t border-line pt-5">
             {c.pricing.whatsapp.features.map((f, k) => (
@@ -205,18 +217,11 @@ export function Pricing({
               </li>
             ))}
           </ul>
-          {/* The features above are written in the present tense, as the
-              product they describe. This is the line that says it is not here
-              yet, and it sits with the only button the card has: the contact
-              form. There is no checkout behind any of this. */}
-          <div className="mt-5 flex flex-col gap-4 border-t border-line pt-5 sm:flex-row sm:items-center sm:justify-between">
-            <p className="max-w-[46ch] text-sm leading-relaxed text-ink-mute">
-              {c.pricing.whatsapp.soonNote}
-            </p>
-            <ButtonLink href="#contacto" variant="secondary" className="shrink-0">
-              {c.pricing.customCta}
-            </ButtonLink>
-          </div>
+          {/* Narrow screens: the summary has no room for the button beside
+              the price, so it waits here, under what it is buying into. */}
+          <ButtonLink href="#contacto" variant="secondary" className="mt-5 w-full sm:hidden">
+            {c.pricing.customCta}
+          </ButtonLink>
         </details>
         )}
       </Reveal>

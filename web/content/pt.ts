@@ -200,9 +200,6 @@ export const pt: Content = {
     ],
     whatsapp: {
       label: 'Add-on',
-      soon: 'Em desenvolvimento',
-      soonNote:
-        'Ainda não está disponível: hoje a Telma atende ao telefone. Se lhe interessa, falamos e avisamos assim que estiver.',
       name: 'Telma no WhatsApp',
       price: '+49€',
       priceNote: 'por mês, em qualquer plano',
